@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://svy8xo3vfidm"]
+
+[ext_resource type="Script" uid="uid://c6mt8q0xwo4u7" path="res://src/game_object/interactable/test_interact/test_interact.gd" id="1_vo3ts"]
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="2_23yk8"]
+[ext_resource type="Texture2D" uid="uid://dh7xj2l2elkgo" path="res://assets/basic_sprite/Circle.png" id="3_40gj5"]
+
+[node name="TestInteract" type="Node2D" unique_id=1906740693 node_paths=PackedStringArray("interactable_component", "sprite")]
+script = ExtResource("1_vo3ts")
+interactable_component = NodePath("InteractableComponent")
+sprite = NodePath("Sprite")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=1696370411 node_paths=PackedStringArray("interact_control")]
+script = ExtResource("2_23yk8")
+interact_control = NodePath("../InteractControl")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1398099446]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_40gj5")
+
+[node name="InteractControl" type="Control" parent="." unique_id=990539789]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+mouse_filter = 1

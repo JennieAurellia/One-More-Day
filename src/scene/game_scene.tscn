@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://3300sevwt3cl"]
 
-[ext_resource type="PackedScene" uid="uid://b8uk1p3wu3wvw" path="res://player.tscn" id="1_5t8dn"]
+[ext_resource type="PackedScene" uid="uid://b8uk1p3wu3wvw" path="res://src/game_object/player/player.tscn" id="1_5t8dn"]
+[ext_resource type="PackedScene" uid="uid://svy8xo3vfidm" path="res://src/game_object/interactable/test_interact/test_interact.tscn" id="2_jrgi4"]
 
 [node name="GameScene" type="Node2D" unique_id=14823134]
 
 [node name="Player" parent="." unique_id=1477572895 instance=ExtResource("1_5t8dn")]
 position = Vector2(928, 572)
 rotation = -1.5707964
+
+[node name="TestInteract" parent="." unique_id=1906740693 instance=ExtResource("2_jrgi4")]
+position = Vector2(924, 201)
