@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b8uk1p3wu3wvw"]
+
+[ext_resource type="Script" uid="uid://b0lrowxldv2v8" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://7lu6px3xwpye" path="res://assets/basic_sprite/Square.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://dh7xj2l2elkgo" path="res://assets/basic_sprite/Circle.png" id="3_i3pqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1477572895]
+script = ExtResource("1_4flbx")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1240795610]
+self_modulate = Color(0.92099476, 0.9209946, 0.9209946, 1)
+rotation = 1.5707964
+scale = Vector2(0.6, 0.2)
+texture = ExtResource("2_onrkg")
+
+[node name="Head" type="Sprite2D" parent="Sprite" unique_id=103378562]
+self_modulate = Color(0.11612659, 0.11612659, 0.11612659, 1)
+scale = Vector2(0.33333328, 1)
+texture = ExtResource("3_i3pqv")
+
+[node name="EyeLeft" type="Sprite2D" parent="Sprite/Head" unique_id=1014368199]
+self_modulate = Color(0.92156863, 0.92156863, 0.92156863, 1)
+position = Vector2(-20.000004, -25)
+scale = Vector2(0.24999994, 0.24999999)
+texture = ExtResource("3_i3pqv")
+
+[node name="EyeRight" type="Sprite2D" parent="Sprite/Head" unique_id=48090960]
+self_modulate = Color(0.92156863, 0.92156863, 0.92156863, 1)
+position = Vector2(20, -25)
+scale = Vector2(0.24999994, 0.24999999)
+texture = ExtResource("3_i3pqv")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=114991734]
+shape = SubResource("CircleShape2D_4flbx")
