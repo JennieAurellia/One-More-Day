@@ -16,6 +16,11 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+InventoryManager="*uid://c0wpcwyvqrtxj"
+CursorManager="*uid://ceu04osa3ymxe"
+
 [debug]
 
 gdscript/warnings/unused_variable=0

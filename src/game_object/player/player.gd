@@ -79,10 +79,14 @@ func _check_pending_interaction() -> void:
 
 func _left_mouse_interaction():
 	var hovered : InteractableComponent = InteractableComponent.current_hovered_interactable
+	var selected : ItemData = InventoryManager.selected_item
 	if hovered:
 		# Walk to the interactable first, interact once close enough
 		_pending_interactable = hovered
 		_move_to(hovered.get_position())
+	elif selected:
+		# Deselect item when clicked at empty space
+		InventoryManager.select_item(null)
 	else:
 		# Regular point-and-click movement, cancel any pending interaction
 		_pending_interactable = null

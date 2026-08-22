@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ceiflj1joievo"]
+
+[ext_resource type="Script" uid="uid://cjpvcbgdeyeqh" path="res://src/ui/inventory/inventory_slot/inventory_slot_ui.gd" id="1_svefe"]
+
+[node name="InventorySlotUI" type="PanelContainer" unique_id=1403101574 node_paths=PackedStringArray("item_texture_rect", "button")]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("1_svefe")
+item_texture_rect = NodePath("ItemTextureRect")
+button = NodePath("Button")
+
+[node name="ItemTextureRect" type="TextureRect" parent="." unique_id=670082027]
+layout_mode = 2
+expand_mode = 5
+
+[node name="Button" type="Button" parent="." unique_id=695908821]
+layout_mode = 2

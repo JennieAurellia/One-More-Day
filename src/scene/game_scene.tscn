@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b8uk1p3wu3wvw" path="res://src/game_object/player/player.tscn" id="1_5t8dn"]
 [ext_resource type="PackedScene" uid="uid://svy8xo3vfidm" path="res://src/game_object/interactable/test_interact/test_interact.tscn" id="2_jrgi4"]
+[ext_resource type="PackedScene" uid="uid://cumbmuajmatxw" path="res://src/ui/inventory/inventory_ui.tscn" id="3_iavex"]
+[ext_resource type="Script" uid="uid://ceu04osa3ymxe" path="res://src/common/autoload/cursor_manager.gd" id="4_n0qnv"]
 
 [node name="GameScene" type="Node2D" unique_id=14823134]
 
@@ -11,3 +13,17 @@ rotation = -1.5707964
 
 [node name="TestInteract" parent="." unique_id=1906740693 instance=ExtResource("2_jrgi4")]
 position = Vector2(924, 201)
+
+[node name="InventoryCursor" type="Node" parent="." unique_id=943129645]
+script = ExtResource("4_n0qnv")
+metadata/_custom_type_script = "uid://ceu04osa3ymxe"
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="." unique_id=970134607]
+
+[node name="InventoryUI" parent="UICanvasLayer" unique_id=901225113 instance=ExtResource("3_iavex")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -435.0
+offset_right = 435.0
+grow_horizontal = 2
