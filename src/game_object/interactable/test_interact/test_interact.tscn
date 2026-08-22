@@ -10,6 +10,7 @@ script = ExtResource("1_vo3ts")
 interactable_component = NodePath("InteractableComponent")
 sprite = NodePath("Sprite")
 interact_give_item_data = ExtResource("2_652h5")
+is_remove_item_on_interact = true
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=1696370411 node_paths=PackedStringArray("interact_control")]
 script = ExtResource("2_23yk8")

@@ -10,6 +10,7 @@ class_name TestInteract
 @export var hover_color : Color = Color.YELLOW
 @export var interact_give_item_data : ItemData
 @export var interact_message : String = "Object interacted"
+@export var is_remove_item_on_interact : bool = false
 
 # ==================================================================================================
 #                Virtual methods
@@ -37,3 +38,4 @@ func _on_interactable_interacted():
 
 func _on_item_used_on(item_data:ItemData):
 	print("Interacted with %s" % item_data.display_name)
+	if is_remove_item_on_interact: InventoryManager.consume_selected()
