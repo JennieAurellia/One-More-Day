@@ -1,0 +1,21 @@
+~ start
+You wake up...
+As you scan the surrounding area, you spot someone.
+=> loop
+
+~ loop
+#Me: [do! show_character_sprite(DialogueCharacterView.CharacterPosition.LEFT, "player")] Um...
+#[do! hide_character_sprite(DialogueCharacterView.CharacterPosition.RIGHT)] He left.
+Me: Um...
+Test: [[Hai|Hello|Halo]], this is some dialogue.
+Test: Please ask something.
+- Who are you?
+	Test: I'm a human.
+- Where am I?
+	Test: You are lost.
+- Say it again? => loop
+- Alright, just shut up! => END
+Test: Ok, goodluck!
+He left.
+You're on your own.
+=> END

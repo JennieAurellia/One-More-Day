@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://svy8xo3vfidm" path="res://src/game_object/interactable/test_interact/test_interact.tscn" id="2_jrgi4"]
 [ext_resource type="PackedScene" uid="uid://cumbmuajmatxw" path="res://src/ui/inventory/inventory_ui.tscn" id="3_iavex"]
 [ext_resource type="Script" uid="uid://ceu04osa3ymxe" path="res://src/common/autoload/cursor_manager.gd" id="4_n0qnv"]
+[ext_resource type="PackedScene" uid="uid://c2rnpu7lx241o" path="res://src/ui/dialogue/dialogue_ui.tscn" id="5_alaus"]
 
 [node name="GameScene" type="Node2D" unique_id=14823134]
 
@@ -27,3 +28,5 @@ anchor_right = 0.5
 offset_left = -435.0
 offset_right = 435.0
 grow_horizontal = 2
+
+[node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
