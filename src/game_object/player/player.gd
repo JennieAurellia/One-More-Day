@@ -5,7 +5,7 @@ class_name Player
 @export var nav_agent : NavigationAgent2D
 
 @export_subgroup("Movement Settings")
-@export var speed : float = 300.0
+@export var movement_speed : float = 300.0
 @export var arrival_distance : float = 4.0
 
 @export_subgroup("Rotation Settings")
@@ -28,6 +28,7 @@ func _ready() -> void:
 	# Connect signals
 	if nav_agent: nav_agent.velocity_computed.connect(_on_velocity_computed)
 	# Initialize
+	if nav_agent: nav_agent.max_speed = movement_speed
 	_target_position = global_position
 	_target_rotation = rotation
 
@@ -50,13 +51,13 @@ func _do_movement(delta:float):
 		if nav_agent.is_navigation_finished(): return
 		var next_path_position : Vector2 = nav_agent.get_next_path_position()
 		var direction : Vector2 = global_position.direction_to(next_path_position)
-		var new_velocity : Vector2 = direction * speed
+		var new_velocity : Vector2 = direction * movement_speed
 		nav_agent.set_velocity(new_velocity)
 	# Do movement without nav agent
 	else:
 		if global_position.distance_to(_target_position) > arrival_distance:
 			var direction : Vector2 = (_target_position - global_position).normalized()
-			velocity = direction * speed
+			velocity = direction * movement_speed
 		else: velocity = Vector2.ZERO
 		move_and_slide()
 

@@ -6,8 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 
-[node name="Player" type="CharacterBody2D" unique_id=1477572895]
+[node name="Player" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("1_4flbx")
+nav_agent = NodePath("NavigationAgent")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1240795610]
 self_modulate = Color(0.92099476, 0.9209946, 0.9209946, 1)
@@ -34,3 +35,6 @@ texture = ExtResource("3_i3pqv")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=114991734]
 shape = SubResource("CircleShape2D_4flbx")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="." unique_id=1894294635]
+avoidance_enabled = true

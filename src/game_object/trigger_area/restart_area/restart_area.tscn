@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://q2pvo2jgdhmk"]
+
+[ext_resource type="Script" uid="uid://dvtvk4a7y36go" path="res://src/game_object/trigger_area/restart_area/restart_area.gd" id="1_1u4yw"]
+[ext_resource type="Texture2D" uid="uid://jgq6ha1u6m2f" path="res://assets/basic_sprite/Empty tilemap 64x64.png" id="1_ii2v3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u4yw"]
+size = Vector2(64, 64)
+
+[node name="RestartArea" type="Area2D" unique_id=438795567]
+script = ExtResource("1_1u4yw")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1145539114]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_ii2v3")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1436460020]
+shape = SubResource("RectangleShape2D_1u4yw")

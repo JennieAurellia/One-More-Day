@@ -95,6 +95,8 @@ func _ready() -> void:
 			assert(false, DMConstants.get_error_message(DMConstants.ERR_MISSING_RESOURCE_FOR_AUTOSTART))
 		#EventBus.input_status_changed.emit(false)
 		start()
+	else:
+		hide()
 
 
 func _process(delta: float) -> void:
