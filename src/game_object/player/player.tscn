@@ -11,7 +11,7 @@ script = ExtResource("1_4flbx")
 nav_agent = NodePath("NavigationAgent")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1240795610]
-self_modulate = Color(0.92099476, 0.9209946, 0.9209946, 1)
+self_modulate = Color(0, 0.36281306, 0.5438352, 1)
 rotation = 1.5707964
 scale = Vector2(0.6, 0.2)
 texture = ExtResource("2_onrkg")

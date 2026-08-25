@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+static var instance : Player
+
 @export_subgroup("References")
 @export var nav_agent : NavigationAgent2D
 
@@ -24,6 +26,10 @@ var _pending_interactable : InteractableComponent = null
 # ==================================================================================================
 #                Virtual methods
 # ==================================================================================================
+func _enter_tree() -> void: instance = self
+
+func _exit_tree() -> void: instance = null
+
 func _ready() -> void:
 	# Connect signals
 	if nav_agent: nav_agent.velocity_computed.connect(_on_velocity_computed)
@@ -45,6 +51,9 @@ func _unhandled_input(event: InputEvent) -> void:
 # ==================================================================================================
 #                Player methods
 # ==================================================================================================
+func move_to_position(new_position:Vector2): 
+	_move_to(new_position)
+
 func _do_movement(delta:float):
 	# Do movement with nav agent
 	if nav_agent:

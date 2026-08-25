@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://s08wgvj5250y"]
+
+[ext_resource type="Script" uid="uid://dntlnvcp7bop5" path="res://src/game_object/interactable/door/door.gd" id="1_k16ha"]
+[ext_resource type="Texture2D" uid="uid://7lu6px3xwpye" path="res://assets/basic_sprite/Square.png" id="3_k16ha"]
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="3_yd8t2"]
+
+[node name="Door" type="Node2D" unique_id=1906740693 node_paths=PackedStringArray("interactable_component", "rotate_pivot", "sprite", "push_side_marker", "pull_side_marker")]
+script = ExtResource("1_k16ha")
+interactable_component = NodePath("InteractableComponent")
+rotate_pivot = NodePath("RotatePivot")
+sprite = NodePath("RotatePivot/Sprite")
+push_side_marker = NodePath("PushSideMarker")
+pull_side_marker = NodePath("PullSideMarker")
+normal_color = Color(0.21960784, 0.10980392, 0.3647059, 1)
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=1696370411 node_paths=PackedStringArray("interact_control")]
+script = ExtResource("3_yd8t2")
+interact_control = NodePath("../InteractControl")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
+
+[node name="RotatePivot" type="Node2D" parent="." unique_id=1678717773]
+position = Vector2(0, -40)
+
+[node name="Sprite" type="Sprite2D" parent="RotatePivot" unique_id=1398099446]
+modulate = Color(0.21960784, 0.10980392, 0.3647059, 1)
+position = Vector2(0, 40)
+scale = Vector2(0.1, 0.8)
+texture = ExtResource("3_k16ha")
+
+[node name="PushSideMarker" type="Marker2D" parent="." unique_id=1497591281]
+position = Vector2(-40, 0)
+
+[node name="PullSideMarker" type="Marker2D" parent="." unique_id=1197854524]
+position = Vector2(40, 0)
+
+[node name="InteractControl" type="Control" parent="." unique_id=990539789]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -40.0
+offset_right = 25.0
+offset_bottom = 40.0
+mouse_filter = 1
