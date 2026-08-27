@@ -11,4 +11,4 @@ func restart_day():
 	loop_count += 1
 	call_deferred("_do_restart_day")
 
-func _do_restart_day(): get_tree().change_scene_to_file(GAME_SCENE_PATH)
+func _do_restart_day(): TransitionManager.crossfade_and_reload_scene()

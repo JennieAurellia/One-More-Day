@@ -22,6 +22,7 @@ InventoryManager="*uid://c0wpcwyvqrtxj"
 CursorManager="*uid://ceu04osa3ymxe"
 DialogueManager="*uid://c3rodes2l3gxb"
 GameManager="*uid://b171u5yvalqk3"
+TransitionManager="*uid://dwgm6ygoojmik"
 
 [debug]
 
