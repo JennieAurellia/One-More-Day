@@ -1,6 +1,9 @@
 extends Node2D
 class_name Door
 
+signal door_opened
+signal door_closed
+
 @export_subgroup("References")
 @export var interactable_component : InteractableComponent
 @export var rotate_pivot : Node2D
@@ -29,6 +32,9 @@ var _swing_tween : Tween
 # ==================================================================================================
 #                Virtual methods
 # ==================================================================================================
+func _exit_tree() -> void:
+	if DoorManager.instance: DoorManager.instance.unregister_door(self)
+
 func _ready() -> void:
 	# Assertion check
 	assert(interactable_component, "interactable_component is missing")
@@ -44,10 +50,17 @@ func _ready() -> void:
 	interactable_component.interactable_unhovered.connect(_on_interactable_unhovered)
 	interactable_component.interactable_interacted.connect(_on_interactable_interacted)
 	interactable_component.item_used_on.connect(_on_item_used_on)
+	# Initialize
+	DoorManager.instance.register_door(self)
 
 # ==================================================================================================
 #                Door methods
 # ==================================================================================================
+## For NPCs: opens the door (no camera/fog change) and returns once safe to walk through.
+func open_for_transit(from_room: EnumUtility.RoomName) -> void:
+	_play_swing(from_room == push_side_room)
+	await door_opened
+
 func _move_player_to_push_side():
 	Player.instance.move_to_position(push_side_marker.global_position)
 
@@ -65,10 +78,12 @@ func _play_swing(from_push_side:bool) -> void:
 	_swing_tween.set_trans(swing_open_trans)
 	_swing_tween.set_ease(Tween.EASE_OUT)
 	_swing_tween.tween_property(rotate_pivot, "rotation", open_angle, swing_open_duration)
+	_swing_tween.tween_callback(func(): door_opened.emit())
 	_swing_tween.tween_interval(swing_hold_duration)
 	_swing_tween.set_trans(swing_close_trans)
 	_swing_tween.set_ease(Tween.EASE_IN_OUT)
 	_swing_tween.tween_property(rotate_pivot, "rotation", 0.0, swing_close_duration)
+	_swing_tween.tween_callback(func(): door_closed.emit())
 
 # ==================================================================================================
 #                Signal listener methods

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cw816jpefljti"]
+
+[ext_resource type="Script" uid="uid://b8ocapmwih7fx" path="res://src/game_object/npc/elena/elena.gd" id="1_3kc1g"]
+[ext_resource type="Texture2D" uid="uid://7lu6px3xwpye" path="res://assets/basic_sprite/Square.png" id="2_uyx5h"]
+[ext_resource type="Texture2D" uid="uid://dh7xj2l2elkgo" path="res://assets/basic_sprite/Circle.png" id="3_xp60g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wrr71"]
+
+[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("nav_agent", "sprite")]
+script = ExtResource("1_3kc1g")
+nav_agent = NodePath("NavigationAgent")
+sprite = NodePath("Sprite")
+movement_speed = 300.0
+schedule_dictionary = Dictionary[int, int]({
+360: 0,
+380: 1,
+390: 2,
+420: 3,
+480: 4,
+540: 5,
+630: 6,
+640: 7,
+660: 8
+})
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1240795610]
+self_modulate = Color(0.63529414, 0.3647059, 0.54509807, 1)
+rotation = 1.5707964
+scale = Vector2(0.6, 0.2)
+texture = ExtResource("2_uyx5h")
+
+[node name="Head" type="Sprite2D" parent="Sprite" unique_id=103378562]
+self_modulate = Color(0.11612659, 0.11612659, 0.11612659, 1)
+scale = Vector2(0.33333328, 1)
+texture = ExtResource("3_xp60g")
+
+[node name="EyeLeft" type="Sprite2D" parent="Sprite/Head" unique_id=1014368199]
+self_modulate = Color(0.92156863, 0.92156863, 0.92156863, 1)
+position = Vector2(-20.000004, -25)
+scale = Vector2(0.24999994, 0.24999999)
+texture = ExtResource("3_xp60g")
+
+[node name="EyeRight" type="Sprite2D" parent="Sprite/Head" unique_id=48090960]
+self_modulate = Color(0.92156863, 0.92156863, 0.92156863, 1)
+position = Vector2(20, -25)
+scale = Vector2(0.24999994, 0.24999999)
+texture = ExtResource("3_xp60g")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=114991734]
+shape = SubResource("CircleShape2D_wrr71")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="." unique_id=1894294635]
+avoidance_enabled = true

@@ -51,8 +51,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # ==================================================================================================
 #                Player methods
 # ==================================================================================================
-func move_to_position(new_position:Vector2): 
-	_move_to(new_position)
+func move_to_position(new_position:Vector2):  _move_to(new_position)
 
 func _do_movement(delta:float):
 	# Do movement with nav agent

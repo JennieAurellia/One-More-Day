@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dqcoct6jarokj"]
+
+[ext_resource type="Script" uid="uid://3ow2g3wr0ggj" path="res://src/ui/game_timer/game_timer_ui.gd" id="1_qevgx"]
+
+[node name="GameTimerUI" type="PanelContainer" unique_id=1455814715 node_paths=PackedStringArray("time_label")]
+offset_right = 93.0
+offset_bottom = 34.0
+script = ExtResource("1_qevgx")
+time_label = NodePath("Margin/TimeLabel")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=368340142]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="TimeLabel" type="Label" parent="Margin" unique_id=642574554]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "00:00"

@@ -12,6 +12,15 @@ sprite = NodePath("RotatePivot/Sprite")
 push_side_marker = NodePath("PushSideMarker")
 pull_side_marker = NodePath("PullSideMarker")
 normal_color = Color(0.21960784, 0.10980392, 0.3647059, 1)
+hover_color = null
+push_side_room = null
+pull_side_room = null
+swing_angle_degrees = null
+swing_open_duration = null
+swing_close_duration = null
+swing_hold_duration = null
+swing_open_trans = null
+swing_close_trans = null
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=1696370411 node_paths=PackedStringArray("interact_control")]
 script = ExtResource("3_yd8t2")
