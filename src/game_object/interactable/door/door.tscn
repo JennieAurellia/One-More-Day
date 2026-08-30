@@ -33,7 +33,7 @@ position = Vector2(0, -40)
 [node name="Sprite" type="Sprite2D" parent="RotatePivot" unique_id=1398099446]
 modulate = Color(0.21960784, 0.10980392, 0.3647059, 1)
 position = Vector2(0, 40)
-scale = Vector2(0.1, 0.8)
+scale = Vector2(0.4, 0.8)
 texture = ExtResource("3_k16ha")
 
 [node name="PushSideMarker" type="Marker2D" parent="." unique_id=1497591281]

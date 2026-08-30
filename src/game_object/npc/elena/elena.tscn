@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://cw816jpefljti"]
 
 [ext_resource type="Script" uid="uid://b8ocapmwih7fx" path="res://src/game_object/npc/elena/elena.gd" id="1_3kc1g"]
+[ext_resource type="SpriteFrames" uid="uid://bfndrm7ug3ij2" path="res://src/game_object/npc/elena/elena_sprite_frames.tres" id="2_tq825"]
 [ext_resource type="Texture2D" uid="uid://7lu6px3xwpye" path="res://assets/basic_sprite/Square.png" id="2_uyx5h"]
+[ext_resource type="Script" uid="uid://ct3ai73dp7fkl" path="res://src/game_object/npc/elena/elena_sprite.gd" id="2_xp60g"]
 [ext_resource type="Texture2D" uid="uid://dh7xj2l2elkgo" path="res://assets/basic_sprite/Circle.png" id="3_xp60g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrr71"]
 
-[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("nav_agent", "sprite")]
+[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("elena_sprite", "nav_agent")]
 script = ExtResource("1_3kc1g")
+elena_sprite = NodePath("Sprite")
 nav_agent = NodePath("NavigationAgent")
-sprite = NodePath("Sprite")
 movement_speed = 300.0
 schedule_dictionary = Dictionary[int, int]({
 360: 0,
@@ -23,24 +25,32 @@ schedule_dictionary = Dictionary[int, int]({
 660: 8
 })
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1240795610]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1353033733]
+rotation = 1.5707964
+scale = Vector2(0.14, 0.14)
+sprite_frames = ExtResource("2_tq825")
+animation = &"idle"
+script = ExtResource("2_xp60g")
+
+[node name="SpriteOld" type="Sprite2D" parent="." unique_id=1240795610]
+visible = false
 self_modulate = Color(0.63529414, 0.3647059, 0.54509807, 1)
 rotation = 1.5707964
 scale = Vector2(0.6, 0.2)
 texture = ExtResource("2_uyx5h")
 
-[node name="Head" type="Sprite2D" parent="Sprite" unique_id=103378562]
+[node name="Head" type="Sprite2D" parent="SpriteOld" unique_id=103378562]
 self_modulate = Color(0.11612659, 0.11612659, 0.11612659, 1)
 scale = Vector2(0.33333328, 1)
 texture = ExtResource("3_xp60g")
 
-[node name="EyeLeft" type="Sprite2D" parent="Sprite/Head" unique_id=1014368199]
+[node name="EyeLeft" type="Sprite2D" parent="SpriteOld/Head" unique_id=1014368199]
 self_modulate = Color(0.92156863, 0.92156863, 0.92156863, 1)
 position = Vector2(-20.000004, -25)
 scale = Vector2(0.24999994, 0.24999999)
 texture = ExtResource("3_xp60g")
 
-[node name="EyeRight" type="Sprite2D" parent="Sprite/Head" unique_id=48090960]
+[node name="EyeRight" type="Sprite2D" parent="SpriteOld/Head" unique_id=48090960]
 self_modulate = Color(0.92156863, 0.92156863, 0.92156863, 1)
 position = Vector2(20, -25)
 scale = Vector2(0.24999994, 0.24999999)

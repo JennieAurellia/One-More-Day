@@ -17,8 +17,8 @@ signal state_changed(state:NPCState)
 signal arrived_at_destination
 
 @export_subgroup("References")
+@export var elena_sprite : ElenaSprite
 @export var nav_agent : NavigationAgent2D
-@export var sprite : Sprite2D
 
 @export_subgroup("Movement Settings")
 @export var movement_speed : float = 200.0
@@ -72,6 +72,7 @@ func _physics_process(delta: float) -> void:
 	_do_movement(delta)
 	_check_arrival()
 	_do_rotation(delta)
+	if elena_sprite: _do_animation()
 
 # ==================================================================================================
 #                NPC methods
@@ -112,6 +113,10 @@ func _do_rotation(delta:float) -> void:
 	# Always interpolate towards the target rotation, even after stopping
 	if rotation_speed <= 0.0: rotation = _target_rotation
 	else: rotation = lerp_angle(rotation, _target_rotation, rotation_speed * delta)
+
+func _do_animation():
+	if velocity.length_squared() > 1.0: elena_sprite.do_walk()
+	else: elena_sprite.do_idle()
 
 func _move_to(new_position:Vector2) -> void:
 	_has_arrived = false

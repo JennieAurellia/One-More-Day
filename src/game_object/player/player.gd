@@ -4,6 +4,7 @@ class_name Player
 static var instance : Player
 
 @export_subgroup("References")
+@export var player_sprite : PlayerSprite
 @export var nav_agent : NavigationAgent2D
 
 @export_subgroup("Movement Settings")
@@ -41,6 +42,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_do_movement(delta)
 	_do_rotation(delta)
+	if player_sprite: _do_animation()
 	_check_pending_interaction()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -75,6 +77,10 @@ func _do_rotation(delta:float):
 	# Always interpolate towards the target rotation, even after stopping
 	if rotation_speed <= 0.0: rotation = _target_rotation
 	else: rotation = lerp_angle(rotation, _target_rotation, rotation_speed * delta)
+
+func _do_animation():
+	if velocity.length_squared() > 1.0: player_sprite.do_walk()
+	else: player_sprite.do_idle()
 
 func _check_pending_interaction() -> void:
 	if _pending_interactable == null: return

@@ -3,31 +3,44 @@
 [ext_resource type="Script" uid="uid://b0lrowxldv2v8" path="res://src/game_object/player/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://7lu6px3xwpye" path="res://assets/basic_sprite/Square.png" id="2_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dh7xj2l2elkgo" path="res://assets/basic_sprite/Circle.png" id="3_i3pqv"]
+[ext_resource type="SpriteFrames" uid="uid://bdas7cq3ng6fg" path="res://src/game_object/player/player_sprite_frames.tres" id="4_mq35q"]
+[ext_resource type="Script" uid="uid://r8e8he5sixc" path="res://src/game_object/player/player_sprite.gd" id="5_kiuqt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 
-[node name="Player" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("nav_agent")]
+[node name="Player" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("player_sprite", "nav_agent")]
 script = ExtResource("1_4flbx")
+player_sprite = NodePath("Sprite")
 nav_agent = NodePath("NavigationAgent")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1240795610]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=193840940]
+rotation = 1.5707964
+scale = Vector2(0.14, 0.14)
+sprite_frames = ExtResource("4_mq35q")
+animation = &"interact"
+frame = 1
+frame_progress = 1.0
+script = ExtResource("5_kiuqt")
+
+[node name="SpriteOld" type="Sprite2D" parent="." unique_id=1240795610]
+visible = false
 self_modulate = Color(0, 0.36281306, 0.5438352, 1)
 rotation = 1.5707964
 scale = Vector2(0.6, 0.2)
 texture = ExtResource("2_onrkg")
 
-[node name="Head" type="Sprite2D" parent="Sprite" unique_id=103378562]
+[node name="Head" type="Sprite2D" parent="SpriteOld" unique_id=103378562]
 self_modulate = Color(0.11612659, 0.11612659, 0.11612659, 1)
 scale = Vector2(0.33333328, 1)
 texture = ExtResource("3_i3pqv")
 
-[node name="EyeLeft" type="Sprite2D" parent="Sprite/Head" unique_id=1014368199]
+[node name="EyeLeft" type="Sprite2D" parent="SpriteOld/Head" unique_id=1014368199]
 self_modulate = Color(0.92156863, 0.92156863, 0.92156863, 1)
 position = Vector2(-20.000004, -25)
 scale = Vector2(0.24999994, 0.24999999)
 texture = ExtResource("3_i3pqv")
 
-[node name="EyeRight" type="Sprite2D" parent="Sprite/Head" unique_id=48090960]
+[node name="EyeRight" type="Sprite2D" parent="SpriteOld/Head" unique_id=48090960]
 self_modulate = Color(0.92156863, 0.92156863, 0.92156863, 1)
 position = Vector2(20, -25)
 scale = Vector2(0.24999994, 0.24999999)
