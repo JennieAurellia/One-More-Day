@@ -3,24 +3,18 @@
 [ext_resource type="Script" uid="uid://dntlnvcp7bop5" path="res://src/game_object/interactable/door/door.gd" id="1_k16ha"]
 [ext_resource type="Texture2D" uid="uid://7lu6px3xwpye" path="res://assets/basic_sprite/Square.png" id="3_k16ha"]
 [ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="3_yd8t2"]
+[ext_resource type="Texture2D" uid="uid://c107e24yng0ly" path="res://src/game_object/interactable/door/door_normal_texture.tres" id="4_2niuq"]
+[ext_resource type="Texture2D" uid="uid://c2kno4os6ntow" path="res://src/game_object/interactable/door/door_opened_texture.tres" id="5_prarn"]
 
-[node name="Door" type="Node2D" unique_id=1906740693 node_paths=PackedStringArray("interactable_component", "rotate_pivot", "sprite", "push_side_marker", "pull_side_marker")]
+[node name="Door" type="Node2D" unique_id=1906740693 node_paths=PackedStringArray("interactable_component", "push_side_door_sprite", "pull_side_door_sprite", "push_side_opened_sprite", "pull_side_opened_sprite", "push_side_marker", "pull_side_marker")]
 script = ExtResource("1_k16ha")
 interactable_component = NodePath("InteractableComponent")
-rotate_pivot = NodePath("RotatePivot")
-sprite = NodePath("RotatePivot/Sprite")
+push_side_door_sprite = NodePath("PushSideSprite/DoorSprite")
+pull_side_door_sprite = NodePath("PullSideSprite/DoorSprite")
+push_side_opened_sprite = NodePath("PushSideSprite/OpenedSprite")
+pull_side_opened_sprite = NodePath("PullSideSprite/OpenedSprite")
 push_side_marker = NodePath("PushSideMarker")
 pull_side_marker = NodePath("PullSideMarker")
-normal_color = Color(0.21960784, 0.10980392, 0.3647059, 1)
-hover_color = null
-push_side_room = null
-pull_side_room = null
-swing_angle_degrees = null
-swing_open_duration = null
-swing_close_duration = null
-swing_hold_duration = null
-swing_open_trans = null
-swing_close_trans = null
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=1696370411 node_paths=PackedStringArray("interact_control")]
 script = ExtResource("3_yd8t2")
@@ -31,22 +25,49 @@ metadata/_custom_type_script = "uid://5xtjibybpdw1"
 position = Vector2(0, -40)
 
 [node name="Sprite" type="Sprite2D" parent="RotatePivot" unique_id=1398099446]
+visible = false
 modulate = Color(0.21960784, 0.10980392, 0.3647059, 1)
 position = Vector2(0, 40)
 scale = Vector2(0.4, 0.8)
 texture = ExtResource("3_k16ha")
 
 [node name="PushSideMarker" type="Marker2D" parent="." unique_id=1497591281]
-position = Vector2(-40, 0)
+position = Vector2(-96, 0)
 
 [node name="PullSideMarker" type="Marker2D" parent="." unique_id=1197854524]
-position = Vector2(40, 0)
+position = Vector2(96, 0)
 
 [node name="InteractControl" type="Control" parent="." unique_id=990539789]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -25.0
-offset_top = -40.0
-offset_right = 25.0
-offset_bottom = 40.0
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
 mouse_filter = 1
+
+[node name="PushSideSprite" type="Node2D" parent="." unique_id=465283033]
+position = Vector2(-32, 0)
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+
+[node name="DoorSprite" type="Sprite2D" parent="PushSideSprite" unique_id=3947624]
+texture = ExtResource("4_2niuq")
+
+[node name="OpenedSprite" type="Sprite2D" parent="PushSideSprite" unique_id=1804161843]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("5_prarn")
+
+[node name="PullSideSprite" type="Node2D" parent="." unique_id=375668003]
+position = Vector2(32, 0)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+
+[node name="DoorSprite" type="Sprite2D" parent="PullSideSprite" unique_id=1146737980]
+texture = ExtResource("4_2niuq")
+
+[node name="OpenedSprite" type="Sprite2D" parent="PullSideSprite" unique_id=879216061]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("5_prarn")

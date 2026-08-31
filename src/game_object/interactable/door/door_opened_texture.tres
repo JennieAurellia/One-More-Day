@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://c2kno4os6ntow"]
+
+[ext_resource type="Texture2D" uid="uid://cvolechodvief" path="res://assets/tile lantai, jendela, pintu terbuka.png" id="1_w40iw"]
+
+[resource]
+atlas = ExtResource("1_w40iw")
+region = Rect2(320, 704, 256, 192)
