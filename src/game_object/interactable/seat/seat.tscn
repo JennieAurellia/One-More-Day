@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ck5tmwg6qc7ia"]
+
+[ext_resource type="Script" uid="uid://bdymlpbhlbdmu" path="res://src/game_object/interactable/seat/seat.gd" id="1_qbbp7"]
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="2_hlf7r"]
+
+[node name="Seat" type="Node2D" unique_id=1889117093 node_paths=PackedStringArray("interactable_component", "interact_color_rect")]
+script = ExtResource("1_qbbp7")
+interactable_component = NodePath("InteractableComponent")
+interact_color_rect = NodePath("InteractControl/InteractColorRect")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=1089711554 node_paths=PackedStringArray("interact_control")]
+script = ExtResource("2_hlf7r")
+interact_control = NodePath("../InteractControl")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
+
+[node name="InteractControl" type="Control" parent="." unique_id=477200489]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="InteractColorRect" type="ColorRect" parent="InteractControl" unique_id=2145310550]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0, 0.5882353)

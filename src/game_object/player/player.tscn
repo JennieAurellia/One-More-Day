@@ -17,9 +17,7 @@ nav_agent = NodePath("NavigationAgent")
 rotation = 1.5707964
 scale = Vector2(0.14, 0.14)
 sprite_frames = ExtResource("4_mq35q")
-animation = &"interact"
-frame = 1
-frame_progress = 1.0
+animation = &"idle"
 script = ExtResource("5_kiuqt")
 
 [node name="SpriteOld" type="Sprite2D" parent="." unique_id=1240795610]

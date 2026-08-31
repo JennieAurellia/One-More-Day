@@ -58,7 +58,6 @@ func _ready() -> void:
 ## For NPCs: opens the door (no camera/fog change) and returns once safe to walk through.
 func open_for_transit(from_room: EnumUtility.RoomName) -> void:
 	_play_door_open(from_room == push_side_room)
-	await door_opened
 
 func _move_player_to_push_side():
 	Player.instance.move_to_position(push_side_marker.global_position)

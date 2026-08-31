@@ -23,6 +23,8 @@ var _target_position : Vector2
 var _target_rotation : float = 0.0
 var _is_about_to_interact : bool = false
 var _pending_interactable : InteractableComponent = null
+var _seated_seat : Seat = null
+var _is_seated : bool = false
 
 # ==================================================================================================
 #                Virtual methods
@@ -42,8 +44,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_do_movement(delta)
 	_do_rotation(delta)
-	if player_sprite: _do_animation()
 	_check_pending_interaction()
+	if player_sprite: _do_animation()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -53,9 +55,26 @@ func _unhandled_input(event: InputEvent) -> void:
 # ==================================================================================================
 #                Player methods
 # ==================================================================================================
-func move_to_position(new_position:Vector2):  _move_to(new_position)
+func move_to_position(new_position:Vector2): _move_to(new_position)
+
+func sit_at(seat_position:Vector2, facing_rotation:float, seat:Seat) -> void:
+	_is_seated = true
+	_seated_seat = seat
+	global_position = seat_position
+	_target_rotation = facing_rotation
+	rotation = _target_rotation
+	if player_sprite: player_sprite.do_sit()
+
+func stand_up() -> void:
+	_is_seated = false
+	_seated_seat = null
+	if player_sprite: player_sprite.do_idle()
 
 func _do_movement(delta:float):
+	# Check is sitting
+	if _is_seated and _seated_seat:
+		velocity = Vector2.ZERO
+		return
 	# Do movement with nav agent
 	if nav_agent:
 		if nav_agent.is_navigation_finished(): return
@@ -79,7 +98,8 @@ func _do_rotation(delta:float):
 	else: rotation = lerp_angle(rotation, _target_rotation, rotation_speed * delta)
 
 func _do_animation():
-	if velocity.length_squared() > 1.0: player_sprite.do_walk()
+	if _is_seated and _seated_seat: return
+	elif velocity.length_squared() > 1.0: player_sprite.do_walk()
 	else: player_sprite.do_idle()
 
 func _check_pending_interaction() -> void:
@@ -93,6 +113,10 @@ func _check_pending_interaction() -> void:
 		_move_to(global_position) # Stop the player right where they arrived
 
 func _left_mouse_interaction():
+	if _is_seated:
+		if _seated_seat: _seated_seat.stand_up()
+		_is_seated = false
+		_seated_seat = null
 	var hovered : InteractableComponent = InteractableComponent.current_hovered_interactable
 	var selected : ItemData = InventoryManager.selected_item
 	if hovered:
@@ -115,5 +139,10 @@ func _move_to(new_position:Vector2):
 #                Signal listener methods
 # ==================================================================================================
 func _on_velocity_computed(safe_velocity:Vector2) -> void:
+	# Check is sitting
+	if _is_seated and _seated_seat:
+		velocity = Vector2.ZERO
+		return
+	# Update velocity
 	velocity = safe_velocity
 	move_and_slide()
