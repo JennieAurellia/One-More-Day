@@ -13,6 +13,7 @@ texture = ExtResource("1_73jwa")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cgq7j")
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
 3:0/0 = 0
 0:1/0 = 0
@@ -29,5 +30,6 @@ texture = ExtResource("1_73jwa")
 3:3/0 = 0
 
 [resource]
+physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_w1chr")
