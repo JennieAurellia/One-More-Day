@@ -5,17 +5,31 @@
 [ext_resource type="TileSet" uid="uid://p1vunh5xb226" path="res://src/common/tilemap/main_tile_set.tres" id="2_dfkft"]
 [ext_resource type="TileSet" uid="uid://bdhb8t814demu" path="res://src/common/tilemap/nav_tile_set.tres" id="2_iglcx"]
 [ext_resource type="PackedScene" uid="uid://cumbmuajmatxw" path="res://src/ui/inventory/inventory_ui.tscn" id="3_iavex"]
-[ext_resource type="Texture2D" uid="uid://jgq6ha1u6m2f" path="res://assets/basic_sprite/Empty tilemap 64x64.png" id="3_oskmu"]
 [ext_resource type="PackedScene" uid="uid://ck5tmwg6qc7ia" path="res://src/game_object/interactable/seat/seat.tscn" id="4_glhkg"]
 [ext_resource type="Script" uid="uid://ceu04osa3ymxe" path="res://src/common/autoload/cursor_manager.gd" id="4_n0qnv"]
+[ext_resource type="Texture2D" uid="uid://d2f0lv4x2c3fs" path="res://src/common/texture/furniture/bed_texture.tres" id="4_p0muh"]
+[ext_resource type="Texture2D" uid="uid://ysmbs66tg58v" path="res://src/common/texture/furniture/wardrobe_texture.tres" id="5_1dndy"]
 [ext_resource type="PackedScene" uid="uid://cw816jpefljti" path="res://src/game_object/npc/elena/elena.tscn" id="5_1twxm"]
 [ext_resource type="PackedScene" uid="uid://c2rnpu7lx241o" path="res://src/ui/dialogue/dialogue_ui.tscn" id="5_alaus"]
 [ext_resource type="Script" uid="uid://dlqs7m7u628jr" path="res://src/game_object/camera/camera.gd" id="5_k4o4v"]
+[ext_resource type="Texture2D" uid="uid://ceqvy2b0g2qda" path="res://src/common/texture/furniture/makeup_desk_texture.tres" id="6_l3j6q"]
 [ext_resource type="Script" uid="uid://byje5y2envk60" path="res://src/game_object/room_fog/room_fog.gd" id="7_aph4m"]
 [ext_resource type="PackedScene" uid="uid://q2pvo2jgdhmk" path="res://src/game_object/trigger_area/restart_area/restart_area.tscn" id="7_pqqlr"]
+[ext_resource type="Texture2D" uid="uid://jmo7odffftbs" path="res://src/common/texture/furniture/makeup_desk_chair_texture.tres" id="7_xdb2o"]
+[ext_resource type="Texture2D" uid="uid://mwdm2oyyuyft" path="res://src/common/texture/furniture/kitchen_counter_left_texture.tres" id="9_pc20v"]
+[ext_resource type="Texture2D" uid="uid://du7lrfd3ey2we" path="res://src/common/texture/furniture/kitchen_counter_right_texture.tres" id="10_0yacf"]
+[ext_resource type="Texture2D" uid="uid://kuam55g60hu1" path="res://src/common/texture/furniture/sofa_texture.tres" id="10_xdb2o"]
+[ext_resource type="Texture2D" uid="uid://dala6w6b72w86" path="res://src/common/texture/furniture/dining_table_texture.tres" id="11_ak3ks"]
 [ext_resource type="Script" uid="uid://dynocpxsiw65u" path="res://src/game_system/game_timer/game_timer.gd" id="11_vvmck"]
 [ext_resource type="Script" uid="uid://bgn5hyf5ulaan" path="res://src/game_system/door/door_manager.gd" id="12_glhkg"]
+[ext_resource type="Texture2D" uid="uid://bq4v7uqlmj424" path="res://src/common/texture/furniture/dining_table_chair_texture.tres" id="12_xf8ym"]
 [ext_resource type="PackedScene" uid="uid://dqcoct6jarokj" path="res://src/ui/game_timer/game_timer_ui.tscn" id="13_hn8je"]
+[ext_resource type="Texture2D" uid="uid://isxcrtv086pb" path="res://src/common/texture/furniture/carpet_texture.tres" id="14_88nxn"]
+[ext_resource type="Texture2D" uid="uid://d25nrdusabafc" path="res://src/common/texture/furniture/tv_texture.tres" id="14_xf8ym"]
+[ext_resource type="Texture2D" uid="uid://c4bw8rddikjx8" path="res://src/common/texture/furniture/living_room_table_texture.tres" id="15_hysqa"]
+[ext_resource type="Texture2D" uid="uid://bkmemrh2q15fg" path="res://src/common/texture/furniture/shower_texture.tres" id="17_hysqa"]
+[ext_resource type="Texture2D" uid="uid://binfdxitbiduo" path="res://src/common/texture/furniture/toilet_texture.tres" id="18_qblr6"]
+[ext_resource type="Texture2D" uid="uid://biiblqvsgapt" path="res://src/common/texture/furniture/sink_texture.tres" id="19_eys30"]
 
 [node name="GameScene" type="Node2D" unique_id=14823134]
 
@@ -64,259 +78,202 @@ push_side_room = 2
 
 [node name="Furniture" type="Node2D" parent="." unique_id=104837624]
 
-[node name="Bed" type="Node2D" parent="Furniture" unique_id=1644222715]
-position = Vector2(164, 312)
-rotation = -1.5707964
+[node name="Bedroom" type="Node2D" parent="Furniture" unique_id=1346093546]
 
-[node name="Outline" type="Sprite2D" parent="Furniture/Bed" unique_id=1286676949]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-scale = Vector2(2.1874993, 2.9687502)
-texture = ExtResource("3_oskmu")
+[node name="Bed" type="Node2D" parent="Furniture/Bedroom" unique_id=1644222715]
+position = Vector2(200, 352)
 
-[node name="Base" type="Sprite2D" parent="Furniture/Bed" unique_id=389056401]
-modulate = Color(0.92156863, 0.91764706, 0.92156863, 1)
-position = Vector2(6.1392784e-06, 4.4107437e-06)
-scale = Vector2(2.125, 2.9062498)
-texture = ExtResource("3_oskmu")
+[node name="Sprite" type="Sprite2D" parent="Furniture/Bedroom/Bed" unique_id=2054969094]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_p0muh")
 
-[node name="PillowLeft" type="Sprite2D" parent="Furniture/Bed" unique_id=1274313074]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(-34.999992, -67)
-scale = Vector2(0.8593746, 0.5312503)
-texture = ExtResource("3_oskmu")
-
-[node name="PillowColor" type="Sprite2D" parent="Furniture/Bed/PillowLeft" unique_id=1345847886]
-modulate = Color(0.9942965, 0.9940073, 0.9942965, 1)
-scale = Vector2(0.94545436, 0.8823524)
-texture = ExtResource("3_oskmu")
-
-[node name="PillowRight" type="Sprite2D" parent="Furniture/Bed" unique_id=1135642297]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(35, -67)
-scale = Vector2(0.8593746, 0.5312503)
-texture = ExtResource("3_oskmu")
-
-[node name="PillowColor" type="Sprite2D" parent="Furniture/Bed/PillowRight" unique_id=420885161]
-modulate = Color(0.9942965, 0.9940073, 0.9942965, 1)
-scale = Vector2(0.94545436, 0.8823524)
-texture = ExtResource("3_oskmu")
-
-[node name="Blanket" type="Sprite2D" parent="Furniture/Bed" unique_id=412420050]
-modulate = Color(0.7480196, 0.0061127497, 2.8878452e-07, 1)
-position = Vector2(0, 25.499992)
-scale = Vector2(2.125, 2.1093745)
-texture = ExtResource("3_oskmu")
-
-[node name="Wardrobe" type="Node2D" parent="Furniture" unique_id=1279774951]
-position = Vector2(542, 144)
+[node name="Wardrobe" type="Node2D" parent="Furniture/Bedroom" unique_id=1279774951]
+position = Vector2(136, 608)
 rotation = 1.5707964
 
-[node name="Outline" type="Sprite2D" parent="Furniture/Wardrobe" unique_id=547779232]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-scale = Vector2(2.2691967, 0.79593664)
-texture = ExtResource("3_oskmu")
+[node name="Sprite" type="Sprite2D" parent="Furniture/Bedroom/Wardrobe" unique_id=1633700031]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_1dndy")
 
-[node name="Base" type="Sprite2D" parent="Furniture/Wardrobe" unique_id=923476140]
-self_modulate = Color(0.39607844, 0.27450982, 0.15294118, 1)
-scale = Vector2(2.2238572, 0.7558301)
-texture = ExtResource("3_oskmu")
+[node name="MakeupDesk" type="Node2D" parent="Furniture/Bedroom" unique_id=857110853]
+position = Vector2(544, 120)
+rotation = 1.5707964
 
-[node name="Kitchen" type="Node2D" parent="Furniture" unique_id=399923592]
-position = Vector2(711, 76)
+[node name="ChairSprite" type="Sprite2D" parent="Furniture/Bedroom/MakeupDesk" unique_id=1778969842]
+position = Vector2(0, 52)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_xdb2o")
 
-[node name="Outline" type="Sprite2D" parent="Furniture/Kitchen" unique_id=407314766]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(271.50003, 30.49999)
-scale = Vector2(8.484375, 0.9531252)
-texture = ExtResource("3_oskmu")
+[node name="DeskSprite" type="Sprite2D" parent="Furniture/Bedroom/MakeupDesk" unique_id=375471968]
+rotation = -3.1415925
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_l3j6q")
 
-[node name="Base" type="Sprite2D" parent="Furniture/Kitchen" unique_id=387955609]
-self_modulate = Color(0.8, 0.74509805, 0.6901961, 1)
-position = Vector2(270.49997, 29.499996)
-scale = Vector2(8.453125, 0.92187536)
-texture = ExtResource("3_oskmu")
+[node name="Seat" parent="Furniture/Bedroom/MakeupDesk" unique_id=1889117093 instance=ExtResource("4_glhkg")]
+position = Vector2(0, 52)
+rotation = -1.5707964
 
-[node name="Stove" type="Sprite2D" parent="Furniture/Kitchen" unique_id=1866343579]
-self_modulate = Color(0.20392157, 0.20392157, 0.19215687, 1)
-position = Vector2(366.99994, 35.000004)
-scale = Vector2(1.5156252, 0.6562501)
-texture = ExtResource("3_oskmu")
+[node name="MainRoom" type="Node2D" parent="Furniture" unique_id=259013838]
 
-[node name="Dining" type="Node2D" parent="Furniture" unique_id=1533072102]
+[node name="KitchenCounter" type="Node2D" parent="Furniture/MainRoom" unique_id=399923592]
+position = Vector2(704, 64)
+
+[node name="LeftSprite" type="Sprite2D" parent="Furniture/MainRoom/KitchenCounter" unique_id=979361077]
+position = Vector2(29, 69)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_pc20v")
+
+[node name="RightSprite" type="Sprite2D" parent="Furniture/MainRoom/KitchenCounter" unique_id=963575869]
+position = Vector2(253, 37)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_0yacf")
+
+[node name="DiningTable" type="Node2D" parent="Furniture/MainRoom" unique_id=1533072102]
 position = Vector2(1097, 368)
 
-[node name="Chair1" type="Sprite2D" parent="Furniture/Dining" unique_id=1037907720]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(-62.80005, -51.51999)
-scale = Vector2(0.6, 0.64)
-texture = ExtResource("3_oskmu")
+[node name="TableSprite" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=899906803]
+position = Vector2(6, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_ak3ks")
 
-[node name="ChairColor" type="Sprite2D" parent="Furniture/Dining/Chair1" unique_id=1214255396]
-self_modulate = Color(0.58431375, 0.5058824, 0.41568628, 1)
-position = Vector2(0.41669273, 1.15625)
-scale = Vector2(0.91145915, 0.9638672)
-texture = ExtResource("3_oskmu")
+[node name="ChairSprite1" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=2118622667]
+position = Vector2(-64, -65)
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_xf8ym")
 
-[node name="Chair2" type="Sprite2D" parent="Furniture/Dining" unique_id=1413906088]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(1.1999512, -51.51999)
-scale = Vector2(0.6, 0.64)
-texture = ExtResource("3_oskmu")
+[node name="ChairSprite2" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=1005634121]
+position = Vector2(-4, -65)
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_xf8ym")
 
-[node name="ChairColor" type="Sprite2D" parent="Furniture/Dining/Chair2" unique_id=313871036]
-self_modulate = Color(0.58431375, 0.5058824, 0.41568628, 1)
-position = Vector2(0.41669273, 1.15625)
-scale = Vector2(0.91145915, 0.9638672)
-texture = ExtResource("3_oskmu")
+[node name="ChairSprite3" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=444501156]
+position = Vector2(56, -65)
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_xf8ym")
 
-[node name="Chair3" type="Sprite2D" parent="Furniture/Dining" unique_id=694408075]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(65.19995, -52.51999)
-scale = Vector2(0.6, 0.64)
-texture = ExtResource("3_oskmu")
+[node name="ChairSprite4" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=211206833]
+position = Vector2(-59, 68)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_xf8ym")
 
-[node name="ChairColor" type="Sprite2D" parent="Furniture/Dining/Chair3" unique_id=319732511]
-self_modulate = Color(0.58431375, 0.5058824, 0.41568628, 1)
-position = Vector2(0.41669273, 1.15625)
-scale = Vector2(0.91145915, 0.9638672)
-texture = ExtResource("3_oskmu")
+[node name="ChairSprite5" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=1683317470]
+position = Vector2(1, 68)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_xf8ym")
 
-[node name="Chair4" type="Sprite2D" parent="Furniture/Dining" unique_id=1714757998]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(-62.80005, 48.48001)
-rotation = -3.1415925
-scale = Vector2(0.6, 0.64)
-texture = ExtResource("3_oskmu")
+[node name="ChairSprite6" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=141541635]
+position = Vector2(61, 68)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_xf8ym")
 
-[node name="ChairColor" type="Sprite2D" parent="Furniture/Dining/Chair4" unique_id=873774898]
-self_modulate = Color(0.58431375, 0.5058824, 0.41568628, 1)
-position = Vector2(0.41669273, 1.15625)
-scale = Vector2(0.91145915, 0.9638672)
-texture = ExtResource("3_oskmu")
-
-[node name="Chair5" type="Sprite2D" parent="Furniture/Dining" unique_id=1058600748]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(1.1999512, 48.48001)
-rotation = -3.1415925
-scale = Vector2(0.6, 0.64)
-texture = ExtResource("3_oskmu")
-
-[node name="ChairColor" type="Sprite2D" parent="Furniture/Dining/Chair5" unique_id=1468223563]
-self_modulate = Color(0.58431375, 0.5058824, 0.41568628, 1)
-position = Vector2(0.41669273, 1.15625)
-scale = Vector2(0.91145915, 0.9638672)
-texture = ExtResource("3_oskmu")
-
-[node name="Chair6" type="Sprite2D" parent="Furniture/Dining" unique_id=1992060734]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(65.19995, 47.48001)
-rotation = -3.1415925
-scale = Vector2(0.6, 0.64)
-texture = ExtResource("3_oskmu")
-
-[node name="ChairColor" type="Sprite2D" parent="Furniture/Dining/Chair6" unique_id=1259332546]
-self_modulate = Color(0.58431375, 0.5058824, 0.41568628, 1)
-position = Vector2(0.41669273, 1.15625)
-scale = Vector2(0.91145915, 0.9638672)
-texture = ExtResource("3_oskmu")
-
-[node name="Outline" type="Sprite2D" parent="Furniture/Dining" unique_id=684249205]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(-3.0517578e-05, -1.4543533e-05)
-scale = Vector2(3.6562483, 1.4999994)
-texture = ExtResource("3_oskmu")
-
-[node name="Base" type="Sprite2D" parent="Furniture/Dining" unique_id=1625581777]
-self_modulate = Color(0.46666667, 0.32941177, 0.19215687, 1)
-position = Vector2(-4.386902e-05, 2.6226044e-05)
-scale = Vector2(3.5937517, 1.4374998)
-texture = ExtResource("3_oskmu")
-
-[node name="Seat" parent="Furniture/Dining" unique_id=1889117093 instance=ExtResource("4_glhkg")]
-position = Vector2(65, -58)
+[node name="Seat1" parent="Furniture/MainRoom/DiningTable" unique_id=1169392834 instance=ExtResource("4_glhkg")]
+position = Vector2(-62, -56)
 rotation = -1.5707964
 sit_facing_degrees = 90.0
 
-[node name="Sofa" type="Node2D" parent="Furniture" unique_id=440559511]
-position = Vector2(1146, 731)
+[node name="Seat2" parent="Furniture/MainRoom/DiningTable" unique_id=292414821 instance=ExtResource("4_glhkg")]
+position = Vector2(-1, -56)
+rotation = -1.5707964
+sit_facing_degrees = 90.0
+
+[node name="Seat3" parent="Furniture/MainRoom/DiningTable" unique_id=2045068746 instance=ExtResource("4_glhkg")]
+position = Vector2(58, -56)
+rotation = -1.5707964
+sit_facing_degrees = 90.0
+
+[node name="Seat4" parent="Furniture/MainRoom/DiningTable" unique_id=809044561 instance=ExtResource("4_glhkg")]
+position = Vector2(-62, 60)
+rotation = -1.5707964
+sit_facing_degrees = -90.0
+
+[node name="Seat5" parent="Furniture/MainRoom/DiningTable" unique_id=457308930 instance=ExtResource("4_glhkg")]
+position = Vector2(-1, 60)
+rotation = -1.5707964
+sit_facing_degrees = -90.0
+
+[node name="Seat6" parent="Furniture/MainRoom/DiningTable" unique_id=897972608 instance=ExtResource("4_glhkg")]
+position = Vector2(58, 60)
+rotation = -1.5707964
+sit_facing_degrees = -90.0
+
+[node name="Sofa" type="Node2D" parent="Furniture/MainRoom" unique_id=440559511]
+position = Vector2(992, 856)
 rotation = 1.5707964
 
-[node name="Outline" type="Sprite2D" parent="Furniture/Sofa" unique_id=1202177122]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-scale = Vector2(1.37, 3.44)
-texture = ExtResource("3_oskmu")
+[node name="Sprite" type="Sprite2D" parent="Furniture/MainRoom/Sofa" unique_id=941662492]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_xdb2o")
 
-[node name="Base" type="Sprite2D" parent="Furniture/Sofa" unique_id=2146978778]
-self_modulate = Color(0.8392157, 0.7764706, 0.6901961, 1)
-position = Vector2(2.8133392e-05, -1.0728836e-06)
-scale = Vector2(1.3125004, 3.374999)
-texture = ExtResource("3_oskmu")
-
-[node name="Top" type="Sprite2D" parent="Furniture/Sofa" unique_id=526636208]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(0.49993896, -102)
-scale = Vector2(1.4843761, 0.3437506)
-texture = ExtResource("3_oskmu")
-
-[node name="Color" type="Sprite2D" parent="Furniture/Sofa/Top" unique_id=1746629632]
-self_modulate = Color(0.8392157, 0.7764706, 0.6901961, 1)
-position = Vector2(2.2947788e-05, -1.9311905e-05)
-scale = Vector2(0.9578941, 0.8181807)
-texture = ExtResource("3_oskmu")
-
-[node name="Bottom" type="Sprite2D" parent="Furniture/Sofa" unique_id=636833645]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(0.5, 102)
-scale = Vector2(1.4843761, 0.3437506)
-texture = ExtResource("3_oskmu")
-
-[node name="Color" type="Sprite2D" parent="Furniture/Sofa/Bottom" unique_id=1959388353]
-self_modulate = Color(0.8392157, 0.7764706, 0.6901961, 1)
-position = Vector2(2.2947788e-05, -1.9311905e-05)
-scale = Vector2(0.9578941, 0.8181807)
-texture = ExtResource("3_oskmu")
-
-[node name="Back" type="Sprite2D" parent="Furniture/Sofa" unique_id=902979045]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-position = Vector2(-37.500046, 0)
-scale = Vector2(0.45312476, 3.0156252)
-texture = ExtResource("3_oskmu")
-
-[node name="Color" type="Sprite2D" parent="Furniture/Sofa/Back" unique_id=406040030]
-self_modulate = Color(0.8392157, 0.7764706, 0.6901961, 1)
-position = Vector2(2.193451e-05, 2.6524067e-06)
-scale = Vector2(0.8620689, 0.98445565)
-texture = ExtResource("3_oskmu")
-
-[node name="Seat" parent="Furniture/Sofa" unique_id=1045578206 instance=ExtResource("4_glhkg")]
-position = Vector2(8, 58)
+[node name="Seat" parent="Furniture/MainRoom/Sofa" unique_id=1045578206 instance=ExtResource("4_glhkg")]
+position = Vector2(-50, -21)
 rotation = -1.5707964
-sit_facing_degrees = 90.0
 
-[node name="Seat2" parent="Furniture/Sofa" unique_id=762686392 instance=ExtResource("4_glhkg")]
-position = Vector2(7.9999976, -3.496911e-07)
+[node name="Seat2" parent="Furniture/MainRoom/Sofa" unique_id=762686392 instance=ExtResource("4_glhkg")]
+position = Vector2(-3, -21)
 rotation = -1.5707964
-sit_facing_degrees = 90.0
 
-[node name="Seat3" parent="Furniture/Sofa" unique_id=1905377896 instance=ExtResource("4_glhkg")]
-position = Vector2(8, -58)
+[node name="Seat3" parent="Furniture/MainRoom/Sofa" unique_id=1905377896 instance=ExtResource("4_glhkg")]
+position = Vector2(44, -21)
 rotation = -1.5707964
-sit_facing_degrees = 90.0
 
-[node name="Shower" type="Node2D" parent="Furniture" unique_id=1952531347]
-position = Vector2(125, 846)
+[node name="Carpet" type="Node2D" parent="Furniture/MainRoom" unique_id=1959914046]
+position = Vector2(1120, 864)
+
+[node name="Sprite" type="Sprite2D" parent="Furniture/MainRoom/Carpet" unique_id=1047498219]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_88nxn")
+
+[node name="LivingRoomTable" type="Node2D" parent="Furniture/MainRoom" unique_id=1164714145]
+position = Vector2(1128, 864)
+
+[node name="Sprite" type="Sprite2D" parent="Furniture/MainRoom/LivingRoomTable" unique_id=723119066]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_hysqa")
+
+[node name="TV" type="Node2D" parent="Furniture/MainRoom" unique_id=528747416]
+position = Vector2(1128, 1000)
+
+[node name="Sprite" type="Sprite2D" parent="Furniture/MainRoom/TV" unique_id=286051230]
+position = Vector2(10, 0)
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_xf8ym")
+
+[node name="Bathroom" type="Node2D" parent="Furniture" unique_id=707564706]
+
+[node name="Toilet" type="Node2D" parent="Furniture/Bathroom" unique_id=1176140272]
+position = Vector2(96, 800)
 rotation = 1.5707964
 
-[node name="Outline" type="Sprite2D" parent="Furniture/Shower" unique_id=1680775417]
-self_modulate = Color(0.46666667, 0.45490196, 0.46666667, 0.57254905)
-scale = Vector2(2.225703, 1.6260989)
-texture = ExtResource("3_oskmu")
+[node name="Sprite" type="Sprite2D" parent="Furniture/Bathroom/Toilet" unique_id=387512011]
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_qblr6")
 
-[node name="Base" type="Sprite2D" parent="Furniture/Shower" unique_id=1865678088]
-self_modulate = Color(0.92941177, 0.9098039, 0.8901961, 1)
-position = Vector2(-0.19475526, 0.13801959)
-scale = Vector2(2.1759322, 1.5729208)
-texture = ExtResource("3_oskmu")
+[node name="Seat" parent="Furniture/Bathroom/Toilet" unique_id=977744566 instance=ExtResource("4_glhkg")]
+position = Vector2(0, -24)
+rotation = -1.5707964
+
+[node name="Shower" type="Node2D" parent="Furniture/Bathroom" unique_id=1952531347]
+position = Vector2(120, 952)
+rotation = 1.5707964
+
+[node name="Sprite" type="Sprite2D" parent="Furniture/Bathroom/Shower" unique_id=126461490]
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_hysqa")
+
+[node name="Sink" type="Node2D" parent="Furniture/Bathroom" unique_id=1186920278]
+position = Vector2(448, 1000)
+rotation = 1.5707964
+
+[node name="Sprite" type="Sprite2D" parent="Furniture/Bathroom/Sink" unique_id=512269914]
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_eys30")
 
 [node name="NPCPosition" type="Node2D" parent="." unique_id=1573230495]
 
@@ -385,8 +342,8 @@ state_room_dictionary = Dictionary[int, int]({
 8: 0
 })
 state_seat_dictionary = {
-2: NodePath("../Furniture/Dining/Seat"),
-3: NodePath("../Furniture/Sofa/Seat3")
+2: NodePath("../Furniture/MainRoom/DiningTable/Seat1"),
+3: NodePath("../Furniture/MainRoom/Sofa/Seat3")
 }
 
 [node name="Camera" type="Camera2D" parent="." unique_id=703474889 node_paths=PackedStringArray("room_position_dictionary")]
