@@ -105,6 +105,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_xdb2o")
 
 [node name="DeskSprite" type="Sprite2D" parent="Furniture/Bedroom/MakeupDesk" unique_id=375471968]
+z_index = 1
 rotation = -3.1415925
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_l3j6q")
@@ -132,6 +133,7 @@ texture = ExtResource("10_0yacf")
 position = Vector2(1097, 368)
 
 [node name="TableSprite" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=899906803]
+z_index = 1
 position = Vector2(6, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_ak3ks")
@@ -365,6 +367,7 @@ metadata/_custom_type_script = "uid://dlqs7m7u628jr"
 position = Vector2(1376, 1056)
 
 [node name="RoomFog" type="Node2D" parent="." unique_id=814669569 node_paths=PackedStringArray("room_rect_dictionary")]
+z_index = 5
 script = ExtResource("7_aph4m")
 room_rect_dictionary = {
 0: NodePath("MainRoomRect"),
