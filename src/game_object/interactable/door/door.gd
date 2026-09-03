@@ -43,10 +43,10 @@ func _ready() -> void:
 		push_side_room != pull_side_room, "push_side_room and pull_side_room are the same"
 	)
 	# Connect signals
-	interactable_component.interactable_hovered.connect(_on_interactable_hovered)
-	interactable_component.interactable_unhovered.connect(_on_interactable_unhovered)
-	interactable_component.interactable_interacted.connect(_on_interactable_interacted)
-	interactable_component.item_used_on.connect(_on_item_used_on)
+	interactable_component.hovered.connect(_on_interactable_hovered)
+	interactable_component.unhovered.connect(_on_interactable_unhovered)
+	interactable_component.interacted.connect(_on_interactable_interacted)
+	interactable_component.item_used_on.connect(_on_interactable_item_used_on)
 	# Initialize
 	push_side_opened_sprite.hide()
 	pull_side_opened_sprite.hide()
@@ -106,5 +106,5 @@ func _on_interactable_interacted():
 	else:
 		push_error("Room '%s' not found in Door Settings" % Camera.instance.current_room)
 
-func _on_item_used_on(item_data:ItemData):
+func _on_interactable_item_used_on(item_data:ItemData):
 	pass

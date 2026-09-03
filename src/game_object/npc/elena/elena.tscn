@@ -1,27 +1,30 @@
 [gd_scene format=3 uid="uid://cw816jpefljti"]
 
 [ext_resource type="Script" uid="uid://b8ocapmwih7fx" path="res://src/game_object/npc/elena/elena.gd" id="1_3kc1g"]
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="2_5ya85"]
 [ext_resource type="SpriteFrames" uid="uid://bfndrm7ug3ij2" path="res://src/game_object/npc/elena/elena_sprite_frames.tres" id="2_tq825"]
+[ext_resource type="Script" uid="uid://b1wpgsle4xj35" path="res://src/game_object/npc/elena/elena_state_machine.gd" id="2_uyx5h"]
 [ext_resource type="Script" uid="uid://ct3ai73dp7fkl" path="res://src/game_object/npc/elena/elena_sprite.gd" id="2_xp60g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrr71"]
 
-[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("elena_sprite", "nav_agent")]
+[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("elena_sprite", "interactable_component", "nav_agent", "interact_color_rect")]
 script = ExtResource("1_3kc1g")
 elena_sprite = NodePath("Sprite")
+interactable_component = NodePath("InteractableComponent")
 nav_agent = NodePath("NavigationAgent")
+interact_color_rect = NodePath("InteractControl/InteractColorRect")
 movement_speed = 300.0
-schedule_dictionary = Dictionary[int, int]({
-360: 0,
-380: 1,
-390: 2,
-420: 3,
-480: 4,
-540: 5,
-630: 6,
-640: 7,
-660: 8
-})
+
+[node name="ElenaStateMachine" type="Node" parent="." unique_id=1905983306 node_paths=PackedStringArray("npc")]
+script = ExtResource("2_uyx5h")
+npc = NodePath("..")
+metadata/_custom_type_script = "uid://b1wpgsle4xj35"
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=1609659465 node_paths=PackedStringArray("interact_control")]
+script = ExtResource("2_5ya85")
+interact_control = NodePath("../InteractControl")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1353033733]
 rotation = 1.5707964
@@ -35,3 +38,28 @@ shape = SubResource("CircleShape2D_wrr71")
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." unique_id=1894294635]
 avoidance_enabled = true
+
+[node name="InteractControl" type="Control" parent="." unique_id=881050982]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 12.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="InteractColorRect" type="ColorRect" parent="InteractControl" unique_id=2108380937]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0, 0.5882353)

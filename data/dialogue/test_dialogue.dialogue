@@ -19,3 +19,11 @@ Test: Ok, goodluck!
 He left.
 You're on your own.
 => END
+
+~ talk
+Elena: Yes dear?
+- I love you
+	Adrian: I love you.
+	Elena: ( ＾ω＾ )
+- Nothing => END
+=> END

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cualheujywi7o"]
+
+[ext_resource type="Texture2D" uid="uid://dylh7t1cob1s5" path="res://assets/tileset_kitchen & livingroom.png" id="1_3vex1"]
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="1_6vf17"]
+[ext_resource type="Script" uid="uid://bj4dywpp0uh1j" path="res://src/game_object/interactable/stove/stove.gd" id="1_ao3lf"]
+
+[node name="Stove" type="Node2D" unique_id=56623785 node_paths=PackedStringArray("interactable_component", "cook_sprite")]
+script = ExtResource("1_ao3lf")
+interactable_component = NodePath("InteractableComponent")
+cook_sprite = NodePath("CookSprite")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=286272249]
+script = ExtResource("1_6vf17")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
+
+[node name="BaseSprite" type="Sprite2D" parent="." unique_id=1101233625]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3vex1")
+region_enabled = true
+region_rect = Rect2(615, 75, 142, 77)
+
+[node name="CookSprite" type="Sprite2D" parent="." unique_id=880428532]
+position = Vector2(19, 7)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3vex1")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(674, 529, 61, 96)

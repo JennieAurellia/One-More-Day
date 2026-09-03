@@ -22,10 +22,10 @@ func _ready() -> void:
 	assert(interactable_component, "interactable_component is missing")
 	assert(interact_color_rect, "interact_color_rect is missing")
 	# Connect signals
-	interactable_component.interactable_hovered.connect(_on_interactable_hovered)
-	interactable_component.interactable_unhovered.connect(_on_interactable_unhovered)
-	interactable_component.interactable_interacted.connect(_on_interactable_interacted)
-	interactable_component.item_used_on.connect(_on_item_used_on)
+	interactable_component.hovered.connect(_on_interactable_hovered)
+	interactable_component.unhovered.connect(_on_interactable_unhovered)
+	interactable_component.interacted.connect(_on_interactable_interacted)
+	interactable_component.interacted_by_npc.connect(_on_interactable_interacted_by_npc)
 	# Initialize
 	interact_color_rect.hide()
 
@@ -61,6 +61,6 @@ func _on_interactable_unhovered(): interact_color_rect.hide()
 func _on_interactable_interacted():
 	if _current_occupant == Player.instance: stand_up()
 	elif !is_occupied(): sit_actor(Player.instance)
-	# else: occupied by an NPC — player click does nothing (can't kick an NPC out of their seat)
 
-func _on_item_used_on(item_data:ItemData): pass
+func _on_interactable_interacted_by_npc(npc:Node) -> void:
+	sit_actor(npc)

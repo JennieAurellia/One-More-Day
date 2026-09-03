@@ -1,24 +1,13 @@
 extends CharacterBody2D
 class_name Elena
 
-enum NPCState{
-	COOKING,
-	SERVING_FOOD,
-	EATING,
-	SITTING_SOFA,
-	SHOWERING,
-	IN_BEDROOM,
-	DRESSING_UP,
-	PHONE_CALL,
-	GOING_OUTSIDE,
-}
-
-signal state_changed(state:NPCState)
 signal arrived_at_destination
 
 @export_subgroup("References")
 @export var elena_sprite : ElenaSprite
+@export var interactable_component : InteractableComponent
 @export var nav_agent : NavigationAgent2D
+@export var interact_color_rect : ColorRect
 
 @export_subgroup("Movement Settings")
 @export var movement_speed : float = 200.0
@@ -28,29 +17,15 @@ signal arrived_at_destination
 ## Higher = snappier turning. Set to 0 for instant rotation.
 @export var rotation_speed : float = 10.0
 
-@export_subgroup("State Settings")
-## Maps game clock minute (e.g. 360 = 06:00) to the state the NPC enters at that time
-@export var schedule_dictionary : Dictionary[int, NPCState]
-## Where the NPC should walk to for each state (optional — states with no entry just stay put)
-@export var state_position_dictionary : Dictionary[NPCState, Marker2D]
-## Facing angle (degrees) to snap to once arrived at a state's position.
-## States with no entry keep facing their last movement direction.
-@export var state_facing_dictionary : Dictionary[NPCState, float]
-## Which room each state's destination is in (used to route through doors)
-@export var state_room_dictionary : Dictionary[NPCState, EnumUtility.RoomName]
-## States that should actually sit in a Seat node (takes priority over state_position_dictionary)
-@export var state_seat_dictionary : Dictionary[NPCState, Seat]
-
 @export_subgroup("Room Settings")
 @export var initial_room : EnumUtility.RoomName
 
-var current_state : NPCState
+var current_room : EnumUtility.RoomName
 
 var _target_position : Vector2
 var _target_rotation : float = 0.0
-var _sorted_schedule_times : Array[int]
+var _pending_facing_rotation : float = NAN
 var _has_arrived : bool = true
-var _current_room : EnumUtility.RoomName
 var _travel_id : int = 0
 
 var _current_seat : Seat = null
@@ -61,20 +36,18 @@ var _pending_seat_rotation : float = 0.0
 #                Virtual methods
 # ==================================================================================================
 func _ready() -> void:
-	# Assertion check
-	assert(!schedule_dictionary.is_empty(), "schedule_dictionary is empty")
-	assert(GameTimer.instance, "GameTimer.instance is missing")
 	# Connect signals
+	if interactable_component:
+		interactable_component.hovered.connect(_on_interactable_hovered)
+		interactable_component.unhovered.connect(_on_interactable_unhovered)
+		interactable_component.interacted.connect(_on_interactable_interacted)
 	if nav_agent: nav_agent.velocity_computed.connect(_on_velocity_computed)
-	GameTimer.instance.time_tick.connect(_on_time_tick)
 	# Initialize
 	if nav_agent: nav_agent.max_speed = movement_speed
+	if interact_color_rect: interact_color_rect.hide()
 	_target_position = global_position
 	_target_rotation = rotation
-	_current_room = initial_room
-	_sorted_schedule_times = schedule_dictionary.keys()
-	_sorted_schedule_times.sort()
-	_apply_state_for_minute(GameTimer.instance.get_game_time_minute())
+	current_room = initial_room
 
 func _physics_process(delta: float) -> void:
 	_do_movement(delta)
@@ -83,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	if elena_sprite: _do_animation()
 
 # ==================================================================================================
-#                NPC methods
+#                Movement methods
 # ==================================================================================================
 func _do_movement(delta:float) -> void:
 	if _is_seated:
@@ -94,8 +67,6 @@ func _do_movement(delta:float) -> void:
 		var next_path_position : Vector2 = nav_agent.get_next_path_position()
 		var direction : Vector2 = global_position.direction_to(next_path_position)
 		nav_agent.set_velocity(direction * movement_speed)
-		# NOTE: do NOT call move_and_slide() here — the nav agent's velocity_computed
-		# signal fires asynchronously and move_and_slide() happens in _on_velocity_computed().
 	else:
 		if global_position.distance_to(_target_position) > arrival_distance:
 			var direction : Vector2 = (_target_position - global_position).normalized()
@@ -105,135 +76,126 @@ func _do_movement(delta:float) -> void:
 		move_and_slide()
 
 func _check_arrival() -> void:
-	# Check arrived is already triggered yet
 	if _has_arrived: return
-	# Check has arrived yet
 	var reached : bool = false
 	if nav_agent: reached = nav_agent.is_navigation_finished()
 	else: reached = global_position.distance_to(_target_position) <= arrival_distance
-	# Do arrived trigger if arrived
 	if reached:
 		_has_arrived = true
 		global_position = _target_position
 		velocity = Vector2.ZERO
 		if _current_seat:
-			# Arrived at a seat — snap into it and mark as physically seated
 			_target_rotation = _pending_seat_rotation
 			rotation = _pending_seat_rotation
 			_is_seated = true
 			if elena_sprite: elena_sprite.do_sit()
-		elif state_facing_dictionary.has(current_state):
-			_target_rotation = deg_to_rad(state_facing_dictionary[current_state])
+		elif not is_nan(_pending_facing_rotation):
+			_target_rotation = _pending_facing_rotation
 		arrived_at_destination.emit()
 
 func _do_rotation(delta:float) -> void:
-	# Update target rotation only while actually moving
 	if velocity.length_squared() > 1.0: _target_rotation = velocity.angle()
-	# Always interpolate towards the target rotation, even after stopping
 	if rotation_speed <= 0.0: rotation = _target_rotation
 	else: rotation = lerp_angle(rotation, _target_rotation, rotation_speed * delta)
 
 func _do_animation():
-	if _is_seated: return # let do_sit() play undisturbed
+	if _is_seated: return
 	if velocity.length_squared() > 1.0: elena_sprite.do_walk()
 	else: elena_sprite.do_idle()
 
-func _move_to(new_position:Vector2) -> void:
+func _move_to(new_position: Vector2, facing_rotation: float = NAN) -> void:
 	_has_arrived = false
+	_current_seat = null
+	_pending_facing_rotation = facing_rotation
 	_target_position = new_position
 	if nav_agent: nav_agent.target_position = new_position
 
-## Called by Seat.sit_actor() — begins walking to the seat marker.
-func sit_at(seat_position: Vector2, facing_rotation: float, seat: Seat) -> void:
+# ==================================================================================================
+#                State machine methods
+# ==================================================================================================
+## Walks (through doors if needed) to destination in destination_room, optionally snapping to
+## facing_degrees once arrived. Cancels any previous in-progress travel.
+func go_to(
+	destination: Vector2, destination_room: EnumUtility.RoomName, facing_degrees: float = NAN
+) -> void:
+	_travel_id += 1
+	var travel_id : int = _travel_id
+	await _travel_through_doors(destination_room, travel_id)
+	if travel_id != _travel_id: return
+	var facing_rotation : float = deg_to_rad(facing_degrees) if !is_nan(facing_degrees) else NAN
+	_move_to(destination, facing_rotation)
+
+## Walks (through doors if needed) to destination_room then calls interactable.npc_interact(self).
+## Works for InteractableComponent.
+func go_to_interactable(
+	interactable:InteractableComponent, destination_room:EnumUtility.RoomName
+) -> void:
+	_travel_id += 1
+	var travel_id : int = _travel_id
+	await _travel_through_doors(destination_room, travel_id)
+	if travel_id != _travel_id: return
+	_move_to(interactable.get_position())
+	await arrived_at_destination
+	if travel_id != _travel_id: return
+	interactable.npc_interact(self)
+
+## Stands up from whatever seat she's currently occupying, if any. Safe to call when not seated.
+func stand_up_if_seated() -> void:
+	if _current_seat:
+		_current_seat.stand_up() # cascades back into Elena.stand_up()
+
+## Called by Seat.sit_actor() once assigned — begins walking to the seat marker.
+func sit_at(seat_position:Vector2, facing_rotation:float, seat:Seat) -> void:
+	_has_arrived = false
 	_current_seat = seat
 	_is_seated = false
 	_pending_seat_rotation = facing_rotation
-	_move_to(seat_position)
+	_target_position = seat_position
+	if nav_agent: nav_agent.target_position = seat_position
 
 ## Called by Seat.stand_up() — clears seated state so she can move again.
 func stand_up() -> void:
 	_is_seated = false
 	_current_seat = null
 
-func _enter_state(state:NPCState) -> void:
-	# Leave any seat she's currently occupying before moving to the next state
-	if _current_seat:
-		_current_seat.stand_up() # this calls Elena.stand_up() internally, clearing _current_seat
-	current_state = state
-	_travel_id += 1
-	var travel_id : int = _travel_id
-	var dest_room : EnumUtility.RoomName = state_room_dictionary.get(state, _current_room)
-	if state_seat_dictionary.has(state):
-		_do_travel_to_seat(state_seat_dictionary[state], dest_room, travel_id)
-	elif state_position_dictionary.has(state):
-		_do_travel(state_position_dictionary[state].global_position, dest_room, travel_id)
-	else:
-		_has_arrived = true
-	state_changed.emit(state)
+func is_seated() -> bool: return _is_seated
 
-func _do_travel(
-	destination: Vector2, destination_room:EnumUtility.RoomName, travel_id:int
-) -> void:
-	await _travel_through_doors(destination_room, travel_id)
-	if travel_id != _travel_id: return
-	_move_to(destination)
-
-func _do_travel_to_seat(
-	seat: Seat, destination_room:EnumUtility.RoomName, travel_id:int
-) -> void:
-	await _travel_through_doors(destination_room, travel_id)
-	if travel_id != _travel_id: return
-	if not seat.sit_actor(self):
-		push_error("Seat for state '%s' is already occupied" % state_seat_dictionary.find_key(seat))
-
-## Walks through whatever doors connect _current_room to destination_room, updating _current_room
+## Walks through whatever doors connect current_room to destination_room, updating current_room
 ## as she passes through each one. No-op if already in the destination room.
-func _travel_through_doors(destination_room: EnumUtility.RoomName, travel_id: int) -> void:
-	# Check if next destination is in different room
-	if destination_room == _current_room: return
-	# Find door path to room
+func _travel_through_doors(destination_room:EnumUtility.RoomName, travel_id:int) -> void:
+	if destination_room == current_room: return
 	var door_path : Array[Door]
-	door_path = DoorManager.instance.find_door_path(_current_room, destination_room)
+	door_path = DoorManager.instance.find_door_path(current_room, destination_room)
 	if door_path.is_empty():
-		push_error("No door path from %s to %s" % [_current_room, destination_room])
+		push_error("No door path from %s to %s" % [current_room, destination_room])
 		return
-	# Loop all doors in path
-	for door:Door in door_path:
-		if travel_id != _travel_id: return # a newer state change cancelled this route
-		var from_push_side : bool = (_current_room == door.push_side_room)
+	for door in door_path:
+		if travel_id != _travel_id: return
+		var from_push_side : bool = (current_room == door.push_side_room)
 		var near_marker : Marker2D
 		near_marker = door.push_side_marker if from_push_side else door.pull_side_marker
 		var far_marker : Marker2D
 		far_marker = door.pull_side_marker if from_push_side else door.push_side_marker
-		# Move to door
 		_move_to(near_marker.global_position)
 		await arrived_at_destination
 		if travel_id != _travel_id: return
-		# Open the door
-		door.open_for_transit(_current_room)
-		# Go through the door
+		door.open_for_transit(current_room)
+		if travel_id != _travel_id: return
 		_move_to(far_marker.global_position)
 		await arrived_at_destination
 		if travel_id != _travel_id: return
-		# Update room
-		_current_room = door.pull_side_room if from_push_side else door.push_side_room
-
-## Finds the most recent schedule entry at or before the given minute and enters that state.
-## Used both for live ticks and for catching up on _ready() if the game starts mid-schedule.
-func _apply_state_for_minute(minute: int) -> void:
-	var applicable_time : int = -1
-	for time in _sorted_schedule_times:
-		if time <= minute: applicable_time = time
-		else: break
-	if applicable_time != -1:
-		_enter_state(schedule_dictionary[applicable_time])
+		current_room = door.pull_side_room if from_push_side else door.push_side_room
 
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_time_tick(game_time_minute:int) -> void:
-	if schedule_dictionary.has(game_time_minute):
-		_enter_state(schedule_dictionary[game_time_minute])
+func _on_interactable_hovered(): if interact_color_rect: interact_color_rect.show()
+
+func _on_interactable_unhovered(): if interact_color_rect: interact_color_rect.hide()
+
+func _on_interactable_interacted():
+	# TODO: Interupt state flow for dialogue here
+	DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, "talk")
 
 func _on_velocity_computed(safe_velocity:Vector2) -> void:
 	if _is_seated:

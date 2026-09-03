@@ -35,10 +35,13 @@ func get_clock_time() -> String:
 	return "%02d:%02d" % [hour, minute]
 
 func get_game_time_minute() -> int:
-	return floor(_elapsed_time / seconds_per_game_time_minute)
+	return starting_game_time_minute + _get_elapsed_game_time_minute()
 
 func _get_total_clock_minutes() -> int:
-	return (starting_game_time_minute + get_game_time_minute()) % (24 * 60)
+	return (starting_game_time_minute + _get_elapsed_game_time_minute()) % (24 * 60)
+
+func _get_elapsed_game_time_minute() -> int:
+	return floor(_elapsed_time / seconds_per_game_time_minute)
 
 func _check_time_tick() -> void:
 	var current_minute : int = _get_total_clock_minutes()

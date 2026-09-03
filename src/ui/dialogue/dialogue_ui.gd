@@ -2,6 +2,7 @@ extends Control
 class_name DialogueUI
 ## A basic dialogue balloon for use with Dialogue Manager.
 
+static var instance : DialogueUI
 
 @export_subgroup("Reference")
 @export var dialogue_character_view : DialogueCharacterView
@@ -66,6 +67,10 @@ var mutation_cooldown: Timer = Timer.new()
 ## Indicator to show that player can progress dialogue.
 @onready var progress: Polygon2D = %Progress
 
+
+func _enter_tree() -> void: instance = self
+
+func _exit_tree() -> void: instance = null
 
 func _ready() -> void:
 	balloon.hide()
