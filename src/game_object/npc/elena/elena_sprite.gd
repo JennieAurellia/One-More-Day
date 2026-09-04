@@ -33,5 +33,6 @@ func do_interact(): play(interact_animation_name)
 
 func do_sit(is_legless:bool):
 	if is_legless: play(sit_legless_animation_name)
-	else: play(sit_animation_name)
-	z_index = sitting_z_index
+	else:
+		play(sit_animation_name)
+		z_index = sitting_z_index
