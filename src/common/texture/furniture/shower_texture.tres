@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" format=3 uid="uid://bkmemrh2q15fg"]
-
-[ext_resource type="Texture2D" uid="uid://cx8l6s17ny387" path="res://assets/tileset_bedroom & bathroom.png" id="1_xenrh"]
-
-[resource]
-atlas = ExtResource("1_xenrh")
-region = Rect2(512, 512, 256, 384)

@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Elena
 
 signal arrived_at_destination
+signal destination_reached(destination:Vector2)
 
 @export_subgroup("References")
 @export var state_machine : ElenaStateMachine
@@ -116,8 +117,9 @@ func _move_to(new_position: Vector2, facing_rotation: float = NAN) -> void:
 # ==================================================================================================
 ## Walks (through doors if needed) to destination in destination_room, optionally snapping to
 ## facing_degrees once arrived. Cancels any previous in-progress travel.
+## Emits destination_reached once she physically arrives at `destination` (not intermediate door stops).
 func go_to(
-	destination: Vector2, destination_room: EnumUtility.RoomName, facing_degrees: float = NAN
+	destination:Vector2, destination_room:EnumUtility.RoomName, facing_degrees:float = NAN
 ) -> void:
 	_travel_id += 1
 	var travel_id : int = _travel_id
@@ -125,6 +127,9 @@ func go_to(
 	if travel_id != _travel_id: return
 	var facing_rotation : float = deg_to_rad(facing_degrees) if !is_nan(facing_degrees) else NAN
 	_move_to(destination, facing_rotation)
+	await arrived_at_destination
+	if travel_id != _travel_id: return
+	destination_reached.emit(destination)
 
 ## Walks (through doors if needed) to destination_room then calls interactable.npc_interact(self).
 ## Works for InteractableComponent.
@@ -138,6 +143,7 @@ func go_to_interactable(
 	_move_to(interactable.get_position())
 	await arrived_at_destination
 	if travel_id != _travel_id: return
+	destination_reached.emit(interactable.get_position())
 	interactable.npc_interact(self)
 
 ## Stands up from whatever seat she's currently occupying, if any. Safe to call when not seated.

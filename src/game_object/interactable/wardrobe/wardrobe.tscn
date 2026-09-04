@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b3vulr6is71q0"]
+
+[ext_resource type="Script" uid="uid://3aa64me8ywf1" path="res://src/game_object/interactable/wardrobe/wardrobe.gd" id="1_10i0b"]
+[ext_resource type="Texture2D" uid="uid://cx8l6s17ny387" path="res://assets/tileset_bedroom & bathroom.png" id="2_t6hbd"]
+[ext_resource type="Texture2D" uid="uid://bn6t3avp45rd6" path="res://assets/tileset_revision.png" id="3_bmwy4"]
+
+[node name="Wardrobe" type="Node2D" unique_id=1065710214 node_paths=PackedStringArray("normal_sprite", "opened_sprite")]
+rotation = 1.5707964
+script = ExtResource("1_10i0b")
+normal_sprite = NodePath("NormalSprite")
+opened_sprite = NodePath("OpenedSprite")
+
+[node name="NormalSprite" type="Sprite2D" parent="." unique_id=1092504340]
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_t6hbd")
+region_enabled = true
+region_rect = Rect2(0, 384, 256, 384)
+
+[node name="OpenedSprite" type="Sprite2D" parent="." unique_id=67632521]
+position = Vector2(9, 25)
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bmwy4")
+region_enabled = true
+region_rect = Rect2(768, 128, 256, 384)

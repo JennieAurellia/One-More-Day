@@ -1,18 +1,26 @@
 [gd_scene format=3 uid="uid://ciagp50sbeviv"]
 
-[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="1_bm1wv"]
 [ext_resource type="Script" uid="uid://8ak2rdwd0ule" path="res://src/game_object/interactable/shower/shower.gd" id="1_ok507"]
 [ext_resource type="Texture2D" uid="uid://bn6t3avp45rd6" path="res://assets/tileset_revision.png" id="3_bm1wv"]
 
-[node name="Shower" type="Node2D" unique_id=1691131493]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bm1wv"]
+size = Vector2(4.999995, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok507"]
+size = Vector2(4.999995, 110.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flugi"]
+size = Vector2(135.5, 8.000004)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ybk"]
+size = Vector2(135.5, 8.000004)
+
+[node name="Shower" type="Node2D" unique_id=1691131493 node_paths=PackedStringArray("normal_sprite", "locked_sprite", "lock_collision")]
 rotation = 1.5707964
 script = ExtResource("1_ok507")
-active_game_time_minute = null
-active_on_load = null
-
-[node name="InteractableComponent" type="Node" parent="." unique_id=1331154029]
-script = ExtResource("1_bm1wv")
-metadata/_custom_type_script = "uid://5xtjibybpdw1"
+normal_sprite = NodePath("NormalSprite")
+locked_sprite = NodePath("LockedSprite")
+lock_collision = NodePath("Wall/LockCollision")
 
 [node name="NormalSprite" type="Sprite2D" parent="." unique_id=417175979]
 position = Vector2(0, -58)
@@ -22,9 +30,27 @@ texture = ExtResource("3_bm1wv")
 region_enabled = true
 region_rect = Rect2(0, 640, 512, 384)
 
-[node name="UsedSprite" type="Sprite2D" parent="." unique_id=743183308]
+[node name="LockedSprite" type="Sprite2D" parent="." unique_id=743183308]
 rotation = -1.5707964
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_bm1wv")
 region_enabled = true
 region_rect = Rect2(512, 640, 256, 384)
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1769295618]
+
+[node name="TopCollision" type="CollisionShape2D" parent="Wall" unique_id=141687712]
+position = Vector2(-61.5, 3.5000026)
+shape = SubResource("RectangleShape2D_bm1wv")
+
+[node name="BottomCollision" type="CollisionShape2D" parent="Wall" unique_id=104972098]
+position = Vector2(69, 3.749997)
+shape = SubResource("RectangleShape2D_ok507")
+
+[node name="LeftCollision" type="CollisionShape2D" parent="Wall" unique_id=127799917]
+position = Vector2(3.7500002, 55)
+shape = SubResource("RectangleShape2D_flugi")
+
+[node name="LockCollision" type="CollisionShape2D" parent="Wall" unique_id=1026463833]
+position = Vector2(3.9999979, -48)
+shape = SubResource("RectangleShape2D_f0ybk")

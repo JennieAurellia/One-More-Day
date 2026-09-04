@@ -1,10 +1,9 @@
 extends Node2D
-class_name Shower
+class_name Wardrobe
 
 @export_subgroup("References")
 @export var normal_sprite : Sprite2D
-@export var locked_sprite : Sprite2D
-@export var lock_collision : CollisionShape2D
+@export var opened_sprite : Sprite2D
 
 # ==================================================================================================
 #                Virtual methods
@@ -12,20 +11,17 @@ class_name Shower
 func _ready() -> void:
 	# Assertion check
 	assert(normal_sprite, "normal_sprite is missing")
-	assert(locked_sprite, "locked_sprite is missing")
-	assert(lock_collision, "lock_collision is missing")
+	assert(opened_sprite, "opened_sprite is missing")
 	# Initialize
-	unlock()
+	close()
 
 # ==================================================================================================
 #                Stove methods
 # ==================================================================================================
-func lock():
+func open():
 	normal_sprite.hide()
-	locked_sprite.show()
-	lock_collision.disabled = false
+	opened_sprite.show()
 
-func unlock():
+func close():
 	normal_sprite.show()
-	locked_sprite.hide()
-	lock_collision.disabled = true
+	opened_sprite.hide()

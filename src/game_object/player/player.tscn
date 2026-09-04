@@ -15,7 +15,7 @@ nav_agent = NodePath("NavigationAgent")
 rotation = 1.5707964
 scale = Vector2(0.14, 0.14)
 sprite_frames = ExtResource("4_mq35q")
-animation = &"sit_legless"
+animation = &"idle"
 script = ExtResource("5_kiuqt")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=114991734]
