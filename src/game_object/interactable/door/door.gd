@@ -57,7 +57,7 @@ func _ready() -> void:
 # ==================================================================================================
 ## For NPCs: opens the door (no camera/fog change) and returns once safe to walk through.
 func open_for_transit(from_room: EnumUtility.RoomName) -> void:
-	_play_door_open(from_room == push_side_room)
+	_play_door_open()
 
 func _move_player_to_push_side():
 	Player.instance.move_to_position(push_side_marker.global_position)
@@ -65,19 +65,19 @@ func _move_player_to_push_side():
 func _move_player_to_pull_side():
 	Player.instance.move_to_position(pull_side_marker.global_position)
 
-func _play_door_open(from_push_side:bool) -> void:
+func _play_door_open() -> void:
 	# Check and update _is_open
 	if _is_open: return
 	_is_open = true
-	# Get and show door opened sprite
-	var opened_sprite : Sprite2D
-	opened_sprite = push_side_opened_sprite if from_push_side else pull_side_opened_sprite
-	opened_sprite.show()
+	# Show door opened sprite
+	push_side_opened_sprite.show()
+	pull_side_opened_sprite.show()
 	door_opened.emit()
 	# Wait for door_opened_duration
 	await get_tree().create_timer(door_opened_duration).timeout
 	# Close door
-	opened_sprite.hide()
+	push_side_opened_sprite.hide()
+	pull_side_opened_sprite.hide()
 	_is_open = false
 	door_closed.emit()
 
@@ -94,12 +94,12 @@ func _on_interactable_unhovered():
 
 func _on_interactable_interacted():
 	if Camera.instance.current_room == push_side_room:
-		_play_door_open(true)
+		_play_door_open()
 		Camera.instance.change_to_room(pull_side_room)
 		RoomFog.instance.change_to_room(pull_side_room)
 		call_deferred("_move_player_to_pull_side")
 	elif Camera.instance.current_room == pull_side_room:
-		_play_door_open(false)
+		_play_door_open()
 		Camera.instance.change_to_room(push_side_room)
 		RoomFog.instance.change_to_room(push_side_room)
 		call_deferred("_move_player_to_push_side")

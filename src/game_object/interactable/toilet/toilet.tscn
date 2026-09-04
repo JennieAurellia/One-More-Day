@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cedf8odp4gudp"]
+
+[ext_resource type="Script" uid="uid://budnygju2en4j" path="res://src/game_object/interactable/toilet/toilet.gd" id="1_wbiap"]
+[ext_resource type="PackedScene" uid="uid://ck5tmwg6qc7ia" path="res://src/game_object/interactable/seat/seat.tscn" id="2_i7dw8"]
+[ext_resource type="Texture2D" uid="uid://bn6t3avp45rd6" path="res://assets/tileset_revision.png" id="2_wbiap"]
+
+[node name="Toilet" type="Node2D" unique_id=212703779 node_paths=PackedStringArray("normal_sprite", "sat_sprite", "seat")]
+rotation = 1.5707964
+script = ExtResource("1_wbiap")
+normal_sprite = NodePath("NormalSprite")
+sat_sprite = NodePath("SatSprite")
+seat = NodePath("Seat")
+
+[node name="NormalSprite" type="Sprite2D" parent="." unique_id=1713257857]
+position = Vector2(0, -8)
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wbiap")
+region_enabled = true
+region_rect = Rect2(841, 779, 142, 107)
+
+[node name="SatSprite" type="Sprite2D" parent="." unique_id=681165734]
+position = Vector2(0, -8)
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wbiap")
+region_enabled = true
+region_rect = Rect2(841, 909, 142, 107)
+
+[node name="Seat" parent="." unique_id=1889117093 instance=ExtResource("2_i7dw8")]
+position = Vector2(0, -24)
+rotation = -1.5707964

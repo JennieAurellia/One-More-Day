@@ -30,11 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://isxcrtv086pb" path="res://src/common/texture/furniture/carpet_texture.tres" id="14_88nxn"]
 [ext_resource type="Texture2D" uid="uid://d25nrdusabafc" path="res://src/common/texture/furniture/tv_texture.tres" id="14_xf8ym"]
 [ext_resource type="Texture2D" uid="uid://c4bw8rddikjx8" path="res://src/common/texture/furniture/living_room_table_texture.tres" id="15_hysqa"]
-[ext_resource type="Texture2D" uid="uid://bkmemrh2q15fg" path="res://src/common/texture/furniture/shower_texture.tres" id="17_hysqa"]
-[ext_resource type="Texture2D" uid="uid://binfdxitbiduo" path="res://src/common/texture/furniture/toilet_texture.tres" id="18_qblr6"]
 [ext_resource type="Texture2D" uid="uid://biiblqvsgapt" path="res://src/common/texture/furniture/sink_texture.tres" id="19_eys30"]
 [ext_resource type="Texture2D" uid="uid://c2v3kkn0jou7l" path="res://src/common/texture/furniture/closet_texture.tres" id="20_qblr6"]
-[ext_resource type="PackedScene" uid="uid://j41r2ky5xigi" path="res://src/game_object/interactable/shower_faucet/shower_faucet.tscn" id="22_vfhfr"]
+[ext_resource type="PackedScene" uid="uid://cedf8odp4gudp" path="res://src/game_object/interactable/toilet/toilet.tscn" id="20_vfhfr"]
+[ext_resource type="PackedScene" uid="uid://ciagp50sbeviv" path="res://src/game_object/interactable/shower/shower.tscn" id="21_ffmqh"]
 
 [node name="GameScene" type="Node2D" unique_id=14823134]
 
@@ -272,31 +271,11 @@ sit_facing_degrees = 90.0
 
 [node name="Bathroom" type="Node2D" parent="Furniture" unique_id=707564706]
 
-[node name="Toilet" type="Node2D" parent="Furniture/Bathroom" unique_id=1176140272]
+[node name="Toilet" parent="Furniture/Bathroom" unique_id=212703779 instance=ExtResource("20_vfhfr")]
 position = Vector2(219, 592)
-rotation = 1.5707964
 
-[node name="Sprite" type="Sprite2D" parent="Furniture/Bathroom/Toilet" unique_id=387512011]
-rotation = -1.5707964
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("18_qblr6")
-
-[node name="Seat" parent="Furniture/Bathroom/Toilet" unique_id=977744566 instance=ExtResource("4_glhkg")]
-position = Vector2(0, -24)
-rotation = -1.5707964
-
-[node name="Shower" type="Node2D" parent="Furniture/Bathroom" unique_id=1952531347]
-position = Vector2(247, 698)
-rotation = 1.5707964
-
-[node name="Sprite" type="Sprite2D" parent="Furniture/Bathroom/Shower" unique_id=126461490]
-rotation = -1.5707964
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("17_hysqa")
-
-[node name="ShowerFaucet" parent="Furniture/Bathroom/Shower" unique_id=94670143 instance=ExtResource("22_vfhfr")]
-position = Vector2(1.1920929e-07, 0)
-rotation = -1.5707964
+[node name="Shower" parent="Furniture/Bathroom" unique_id=1691131493 instance=ExtResource("21_ffmqh")]
+position = Vector2(251, 696)
 
 [node name="Sink" type="Node2D" parent="Furniture/Bathroom" unique_id=1186920278]
 position = Vector2(360, 537)
@@ -376,7 +355,7 @@ state_room_dictionary = Dictionary[int, int]({
 state_interactable_dictionary = {
 2: NodePath("../../Furniture/MainRoom/DiningTable/Seat2/InteractableComponent"),
 3: NodePath("../../Furniture/MainRoom/Sofa/Seat/InteractableComponent"),
-4: NodePath("../../Furniture/Bathroom/Shower/ShowerFaucet/InteractableComponent")
+4: null
 }
 
 [node name="Camera" type="Camera2D" parent="." unique_id=703474889 node_paths=PackedStringArray("room_position_dictionary")]
@@ -443,7 +422,6 @@ script = ExtResource("12_glhkg")
 metadata/_custom_type_script = "uid://bgn5hyf5ulaan"
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="." unique_id=970134607]
-visible = false
 
 [node name="InventoryUI" parent="UICanvasLayer" unique_id=901225113 instance=ExtResource("3_iavex")]
 anchors_preset = 5
@@ -465,5 +443,4 @@ grow_horizontal = 2
 [editable path="Furniture/MainRoom/Sofa/Seat"]
 [editable path="Furniture/MainRoom/Sofa/Seat2"]
 [editable path="Furniture/MainRoom/Sofa/Seat3"]
-[editable path="Furniture/Bathroom/Shower/ShowerFaucet"]
 [editable path="Elena"]

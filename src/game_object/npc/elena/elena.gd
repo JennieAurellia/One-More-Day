@@ -4,8 +4,9 @@ class_name Elena
 signal arrived_at_destination
 
 @export_subgroup("References")
-@export var elena_sprite : ElenaSprite
+@export var state_machine : ElenaStateMachine
 @export var interactable_component : InteractableComponent
+@export var elena_sprite : ElenaSprite
 @export var nav_agent : NavigationAgent2D
 @export var interact_color_rect : ColorRect
 
@@ -27,10 +28,10 @@ var _target_rotation : float = 0.0
 var _pending_facing_rotation : float = NAN
 var _has_arrived : bool = true
 var _travel_id : int = 0
-
 var _current_seat : Seat = null
 var _is_seated : bool = false
 var _pending_seat_rotation : float = 0.0
+var _is_in_dialogue : bool = false
 
 # ==================================================================================================
 #                Virtual methods
@@ -59,7 +60,7 @@ func _physics_process(delta: float) -> void:
 #                Movement methods
 # ==================================================================================================
 func _do_movement(delta:float) -> void:
-	if _is_seated:
+	if _is_seated or _is_in_dialogue:
 		velocity = Vector2.ZERO
 		return
 	if nav_agent:
@@ -111,7 +112,7 @@ func _move_to(new_position: Vector2, facing_rotation: float = NAN) -> void:
 	if nav_agent: nav_agent.target_position = new_position
 
 # ==================================================================================================
-#                State machine methods
+#                NPC methods
 # ==================================================================================================
 ## Walks (through doors if needed) to destination in destination_room, optionally snapping to
 ## facing_degrees once arrived. Cancels any previous in-progress travel.
@@ -160,6 +161,24 @@ func stand_up() -> void:
 
 func is_seated() -> bool: return _is_seated
 
+## Freezes all movement immediately and cancels any in-progress travel. Called when dialogue starts.
+func enter_dialogue() -> void:
+	_is_in_dialogue = true
+	_travel_id += 1 # cancel any in-progress go_to/go_to_interactable coroutine
+	_has_arrived = true
+	_target_position = global_position
+	if state_machine: state_machine.enter_dialogue_state()
+	if elena_sprite: elena_sprite.do_idle()
+	if nav_agent: nav_agent.target_position = global_position
+	velocity = Vector2.ZERO
+
+## Called when dialogue ends — allows movement again.
+func exit_dialogue() -> void:
+	_is_in_dialogue = false
+	if state_machine: state_machine.exit_dialogue_state()
+
+func is_in_dialogue() -> bool: return _is_in_dialogue
+
 ## Walks through whatever doors connect current_room to destination_room, updating current_room
 ## as she passes through each one. No-op if already in the destination room.
 func _travel_through_doors(destination_room:EnumUtility.RoomName, travel_id:int) -> void:
@@ -194,11 +213,13 @@ func _on_interactable_hovered(): if interact_color_rect: interact_color_rect.sho
 func _on_interactable_unhovered(): if interact_color_rect: interact_color_rect.hide()
 
 func _on_interactable_interacted():
-	# TODO: Interupt state flow for dialogue here
+	enter_dialogue()
 	DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, "talk")
+	await DialogueManager.dialogue_ended
+	exit_dialogue()
 
 func _on_velocity_computed(safe_velocity:Vector2) -> void:
-	if _is_seated:
+	if _is_seated or _is_in_dialogue:
 		velocity = Vector2.ZERO
 		return
 	velocity = safe_velocity

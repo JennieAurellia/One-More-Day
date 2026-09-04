@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://7lu6px3xwpye" path="res://assets/basic_sprite/Square.png" id="3_k16ha"]
 [ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="3_yd8t2"]
 [ext_resource type="Texture2D" uid="uid://c107e24yng0ly" path="res://src/game_object/interactable/door/door_normal_texture.tres" id="4_2niuq"]
-[ext_resource type="Texture2D" uid="uid://c2kno4os6ntow" path="res://src/game_object/interactable/door/door_opened_texture.tres" id="5_prarn"]
+[ext_resource type="Texture2D" uid="uid://caa08kbfbjnil" path="res://src/game_object/interactable/door/door_opened_push_texture.tres" id="5_6x0tj"]
+[ext_resource type="Texture2D" uid="uid://c2kno4os6ntow" path="res://src/game_object/interactable/door/door_opened_pull_texture.tres" id="5_prarn"]
 
 [node name="Door" type="Node2D" unique_id=1906740693 node_paths=PackedStringArray("interactable_component", "push_side_door_sprite", "pull_side_door_sprite", "push_side_opened_sprite", "pull_side_opened_sprite", "push_side_marker", "pull_side_marker")]
 script = ExtResource("1_k16ha")
@@ -53,11 +54,12 @@ scale = Vector2(0.5, 0.5)
 
 [node name="DoorSprite" type="Sprite2D" parent="PushSideSprite" unique_id=3947624]
 texture = ExtResource("4_2niuq")
+flip_h = true
 
 [node name="OpenedSprite" type="Sprite2D" parent="PushSideSprite" unique_id=1804161843]
 visible = false
-position = Vector2(0, -32)
-texture = ExtResource("5_prarn")
+position = Vector2(4.0000005, -14)
+texture = ExtResource("5_6x0tj")
 
 [node name="PullSideSprite" type="Node2D" parent="." unique_id=375668003]
 position = Vector2(32, 0)

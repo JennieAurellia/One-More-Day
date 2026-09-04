@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ciagp50sbeviv"]
+
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="1_bm1wv"]
+[ext_resource type="Script" uid="uid://8ak2rdwd0ule" path="res://src/game_object/interactable/shower/shower.gd" id="1_ok507"]
+[ext_resource type="Texture2D" uid="uid://bn6t3avp45rd6" path="res://assets/tileset_revision.png" id="3_bm1wv"]
+
+[node name="Shower" type="Node2D" unique_id=1691131493]
+rotation = 1.5707964
+script = ExtResource("1_ok507")
+active_game_time_minute = null
+active_on_load = null
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=1331154029]
+script = ExtResource("1_bm1wv")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
+
+[node name="NormalSprite" type="Sprite2D" parent="." unique_id=417175979]
+position = Vector2(0, -58)
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bm1wv")
+region_enabled = true
+region_rect = Rect2(0, 640, 512, 384)
+
+[node name="UsedSprite" type="Sprite2D" parent="." unique_id=743183308]
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bm1wv")
+region_enabled = true
+region_rect = Rect2(512, 640, 256, 384)

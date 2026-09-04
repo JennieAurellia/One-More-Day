@@ -8,10 +8,11 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrr71"]
 
-[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("elena_sprite", "interactable_component", "nav_agent", "interact_color_rect")]
+[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("state_machine", "interactable_component", "elena_sprite", "nav_agent", "interact_color_rect")]
 script = ExtResource("1_3kc1g")
-elena_sprite = NodePath("Sprite")
+state_machine = NodePath("ElenaStateMachine")
 interactable_component = NodePath("InteractableComponent")
+elena_sprite = NodePath("Sprite")
 nav_agent = NodePath("NavigationAgent")
 interact_color_rect = NodePath("InteractControl/InteractColorRect")
 movement_speed = 300.0
