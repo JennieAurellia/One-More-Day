@@ -162,21 +162,25 @@ texture = ExtResource("12_xf8ym")
 position = Vector2(-37, -64)
 rotation = -1.5707964
 sit_facing_degrees = 90.0
+is_sitting_legless = true
 
 [node name="Seat2" parent="Furniture/MainRoom/DiningTable" unique_id=292414821 instance=ExtResource("4_glhkg")]
 position = Vector2(37, -64)
 rotation = -1.5707964
 sit_facing_degrees = 90.0
+is_sitting_legless = true
 
 [node name="Seat4" parent="Furniture/MainRoom/DiningTable" unique_id=809044561 instance=ExtResource("4_glhkg")]
 position = Vector2(-37, 66)
 rotation = -1.5707964
 sit_facing_degrees = -90.0
+is_sitting_legless = true
 
 [node name="Seat5" parent="Furniture/MainRoom/DiningTable" unique_id=457308930 instance=ExtResource("4_glhkg")]
 position = Vector2(37, 66)
 rotation = -1.5707964
 sit_facing_degrees = -90.0
+is_sitting_legless = true
 
 [node name="Carpet" type="Node2D" parent="Furniture/MainRoom" unique_id=1959914046]
 position = Vector2(848, 576)

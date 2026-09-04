@@ -31,7 +31,7 @@ metadata/_custom_type_script = "uid://5xtjibybpdw1"
 rotation = 1.5707964
 scale = Vector2(0.14, 0.14)
 sprite_frames = ExtResource("2_tq825")
-animation = &"idle"
+animation = &"sit_legless"
 script = ExtResource("2_xp60g")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=114991734]

@@ -11,6 +11,7 @@ signal occupant_stood_up(occupant:Node)
 @export_subgroup("Seat Settings")
 ## Facing direction (degrees) the occupant should snap to once seated.
 @export var sit_facing_degrees : float = 0.0
+@export var is_sitting_legless : bool = false
 
 var _current_occupant : Node = null
 
@@ -39,7 +40,7 @@ func sit_actor(actor:Node) -> bool:
 	if is_occupied(): return false
 	_current_occupant = actor
 	if actor.has_method("sit_at"):
-		actor.sit_at(global_position, deg_to_rad(sit_facing_degrees), self)
+		actor.sit_at(global_position, deg_to_rad(sit_facing_degrees), is_sitting_legless, self)
 	occupant_sat.emit(actor)
 	return true
 

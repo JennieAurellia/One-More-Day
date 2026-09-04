@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nj0kh5swubw3" path="res://assets/character animation/Adrian_interact.png" id="2_lii70"]
 [ext_resource type="Texture2D" uid="uid://ddw0pwn8u1g5c" path="res://assets/character animation/Adrian_sit.png" id="3_ir0nd"]
 [ext_resource type="Texture2D" uid="uid://bji1o0p1d24d3" path="res://assets/character animation/Adrian_walk_1.png" id="4_1vy07"]
+[ext_resource type="Texture2D" uid="uid://deguv0hp4nbir" path="res://assets/character animation/Adrian_sit (tanpa kaki).png" id="4_ir0nd"]
 [ext_resource type="Texture2D" uid="uid://dec4tqq0rx52h" path="res://assets/character animation/Adrian_walk_2.png" id="5_ewn4w"]
 
 [resource]
@@ -33,6 +34,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"sit",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ir0nd")
+}],
+"loop": false,
+"name": &"sit_legless",
 "speed": 1.0
 }, {
 "frames": [{

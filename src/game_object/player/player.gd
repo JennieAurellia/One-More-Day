@@ -57,13 +57,13 @@ func _unhandled_input(event: InputEvent) -> void:
 # ==================================================================================================
 func move_to_position(new_position:Vector2): _move_to(new_position)
 
-func sit_at(seat_position:Vector2, facing_rotation:float, seat:Seat) -> void:
+func sit_at(seat_position:Vector2, facing_rotation:float, is_legless:bool, seat:Seat) -> void:
 	_is_seated = true
 	_seated_seat = seat
 	global_position = seat_position
 	_target_rotation = facing_rotation
 	rotation = _target_rotation
-	if player_sprite: player_sprite.do_sit()
+	if player_sprite: player_sprite.do_sit(is_legless)
 
 func stand_up() -> void:
 	_is_seated = false

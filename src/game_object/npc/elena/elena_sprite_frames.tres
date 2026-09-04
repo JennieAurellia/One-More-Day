@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bc6gvrq23i2av" path="res://assets/character animation/Elena_interact.png" id="2_m4vln"]
 [ext_resource type="Texture2D" uid="uid://b54iheqmdu7j" path="res://assets/character animation/Elena_sit.png" id="3_foyjq"]
 [ext_resource type="Texture2D" uid="uid://cnmvwn1bxtdau" path="res://assets/character animation/Elena_walk_1.png" id="4_c6abg"]
+[ext_resource type="Texture2D" uid="uid://cmxcpc8flht8q" path="res://assets/character animation/Elena_sit (tanpa kaki).png" id="4_m4vln"]
 [ext_resource type="Texture2D" uid="uid://dpd14jw5d8qhc" path="res://assets/character animation/Elena_walk_2.png" id="5_wp1ai"]
 
 [resource]
@@ -33,6 +34,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"sit",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m4vln")
+}],
+"loop": false,
+"name": &"sit_legless",
 "speed": 1.0
 }, {
 "frames": [{

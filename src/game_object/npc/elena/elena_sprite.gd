@@ -6,6 +6,7 @@ class_name ElenaSprite
 @export var walk_animation_name : String = "walk"
 @export var interact_animation_name : String = "interact"
 @export var sit_animation_name : String = "sit"
+@export var sit_legless_animation_name : String = "sit_legless"
 
 @export_subgroup("Z Index Settings")
 @export var normal_z_index : int = 1
@@ -30,6 +31,7 @@ func do_walk():
 
 func do_interact(): play(interact_animation_name)
 
-func do_sit():
-	play(sit_animation_name)
+func do_sit(is_legless:bool):
+	if is_legless: play(sit_legless_animation_name)
+	else: play(sit_animation_name)
 	z_index = sitting_z_index

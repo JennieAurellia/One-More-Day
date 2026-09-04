@@ -89,7 +89,7 @@ func _check_arrival() -> void:
 			_target_rotation = _pending_seat_rotation
 			rotation = _pending_seat_rotation
 			_is_seated = true
-			if elena_sprite: elena_sprite.do_sit()
+			if elena_sprite: elena_sprite.do_sit(_current_seat.is_sitting_legless)
 		elif not is_nan(_pending_facing_rotation):
 			_target_rotation = _pending_facing_rotation
 		arrived_at_destination.emit()
@@ -146,7 +146,7 @@ func stand_up_if_seated() -> void:
 		_current_seat.stand_up() # cascades back into Elena.stand_up()
 
 ## Called by Seat.sit_actor() once assigned — begins walking to the seat marker.
-func sit_at(seat_position:Vector2, facing_rotation:float, seat:Seat) -> void:
+func sit_at(seat_position:Vector2, facing_rotation:float, is_legless:bool, seat:Seat) -> void:
 	_has_arrived = false
 	_current_seat = seat
 	_is_seated = false
