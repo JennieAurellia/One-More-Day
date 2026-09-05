@@ -19,6 +19,9 @@ static var instance : Player
 ## How close the player needs to be to the interactable before it triggers.
 @export var interact_distance : float = 40.0
 
+@export_subgroup("Audio Settings")
+@export var walking_sound_name : String = "walking_1"
+
 var _target_position : Vector2
 var _target_rotation : float = 0.0
 var _is_about_to_interact : bool = false
@@ -46,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	_do_rotation(delta)
 	_check_pending_interaction()
 	if player_sprite: _do_animation()
+	_do_audio()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -101,6 +105,11 @@ func _do_animation():
 	if _is_seated and _seated_seat: return
 	elif velocity.length_squared() > 1.0: player_sprite.do_walk()
 	else: player_sprite.do_idle()
+
+func _do_audio():
+	# Update walking sfx
+	if velocity != Vector2.ZERO: AudioManager.play_sound(walking_sound_name)
+	else: AudioManager.stop_sound(walking_sound_name)
 
 func _check_pending_interaction() -> void:
 	if _pending_interactable == null: return

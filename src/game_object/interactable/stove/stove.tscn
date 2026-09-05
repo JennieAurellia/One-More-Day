@@ -4,9 +4,8 @@
 [ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="1_6vf17"]
 [ext_resource type="Script" uid="uid://bj4dywpp0uh1j" path="res://src/game_object/interactable/stove/stove.gd" id="1_ao3lf"]
 
-[node name="Stove" type="Node2D" unique_id=56623785 node_paths=PackedStringArray("interactable_component", "cook_sprite")]
+[node name="Stove" type="Node2D" unique_id=56623785 node_paths=PackedStringArray("cook_sprite")]
 script = ExtResource("1_ao3lf")
-interactable_component = NodePath("InteractableComponent")
 cook_sprite = NodePath("CookSprite")
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=286272249]

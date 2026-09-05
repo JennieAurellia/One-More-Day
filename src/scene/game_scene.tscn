@@ -74,11 +74,13 @@ position = Vector2(352, 640)
 
 [node name="BedroomDoor" parent="Door" unique_id=3908680 instance=ExtResource("2_2h0i3")]
 position = Vector2(576, 288)
-push_side_room = 1
+rotation = 3.1415927
+pull_side_room = 1
 
 [node name="BathroomDoor2" parent="Door" unique_id=1906740693 instance=ExtResource("2_2h0i3")]
 position = Vector2(576, 672)
-push_side_room = 2
+rotation = 3.1415927
+pull_side_room = 2
 
 [node name="Furniture" type="Node2D" parent="." unique_id=104837624]
 

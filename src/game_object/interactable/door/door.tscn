@@ -16,6 +16,13 @@ push_side_opened_sprite = NodePath("PushSideSprite/OpenedSprite")
 pull_side_opened_sprite = NodePath("PullSideSprite/OpenedSprite")
 push_side_marker = NodePath("PushSideMarker")
 pull_side_marker = NodePath("PullSideMarker")
+normal_color = null
+hover_color = null
+push_side_room = null
+pull_side_room = null
+door_opened_duration = null
+open_audio_key_name = null
+close_audio_key_name = null
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=1696370411 node_paths=PackedStringArray("interact_control")]
 script = ExtResource("3_yd8t2")

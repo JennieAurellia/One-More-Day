@@ -20,7 +20,11 @@ signal door_closed
 @export_subgroup("Door Settings")
 @export var push_side_room : EnumUtility.RoomName
 @export var pull_side_room : EnumUtility.RoomName
-@export var door_opened_duration : float = 0.3
+@export var door_opened_duration : float = 0.4
+
+@export_subgroup("Audio Settings")
+@export var open_sfx_name : String = "door_open"
+@export var close_sfx_name : String = "door_close"
 
 var _is_open : bool = false
 
@@ -68,16 +72,18 @@ func _move_player_to_pull_side():
 func _play_door_open() -> void:
 	# Check and update _is_open
 	if _is_open: return
-	_is_open = true
-	# Show door opened sprite
+	# Open door
 	push_side_opened_sprite.show()
 	pull_side_opened_sprite.show()
+	AudioManager.play_sfx(open_sfx_name)
+	_is_open = true
 	door_opened.emit()
 	# Wait for door_opened_duration
 	await get_tree().create_timer(door_opened_duration).timeout
 	# Close door
 	push_side_opened_sprite.hide()
 	pull_side_opened_sprite.hide()
+	AudioManager.play_sfx(close_sfx_name)
 	_is_open = false
 	door_closed.emit()
 

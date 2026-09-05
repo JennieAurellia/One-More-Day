@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://cuj2l05tajtcm"]
+
+[ext_resource type="Script" uid="uid://dx0ohvoe8j8h" path="res://src/game_system/audio_manager/audio_manager.gd" id="1_d1dws"]
+[ext_resource type="Script" uid="uid://cibt2xapu3plp" path="res://src/game_system/audio_manager/music_node.gd" id="2_nl8cb"]
+[ext_resource type="AudioStream" uid="uid://wa2x2j80rgdo" path="res://assets/audio/sfx/cooking.mp3" id="4_oaqwx"]
+[ext_resource type="AudioStream" uid="uid://j4u7oashj5ep" path="res://assets/audio/sfx/door_open.mp3" id="4_vnxg4"]
+[ext_resource type="Script" uid="uid://pe4f8jubqs0x" path="res://src/game_system/audio_manager/sound_node.gd" id="4_wi5rl"]
+[ext_resource type="AudioStream" uid="uid://ocfi047gxjij" path="res://assets/audio/sfx/walking.mp3" id="5_1hkc2"]
+[ext_resource type="AudioStream" uid="uid://lxt0golnnqs" path="res://assets/audio/sfx/door_close.mp3" id="5_t1p1a"]
+[ext_resource type="AudioStream" uid="uid://bng14mab4p5tu" path="res://assets/audio/sfx/showering.mp3" id="5_tsa1e"]
+[ext_resource type="AudioStream" uid="uid://c1b0q5vtd4cx1" path="res://assets/audio/sfx/shower_open.mp3" id="6_dyxeh"]
+[ext_resource type="Script" uid="uid://xbf0rpr1bbbu" path="res://src/game_system/audio_manager/sfx_node.gd" id="7_kw8fs"]
+[ext_resource type="AudioStream" uid="uid://frgvnwbkvlr0" path="res://assets/audio/sfx/shower_close.mp3" id="7_skg0w"]
+[ext_resource type="AudioStream" uid="uid://hjkp37gv7lj8" path="res://assets/audio/sfx/wardrobe_open.mp3" id="8_4cy4p"]
+[ext_resource type="AudioStream" uid="uid://ceyg6jo3t6oa7" path="res://assets/audio/sfx/wardrobe_close.mp3" id="9_3epof"]
+
+[node name="AudioManager" type="Node" unique_id=1936952167]
+script = ExtResource("1_d1dws")
+
+[node name="MusicNodes" type="Node" parent="." unique_id=499269409]
+
+[node name="MusicExample" type="AudioStreamPlayer" parent="MusicNodes" unique_id=1283061839]
+bus = &"Music"
+script = ExtResource("2_nl8cb")
+key_name = "example_music"
+metadata/_custom_type_script = "uid://cibt2xapu3plp"
+
+[node name="SFXNodes" type="Node2D" parent="." unique_id=2002133183]
+
+[node name="SFX example" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1237071939]
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "example_sfx"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="DoorOpen" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1198240880]
+stream = ExtResource("4_vnxg4")
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "door_open"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="DoorClose" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=2052966455]
+stream = ExtResource("5_t1p1a")
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "door_close"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="ShowerOpen" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1881271807]
+stream = ExtResource("6_dyxeh")
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "shower_open"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="ShowerClose" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1171684174]
+stream = ExtResource("7_skg0w")
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "shower_close"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="WardrobeOpen" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=77026017]
+stream = ExtResource("8_4cy4p")
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "wardrobe_open"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="WardrobeClose" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1452026071]
+stream = ExtResource("9_3epof")
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "wardrobe_close"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="SoundNodes" type="Node2D" parent="." unique_id=1795450649]
+
+[node name="Sound example" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=1611654890]
+bus = &"SFX"
+script = ExtResource("4_wi5rl")
+key_name = "sound_example"
+metadata/_custom_type_script = "uid://pe4f8jubqs0x"
+
+[node name="Walking1" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=1474366032]
+stream = ExtResource("5_1hkc2")
+pitch_scale = 1.25
+bus = &"SFX"
+parameters/looping = true
+script = ExtResource("4_wi5rl")
+key_name = "walking_1"
+metadata/_custom_type_script = "uid://pe4f8jubqs0x"
+
+[node name="Walking2" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=227661816]
+stream = ExtResource("5_1hkc2")
+bus = &"SFX"
+parameters/looping = true
+script = ExtResource("4_wi5rl")
+key_name = "walking_2"
+metadata/_custom_type_script = "uid://pe4f8jubqs0x"
+
+[node name="Cooking" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=1613692525]
+stream = ExtResource("4_oaqwx")
+volume_db = -2.0
+bus = &"SFX"
+parameters/looping = true
+script = ExtResource("4_wi5rl")
+key_name = "cooking"
+metadata/_custom_type_script = "uid://pe4f8jubqs0x"
+
+[node name="Showering" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=639044621]
+stream = ExtResource("5_tsa1e")
+volume_db = -2.0
+bus = &"SFX"
+parameters/looping = true
+script = ExtResource("4_wi5rl")
+key_name = "showering"
+metadata/_custom_type_script = "uid://pe4f8jubqs0x"
+
+[node name="AudioListener" type="AudioListener2D" parent="." unique_id=891480398]
+current = true

@@ -22,6 +22,9 @@ signal destination_reached(destination:Vector2)
 @export_subgroup("Room Settings")
 @export var initial_room : EnumUtility.RoomName
 
+@export_subgroup("Audio Settings")
+@export var walking_sound_name : String = "walking_2"
+
 var current_room : EnumUtility.RoomName
 
 var _target_position : Vector2
@@ -56,6 +59,7 @@ func _physics_process(delta: float) -> void:
 	_check_arrival()
 	_do_rotation(delta)
 	if elena_sprite: _do_animation()
+	_do_audio()
 
 # ==================================================================================================
 #                Movement methods
@@ -77,6 +81,21 @@ func _do_movement(delta:float) -> void:
 			velocity = Vector2.ZERO
 		move_and_slide()
 
+func _do_rotation(delta:float) -> void:
+	if velocity.length_squared() > 1.0: _target_rotation = velocity.angle()
+	if rotation_speed <= 0.0: rotation = _target_rotation
+	else: rotation = lerp_angle(rotation, _target_rotation, rotation_speed * delta)
+
+func _do_animation():
+	if _is_seated: return
+	if velocity.length_squared() > 1.0: elena_sprite.do_walk()
+	else: elena_sprite.do_idle()
+
+func _do_audio():
+	# Update walking sfx
+	if velocity != Vector2.ZERO: AudioManager.play_sound(walking_sound_name)
+	else: AudioManager.stop_sound(walking_sound_name)
+
 func _check_arrival() -> void:
 	if _has_arrived: return
 	var reached : bool = false
@@ -94,16 +113,6 @@ func _check_arrival() -> void:
 		elif not is_nan(_pending_facing_rotation):
 			_target_rotation = _pending_facing_rotation
 		arrived_at_destination.emit()
-
-func _do_rotation(delta:float) -> void:
-	if velocity.length_squared() > 1.0: _target_rotation = velocity.angle()
-	if rotation_speed <= 0.0: rotation = _target_rotation
-	else: rotation = lerp_angle(rotation, _target_rotation, rotation_speed * delta)
-
-func _do_animation():
-	if _is_seated: return
-	if velocity.length_squared() > 1.0: elena_sprite.do_walk()
-	else: elena_sprite.do_idle()
 
 func _move_to(new_position: Vector2, facing_rotation: float = NAN) -> void:
 	_has_arrived = false
