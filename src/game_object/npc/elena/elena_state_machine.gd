@@ -37,8 +37,14 @@ signal state_changed(state:NPCState)
 @export var cooking_stove : Stove
 @export var serving_food_marker : Marker2D
 @export var serving_food_facing : float
-@export var eating_seat_interactable : InteractableComponent
-@export var sofa_seat_interactable : InteractableComponent
+@export var serving_food_dining_table : DiningTable
+@export var eating_seat_1 : Seat
+@export var eating_seat_2 : Seat
+@export var eating_breakfast_1 : Breakfast
+@export var eating_breakfast_2 : Breakfast
+@export var sofa_seat_1 : Seat
+@export var sofa_seat_2 : Seat
+@export var sofa_seat_3 : Seat
 @export var showering_marker : Marker2D
 @export var showering_facing : float
 @export var showering_shower : Shower
@@ -68,8 +74,14 @@ func _ready() -> void:
 	assert(!schedule_dictionary.is_empty(), "schedule_dictionary is empty")
 	assert(cooking_stove, "cooking_stove is missing")
 	assert(serving_food_marker, "serving_food_marker is missing")
-	assert(eating_seat_interactable, "eating_seat_interactable is missing")
-	assert(sofa_seat_interactable, "sofa_seat_interactable is missing")
+	assert(serving_food_dining_table, "serving_food_dining_table is missing")
+	assert(eating_seat_1, "eating_seat_1 is missing")
+	assert(eating_seat_2, "eating_seat_2 is missing")
+	assert(eating_breakfast_1, "eating_breakfast_1 is missing")
+	assert(eating_breakfast_2, "eating_breakfast_2 is missing")
+	assert(sofa_seat_1, "sofa_seat_1 is missing")
+	assert(sofa_seat_2, "sofa_seat_2 is missing")
+	assert(sofa_seat_3, "sofa_seat_3 is missing")
 	assert(showering_marker, "showering_marker is missing")
 	assert(showering_shower, "showering_shower is missing")
 	assert(dressing_up_marker, "dressing_up_marker is missing")
@@ -84,7 +96,6 @@ func _ready() -> void:
 	_state_game_time_minute_timer = 0
 	_change_state_game_time_minute = schedule_dictionary[current_state]
 	_enter_state(current_state)
-
 
 # ==================================================================================================
 #                Dialogue methods
@@ -111,9 +122,11 @@ func change_state(state:NPCState):
 
 func _enter_state(state:NPCState) -> void:
 	match state:
+		
 		NPCState.COOKING:
 			npc.stand_up_if_seated()
 			cooking_stove.turn_on()
+		
 		NPCState.SERVING_FOOD:
 			npc.stand_up_if_seated()
 			npc.go_to(
@@ -122,13 +135,46 @@ func _enter_state(state:NPCState) -> void:
 				serving_food_facing
 			)
 			await npc.destination_reached
-			print("serving food")
+			serving_food_dining_table.place_breakfast()
+		
 		NPCState.EATING:
 			npc.stand_up_if_seated()
-			npc.go_to_interactable(eating_seat_interactable, EnumUtility.RoomName.MainRoom)
+			if eating_breakfast_1 and !eating_seat_1.is_occupied():
+				npc.go_to_interactable(
+					eating_seat_1.interactable_component, EnumUtility.RoomName.MainRoom
+				)
+				await npc.destination_reached
+				if eating_breakfast_1: eating_breakfast_1.eat()
+			elif eating_breakfast_2 and !eating_seat_2.is_occupied():
+				npc.go_to_interactable(
+					eating_seat_2.interactable_component, EnumUtility.RoomName.MainRoom
+				)
+				await npc.destination_reached
+				if eating_breakfast_2: eating_breakfast_2.eat()
+			elif !eating_seat_1.is_occupied():
+				npc.go_to_interactable(
+					eating_seat_1.interactable_component, EnumUtility.RoomName.MainRoom
+				)
+			else:
+				npc.go_to_interactable(
+					eating_seat_2.interactable_component, EnumUtility.RoomName.MainRoom
+				)
+		
 		NPCState.SITTING_SOFA:
 			npc.stand_up_if_seated()
-			npc.go_to_interactable(sofa_seat_interactable, EnumUtility.RoomName.MainRoom)
+			if !sofa_seat_1.is_occupied():
+				npc.go_to_interactable(
+					sofa_seat_1.interactable_component, EnumUtility.RoomName.MainRoom
+				)
+			elif !sofa_seat_2.is_occupied():
+				npc.go_to_interactable(
+					sofa_seat_2.interactable_component, EnumUtility.RoomName.MainRoom
+				)
+			else:
+				npc.go_to_interactable(
+					sofa_seat_3.interactable_component, EnumUtility.RoomName.MainRoom
+				)
+		
 		NPCState.SHOWERING:
 			npc.stand_up_if_seated()
 			npc.go_to(
@@ -138,6 +184,7 @@ func _enter_state(state:NPCState) -> void:
 			)
 			await npc.destination_reached
 			showering_shower.lock()
+		
 		NPCState.DRESSING_UP:
 			npc.stand_up_if_seated()
 			npc.go_to(
@@ -147,9 +194,11 @@ func _enter_state(state:NPCState) -> void:
 			)
 			await npc.destination_reached
 			dressing_up_wardrobe.open()
+		
 		NPCState.PUTTING_MAKEUP:
 			npc.stand_up_if_seated()
 			npc.go_to_interactable(putting_makeup_seat_interactable, EnumUtility.RoomName.Bedroom)
+		
 		NPCState.PHONE_CALL:
 			npc.stand_up_if_seated()
 			npc.go_to(
@@ -157,6 +206,7 @@ func _enter_state(state:NPCState) -> void:
 				EnumUtility.RoomName.Bedroom,
 				phone_call_facing
 			)
+		
 		NPCState.GOING_OUTSIDE:
 			npc.stand_up_if_seated()
 			npc.go_to(
@@ -166,6 +216,7 @@ func _enter_state(state:NPCState) -> void:
 			)
 			await npc.destination_reached
 			npc.queue_free()
+		
 		NPCState.ON_DIALOGUE: pass
 
 func _exit_state(state:NPCState) -> void:

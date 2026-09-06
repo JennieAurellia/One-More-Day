@@ -17,14 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://d27dyq8htkdkj" path="res://src/common/texture/furniture/plant_texture.tres" id="7_nkk2u"]
 [ext_resource type="PackedScene" uid="uid://q2pvo2jgdhmk" path="res://src/game_object/trigger_area/restart_area/restart_area.tscn" id="7_pqqlr"]
 [ext_resource type="Texture2D" uid="uid://jmo7odffftbs" path="res://src/common/texture/furniture/makeup_desk_chair_texture.tres" id="7_xdb2o"]
+[ext_resource type="PackedScene" uid="uid://bdayrxt886wft" path="res://src/game_object/interactable/dining_table/dining_table.tscn" id="9_nkk2u"]
 [ext_resource type="Texture2D" uid="uid://mwdm2oyyuyft" path="res://src/common/texture/furniture/kitchen_counter_left_texture.tres" id="9_pc20v"]
 [ext_resource type="Texture2D" uid="uid://du7lrfd3ey2we" path="res://src/common/texture/furniture/kitchen_counter_right_texture.tres" id="10_0yacf"]
 [ext_resource type="Texture2D" uid="uid://c07wnhhyowi8t" path="res://src/common/texture/furniture/trash_can_texture.tres" id="10_eys30"]
 [ext_resource type="Texture2D" uid="uid://kuam55g60hu1" path="res://src/common/texture/furniture/sofa_texture.tres" id="10_xdb2o"]
-[ext_resource type="Texture2D" uid="uid://dala6w6b72w86" path="res://src/common/texture/furniture/dining_table_texture.tres" id="11_ak3ks"]
 [ext_resource type="Script" uid="uid://dynocpxsiw65u" path="res://src/game_system/game_timer/game_timer.gd" id="11_vvmck"]
 [ext_resource type="Script" uid="uid://bgn5hyf5ulaan" path="res://src/game_system/door/door_manager.gd" id="12_glhkg"]
-[ext_resource type="Texture2D" uid="uid://bq4v7uqlmj424" path="res://src/common/texture/furniture/dining_table_chair_texture.tres" id="12_xf8ym"]
 [ext_resource type="PackedScene" uid="uid://dqcoct6jarokj" path="res://src/ui/game_timer/game_timer_ui.tscn" id="13_hn8je"]
 [ext_resource type="Texture2D" uid="uid://isxcrtv086pb" path="res://src/common/texture/furniture/carpet_texture.tres" id="14_88nxn"]
 [ext_resource type="Texture2D" uid="uid://d25nrdusabafc" path="res://src/common/texture/furniture/tv_texture.tres" id="14_xf8ym"]
@@ -129,60 +128,8 @@ rotation = -1.5707964
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("7_nkk2u")
 
-[node name="DiningTable" type="Node2D" parent="Furniture/MainRoom" unique_id=1533072102]
+[node name="DiningTable" parent="Furniture/MainRoom" unique_id=884398778 instance=ExtResource("9_nkk2u")]
 position = Vector2(904, 288)
-
-[node name="TableSprite" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=899906803]
-z_index = 1
-position = Vector2(6, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_ak3ks")
-
-[node name="ChairSprite1" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=2118622667]
-position = Vector2(-39, -70)
-rotation = 3.1415927
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("12_xf8ym")
-
-[node name="ChairSprite2" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=1005634121]
-position = Vector2(34, -70)
-rotation = 3.1415927
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("12_xf8ym")
-
-[node name="ChairSprite4" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=211206833]
-position = Vector2(-34, 73)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("12_xf8ym")
-
-[node name="ChairSprite5" type="Sprite2D" parent="Furniture/MainRoom/DiningTable" unique_id=1683317470]
-position = Vector2(39, 73)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("12_xf8ym")
-
-[node name="Seat1" parent="Furniture/MainRoom/DiningTable" unique_id=1169392834 instance=ExtResource("4_glhkg")]
-position = Vector2(-37, -64)
-rotation = -1.5707964
-sit_facing_degrees = 90.0
-is_sitting_legless = true
-
-[node name="Seat2" parent="Furniture/MainRoom/DiningTable" unique_id=292414821 instance=ExtResource("4_glhkg")]
-position = Vector2(37, -64)
-rotation = -1.5707964
-sit_facing_degrees = 90.0
-is_sitting_legless = true
-
-[node name="Seat4" parent="Furniture/MainRoom/DiningTable" unique_id=809044561 instance=ExtResource("4_glhkg")]
-position = Vector2(-37, 66)
-rotation = -1.5707964
-sit_facing_degrees = -90.0
-is_sitting_legless = true
-
-[node name="Seat5" parent="Furniture/MainRoom/DiningTable" unique_id=457308930 instance=ExtResource("4_glhkg")]
-position = Vector2(37, 66)
-rotation = -1.5707964
-sit_facing_degrees = -90.0
-is_sitting_legless = true
 
 [node name="Carpet" type="Node2D" parent="Furniture/MainRoom" unique_id=1959914046]
 position = Vector2(848, 576)
@@ -201,7 +148,7 @@ rotation = 3.1415927
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_xdb2o")
 
-[node name="Seat" parent="Furniture/MainRoom/Sofa" unique_id=1045578206 instance=ExtResource("4_glhkg")]
+[node name="Seat1" parent="Furniture/MainRoom/Sofa" unique_id=1045578206 instance=ExtResource("4_glhkg")]
 position = Vector2(-45, 25)
 rotation = -1.5707964
 sit_facing_degrees = 180.0
@@ -325,12 +272,18 @@ rotation = -1.5707964
 position = Vector2(884, 151)
 rotation = -1.5707964
 
-[node name="ElenaStateMachine" parent="Elena" index="0" unique_id=1905983306 node_paths=PackedStringArray("cooking_stove", "serving_food_marker", "eating_seat_interactable", "sofa_seat_interactable", "showering_marker", "showering_shower", "dressing_up_marker", "dressing_up_wardrobe", "putting_makeup_seat_interactable", "phone_call_marker", "going_outside_marker")]
+[node name="ElenaStateMachine" parent="Elena" index="0" unique_id=1905983306 node_paths=PackedStringArray("cooking_stove", "serving_food_marker", "serving_food_dining_table", "eating_seat_1", "eating_seat_2", "eating_breakfast_1", "eating_breakfast_2", "sofa_seat_1", "sofa_seat_2", "sofa_seat_3", "showering_marker", "showering_shower", "dressing_up_marker", "dressing_up_wardrobe", "putting_makeup_seat_interactable", "phone_call_marker", "going_outside_marker")]
 cooking_stove = NodePath("../../Furniture/MainRoom/KitchenCounter/Stove")
 serving_food_marker = NodePath("../../NPCPosition/ServingMarker")
 serving_food_facing = 180.0
-eating_seat_interactable = NodePath("../../Furniture/MainRoom/DiningTable/Seat1/InteractableComponent")
-sofa_seat_interactable = NodePath("../../Furniture/MainRoom/Sofa/Seat/InteractableComponent")
+serving_food_dining_table = NodePath("../../Furniture/MainRoom/DiningTable")
+eating_seat_1 = NodePath("../../Furniture/MainRoom/DiningTable/Seat2")
+eating_seat_2 = NodePath("../../Furniture/MainRoom/DiningTable/Seat4")
+eating_breakfast_1 = NodePath("../../Furniture/MainRoom/DiningTable/Breakfast1")
+eating_breakfast_2 = NodePath("../../Furniture/MainRoom/DiningTable/Breakfast2")
+sofa_seat_1 = NodePath("../../Furniture/MainRoom/Sofa/Seat1")
+sofa_seat_2 = NodePath("../../Furniture/MainRoom/Sofa/Seat2")
+sofa_seat_3 = NodePath("../../Furniture/MainRoom/Sofa/Seat3")
 showering_marker = NodePath("../../NPCPosition/ShoweringMarker")
 showering_facing = 180.0
 showering_shower = NodePath("../../Furniture/Bathroom/Shower")
@@ -420,11 +373,8 @@ grow_horizontal = 2
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
 
 [editable path="Furniture/MainRoom/KitchenCounter/Stove"]
-[editable path="Furniture/MainRoom/DiningTable/Seat1"]
-[editable path="Furniture/MainRoom/DiningTable/Seat2"]
-[editable path="Furniture/MainRoom/DiningTable/Seat4"]
-[editable path="Furniture/MainRoom/DiningTable/Seat5"]
-[editable path="Furniture/MainRoom/Sofa/Seat"]
+[editable path="Furniture/MainRoom/DiningTable"]
+[editable path="Furniture/MainRoom/Sofa/Seat1"]
 [editable path="Furniture/MainRoom/Sofa/Seat2"]
 [editable path="Furniture/MainRoom/Sofa/Seat3"]
 [editable path="Furniture/Bedroom/MakeupDesk/Seat"]

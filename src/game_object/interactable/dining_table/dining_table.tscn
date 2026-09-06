@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bdayrxt886wft"]
+
+[ext_resource type="Texture2D" uid="uid://dala6w6b72w86" path="res://src/common/texture/furniture/dining_table_texture.tres" id="1_a1r8f"]
+[ext_resource type="Script" uid="uid://cgwuhxyakc13k" path="res://src/game_object/interactable/dining_table/dining_table.gd" id="1_fk42a"]
+[ext_resource type="Texture2D" uid="uid://bq4v7uqlmj424" path="res://src/common/texture/furniture/dining_table_chair_texture.tres" id="2_fk42a"]
+[ext_resource type="PackedScene" uid="uid://ck5tmwg6qc7ia" path="res://src/game_object/interactable/seat/seat.tscn" id="3_yojbi"]
+[ext_resource type="PackedScene" uid="uid://c628ql8cr8cc7" path="res://src/game_object/interactable/breakfast/breakfast.tscn" id="5_r61xg"]
+
+[node name="DiningTable" type="Node2D" unique_id=884398778 node_paths=PackedStringArray("breakfast_1", "breakfast_2")]
+script = ExtResource("1_fk42a")
+breakfast_1 = NodePath("Breakfast1")
+breakfast_2 = NodePath("Breakfast2")
+
+[node name="TableSprite" type="Sprite2D" parent="." unique_id=566435123]
+z_index = 1
+position = Vector2(6, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_a1r8f")
+
+[node name="ChairSprite1" type="Sprite2D" parent="." unique_id=1867177923]
+position = Vector2(-39, -70)
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fk42a")
+
+[node name="ChairSprite2" type="Sprite2D" parent="." unique_id=691257284]
+position = Vector2(34, -70)
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fk42a")
+
+[node name="ChairSprite4" type="Sprite2D" parent="." unique_id=963697098]
+position = Vector2(-34, 73)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fk42a")
+
+[node name="ChairSprite5" type="Sprite2D" parent="." unique_id=1195870376]
+position = Vector2(39, 73)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fk42a")
+
+[node name="Seat1" parent="." unique_id=1889117093 instance=ExtResource("3_yojbi")]
+position = Vector2(-37, -64)
+rotation = -1.5707964
+sit_facing_degrees = 90.0
+is_sitting_legless = true
+
+[node name="Seat2" parent="." unique_id=2121809537 instance=ExtResource("3_yojbi")]
+position = Vector2(37, -64)
+rotation = -1.5707964
+sit_facing_degrees = 90.0
+is_sitting_legless = true
+
+[node name="Seat3" parent="." unique_id=303663562 instance=ExtResource("3_yojbi")]
+position = Vector2(-37, 66)
+rotation = -1.5707964
+sit_facing_degrees = -90.0
+is_sitting_legless = true
+
+[node name="Seat4" parent="." unique_id=1839819985 instance=ExtResource("3_yojbi")]
+position = Vector2(37, 66)
+rotation = -1.5707964
+sit_facing_degrees = -90.0
+is_sitting_legless = true
+
+[node name="Breakfast1" parent="." unique_id=1850477271 instance=ExtResource("5_r61xg")]
+z_index = 1
+position = Vector2(37, -32)
+rotation = 3.1415927
+
+[node name="Breakfast2" parent="." unique_id=1950281190 instance=ExtResource("5_r61xg")]
+z_index = 1
+position = Vector2(37, 35)

@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://frgvnwbkvlr0" path="res://assets/audio/sfx/shower_close.mp3" id="7_skg0w"]
 [ext_resource type="AudioStream" uid="uid://hjkp37gv7lj8" path="res://assets/audio/sfx/wardrobe_open.mp3" id="8_4cy4p"]
 [ext_resource type="AudioStream" uid="uid://ceyg6jo3t6oa7" path="res://assets/audio/sfx/wardrobe_close.mp3" id="9_3epof"]
+[ext_resource type="AudioStream" uid="uid://d1iink1bvdggl" path="res://assets/audio/sfx/plate_drop.mp3" id="10_g1u4r"]
+[ext_resource type="AudioStream" uid="uid://c1e771815uiup" path="res://assets/audio/sfx/eat.mp3" id="11_nf6mi"]
 
 [node name="AudioManager" type="Node" unique_id=1936952167]
 script = ExtResource("1_d1dws")
@@ -73,6 +75,20 @@ stream = ExtResource("9_3epof")
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "wardrobe_close"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="PlateDrop" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1860552080]
+stream = ExtResource("10_g1u4r")
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "plate_drop"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="Eat" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1801618572]
+stream = ExtResource("11_nf6mi")
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "eat"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="SoundNodes" type="Node2D" parent="." unique_id=1795450649]
