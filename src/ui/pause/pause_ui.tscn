@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://w02ehvcuifea" path="res://src/ui/pause/pause_ui.gd" id="1_hmh33"]
 [ext_resource type="Texture2D" uid="uid://lcl3laypg6eu" path="res://assets/UI/UI_pause BG.png" id="2_skbbu"]
-[ext_resource type="PackedScene" uid="uid://l2nnv5bayhs4" path="res://src/ui/component/button/main_button.tscn" id="3_5ohp8"]
+[ext_resource type="PackedScene" uid="uid://l2nnv5bayhs4" path="res://src/ui/component/main_button/main_button.tscn" id="3_5ohp8"]
 
 [node name="PauseUI" type="Control" unique_id=235246552 node_paths=PackedStringArray("resume_button", "quit_button")]
 process_mode = 3

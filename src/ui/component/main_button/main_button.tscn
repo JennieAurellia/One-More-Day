@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://l2nnv5bayhs4"]
 
 [ext_resource type="Texture2D" uid="uid://btrq1tfmm4mmk" path="res://src/common/texture/ui/button_normal_texture.tres" id="1_ki65x"]
-[ext_resource type="Script" uid="uid://bf0ini4bcbr3m" path="res://src/ui/component/button/main_button.gd" id="1_lpn5d"]
+[ext_resource type="Script" uid="uid://bf0ini4bcbr3m" path="res://src/ui/component/main_button/main_button.gd" id="1_lpn5d"]
 [ext_resource type="Texture2D" uid="uid://qosognnyk6pm" path="res://src/common/texture/ui/button_hover_texture.tres" id="2_a0th0"]
 
 [node name="MainButton" type="Button" unique_id=1502458938 node_paths=PackedStringArray("normal_texture_rect", "hover_texture_rect", "press_texture_rect", "text_label")]

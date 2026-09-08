@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://jsyksc4but2l"]
+
+[ext_resource type="Texture2D" uid="uid://dq5qgijmamr0y" path="res://src/common/texture/ui/response_normal_texture.tres" id="1_0h2uw"]
+[ext_resource type="Script" uid="uid://cnbbu2s4hvhaw" path="res://src/ui/component/response_button/response_button.gd" id="1_t4xm5"]
+[ext_resource type="Texture2D" uid="uid://b2o3xhfxyb50m" path="res://src/common/texture/ui/response_hover_texture.tres" id="2_kx3sn"]
+
+[node name="ResponseButton" type="TextureButton" unique_id=624549537 node_paths=PackedStringArray("text_label")]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 500.0
+offset_bottom = 40.0
+focus_mode = 0
+texture_normal = ExtResource("1_0h2uw")
+texture_pressed = ExtResource("2_kx3sn")
+texture_hover = ExtResource("2_kx3sn")
+texture_disabled = ExtResource("1_0h2uw")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_t4xm5")
+text_label = NodePath("TextLabel")
+
+[node name="TextLabel" type="Label" parent="." unique_id=1940812368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Response"
+horizontal_alignment = 1
+vertical_alignment = 1

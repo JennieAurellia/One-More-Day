@@ -5,7 +5,7 @@ class_name DialogueUI
 static var instance : DialogueUI
 
 @export_subgroup("Reference")
-@export var dialogue_character_view : DialogueCharacterView
+@export var dialogue_view : DialogueView
 
 @export_subgroup("Dialogue Settings")
 ## The dialogue resource
@@ -84,7 +84,7 @@ func _ready() -> void:
 	add_child(mutation_cooldown)
 	
 	# Assertion check
-	assert(dialogue_character_view, "dialogue_character_view is missing")
+	assert(dialogue_view, "dialogue_view is missing")
 	# Connect signals
 	DialogueManager.dialogue_started.connect(func(resource: DialogueResource):
 		#EventBus.input_status_changed.emit(false)
@@ -241,12 +241,9 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 #                Custom methods
 # ==================================================================================================
 #region Custom
-func show_character_sprite(
-	character_position:DialogueCharacterView.CharacterPosition,
-	character_name:String
-):
-	dialogue_character_view.show_character_sprite(character_position, character_name)
+func show_sprite(view_position:DialogueView.ViewPosition, sprite_name:String):
+	dialogue_view.show_sprite(view_position, sprite_name)
 
-func hide_character_sprite(character_position:DialogueCharacterView.CharacterPosition):
-	dialogue_character_view.hide_character_sprite(character_position)
+func hide_sprite(view_position:DialogueView.ViewPosition):
+	dialogue_view.hide_sprite(view_position)
 #endregion

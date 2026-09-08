@@ -522,10 +522,17 @@ func show_example_dialogue_balloon(resource: DialogueResource, title: String = "
 
 ## Show the configured dialogue balloon
 func show_dialogue_balloon(resource: DialogueResource, title: String = "", extra_game_states: Array = []) -> Node:
-	var balloon_path: String = DMSettings.get_setting(DMSettings.BALLOON_PATH, _get_example_balloon_path())
-	if not ResourceLoader.exists(balloon_path):
-		balloon_path = _get_example_balloon_path()
-	return show_dialogue_balloon_scene(balloon_path, resource, title, extra_game_states)
+	#var balloon_path: String = DMSettings.get_setting(DMSettings.BALLOON_PATH, _get_example_balloon_path())
+	#if not ResourceLoader.exists(balloon_path):
+		#balloon_path = _get_example_balloon_path()
+	#return show_dialogue_balloon_scene(balloon_path, resource, title, extra_game_states)
+	
+	# Skips creating new ballon and uses DialogueUI
+	if !DialogueUI.instance:
+		push_error("Unable to start dialogue")
+		return
+	_start_balloon.call_deferred(DialogueUI.instance, resource, title, extra_game_states)
+	return DialogueUI.instance
 
 
 ## Show a given balloon scene
@@ -556,7 +563,8 @@ func static_id_to_line_ids(resource: DialogueResource, static_id: String) -> Pac
 func _start_balloon(balloon: Node, resource: DialogueResource, title: String, extra_game_states: Array) -> void:
 	dialogue_started.emit(resource)
 
-	get_current_scene.call().add_child(balloon)
+	if balloon != DialogueUI.instance:
+		get_current_scene.call().add_child(balloon)
 
 	if balloon.has_method(&"start"):
 		balloon.start(resource, title, extra_game_states)
