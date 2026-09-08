@@ -232,6 +232,7 @@ func _on_interactable_hovered(): if interact_hover_ui: interact_hover_ui.show()
 func _on_interactable_unhovered(): if interact_hover_ui: interact_hover_ui.hide()
 
 func _on_interactable_interacted():
+	if interact_hover_ui: interact_hover_ui.hide()
 	enter_dialogue()
 	DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, "talk")
 	await DialogueManager.dialogue_ended

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dda637k8wqb27"]
+
+[ext_resource type="Texture2D" uid="uid://kuam55g60hu1" path="res://src/common/texture/furniture/sofa_texture.tres" id="1_uuihe"]
+[ext_resource type="PackedScene" uid="uid://ck5tmwg6qc7ia" path="res://src/game_object/interactable/seat/seat.tscn" id="2_cdjdq"]
+
+[node name="Sofa" type="Node2D" unique_id=1640489733]
+rotation = 1.5707964
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=918826100]
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_uuihe")
+
+[node name="Seat1" parent="." unique_id=1889117093 instance=ExtResource("2_cdjdq")]
+position = Vector2(-45, 25)
+rotation = -1.5707964
+sit_facing_degrees = 180.0
+
+[node name="InteractHoverUI" parent="Seat1/InteractControl" parent_id_path=PackedInt32Array(1889117093, 477200489) index="0" unique_id=467594439]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+
+[node name="TextLabel" parent="Seat1/InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 74.0
+offset_right = 133.0
+scale = Vector2(-1, 1)
+
+[node name="Seat2" parent="." unique_id=1387393687 instance=ExtResource("2_cdjdq")]
+position = Vector2(2, 25)
+rotation = -1.5707964
+sit_facing_degrees = 180.0
+
+[node name="InteractHoverUI" parent="Seat2/InteractControl" parent_id_path=PackedInt32Array(1387393687, 477200489) index="0" unique_id=467594439]
+scale = Vector2(-1, 1)
+
+[node name="TextLabel" parent="Seat2/InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 74.0
+offset_right = 133.0
+scale = Vector2(-1, 1)
+
+[node name="Seat3" parent="." unique_id=745480949 instance=ExtResource("2_cdjdq")]
+position = Vector2(49, 25)
+rotation = -1.5707964
+sit_facing_degrees = 180.0
+
+[node name="InteractHoverUI" parent="Seat3/InteractControl" parent_id_path=PackedInt32Array(745480949, 477200489) index="0" unique_id=467594439]
+scale = Vector2(-1, 1)
+
+[node name="TextLabel" parent="Seat3/InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 74.0
+offset_right = 133.0
+scale = Vector2(-1, 1)
+
+[editable path="Seat1"]
+[editable path="Seat1/InteractControl/InteractHoverUI"]
+[editable path="Seat2"]
+[editable path="Seat2/InteractControl/InteractHoverUI"]
+[editable path="Seat3"]
+[editable path="Seat3/InteractControl/InteractHoverUI"]

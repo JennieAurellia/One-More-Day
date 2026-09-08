@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://mwdm2oyyuyft" path="res://src/common/texture/furniture/kitchen_counter_left_texture.tres" id="9_pc20v"]
 [ext_resource type="Texture2D" uid="uid://du7lrfd3ey2we" path="res://src/common/texture/furniture/kitchen_counter_right_texture.tres" id="10_0yacf"]
 [ext_resource type="Texture2D" uid="uid://c07wnhhyowi8t" path="res://src/common/texture/furniture/trash_can_texture.tres" id="10_eys30"]
-[ext_resource type="Texture2D" uid="uid://kuam55g60hu1" path="res://src/common/texture/furniture/sofa_texture.tres" id="10_xdb2o"]
+[ext_resource type="PackedScene" uid="uid://dda637k8wqb27" path="res://src/game_object/interactable/sofa/sofa.tscn" id="11_vfhfr"]
 [ext_resource type="Script" uid="uid://dynocpxsiw65u" path="res://src/game_system/game_timer/game_timer.gd" id="11_vvmck"]
 [ext_resource type="Script" uid="uid://bgn5hyf5ulaan" path="res://src/game_system/door/door_manager.gd" id="12_glhkg"]
 [ext_resource type="PackedScene" uid="uid://dqcoct6jarokj" path="res://src/ui/game_timer/game_timer_ui.tscn" id="13_hn8je"]
@@ -161,29 +161,8 @@ rotation = 1.5707964
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("14_88nxn")
 
-[node name="Sofa" type="Node2D" parent="Furniture/MainRoom" unique_id=440559511]
+[node name="Sofa" parent="Furniture/MainRoom" unique_id=1640489733 instance=ExtResource("11_vfhfr")]
 position = Vector2(984, 579.99994)
-rotation = 1.5707964
-
-[node name="Sprite" type="Sprite2D" parent="Furniture/MainRoom/Sofa" unique_id=941662492]
-rotation = 3.1415927
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_xdb2o")
-
-[node name="Seat1" parent="Furniture/MainRoom/Sofa" unique_id=1045578206 instance=ExtResource("4_glhkg")]
-position = Vector2(-45, 25)
-rotation = -1.5707964
-sit_facing_degrees = 180.0
-
-[node name="Seat2" parent="Furniture/MainRoom/Sofa" unique_id=762686392 instance=ExtResource("4_glhkg")]
-position = Vector2(2, 25)
-rotation = -1.5707964
-sit_facing_degrees = 180.0
-
-[node name="Seat3" parent="Furniture/MainRoom/Sofa" unique_id=1905377896 instance=ExtResource("4_glhkg")]
-position = Vector2(49, 25)
-rotation = -1.5707964
-sit_facing_degrees = 180.0
 
 [node name="LivingRoomTable" type="Node2D" parent="Furniture/MainRoom" unique_id=1164714145]
 position = Vector2(856, 583.99994)
@@ -422,6 +401,7 @@ mouse_filter = 2
 [editable path="Furniture/MainRoom/DiningTable"]
 [editable path="Furniture/MainRoom/DiningTable/Breakfast1"]
 [editable path="Furniture/MainRoom/DiningTable/Breakfast1/InteractControl/InteractHoverUI"]
+[editable path="Furniture/MainRoom/Sofa"]
 [editable path="Furniture/MainRoom/Sofa/Seat1"]
 [editable path="Furniture/MainRoom/Sofa/Seat1/InteractControl/InteractHoverUI"]
 [editable path="Furniture/MainRoom/Sofa/Seat2"]

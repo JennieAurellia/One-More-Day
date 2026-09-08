@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://btrq1tfmm4mmk" path="res://src/common/texture/ui/button_normal_texture.tres" id="1_elxsy"]
 
 [node name="InteractHoverUI" type="Control" unique_id=467594439]
+z_index = 3
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
@@ -21,9 +22,9 @@ stretch_mode = 5
 texture_filter = 1
 layout_mode = 0
 offset_left = 16.0
-offset_top = -4.0
+offset_top = -3.0
 offset_right = 75.0
-offset_bottom = 13.0
+offset_bottom = 14.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 1

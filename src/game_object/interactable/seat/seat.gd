@@ -55,13 +55,14 @@ func stand_up() -> void:
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_interactable_hovered(): interact_hover_ui.show()
+func _on_interactable_hovered(): if !_current_occupant: interact_hover_ui.show()
 
 func _on_interactable_unhovered(): interact_hover_ui.hide()
 
 func _on_interactable_interacted():
 	if _current_occupant == Player.instance: stand_up()
 	elif !is_occupied(): sit_actor(Player.instance)
+	interact_hover_ui.hide()
 
 func _on_interactable_interacted_by_npc(npc:Node) -> void:
 	sit_actor(npc)
