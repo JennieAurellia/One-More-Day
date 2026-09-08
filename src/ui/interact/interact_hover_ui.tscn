@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://wheuyg384j0u"]
+
+[ext_resource type="Texture2D" uid="uid://btrq1tfmm4mmk" path="res://src/common/texture/ui/button_normal_texture.tres" id="1_elxsy"]
+
+[node name="InteractHoverUI" type="Control" unique_id=467594439]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1567503579]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -23.0
+offset_right = 76.0
+offset_bottom = 14.735851
+texture = ExtResource("1_elxsy")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="TextLabel" type="Label" parent="." unique_id=1180517548]
+texture_filter = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = -4.0
+offset_right = 75.0
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 14
+text = "Interact?"
+horizontal_alignment = 1

@@ -12,6 +12,8 @@ signal door_closed
 @export var pull_side_opened_sprite : Sprite2D
 @export var push_side_marker : Marker2D
 @export var pull_side_marker : Marker2D
+@export var push_interact_hover_ui : Control
+@export var pull_interact_hover_ui : Control
 
 @export_subgroup("Interact Settings")
 @export var normal_color : Color = Color.WHITE
@@ -43,6 +45,8 @@ func _ready() -> void:
 	assert(pull_side_opened_sprite, "pull_side_opened_sprite is missing")
 	assert(push_side_marker, "push_side_marker is missing")
 	assert(pull_side_marker, "pull_side_marker is missing")
+	assert(push_interact_hover_ui, "pull_side_marker is missing")
+	assert(pull_interact_hover_ui, "pull_side_marker is missing")
 	assert(
 		push_side_room != pull_side_room, "push_side_room and pull_side_room are the same"
 	)
@@ -54,6 +58,8 @@ func _ready() -> void:
 	# Initialize
 	push_side_opened_sprite.hide()
 	pull_side_opened_sprite.hide()
+	push_interact_hover_ui.hide()
+	pull_interact_hover_ui.hide()
 	DoorManager.instance.register_door(self)
 
 # ==================================================================================================
@@ -91,12 +97,12 @@ func _play_door_open() -> void:
 #                Signal listener methods
 # ==================================================================================================
 func _on_interactable_hovered():
-	push_side_door_sprite.modulate = hover_color
-	pull_side_door_sprite.modulate = hover_color
+	push_interact_hover_ui.show()
+	pull_interact_hover_ui.show()
 
 func _on_interactable_unhovered():
-	push_side_door_sprite.modulate = normal_color
-	pull_side_door_sprite.modulate = normal_color
+	push_interact_hover_ui.hide()
+	pull_interact_hover_ui.hide()
 
 func _on_interactable_interacted():
 	if Camera.instance.current_room == push_side_room:

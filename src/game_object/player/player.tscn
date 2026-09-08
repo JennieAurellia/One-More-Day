@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8uk1p3wu3wvw"]
 
 [ext_resource type="Script" uid="uid://b0lrowxldv2v8" path="res://src/game_object/player/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://y7cehoai2xsw" path="res://src/game_object/effect/walk_click_particle.tscn" id="2_pgve7"]
 [ext_resource type="SpriteFrames" uid="uid://bdas7cq3ng6fg" path="res://src/game_object/player/player_sprite_frames.tres" id="4_mq35q"]
 [ext_resource type="Script" uid="uid://r8e8he5sixc" path="res://src/game_object/player/player_sprite.gd" id="5_kiuqt"]
 
@@ -10,6 +11,7 @@
 script = ExtResource("1_4flbx")
 player_sprite = NodePath("Sprite")
 nav_agent = NodePath("NavigationAgent")
+move_click_particle_scene = ExtResource("2_pgve7")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=193840940]
 rotation = 1.5707964

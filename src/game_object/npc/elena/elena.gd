@@ -9,7 +9,7 @@ signal destination_reached(destination:Vector2)
 @export var interactable_component : InteractableComponent
 @export var elena_sprite : ElenaSprite
 @export var nav_agent : NavigationAgent2D
-@export var interact_color_rect : ColorRect
+@export var interact_hover_ui : Control
 
 @export_subgroup("Movement Settings")
 @export var movement_speed : float = 200.0
@@ -49,7 +49,7 @@ func _ready() -> void:
 	if nav_agent: nav_agent.velocity_computed.connect(_on_velocity_computed)
 	# Initialize
 	if nav_agent: nav_agent.max_speed = movement_speed
-	if interact_color_rect: interact_color_rect.hide()
+	if interact_hover_ui: interact_hover_ui.hide()
 	_target_position = global_position
 	_target_rotation = rotation
 	current_room = initial_room
@@ -60,9 +60,10 @@ func _physics_process(delta: float) -> void:
 	_do_rotation(delta)
 	if elena_sprite: _do_animation()
 	_do_audio()
+	_update_interact_hover()
 
 # ==================================================================================================
-#                Movement methods
+#                Main methods
 # ==================================================================================================
 func _do_movement(delta:float) -> void:
 	if _is_seated or _is_in_dialogue:
@@ -120,6 +121,9 @@ func _move_to(new_position: Vector2, facing_rotation: float = NAN) -> void:
 	_pending_facing_rotation = facing_rotation
 	_target_position = new_position
 	if nav_agent: nav_agent.target_position = new_position
+
+func _update_interact_hover():
+	if interact_hover_ui: interact_hover_ui.rotation = -rotation
 
 # ==================================================================================================
 #                NPC methods
@@ -223,9 +227,9 @@ func _travel_through_doors(destination_room:EnumUtility.RoomName, travel_id:int)
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_interactable_hovered(): if interact_color_rect: interact_color_rect.show()
+func _on_interactable_hovered(): if interact_hover_ui: interact_hover_ui.show()
 
-func _on_interactable_unhovered(): if interact_color_rect: interact_color_rect.hide()
+func _on_interactable_unhovered(): if interact_hover_ui: interact_hover_ui.hide()
 
 func _on_interactable_interacted():
 	enter_dialogue()

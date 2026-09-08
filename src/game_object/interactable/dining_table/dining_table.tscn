@@ -41,25 +41,21 @@ texture = ExtResource("2_fk42a")
 
 [node name="Seat1" parent="." unique_id=1889117093 instance=ExtResource("3_yojbi")]
 position = Vector2(-37, -64)
-rotation = -1.5707964
 sit_facing_degrees = 90.0
 is_sitting_legless = true
 
 [node name="Seat2" parent="." unique_id=2121809537 instance=ExtResource("3_yojbi")]
 position = Vector2(37, -64)
-rotation = -1.5707964
 sit_facing_degrees = 90.0
 is_sitting_legless = true
 
 [node name="Seat3" parent="." unique_id=303663562 instance=ExtResource("3_yojbi")]
 position = Vector2(-37, 66)
-rotation = -1.5707964
 sit_facing_degrees = -90.0
 is_sitting_legless = true
 
 [node name="Seat4" parent="." unique_id=1839819985 instance=ExtResource("3_yojbi")]
 position = Vector2(37, 66)
-rotation = -1.5707964
 sit_facing_degrees = -90.0
 is_sitting_legless = true
 
@@ -68,6 +64,12 @@ z_index = 1
 position = Vector2(37, -32)
 rotation = 3.1415927
 
+[node name="InteractHoverUI" parent="Breakfast1/InteractControl" parent_id_path=PackedInt32Array(1850477271, 691401749) index="0" unique_id=467594439]
+rotation = 3.1415927
+
 [node name="Breakfast2" parent="." unique_id=1950281190 instance=ExtResource("5_r61xg")]
 z_index = 1
 position = Vector2(37, 35)
+
+[editable path="Breakfast1"]
+[editable path="Breakfast1/InteractControl/InteractHoverUI"]

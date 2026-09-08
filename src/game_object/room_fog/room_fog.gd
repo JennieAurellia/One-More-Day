@@ -42,6 +42,7 @@ func _ready() -> void:
 # ==================================================================================================
 func change_to_room(room:EnumUtility.RoomName) -> void:
 	# Check is valid
+	if room == EnumUtility.RoomName.OUTSIDE: return
 	if not room_rect_dictionary.has(room):
 		push_error("Room '%s' not found in room_rect_dictionary" % room)
 		return

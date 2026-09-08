@@ -51,6 +51,7 @@ func _process(delta: float) -> void:
 # ==================================================================================================
 func change_to_room(room:EnumUtility.RoomName) -> void:
 	# Check is valid
+	if room == EnumUtility.RoomName.OUTSIDE: return
 	if not room_position_dictionary.has(room):
 		push_error("Room '%s' not found in room_dictionary" % room)
 		return

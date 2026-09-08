@@ -45,6 +45,7 @@ func _unpause() -> void:
 func _quit_game() -> void:
 	get_tree().paused = false
 	AudioManager.stop_music()
+	AudioManager.clear_all_sfx()
 	AudioManager.stop_all_sound()
 	get_tree().change_scene_to_file(quit_scene_path)
 

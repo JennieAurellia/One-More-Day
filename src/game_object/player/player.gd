@@ -19,6 +19,10 @@ static var instance : Player
 ## How close the player needs to be to the interactable before it triggers.
 @export var interact_distance : float = 40.0
 
+@export_subgroup("Effect Settings")
+@export var effect_parent : Node2D
+@export var move_click_particle_scene : PackedScene
+
 @export_subgroup("Audio Settings")
 @export var walking_sound_name : String = "walking_1"
 
@@ -138,11 +142,24 @@ func _left_mouse_interaction():
 	else:
 		# Regular point-and-click movement, cancel any pending interaction
 		_pending_interactable = null
-		_move_to(get_global_mouse_position())
+		var mouse_position : Vector2 = get_global_mouse_position()
+		_move_to(mouse_position)
+		_create_walk_click_effect(mouse_position)
 
 func _move_to(new_position:Vector2):
 	if nav_agent: nav_agent.target_position = new_position
 	else: _target_position = new_position
+
+func _create_walk_click_effect(effect_position:Vector2):
+	if !move_click_particle_scene: return
+	var move_click_particle_instance : CPUParticles2D = move_click_particle_scene.instantiate()
+	if effect_parent: effect_parent.add_child(move_click_particle_instance)
+	else: get_tree().add_child(move_click_particle_instance)
+	move_click_particle_instance.global_position = effect_position
+	move_click_particle_instance.emitting = true
+	var lifetime : float = move_click_particle_instance.lifetime
+	await get_tree().create_timer(lifetime).timeout
+	move_click_particle_instance.queue_free()
 
 # ==================================================================================================
 #                Signal listener methods

@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bdymlpbhlbdmu" path="res://src/game_object/interactable/seat/seat.gd" id="1_qbbp7"]
 [ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="2_hlf7r"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="4_kfwmq"]
 
-[node name="Seat" type="Node2D" unique_id=1889117093 node_paths=PackedStringArray("interactable_component", "interact_color_rect")]
+[node name="Seat" type="Node2D" unique_id=1889117093 node_paths=PackedStringArray("interactable_component", "interact_hover_ui")]
 script = ExtResource("1_qbbp7")
 interactable_component = NodePath("InteractableComponent")
-interact_color_rect = NodePath("InteractControl/InteractColorRect")
+interact_hover_ui = NodePath("InteractControl/InteractHoverUI")
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=1089711554 node_paths=PackedStringArray("interact_control")]
 script = ExtResource("2_hlf7r")
@@ -28,12 +29,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="InteractColorRect" type="ColorRect" parent="InteractControl" unique_id=2145310550]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 1, 0, 0.5882353)
+[node name="InteractHoverUI" parent="InteractControl" unique_id=467594439 instance=ExtResource("4_kfwmq")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="TextLabel" parent="InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+text = "Sit?"
+
+[editable path="InteractControl/InteractHoverUI"]

@@ -6,7 +6,7 @@ signal occupant_stood_up(occupant:Node)
 
 @export_subgroup("References")
 @export var interactable_component : InteractableComponent
-@export var interact_color_rect : ColorRect
+@export var interact_hover_ui : Control
 
 @export_subgroup("Seat Settings")
 ## Facing direction (degrees) the occupant should snap to once seated.
@@ -21,14 +21,14 @@ var _current_occupant : Node = null
 func _ready() -> void:
 	# Assertion check
 	assert(interactable_component, "interactable_component is missing")
-	assert(interact_color_rect, "interact_color_rect is missing")
+	assert(interact_hover_ui, "interact_hover_ui is missing")
 	# Connect signals
 	interactable_component.hovered.connect(_on_interactable_hovered)
 	interactable_component.unhovered.connect(_on_interactable_unhovered)
 	interactable_component.interacted.connect(_on_interactable_interacted)
 	interactable_component.interacted_by_npc.connect(_on_interactable_interacted_by_npc)
 	# Initialize
-	interact_color_rect.hide()
+	interact_hover_ui.hide()
 
 # ==================================================================================================
 #                Seat methods
@@ -55,9 +55,9 @@ func stand_up() -> void:
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_interactable_hovered(): interact_color_rect.show()
+func _on_interactable_hovered(): interact_hover_ui.show()
 
-func _on_interactable_unhovered(): interact_color_rect.hide()
+func _on_interactable_unhovered(): interact_hover_ui.hide()
 
 func _on_interactable_interacted():
 	if _current_occupant == Player.instance: stand_up()

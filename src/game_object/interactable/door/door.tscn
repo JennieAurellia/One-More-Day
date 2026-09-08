@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://7lu6px3xwpye" path="res://assets/basic_sprite/Square.png" id="3_k16ha"]
 [ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="3_yd8t2"]
 [ext_resource type="Texture2D" uid="uid://c107e24yng0ly" path="res://src/game_object/interactable/door/door_normal_texture.tres" id="4_2niuq"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="4_6x0tj"]
 [ext_resource type="Texture2D" uid="uid://caa08kbfbjnil" path="res://src/game_object/interactable/door/door_opened_push_texture.tres" id="5_6x0tj"]
 [ext_resource type="Texture2D" uid="uid://c2kno4os6ntow" path="res://src/game_object/interactable/door/door_opened_pull_texture.tres" id="5_prarn"]
 
-[node name="Door" type="Node2D" unique_id=1906740693 node_paths=PackedStringArray("interactable_component", "push_side_door_sprite", "pull_side_door_sprite", "push_side_opened_sprite", "pull_side_opened_sprite", "push_side_marker", "pull_side_marker")]
+[node name="Door" type="Node2D" unique_id=1906740693 node_paths=PackedStringArray("interactable_component", "push_side_door_sprite", "pull_side_door_sprite", "push_side_opened_sprite", "pull_side_opened_sprite", "push_side_marker", "pull_side_marker", "push_interact_hover_ui", "pull_interact_hover_ui")]
 script = ExtResource("1_k16ha")
 interactable_component = NodePath("InteractableComponent")
 push_side_door_sprite = NodePath("PushSideSprite/DoorSprite")
@@ -16,13 +17,8 @@ push_side_opened_sprite = NodePath("PushSideSprite/OpenedSprite")
 pull_side_opened_sprite = NodePath("PullSideSprite/OpenedSprite")
 push_side_marker = NodePath("PushSideMarker")
 pull_side_marker = NodePath("PullSideMarker")
-normal_color = null
-hover_color = null
-push_side_room = null
-pull_side_room = null
-door_opened_duration = null
-open_audio_key_name = null
-close_audio_key_name = null
+push_interact_hover_ui = NodePath("InteractControl/InteractHoverPivot/PushInteractHoverUI")
+pull_interact_hover_ui = NodePath("InteractControl/InteractHoverPivot/PullInteractHoverUI")
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=1696370411 node_paths=PackedStringArray("interact_control")]
 script = ExtResource("3_yd8t2")
@@ -44,15 +40,6 @@ position = Vector2(-96, 0)
 
 [node name="PullSideMarker" type="Marker2D" parent="." unique_id=1197854524]
 position = Vector2(96, 0)
-
-[node name="InteractControl" type="Control" parent="." unique_id=990539789]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -64.0
-offset_top = -32.0
-offset_right = 64.0
-offset_bottom = 32.0
-mouse_filter = 1
 
 [node name="PushSideSprite" type="Node2D" parent="." unique_id=465283033]
 position = Vector2(-32, 0)
@@ -80,3 +67,60 @@ texture = ExtResource("4_2niuq")
 visible = false
 position = Vector2(0, -32)
 texture = ExtResource("5_prarn")
+
+[node name="InteractControl" type="Control" parent="." unique_id=990539789]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+mouse_filter = 1
+
+[node name="InteractHoverPivot" type="Control" parent="InteractControl" unique_id=1400453162]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PushInteractHoverUI" parent="InteractControl/InteractHoverPivot" unique_id=467594439 instance=ExtResource("4_6x0tj")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_right = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+
+[node name="TextLabel" parent="InteractControl/InteractHoverPivot/PushInteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 75.0
+offset_right = 134.00003
+scale = Vector2(-1, 1)
+text = "Go?"
+
+[node name="PullInteractHoverUI" parent="InteractControl/InteractHoverPivot" unique_id=1918622620 instance=ExtResource("4_6x0tj")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 44.0
+offset_right = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextLabel" parent="InteractControl/InteractHoverPivot/PullInteractHoverUI" index="1" unique_id=1180517548]
+text = "Go?"
+
+[editable path="InteractControl/InteractHoverPivot/PushInteractHoverUI"]
+[editable path="InteractControl/InteractHoverPivot/PullInteractHoverUI"]

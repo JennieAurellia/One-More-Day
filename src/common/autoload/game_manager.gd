@@ -8,6 +8,9 @@ func initialize_game():
 	loop_count = 0
 
 func restart_day():
+	AudioManager.stop_music()
+	AudioManager.clear_all_sfx()
+	AudioManager.stop_all_sound()
 	loop_count += 1
 	call_deferred("_do_restart_day")
 

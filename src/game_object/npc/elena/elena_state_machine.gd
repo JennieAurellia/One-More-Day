@@ -131,7 +131,7 @@ func _enter_state(state:NPCState) -> void:
 			npc.stand_up_if_seated()
 			npc.go_to(
 				serving_food_marker.global_position,
-				EnumUtility.RoomName.MainRoom,
+				EnumUtility.RoomName.MAINROOM,
 				serving_food_facing
 			)
 			await npc.destination_reached
@@ -141,45 +141,45 @@ func _enter_state(state:NPCState) -> void:
 			npc.stand_up_if_seated()
 			if eating_breakfast_1 and !eating_seat_1.is_occupied():
 				npc.go_to_interactable(
-					eating_seat_1.interactable_component, EnumUtility.RoomName.MainRoom
+					eating_seat_1.interactable_component, EnumUtility.RoomName.MAINROOM
 				)
 				await npc.destination_reached
 				if eating_breakfast_1: eating_breakfast_1.eat()
 			elif eating_breakfast_2 and !eating_seat_2.is_occupied():
 				npc.go_to_interactable(
-					eating_seat_2.interactable_component, EnumUtility.RoomName.MainRoom
+					eating_seat_2.interactable_component, EnumUtility.RoomName.MAINROOM
 				)
 				await npc.destination_reached
 				if eating_breakfast_2: eating_breakfast_2.eat()
 			elif !eating_seat_1.is_occupied():
 				npc.go_to_interactable(
-					eating_seat_1.interactable_component, EnumUtility.RoomName.MainRoom
+					eating_seat_1.interactable_component, EnumUtility.RoomName.MAINROOM
 				)
 			else:
 				npc.go_to_interactable(
-					eating_seat_2.interactable_component, EnumUtility.RoomName.MainRoom
+					eating_seat_2.interactable_component, EnumUtility.RoomName.MAINROOM
 				)
 		
 		NPCState.SITTING_SOFA:
 			npc.stand_up_if_seated()
 			if !sofa_seat_1.is_occupied():
 				npc.go_to_interactable(
-					sofa_seat_1.interactable_component, EnumUtility.RoomName.MainRoom
+					sofa_seat_1.interactable_component, EnumUtility.RoomName.MAINROOM
 				)
 			elif !sofa_seat_2.is_occupied():
 				npc.go_to_interactable(
-					sofa_seat_2.interactable_component, EnumUtility.RoomName.MainRoom
+					sofa_seat_2.interactable_component, EnumUtility.RoomName.MAINROOM
 				)
 			else:
 				npc.go_to_interactable(
-					sofa_seat_3.interactable_component, EnumUtility.RoomName.MainRoom
+					sofa_seat_3.interactable_component, EnumUtility.RoomName.MAINROOM
 				)
 		
 		NPCState.SHOWERING:
 			npc.stand_up_if_seated()
 			npc.go_to(
 				showering_marker.global_position,
-				EnumUtility.RoomName.Bathroom,
+				EnumUtility.RoomName.BATHROOM,
 				showering_facing
 			)
 			await npc.destination_reached
@@ -189,7 +189,7 @@ func _enter_state(state:NPCState) -> void:
 			npc.stand_up_if_seated()
 			npc.go_to(
 				dressing_up_marker.global_position,
-				EnumUtility.RoomName.Bedroom,
+				EnumUtility.RoomName.BEDROOM,
 				dressing_up_facing
 			)
 			await npc.destination_reached
@@ -197,13 +197,13 @@ func _enter_state(state:NPCState) -> void:
 		
 		NPCState.PUTTING_MAKEUP:
 			npc.stand_up_if_seated()
-			npc.go_to_interactable(putting_makeup_seat_interactable, EnumUtility.RoomName.Bedroom)
+			npc.go_to_interactable(putting_makeup_seat_interactable, EnumUtility.RoomName.BEDROOM)
 		
 		NPCState.PHONE_CALL:
 			npc.stand_up_if_seated()
 			npc.go_to(
 				phone_call_marker.global_position,
-				EnumUtility.RoomName.Bedroom,
+				EnumUtility.RoomName.BEDROOM,
 				phone_call_facing
 			)
 		
@@ -211,7 +211,7 @@ func _enter_state(state:NPCState) -> void:
 			npc.stand_up_if_seated()
 			npc.go_to(
 				going_outside_marker.global_position,
-				EnumUtility.RoomName.MainRoom,
+				EnumUtility.RoomName.MAINROOM,
 				going_outside_facing
 			)
 			await npc.destination_reached

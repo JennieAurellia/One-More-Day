@@ -5,16 +5,17 @@
 [ext_resource type="SpriteFrames" uid="uid://bfndrm7ug3ij2" path="res://src/game_object/npc/elena/elena_sprite_frames.tres" id="2_tq825"]
 [ext_resource type="Script" uid="uid://b1wpgsle4xj35" path="res://src/game_object/npc/elena/elena_state_machine.gd" id="2_uyx5h"]
 [ext_resource type="Script" uid="uid://ct3ai73dp7fkl" path="res://src/game_object/npc/elena/elena_sprite.gd" id="2_xp60g"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="6_tq825"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrr71"]
 
-[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("state_machine", "interactable_component", "elena_sprite", "nav_agent", "interact_color_rect")]
+[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("state_machine", "interactable_component", "elena_sprite", "nav_agent", "interact_hover_ui")]
 script = ExtResource("1_3kc1g")
 state_machine = NodePath("ElenaStateMachine")
 interactable_component = NodePath("InteractableComponent")
 elena_sprite = NodePath("Sprite")
 nav_agent = NodePath("NavigationAgent")
-interact_color_rect = NodePath("InteractControl/InteractColorRect")
+interact_hover_ui = NodePath("InteractControl/InteractHoverUI")
 movement_speed = 300.0
 
 [node name="ElenaStateMachine" type="Node" parent="." unique_id=1905983306 node_paths=PackedStringArray("npc")]
@@ -41,6 +42,7 @@ shape = SubResource("CircleShape2D_wrr71")
 avoidance_enabled = true
 
 [node name="InteractControl" type="Control" parent="." unique_id=881050982]
+z_index = 2
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,12 +57,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="InteractColorRect" type="ColorRect" parent="InteractControl" unique_id=2108380937]
+[node name="InteractHoverUI" parent="InteractControl" unique_id=467594439 instance=ExtResource("6_tq825")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 1, 0, 0.5882353)
+scale = Vector2(-1, 1)
+
+[node name="TextLabel" parent="InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 75.0
+offset_right = 134.00003
+scale = Vector2(-1, 1)
+text = "Talk?"
+
+[editable path="InteractControl/InteractHoverUI"]

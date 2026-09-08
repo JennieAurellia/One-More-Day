@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://y7cehoai2xsw"]
+
+[ext_resource type="Texture2D" uid="uid://ddw041q4p5idx" path="res://src/common/texture/effect/walk_particle_texture.tres" id="1_kcmm2"]
+
+[sub_resource type="Curve" id="Curve_kcmm2"]
+_data = [Vector2(0, 0.91698116), 0.0, 0.3554291, 0, 0, Vector2(0.69270825, 0.94716984), -0.230009, -0.230009, 0, 0, Vector2(1, 0.48679245), -1.6397214, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_hr0r4"]
+offsets = PackedFloat32Array(0.32467532, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="WalkClickParticle" type="CPUParticles2D" unique_id=1825042985]
+emitting = false
+amount = 1
+texture = ExtResource("1_kcmm2")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+gravity = Vector2(0, 0)
+angle_max = 360.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_kcmm2")
+color = Color(0.7529412, 0.105882354, 0.043137256, 0.84705883)
+color_ramp = SubResource("Gradient_hr0r4")
