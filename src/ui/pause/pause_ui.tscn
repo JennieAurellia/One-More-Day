@@ -15,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_hmh33")
 resume_button = NodePath("VBox/ResumeButton")
 quit_button = NodePath("VBox/QuitButton")
+quit_scene_path = "res://src/scene/main_menu_scene.tscn"
 
 [node name="Background" type="TextureRect" parent="." unique_id=212461077]
 layout_mode = 1

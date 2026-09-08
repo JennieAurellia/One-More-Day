@@ -44,7 +44,9 @@ func _unpause() -> void:
 
 func _quit_game() -> void:
 	get_tree().paused = false
-	#get_tree().change_scene_to_file(quit_scene_path)
+	AudioManager.stop_music()
+	AudioManager.stop_all_sound()
+	get_tree().change_scene_to_file(quit_scene_path)
 
 # ==================================================================================================
 #                Signal listener methods
