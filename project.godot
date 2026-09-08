@@ -51,7 +51,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [gui]
 
-theme/custom_font="uid://biv5i257x4b2h"
+theme/custom_font="uid://nr2u4evl5o0"
 
 [input]
 
