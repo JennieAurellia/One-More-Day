@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cire151lrqlnk"]
+
+[ext_resource type="Script" uid="uid://w02ehvcuifea" path="res://src/ui/pause/pause_ui.gd" id="1_hmh33"]
+[ext_resource type="Texture2D" uid="uid://lcl3laypg6eu" path="res://assets/UI/UI_pause BG.png" id="2_skbbu"]
+[ext_resource type="PackedScene" uid="uid://l2nnv5bayhs4" path="res://src/ui/component/button/main_button.tscn" id="3_5ohp8"]
+
+[node name="PauseUI" type="Control" unique_id=235246552 node_paths=PackedStringArray("resume_button", "quit_button")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hmh33")
+resume_button = NodePath("VBox/ResumeButton")
+quit_button = NodePath("VBox/QuitButton")
+
+[node name="Background" type="TextureRect" parent="." unique_id=212461077]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_skbbu")
+
+[node name="PauseLabel" type="Label" parent="." unique_id=1724920702]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 709.0
+offset_right = 855.0
+offset_bottom = 991.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 240
+text = "Pause"
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=673934685]
+layout_mode = 0
+offset_left = 1138.0
+offset_top = 179.0
+offset_right = 1668.0
+offset_bottom = 569.0
+scale = Vector2(1.2, 1.2)
+theme_override_constants/separation = -10
+
+[node name="ResumeButton" parent="VBox" unique_id=1502458938 instance=ExtResource("3_5ohp8")]
+layout_mode = 2
+
+[node name="TextLabel" parent="VBox/ResumeButton/Margin" parent_id_path=PackedInt32Array(1502458938, 305730039) index="0" unique_id=1940812368]
+text = "Continue"
+
+[node name="QuitButton" parent="VBox" unique_id=98178568 instance=ExtResource("3_5ohp8")]
+layout_mode = 2
+
+[node name="TextLabel" parent="VBox/QuitButton/Margin" parent_id_path=PackedInt32Array(98178568, 305730039) index="0" unique_id=1940812368]
+text = "Quit"
+
+[editable path="VBox/ResumeButton"]
+[editable path="VBox/QuitButton"]

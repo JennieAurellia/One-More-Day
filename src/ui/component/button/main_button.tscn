@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://l2nnv5bayhs4"]
+
+[ext_resource type="Texture2D" uid="uid://btrq1tfmm4mmk" path="res://src/common/texture/ui/button_normal_texture.tres" id="1_ki65x"]
+[ext_resource type="Script" uid="uid://bf0ini4bcbr3m" path="res://src/ui/component/button/main_button.gd" id="1_lpn5d"]
+[ext_resource type="Texture2D" uid="uid://qosognnyk6pm" path="res://src/common/texture/ui/button_hover_texture.tres" id="2_a0th0"]
+
+[node name="MainButton" type="Button" unique_id=1502458938 node_paths=PackedStringArray("normal_texture_rect", "hover_texture_rect", "press_texture_rect", "text_label")]
+custom_minimum_size = Vector2(530, 200)
+offset_right = 497.0
+offset_bottom = 190.0
+flat = true
+script = ExtResource("1_lpn5d")
+normal_texture_rect = NodePath("NormalTextureRect")
+hover_texture_rect = NodePath("HoverTextureRect")
+press_texture_rect = NodePath("PressTextureRect")
+text_label = NodePath("Margin/TextLabel")
+
+[node name="NormalTextureRect" type="TextureRect" parent="." unique_id=1944093891]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ki65x")
+flip_h = true
+
+[node name="HoverTextureRect" type="TextureRect" parent="." unique_id=1665588831]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a0th0")
+flip_h = true
+
+[node name="PressTextureRect" type="TextureRect" parent="." unique_id=871399405]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a0th0")
+flip_h = true
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=305730039]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 220
+theme_override_constants/margin_bottom = 10
+
+[node name="TextLabel" type="Label" parent="Margin" unique_id=1940812368]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "Button"

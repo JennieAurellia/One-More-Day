@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://c2v3kkn0jou7l" path="res://src/common/texture/furniture/closet_texture.tres" id="20_qblr6"]
 [ext_resource type="PackedScene" uid="uid://cedf8odp4gudp" path="res://src/game_object/interactable/toilet/toilet.tscn" id="20_vfhfr"]
 [ext_resource type="PackedScene" uid="uid://ciagp50sbeviv" path="res://src/game_object/interactable/shower/shower.tscn" id="21_ffmqh"]
+[ext_resource type="PackedScene" uid="uid://cire151lrqlnk" path="res://src/ui/pause/pause_ui.tscn" id="34_ffmqh"]
 
 [node name="GameScene" type="Node2D" unique_id=14823134]
 
@@ -371,6 +372,9 @@ grow_horizontal = 2
 [node name="GameTimerUI" parent="UICanvasLayer" unique_id=1455814715 instance=ExtResource("13_hn8je")]
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
+
+[node name="PauseUI" parent="UICanvasLayer" unique_id=235246552 instance=ExtResource("34_ffmqh")]
+visible = false
 
 [editable path="Furniture/MainRoom/KitchenCounter/Stove"]
 [editable path="Furniture/MainRoom/DiningTable"]
