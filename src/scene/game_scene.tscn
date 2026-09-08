@@ -34,6 +34,13 @@
 [ext_resource type="PackedScene" uid="uid://cedf8odp4gudp" path="res://src/game_object/interactable/toilet/toilet.tscn" id="20_vfhfr"]
 [ext_resource type="PackedScene" uid="uid://ciagp50sbeviv" path="res://src/game_object/interactable/shower/shower.tscn" id="21_ffmqh"]
 [ext_resource type="PackedScene" uid="uid://cire151lrqlnk" path="res://src/ui/pause/pause_ui.tscn" id="34_ffmqh"]
+[ext_resource type="Shader" uid="uid://c2sgm7naq1bif" path="res://src/common/shader/screen_adjustment.gdshader" id="35_vfhfr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fimk8"]
+shader = ExtResource("35_vfhfr")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.50000002375
 
 [node name="GameScene" type="Node2D" unique_id=14823134]
 
@@ -392,6 +399,15 @@ grow_horizontal = 2
 
 [node name="PauseUI" parent="UICanvasLayer" unique_id=235246552 instance=ExtResource("34_ffmqh")]
 visible = false
+
+[node name="ScreenAdjustment" type="ColorRect" parent="UICanvasLayer" unique_id=636679827]
+material = SubResource("ShaderMaterial_fimk8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [editable path="Door/BedroomDoor"]
 [editable path="Door/BedroomDoor/InteractControl/InteractHoverPivot/PushInteractHoverUI"]

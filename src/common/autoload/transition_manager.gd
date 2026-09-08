@@ -6,6 +6,7 @@ extends CanvasLayer
 
 var _is_transitioning : bool = false
 var _snapshot_rect : TextureRect
+var _black_rect : ColorRect
 
 # ==================================================================================================
 #                Virtual methods
@@ -37,7 +38,7 @@ func _crossfade_and_call(on_hidden:Callable) -> void:
 	_is_transitioning = false
 
 # ==================================================================================================
-#                snapshot methods
+#                Snapshot methods
 # ==================================================================================================
 func _capture_snapshot() -> void:
 	var img : Image = get_viewport().get_texture().get_image()
@@ -58,3 +59,57 @@ func _fade_out_snapshot() -> void:
 	await tween.finished
 	_snapshot_rect.queue_free()
 	_snapshot_rect = null
+
+# ==================================================================================================
+#                Black fade methods
+# ==================================================================================================
+## Fades the screen to black, runs on_hidden (do your scene change/reload here),
+## then fades back in from black to reveal the new scene.
+func fade_to_black_and_call(on_hidden:Callable) -> void:
+	if _is_transitioning: return
+	_is_transitioning = true
+	await fade_out_to_black()
+	on_hidden.call()
+	await get_tree().process_frame
+	await fade_in_from_black()
+	_is_transitioning = false
+
+## Use a fade-to-black transition to reload the current scene.
+func fade_to_black_and_reload_scene() -> void:
+	fade_to_black_and_call(func(): get_tree().reload_current_scene())
+
+## Use a fade-to-black transition to change to a specific scene file.
+func fade_to_black_and_change_scene(scene_path: String) -> void:
+	fade_to_black_and_call(func(): get_tree().change_scene_to_file(scene_path))
+
+## Fades a black overlay in (screen goes black). Leaves the overlay in place.
+func fade_out_to_black() -> void:
+	_ensure_black_rect()
+	_black_rect.modulate.a = 0.0
+	_black_rect.show()
+	var tween := create_tween()
+	tween.set_trans(fade_trans)
+	tween.set_ease(fade_ease)
+	tween.tween_property(_black_rect, "modulate:a", 1.0, fade_duration)
+	await tween.finished
+
+## Fades the black overlay out (screen becomes visible again).
+func fade_in_from_black() -> void:
+	_ensure_black_rect()
+	_black_rect.modulate.a = 1.0
+	_black_rect.show()
+	var tween := create_tween()
+	tween.set_trans(fade_trans)
+	tween.set_ease(fade_ease)
+	tween.tween_property(_black_rect, "modulate:a", 0.0, fade_duration)
+	await tween.finished
+	_black_rect.hide()
+
+func _ensure_black_rect() -> void:
+	if is_instance_valid(_black_rect): return
+	_black_rect = ColorRect.new()
+	_black_rect.color = Color.BLACK
+	_black_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_black_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	_black_rect.hide()
+	add_child(_black_rect)

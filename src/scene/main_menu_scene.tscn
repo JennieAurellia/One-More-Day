@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://yjjw4t8fu8x4"]
 
 [ext_resource type="Script" uid="uid://d224iyofh3gao" path="res://src/ui/main_menu/main_menu_controller.gd" id="1_7p4tg"]
-[ext_resource type="Texture2D" uid="uid://benq01o67ssa" path="res://assets/UI/UI_main menu BG_3.png" id="1_kadrl"]
 [ext_resource type="PackedScene" uid="uid://l2nnv5bayhs4" path="res://src/ui/component/main_button/main_button.tscn" id="2_2u4md"]
+[ext_resource type="Texture2D" uid="uid://crrjqx7noc1bp" path="res://assets/UI/UI_main menu BG_1.png" id="2_7p4tg"]
 
-[node name="MainMenuScene" type="Control" unique_id=2047604324 node_paths=PackedStringArray("play_button")]
+[node name="MainMenuScene" type="Control" unique_id=2047604324 node_paths=PackedStringArray("play_button", "quit_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7p4tg")
-play_button = NodePath("PlayButton")
+play_button = NodePath("VBox/PlayButton")
+quit_button = NodePath("VBox/QuitButton")
 play_scene_path = "res://src/scene/game_scene.tscn"
 
 [node name="Background" type="TextureRect" parent="." unique_id=1863067405]
@@ -22,22 +23,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_kadrl")
+texture = ExtResource("2_7p4tg")
 
-[node name="PlayButton" parent="." unique_id=1502458938 instance=ExtResource("2_2u4md")]
+[node name="VBox" type="HBoxContainer" parent="." unique_id=1408513722]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -295.0
-offset_top = 137.0
-offset_right = 235.0
-offset_bottom = 337.0
+anchor_bottom = 0.5
+offset_left = -417.99994
+offset_top = 177.0
+offset_right = 682.0
+offset_bottom = 377.0
 grow_horizontal = 2
-scale = Vector2(1.2, 1.2)
+grow_vertical = 2
+scale = Vector2(0.68, 0.68)
+theme_override_constants/separation = 40
 
-[node name="TextLabel" parent="PlayButton/Margin" parent_id_path=PackedInt32Array(1502458938, 305730039) index="0" unique_id=1940812368]
+[node name="PlayButton" parent="VBox" unique_id=1502458938 instance=ExtResource("2_2u4md")]
+layout_mode = 2
+
+[node name="TextLabel" parent="VBox/PlayButton/Margin" parent_id_path=PackedInt32Array(1502458938, 305730039) index="0" unique_id=1940812368]
 text = "Play"
 horizontal_alignment = 1
 
-[editable path="PlayButton"]
+[node name="QuitButton" parent="VBox" unique_id=132011055 instance=ExtResource("2_2u4md")]
+layout_mode = 2
+
+[node name="TextLabel" parent="VBox/QuitButton/Margin" parent_id_path=PackedInt32Array(132011055, 305730039) index="0" unique_id=1940812368]
+text = "Quit"
+horizontal_alignment = 1
+
+[editable path="VBox/PlayButton"]
+[editable path="VBox/QuitButton"]
