@@ -200,7 +200,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_2scfx")
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=1030936092]
 layout_mode = 2
 theme_override_constants/margin_left = 370
-theme_override_constants/margin_top = 85
+theme_override_constants/margin_top = 90
 theme_override_constants/margin_right = 370
 theme_override_constants/margin_bottom = 70
 
@@ -215,6 +215,8 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
 theme_override_font_sizes/bold_italics_font_size = 32
