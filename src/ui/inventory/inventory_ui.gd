@@ -20,6 +20,10 @@ func _ready() -> void:
 	InventoryManager.item_added.connect(_on_item_added)
 	InventoryManager.item_removed.connect(_on_item_removed)
 	InventoryManager.selection_changed.connect(_on_selection_changed)
+	DialogueManager.dialogue_started.connect(func(resource:DialogueResource): hide())
+	DialogueManager.dialogue_ended.connect(func(resource:DialogueResource): show())
+	# Initialize
+	show()
 
 # ==================================================================================================
 #                Signal listener methods
@@ -39,5 +43,4 @@ func _on_selection_changed(selected_item_data:ItemData):
 	for item_data:ItemData in _inventory_slot_dictionary.keys():
 		var inventory_slot_ui : InventorySlotUI = _inventory_slot_dictionary[item_data]
 		var is_selected : bool = item_data == selected_item_data
-		#inventory_slot_ui.scale = Vector2.ONE * (selected_highlight_scale if is_selected else 1.0)
-		#inventory_slot_ui.modulate = Color.WHITE if is_selected else Color(0.8, 0.8, 0.8)
+		inventory_slot_ui.toggle_selected(is_selected)

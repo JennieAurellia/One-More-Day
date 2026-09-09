@@ -1,18 +1,39 @@
 [gd_scene format=3 uid="uid://ceiflj1joievo"]
 
 [ext_resource type="Script" uid="uid://cjpvcbgdeyeqh" path="res://src/ui/inventory/inventory_slot/inventory_slot_ui.gd" id="1_svefe"]
+[ext_resource type="Texture2D" uid="uid://dsna28qbbcn4d" path="res://src/common/texture/ui/item_slot_texture.tres" id="2_dy01m"]
+[ext_resource type="Texture2D" uid="uid://ctavvpqcihgy8" path="res://assets/item/book_item_size.png" id="3_8writ"]
 
-[node name="InventorySlotUI" type="PanelContainer" unique_id=1403101574 node_paths=PackedStringArray("item_texture_rect", "button")]
-custom_minimum_size = Vector2(100, 100)
-offset_right = 100.0
-offset_bottom = 100.0
+[node name="InventorySlotUI" type="PanelContainer" unique_id=1403101574 node_paths=PackedStringArray("button", "content", "item_texture_rect")]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
 script = ExtResource("1_svefe")
-item_texture_rect = NodePath("ItemTextureRect")
 button = NodePath("Button")
+content = NodePath("Button/Content")
+item_texture_rect = NodePath("Button/Content/ItemTextureRect")
 
-[node name="ItemTextureRect" type="TextureRect" parent="." unique_id=670082027]
+[node name="Button" type="TextureButton" parent="." unique_id=2108468078]
 layout_mode = 2
+texture_normal = ExtResource("2_dy01m")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Content" type="MarginContainer" parent="Button" unique_id=591347945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(40, 40)
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="ItemTextureRect" type="TextureRect" parent="Button/Content" unique_id=670082027]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_8writ")
 expand_mode = 5
-
-[node name="Button" type="Button" parent="." unique_id=695908821]
-layout_mode = 2

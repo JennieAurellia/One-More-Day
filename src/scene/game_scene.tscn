@@ -414,12 +414,12 @@ metadata/_custom_type_script = "uid://b2yb1ecj1tt1x"
 [node name="UICanvasLayer" type="CanvasLayer" parent="." unique_id=970134607]
 
 [node name="InventoryUI" parent="UICanvasLayer" unique_id=901225113 instance=ExtResource("3_iavex")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -435.0
-offset_right = 435.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -165.0
+offset_bottom = 165.0
+grow_vertical = 2
 
 [node name="GameTimerUI" parent="UICanvasLayer" unique_id=1455814715 instance=ExtResource("13_hn8je")]
 

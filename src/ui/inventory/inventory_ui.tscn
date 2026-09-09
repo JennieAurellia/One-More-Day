@@ -2,16 +2,29 @@
 
 [ext_resource type="Script" uid="uid://cvbcre0i2cti4" path="res://src/ui/inventory/inventory_ui.gd" id="1_um3hd"]
 [ext_resource type="PackedScene" uid="uid://ceiflj1joievo" path="res://src/ui/inventory/inventory_slot/inventory_slot_ui.tscn" id="2_m1isk"]
+[ext_resource type="Texture2D" uid="uid://dbnmwwxagikv0" path="res://src/common/texture/ui/inventory_panel_texture.tres" id="3_5c0yw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxjiy"]
 
 [node name="InventoryUI" type="PanelContainer" unique_id=901225113 node_paths=PackedStringArray("inventory_slot_parent")]
-offset_right = 870.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(270, 330)
+offset_right = 270.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vxjiy")
 script = ExtResource("1_um3hd")
-inventory_slot_parent = NodePath("InventorySlotHBox")
+inventory_slot_parent = NodePath("InventorySlotGrid")
 inventory_slot_ui_scene = ExtResource("2_m1isk")
 
-[node name="InventorySlotHBox" type="HBoxContainer" parent="." unique_id=127911271]
-custom_minimum_size = Vector2(870, 100)
+[node name="InventoryPanel" type="TextureRect" parent="." unique_id=418262060]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 10
+texture = ExtResource("3_5c0yw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventorySlotGrid" type="GridContainer" parent="." unique_id=1434851959]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 6
+columns = 2
