@@ -21,24 +21,30 @@ var _sound_list : Dictionary[String, SoundNode] = {}
 # ==================================================================================================
 func _ready():
 	# Map all nodes
-	for _music_node:MusicNode in _music_nodes.get_children():
+	for node:Node in _music_nodes.get_children():
+		if node is not MusicNode: continue
+		var music_node : MusicNode = node as MusicNode
 		assert(
-			!_music_list.has(_music_node.key_name.to_lower()),
-			"Music of name: %s, has duplicate" % _music_node.key_name
+			!_music_list.has(music_node.key_name.to_lower()),
+			"Music of name: %s, has duplicate" % music_node.key_name
 		)
-		_music_list[_music_node.key_name.to_lower()] = _music_node
-	for _sfx_node:SFXNode in _sfx_nodes.get_children():
+		_music_list[music_node.key_name.to_lower()] = music_node
+	for node:Node in _sfx_nodes.get_children():
+		if node is not SFXNode: continue
+		var sfx_node : SFXNode = node as SFXNode
 		assert(
-			!_sfx_list.has(_sfx_node.key_name.to_lower()),
-			"SFX of name: %s, has duplicate" % _sfx_node.key_name
+			!_sfx_list.has(sfx_node.key_name.to_lower()),
+			"SFX of name: %s, has duplicate" % sfx_node.key_name
 		)
-		_sfx_list[_sfx_node.key_name.to_lower()] = _sfx_node
-	for _sound_node:SoundNode in _sound_nodes.get_children():
+		_sfx_list[sfx_node.key_name.to_lower()] = sfx_node
+	for node:Node in _sound_nodes.get_children():
+		if node is not SoundNode: continue
+		var sound_node : SoundNode = node as SoundNode
 		assert(
-			!_sound_list.has(_sound_node.key_name.to_lower()),
-			"Sound of name: %s, has duplicate" % _sound_node.key_name
+			!_sound_list.has(sound_node.key_name.to_lower()),
+			"Sound of name: %s, has duplicate" % sound_node.key_name
 		)
-		_sound_list[_sound_node.key_name.to_lower()] = _sound_node
+		_sound_list[sound_node.key_name.to_lower()] = sound_node
 
 # ==================================================================================================
 #                Public methods

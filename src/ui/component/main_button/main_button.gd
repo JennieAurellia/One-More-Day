@@ -12,6 +12,10 @@ class_name MainButton
 @export var hover_text_color : Color = Color.BLACK
 @export var press_text_color : Color = Color.BLACK
 
+@export_subgroup("Audio Settings")
+@export var hover_sfx_name : String = "button_hover"
+@export var press_sfx_name : String = "button_press"
+
 # ==================================================================================================
 #                Virtual methods
 # ==================================================================================================
@@ -53,11 +57,15 @@ func button_pressed():
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_mouse_entered() -> void: button_hovered()
+func _on_mouse_entered() -> void:
+	button_hovered()
+	AudioManager.play_sfx(hover_sfx_name)
 
 func _on_mouse_exited() -> void: button_normal()
 
-func _on_button_down() -> void: button_pressed()
+func _on_button_down() -> void:
+	button_pressed()
+	AudioManager.play_sfx(press_sfx_name)
 
 func _on_button_up() -> void:
 	if is_hovered(): button_hovered()

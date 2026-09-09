@@ -15,8 +15,12 @@
 [ext_resource type="AudioStream" uid="uid://ceyg6jo3t6oa7" path="res://assets/audio/sfx/wardrobe_close.mp3" id="9_3epof"]
 [ext_resource type="AudioStream" uid="uid://d1iink1bvdggl" path="res://assets/audio/sfx/plate_drop.mp3" id="10_g1u4r"]
 [ext_resource type="AudioStream" uid="uid://c1e771815uiup" path="res://assets/audio/sfx/eat.mp3" id="11_nf6mi"]
+[ext_resource type="AudioStream" uid="uid://demewrga0ytuc" path="res://assets/audio/sfx/time_reset.mp3" id="12_nf6mi"]
+[ext_resource type="AudioStream" uid="uid://db2romsoe5dh2" path="res://assets/audio/sfx/ui/Modern1.mp3" id="13_n7gm8"]
+[ext_resource type="AudioStream" uid="uid://brve8tvcqlada" path="res://assets/audio/sfx/ui/Abstract1.mp3" id="14_5kiff"]
 
 [node name="AudioManager" type="Node" unique_id=1936952167]
+process_mode = 3
 script = ExtResource("1_d1dws")
 
 [node name="MusicNodes" type="Node" parent="." unique_id=499269409]
@@ -34,6 +38,8 @@ bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "example_sfx"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="MAIN_SFX" type="Node" parent="SFXNodes" unique_id=2106077933]
 
 [node name="DoorOpen" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1198240880]
 stream = ExtResource("4_vnxg4")
@@ -89,6 +95,34 @@ stream = ExtResource("11_nf6mi")
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "eat"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="TimeReset" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1697826210]
+stream = ExtResource("12_nf6mi")
+volume_db = 4.0
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "time_reset"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="UI_SFX" type="Node" parent="SFXNodes" unique_id=1434513876]
+
+[node name="ButtonHover" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1144498686]
+stream = ExtResource("13_n7gm8")
+volume_db = 4.0
+pitch_scale = 0.45
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "button_hover"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="ButtonPress" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1652284378]
+stream = ExtResource("14_5kiff")
+volume_db = 4.0
+pitch_scale = 0.5
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "button_press"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="SoundNodes" type="Node2D" parent="." unique_id=1795450649]

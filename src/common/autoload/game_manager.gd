@@ -1,6 +1,7 @@
 extends Node
 
 const GAME_SCENE_PATH : String = "res://src/scene/game_scene.tscn"
+const TIME_RESET_SFX_NAME : String = "time_reset"
 
 var loop_count : int = 0
 
@@ -14,4 +15,6 @@ func restart_day():
 	loop_count += 1
 	call_deferred("_do_restart_day")
 
-func _do_restart_day(): TransitionManager.crossfade_and_reload_scene()
+func _do_restart_day():
+	TransitionManager.crossfade_and_reload_scene()
+	AudioManager.play_sfx(TIME_RESET_SFX_NAME)
