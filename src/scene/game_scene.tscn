@@ -413,15 +413,28 @@ metadata/_custom_type_script = "uid://b2yb1ecj1tt1x"
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="." unique_id=970134607]
 
-[node name="InventoryUI" parent="UICanvasLayer" unique_id=901225113 instance=ExtResource("3_iavex")]
+[node name="VBox" type="VBoxContainer" parent="UICanvasLayer" unique_id=888806846]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -165.0
-offset_bottom = 165.0
+offset_top = -177.5
+offset_right = 270.0
+offset_bottom = 177.5
 grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = -28
 
-[node name="GameTimerUI" parent="UICanvasLayer" unique_id=1455814715 instance=ExtResource("13_hn8je")]
+[node name="InventoryUI" parent="UICanvasLayer/VBox" unique_id=901225113 instance=ExtResource("3_iavex")]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="UICanvasLayer/VBox" unique_id=1344543870]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 7
+
+[node name="GameTimerUI" parent="UICanvasLayer/VBox/Margin" unique_id=1455814715 instance=ExtResource("13_hn8je")]
+layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
 

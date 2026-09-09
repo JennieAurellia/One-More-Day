@@ -1,19 +1,56 @@
 [gd_scene format=3 uid="uid://dqcoct6jarokj"]
 
 [ext_resource type="Script" uid="uid://3ow2g3wr0ggj" path="res://src/ui/game_timer/game_timer_ui.gd" id="1_qevgx"]
+[ext_resource type="Texture2D" uid="uid://qosognnyk6pm" path="res://src/common/texture/ui/button_hover_texture.tres" id="2_q1fj3"]
+[ext_resource type="Texture2D" uid="uid://bu0fwlj50067g" path="res://src/common/texture/ui/time_icon_texture.tres" id="3_hjex3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjex3"]
 
 [node name="GameTimerUI" type="PanelContainer" unique_id=1455814715 node_paths=PackedStringArray("time_label")]
-offset_right = 93.0
-offset_bottom = 34.0
+offset_right = 186.0
+offset_bottom = 70.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hjex3")
 script = ExtResource("1_qevgx")
-time_label = NodePath("Margin/TimeLabel")
+time_label = NodePath("Background/Margin/HBox/TimeLabel")
 
-[node name="Margin" type="MarginContainer" parent="." unique_id=368340142]
+[node name="Background" type="TextureRect" parent="." unique_id=1078561076]
+custom_minimum_size = Vector2(186, 70)
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
+texture = ExtResource("2_q1fj3")
+expand_mode = 1
+stretch_mode = 5
+flip_v = true
 
-[node name="TimeLabel" type="Label" parent="Margin" unique_id=642574554]
+[node name="Margin" type="MarginContainer" parent="Background" unique_id=368340142]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 52
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 23
+
+[node name="HBox" type="HBoxContainer" parent="Background/Margin" unique_id=250358011]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+
+[node name="Margin" type="MarginContainer" parent="Background/Margin/HBox" unique_id=1921181096]
+layout_mode = 2
+theme_override_constants/margin_bottom = 9
+
+[node name="TimeIcon" type="TextureRect" parent="Background/Margin/HBox/Margin" unique_id=659494629]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("3_hjex3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TimeLabel" type="Label" parent="Background/Margin/HBox" unique_id=642574554]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 40
 text = "00:00"

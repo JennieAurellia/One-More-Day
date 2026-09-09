@@ -20,6 +20,7 @@ layout_mode = 2
 texture = ExtResource("3_5c0yw")
 expand_mode = 1
 stretch_mode = 5
+flip_h = true
 
 [node name="InventorySlotGrid" type="GridContainer" parent="." unique_id=1434851959]
 layout_mode = 2
