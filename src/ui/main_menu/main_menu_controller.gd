@@ -4,9 +4,15 @@ class_name MainMenuController
 @export_subgroup("References")
 @export var play_button : Button
 @export var quit_button : Button
+@export var skip_button : Button
+@export var animation : AnimationPlayer
 
 @export_subgroup("Main Menu Settings")
 @export var play_scene_path : String
+
+@export_subgroup("Animation Settings")
+@export var load_animation_name : String = "load"
+@export var show_ui_animation_name : String = "show_ui"
 
 # ==================================================================================================
 #                Virtual methods
@@ -14,18 +20,28 @@ class_name MainMenuController
 func _ready() -> void:
 	# Assertion check
 	assert(play_button, "play_button is missing")
+	assert(quit_button, "play_button is missing")
+	assert(skip_button, "skip_button is missing")
+	assert(animation, "animation is missing")
 	# Connect signals
-	play_button.pressed.connect(_on_play_pressed)
-	quit_button.pressed.connect(_on_quit_pressed)
-	# Initialize
-	TransitionManager.fade_in_from_black()
+	play_button.pressed.connect(_on_play_button_pressed)
+	quit_button.pressed.connect(_on_quit_button_pressed)
+	skip_button.pressed.connect(_on_skip_button_pressed)
+	animation.animation_finished.connect(_on_animation_finished)
 
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_play_pressed() -> void:
+func _on_play_button_pressed() -> void:
 	SceneManager.change_scene(play_scene_path)
 
-func _on_quit_pressed() -> void:
+func _on_quit_button_pressed() -> void:
 	await TransitionManager.fade_out_to_black()
 	get_tree().quit()
+
+func _on_skip_button_pressed() -> void:
+	skip_button.hide()
+	animation.play(show_ui_animation_name)
+
+func _on_animation_finished(anim_name:StringName):
+	if anim_name == load_animation_name: animation.play(show_ui_animation_name)
