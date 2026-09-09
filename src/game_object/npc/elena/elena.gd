@@ -226,6 +226,7 @@ func _enter_dialogue() -> void:
 	phase_controller.interupt_current_phase()
 	nav_agent.target_position = global_position
 	velocity = Vector2.ZERO
+	InventoryManager.select_item(null)
 
 ## Called when dialogue ends — allows movement again.
 func _exit_dialogue() -> void:

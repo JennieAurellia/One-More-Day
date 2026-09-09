@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://ck5tmwg6qc7ia" path="res://src/game_object/interactable/seat/seat.tscn" id="3_yojbi"]
 [ext_resource type="PackedScene" uid="uid://c628ql8cr8cc7" path="res://src/game_object/interactable/breakfast/breakfast.tscn" id="5_r61xg"]
 
-[node name="DiningTable" type="Node2D" unique_id=884398778 node_paths=PackedStringArray("breakfast_1", "breakfast_2")]
+[node name="DiningTable" type="Node2D" unique_id=884398778 node_paths=PackedStringArray("seat_1", "seat_2", "breakfast_1", "breakfast_2")]
 script = ExtResource("1_fk42a")
+seat_1 = NodePath("Seat2")
+seat_2 = NodePath("Seat4")
 breakfast_1 = NodePath("Breakfast1")
 breakfast_2 = NodePath("Breakfast2")
 
@@ -64,12 +66,9 @@ z_index = 1
 position = Vector2(37, -32)
 rotation = 3.1415927
 
-[node name="InteractHoverUI" parent="Breakfast1/InteractControl" parent_id_path=PackedInt32Array(1850477271, 691401749) index="0" unique_id=467594439]
-rotation = 3.1415927
-
 [node name="Breakfast2" parent="." unique_id=1950281190 instance=ExtResource("5_r61xg")]
 z_index = 1
 position = Vector2(37, 35)
 
 [editable path="Breakfast1"]
-[editable path="Breakfast1/InteractControl/InteractHoverUI"]
+[editable path="Breakfast1/InteractButton/InteractHoverUI"]

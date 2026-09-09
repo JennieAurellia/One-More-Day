@@ -97,6 +97,7 @@ func _play_door_open() -> void:
 #                Signal listener methods
 # ==================================================================================================
 func _on_interactable_hovered():
+	if InventoryManager.selected_item: return
 	push_interact_hover_ui.show()
 	pull_interact_hover_ui.show()
 

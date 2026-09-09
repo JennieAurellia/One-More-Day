@@ -25,7 +25,9 @@ func _ready() -> void:
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_interactable_hovered(): interact_hover_ui.show()
+func _on_interactable_hovered():
+	if InventoryManager.selected_item: return
+	interact_hover_ui.show()
 
 func _on_interactable_unhovered(): interact_hover_ui.hide()
 

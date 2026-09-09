@@ -52,7 +52,9 @@ func close():
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_interactable_hovered(): if !_is_already_searched: interact_hover_ui.show()
+func _on_interactable_hovered():
+	if InventoryManager.selected_item: return
+	if !_is_already_searched: interact_hover_ui.show()
 
 func _on_interactable_unhovered(): interact_hover_ui.hide()
 

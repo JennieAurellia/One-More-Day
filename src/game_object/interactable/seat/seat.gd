@@ -33,8 +33,6 @@ func _ready() -> void:
 # ==================================================================================================
 #                Seat methods
 # ==================================================================================================
-func is_occupied() -> bool: return _current_occupant != null
-
 ## Any actor (Player or NPC) can call this directly to sit here, bypassing the interactable click.
 func sit_actor(actor:Node) -> bool:
 	if is_occupied(): return false
@@ -52,10 +50,16 @@ func stand_up() -> void:
 		actor.stand_up()
 	occupant_stood_up.emit(actor)
 
+func is_occupied() -> bool: return _current_occupant != null
+
+func get_occupant()->Node: return _current_occupant
+
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_interactable_hovered(): if !_current_occupant: interact_hover_ui.show()
+func _on_interactable_hovered():
+	if InventoryManager.selected_item: return
+	if !_current_occupant: interact_hover_ui.show()
 
 func _on_interactable_unhovered(): interact_hover_ui.hide()
 

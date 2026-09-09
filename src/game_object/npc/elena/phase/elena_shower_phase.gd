@@ -27,7 +27,6 @@ enum State{
 
 var current_state : State
 
-var _current_breakfast : Breakfast
 var _showering_timer : float
 
 # ==================================================================================================
@@ -70,7 +69,7 @@ func enter_state(state:State):
 			if Camera.instance.current_room == EnumUtility.RoomName.MAINROOM:
 				elena.do_dialogue("going_to_shower")
 				await elena.dialogue_finished
-				change_state(State.PLACE_PHONE)
+			change_state(State.PLACE_PHONE)
 		
 		State.PLACE_PHONE:
 			elena.stand_up_if_seated()

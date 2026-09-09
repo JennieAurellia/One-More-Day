@@ -35,6 +35,7 @@ func toggle_pause() -> void:
 	else: _pause()
 
 func _pause() -> void:
+	InventoryManager.select_item(null)
 	visible = true
 	get_tree().paused = true
 

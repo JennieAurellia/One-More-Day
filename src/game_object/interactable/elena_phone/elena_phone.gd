@@ -50,6 +50,7 @@ func is_phone_placed()->bool: return _is_phone_placed
 #                Signal listener methods
 # ==================================================================================================
 func _on_interactable_hovered():
+	if InventoryManager.selected_item: return
 	if _is_phone_placed:
 		interact_hover_text_label.text = take_interact_text
 		interact_hover_ui.show()

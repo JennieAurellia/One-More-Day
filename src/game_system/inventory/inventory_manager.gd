@@ -21,7 +21,7 @@ func remove_item(item_data:ItemData):
 func has_item(id:StringName):
 	return item_data_array.any(func(i): return i.id == id)
 
-func select_item(item_data: ItemData):
+func select_item(item_data:ItemData):
 	# Toggle off if clicking the already-selected item
 	selected_item = null if selected_item == item_data else item_data
 	selection_changed.emit(selected_item)

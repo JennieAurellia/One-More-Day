@@ -5,14 +5,14 @@
 [ext_resource type="Script" uid="uid://bp487nrlqtspp" path="res://src/game_object/interactable/breakfast/breakfast.gd" id="1_lmdyt"]
 [ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="4_1tsq3"]
 
-[node name="Breakfast" type="Node2D" unique_id=1850477271 node_paths=PackedStringArray("interactable_component", "interact_hover_ui")]
+[node name="Breakfast" type="Node2D" unique_id=1850477271 node_paths=PackedStringArray("interact_button", "interact_hover_ui")]
 script = ExtResource("1_lmdyt")
-interactable_component = NodePath("InteractableComponent")
-interact_hover_ui = NodePath("InteractControl/InteractHoverUI")
+interact_button = NodePath("InteractButton")
+interact_hover_ui = NodePath("InteractButton/InteractHoverUI")
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=656625394 node_paths=PackedStringArray("interact_control")]
 script = ExtResource("1_2st6s")
-interact_control = NodePath("../InteractControl")
+interact_control = NodePath("")
 metadata/_custom_type_script = "uid://5xtjibybpdw1"
 
 [node name="PlateSprite" type="Sprite2D" parent="." unique_id=290315324]
@@ -37,22 +37,21 @@ flip_v = true
 region_enabled = true
 region_rect = Rect2(956, 539, 16, 46)
 
-[node name="InteractControl" type="Control" parent="." unique_id=691401749]
-layout_mode = 3
+[node name="InteractButton" type="Button" parent="." unique_id=1575254854]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = -22.0
 offset_top = -13.0
-offset_right = 20.0
+offset_right = 22.0
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+flat = true
 
-[node name="InteractHoverUI" parent="InteractControl" unique_id=467594439 instance=ExtResource("4_1tsq3")]
+[node name="InteractHoverUI" parent="InteractButton" unique_id=467594439 instance=ExtResource("4_1tsq3")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,7 +61,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextLabel" parent="InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+[node name="TextLabel" parent="InteractButton/InteractHoverUI" index="1" unique_id=1180517548]
 text = "Eat?"
 
-[editable path="InteractControl/InteractHoverUI"]
+[editable path="InteractButton/InteractHoverUI"]
