@@ -4,9 +4,13 @@ class_name PauseUI
 @export_subgroup("References")
 @export var resume_button : Button
 @export var quit_button : Button
+@export var animation : AnimationPlayer
 
 @export_subgroup("Pause Settings")
 @export var quit_scene_path : String
+
+@export_subgroup("Animation Settings")
+@export var load_animation_name : String = "load"
 
 # ==================================================================================================
 #                Virtual methods
@@ -15,6 +19,7 @@ func _ready() -> void:
 	# Assertion check
 	assert(resume_button, "resume_button is missing")
 	assert(quit_button, "quit_button is missing")
+	assert(animation, "animation is missing")
 	# Connect signals
 	resume_button.pressed.connect(_on_resume_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
@@ -36,19 +41,21 @@ func toggle_pause() -> void:
 
 func _pause() -> void:
 	InventoryManager.select_item(null)
-	visible = true
 	get_tree().paused = true
+	visible = true
+	animation.play(load_animation_name)
 
 func _unpause() -> void:
-	visible = false
 	get_tree().paused = false
+	visible = false
+	if animation.is_playing(): animation.stop()
 
 func _quit_game() -> void:
 	get_tree().paused = false
 	AudioManager.stop_music()
 	AudioManager.clear_all_sfx()
 	AudioManager.stop_all_sound()
-	get_tree().change_scene_to_file(quit_scene_path)
+	SceneManager.change_scene(quit_scene_path)
 
 # ==================================================================================================
 #                Signal listener methods

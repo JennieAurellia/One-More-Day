@@ -1,10 +1,196 @@
 [gd_scene format=3 uid="uid://cire151lrqlnk"]
 
 [ext_resource type="Script" uid="uid://w02ehvcuifea" path="res://src/ui/pause/pause_ui.gd" id="1_hmh33"]
-[ext_resource type="Texture2D" uid="uid://lcl3laypg6eu" path="res://assets/UI/UI_pause BG.png" id="2_skbbu"]
+[ext_resource type="Texture2D" uid="uid://5xhf2sofb3s6" path="res://assets/Pause splash/base.png" id="2_etkip"]
 [ext_resource type="PackedScene" uid="uid://l2nnv5bayhs4" path="res://src/ui/component/main_button/main_button.tscn" id="3_5ohp8"]
+[ext_resource type="Texture2D" uid="uid://bmjq8kj1p2s7w" path="res://assets/Pause splash/abu 3.png" id="3_j6rfb"]
+[ext_resource type="Texture2D" uid="uid://nmsrj3oky50" path="res://assets/Pause splash/putih 2.png" id="4_814v3"]
+[ext_resource type="Texture2D" uid="uid://cctiem760fdgy" path="res://assets/Pause splash/abu 1.png" id="6_lpqdq"]
+[ext_resource type="Texture2D" uid="uid://c2af50joa2m2b" path="res://assets/Pause splash/abu 2.png" id="7_7qhvc"]
+[ext_resource type="Texture2D" uid="uid://bx5ogcp66x3o" path="res://assets/Pause splash/putih 1.png" id="8_cwcpd"]
 
-[node name="PauseUI" type="Control" unique_id=235246552 node_paths=PackedStringArray("resume_button", "quit_button")]
+[sub_resource type="Animation" id="Animation_etkip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GrayOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GrayOverlay:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_j6rfb")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WhiteOverlay:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WhiteOverlay:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_814v3")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TitleLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Buttons:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UIBlock:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_j6rfb"]
+resource_name = "load"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GrayOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GrayOverlay:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_lpqdq"), ExtResource("7_7qhvc"), ExtResource("3_j6rfb")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WhiteOverlay:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.10000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WhiteOverlay:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.10000001, 0.20000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("8_cwcpd"), ExtResource("4_814v3")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TitleLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Buttons:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UIBlock:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_814v3"]
+_data = {
+&"RESET": SubResource("Animation_etkip"),
+&"load": SubResource("Animation_j6rfb")
+}
+
+[node name="PauseUI" type="Control" unique_id=235246552 node_paths=PackedStringArray("resume_button", "quit_button", "animation")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -13,8 +199,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hmh33")
-resume_button = NodePath("VBox/ResumeButton")
-quit_button = NodePath("VBox/QuitButton")
+resume_button = NodePath("Buttons/ResumeButton")
+quit_button = NodePath("Buttons/QuitButton")
+animation = NodePath("Animation")
 quit_scene_path = "res://src/scene/main_menu_scene.tscn"
 
 [node name="Background" type="TextureRect" parent="." unique_id=212461077]
@@ -24,19 +211,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_skbbu")
+texture = ExtResource("2_etkip")
 
-[node name="PauseLabel" type="Label" parent="." unique_id=1724920702]
+[node name="GrayOverlay" type="Sprite2D" parent="." unique_id=778492593]
+position = Vector2(960, 540)
+texture = ExtResource("3_j6rfb")
+
+[node name="WhiteOverlay" type="Sprite2D" parent="." unique_id=279983618]
+position = Vector2(960, 540)
+texture = ExtResource("4_814v3")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=789466292]
 layout_mode = 0
 offset_left = 259.0
 offset_top = 709.0
-offset_right = 855.0
-offset_bottom = 991.0
+offset_right = 1084.0
+offset_bottom = 1035.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 240
 text = "Pause"
 
-[node name="VBox" type="VBoxContainer" parent="." unique_id=673934685]
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=673934685]
 layout_mode = 0
 offset_left = 1138.0
 offset_top = 179.0
@@ -45,17 +240,29 @@ offset_bottom = 569.0
 scale = Vector2(1.2, 1.2)
 theme_override_constants/separation = -10
 
-[node name="ResumeButton" parent="VBox" unique_id=1502458938 instance=ExtResource("3_5ohp8")]
+[node name="ResumeButton" parent="Buttons" unique_id=1502458938 instance=ExtResource("3_5ohp8")]
 layout_mode = 2
 
-[node name="TextLabel" parent="VBox/ResumeButton/Margin" parent_id_path=PackedInt32Array(1502458938, 305730039) index="0" unique_id=1940812368]
+[node name="TextLabel" parent="Buttons/ResumeButton/Margin" parent_id_path=PackedInt32Array(1502458938, 305730039) index="0" unique_id=1940812368]
 text = "Continue"
 
-[node name="QuitButton" parent="VBox" unique_id=98178568 instance=ExtResource("3_5ohp8")]
+[node name="QuitButton" parent="Buttons" unique_id=98178568 instance=ExtResource("3_5ohp8")]
 layout_mode = 2
 
-[node name="TextLabel" parent="VBox/QuitButton/Margin" parent_id_path=PackedInt32Array(98178568, 305730039) index="0" unique_id=1940812368]
+[node name="TextLabel" parent="Buttons/QuitButton/Margin" parent_id_path=PackedInt32Array(98178568, 305730039) index="0" unique_id=1940812368]
 text = "Quit"
 
-[editable path="VBox/ResumeButton"]
-[editable path="VBox/QuitButton"]
+[node name="UIBlock" type="Control" parent="." unique_id=1267017685]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=1829151509]
+libraries/ = SubResource("AnimationLibrary_814v3")
+
+[editable path="Buttons/ResumeButton"]
+[editable path="Buttons/QuitButton"]
