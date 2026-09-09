@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bfgfrj3onx4oi"]
+
+[ext_resource type="Texture2D" uid="uid://bl8juvb34dvo0" path="res://assets/item/medicine_item_size.png" id="1_ddnhi"]
+[ext_resource type="Script" uid="uid://bmu7obj2sm5aw" path="res://src/game_system/inventory/item_data.gd" id="2_vhf72"]
+
+[resource]
+script = ExtResource("2_vhf72")
+id = &"medicine_item"
+display_name = "Medicine"
+icon = ExtResource("1_ddnhi")
+description = "A medicine."
+metadata/_custom_type_script = "uid://bmu7obj2sm5aw"

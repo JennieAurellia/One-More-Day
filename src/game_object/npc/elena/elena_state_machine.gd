@@ -2,6 +2,7 @@ extends Node
 class_name ElenaStateMachine
 
 enum NPCState{
+	# Main Flow
 	COOKING,
 	SERVING_FOOD,
 	EATING,
@@ -96,6 +97,8 @@ func _ready() -> void:
 	_state_game_time_minute_timer = 0
 	_change_state_game_time_minute = schedule_dictionary[current_state]
 	_enter_state(current_state)
+
+func _process(delta: float) -> void: _update_state(current_state)
 
 # ==================================================================================================
 #                Dialogue methods
@@ -227,6 +230,30 @@ func _exit_state(state:NPCState) -> void:
 			showering_shower.unlock()
 		NPCState.DRESSING_UP:
 			dressing_up_wardrobe.close()
+
+func _update_state(state:NPCState) -> void:
+	match state:
+		
+		NPCState.COOKING:
+			if !EventFlag.instance.has_talked_before_breakfast:
+				if EventFlag.instance.has_exited_bedroom:
+					EventFlag.instance.has_talked_before_breakfast = true
+					_do_dialogue("still_cooking")
+		
+		NPCState.SERVING_FOOD:
+			if !EventFlag.instance.has_talked_before_breakfast:
+				if EventFlag.instance.has_exited_bedroom:
+					EventFlag.instance.has_talked_before_breakfast = true
+					_do_dialogue("after_cooking")
+
+# ==================================================================================================
+#                Trigger methods
+# ==================================================================================================
+func _do_dialogue(title:String):
+	npc.enter_dialogue()
+	DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, title)
+	await DialogueManager.dialogue_ended
+	npc.exit_dialogue()
 
 # ==================================================================================================
 #                Signal listener methods

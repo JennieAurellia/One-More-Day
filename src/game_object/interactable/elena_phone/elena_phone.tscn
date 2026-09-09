@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dmlctjjlrbwoc"]
+
+[ext_resource type="Script" uid="uid://2r6njvu1uujf" path="res://src/game_object/interactable/elena_phone/elena_phone.gd" id="1_dkpt0"]
+[ext_resource type="Resource" uid="uid://cvvmf2s7u1nk7" path="res://data/item/phone_item.tres" id="2_t4qfs"]
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="2_vv4ir"]
+[ext_resource type="Texture2D" uid="uid://cx8l6s17ny387" path="res://assets/tileset_bedroom & bathroom.png" id="3_c7i5p"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="4_eocqt"]
+
+[node name="ElenaPhone" type="Node2D" unique_id=1153982709 node_paths=PackedStringArray("interactable_component", "sprite", "interact_hover_ui", "interact_hover_text_label")]
+script = ExtResource("1_dkpt0")
+interactable_component = NodePath("InteractableComponent")
+sprite = NodePath("Sprite")
+interact_hover_ui = NodePath("InteractControl/InteractHoverUI")
+interact_hover_text_label = NodePath("InteractControl/InteractHoverUI/TextLabel")
+phone_item_data = ExtResource("2_t4qfs")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=110500830 node_paths=PackedStringArray("interact_control")]
+script = ExtResource("2_vv4ir")
+interact_control = NodePath("../InteractControl")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1709401582]
+position = Vector2(-3, -4)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_c7i5p")
+region_enabled = true
+region_rect = Rect2(896, 896, 128, 128)
+
+[node name="InteractControl" type="Control" parent="." unique_id=1275997181]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="InteractHoverUI" parent="InteractControl" unique_id=467594439 instance=ExtResource("4_eocqt")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="TextLabel" parent="InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+text = "Take?"
+
+[editable path="InteractControl/InteractHoverUI"]

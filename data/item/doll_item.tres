@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dlg28ugmnenqu"]
+
+[ext_resource type="Texture2D" uid="uid://b80u0dxwf1ymb" path="res://assets/item/doll_item_size.png" id="1_eisyy"]
+[ext_resource type="Script" uid="uid://bmu7obj2sm5aw" path="res://src/game_system/inventory/item_data.gd" id="2_xdur2"]
+
+[resource]
+script = ExtResource("2_xdur2")
+id = &"doll_item"
+display_name = "Doll"
+icon = ExtResource("1_eisyy")
+description = "A doll from the bedroom."
+metadata/_custom_type_script = "uid://bmu7obj2sm5aw"

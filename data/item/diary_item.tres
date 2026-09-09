@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dojnxo37q6u6t"]
+
+[ext_resource type="Texture2D" uid="uid://ctavvpqcihgy8" path="res://assets/item/book_item_size.png" id="1_faapb"]
+[ext_resource type="Script" uid="uid://bmu7obj2sm5aw" path="res://src/game_system/inventory/item_data.gd" id="2_648yy"]
+
+[resource]
+script = ExtResource("2_648yy")
+id = &"diary_item"
+display_name = "Diary"
+icon = ExtResource("1_faapb")
+description = "Elena's diary that you took from the make up desk."
+metadata/_custom_type_script = "uid://bmu7obj2sm5aw"

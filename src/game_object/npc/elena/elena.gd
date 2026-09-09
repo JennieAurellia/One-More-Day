@@ -3,9 +3,10 @@ class_name Elena
 
 signal arrived_at_destination
 signal destination_reached(destination:Vector2)
+signal dialogue_finished
 
 @export_subgroup("References")
-@export var state_machine : ElenaStateMachine
+@export var phase_controller : PhaseController
 @export var interactable_component : InteractableComponent
 @export var elena_sprite : ElenaSprite
 @export var nav_agent : NavigationAgent2D
@@ -41,15 +42,20 @@ var _is_in_dialogue : bool = false
 #                Virtual methods
 # ==================================================================================================
 func _ready() -> void:
+	# Assertion check
+	assert(phase_controller, "phase_controller is missing")
+	assert(interactable_component, "interactable_component is missing")
+	assert(elena_sprite, "elena_sprite is missing")
+	assert(nav_agent, "nav_agent is missing")
+	assert(interact_hover_ui, "interact_hover_ui is missing")
 	# Connect signals
-	if interactable_component:
-		interactable_component.hovered.connect(_on_interactable_hovered)
-		interactable_component.unhovered.connect(_on_interactable_unhovered)
-		interactable_component.interacted.connect(_on_interactable_interacted)
-	if nav_agent: nav_agent.velocity_computed.connect(_on_velocity_computed)
+	interactable_component.hovered.connect(_on_interactable_hovered)
+	interactable_component.unhovered.connect(_on_interactable_unhovered)
+	interactable_component.interacted.connect(_on_interactable_interacted)
+	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	# Initialize
-	if nav_agent: nav_agent.max_speed = movement_speed
-	if interact_hover_ui: interact_hover_ui.hide()
+	nav_agent.max_speed = movement_speed
+	interact_hover_ui.hide()
 	_target_position = global_position
 	_target_rotation = rotation
 	current_room = initial_room
@@ -58,29 +64,23 @@ func _physics_process(delta: float) -> void:
 	_do_movement(delta)
 	_check_arrival()
 	_do_rotation(delta)
-	if elena_sprite: _do_animation()
+	_do_animation()
 	_do_audio()
 	_update_interact_hover()
 
 # ==================================================================================================
-#                Main methods
+#                Process methods
 # ==================================================================================================
 func _do_movement(delta:float) -> void:
+	# Check is seated or in dialogue
 	if _is_seated or _is_in_dialogue:
 		velocity = Vector2.ZERO
 		return
-	if nav_agent:
-		if nav_agent.is_navigation_finished(): return
-		var next_path_position : Vector2 = nav_agent.get_next_path_position()
-		var direction : Vector2 = global_position.direction_to(next_path_position)
-		nav_agent.set_velocity(direction * movement_speed)
-	else:
-		if global_position.distance_to(_target_position) > arrival_distance:
-			var direction : Vector2 = (_target_position - global_position).normalized()
-			velocity = direction * movement_speed
-		else:
-			velocity = Vector2.ZERO
-		move_and_slide()
+	# Do movement with nav agent
+	if nav_agent.is_navigation_finished(): return
+	var next_path_position : Vector2 = nav_agent.get_next_path_position()
+	var direction : Vector2 = global_position.direction_to(next_path_position)
+	nav_agent.set_velocity(direction * movement_speed)
 
 func _do_rotation(delta:float) -> void:
 	if velocity.length_squared() > 1.0: _target_rotation = velocity.angle()
@@ -99,9 +99,7 @@ func _do_audio():
 
 func _check_arrival() -> void:
 	if _has_arrived: return
-	var reached : bool = false
-	if nav_agent: reached = nav_agent.is_navigation_finished()
-	else: reached = global_position.distance_to(_target_position) <= arrival_distance
+	var reached : bool = nav_agent.is_navigation_finished()
 	if reached:
 		_has_arrived = true
 		global_position = _target_position
@@ -110,27 +108,21 @@ func _check_arrival() -> void:
 			_target_rotation = _pending_seat_rotation
 			rotation = _pending_seat_rotation
 			_is_seated = true
-			if elena_sprite: elena_sprite.do_sit(_current_seat.is_sitting_legless)
+			elena_sprite.do_sit(_current_seat.is_sitting_legless)
 		elif not is_nan(_pending_facing_rotation):
 			_target_rotation = _pending_facing_rotation
 		arrived_at_destination.emit()
 
-func _move_to(new_position: Vector2, facing_rotation: float = NAN) -> void:
-	_has_arrived = false
-	_current_seat = null
-	_pending_facing_rotation = facing_rotation
-	_target_position = new_position
-	if nav_agent: nav_agent.target_position = new_position
-
 func _update_interact_hover():
-	if interact_hover_ui: interact_hover_ui.rotation = -rotation
+	interact_hover_ui.rotation = -rotation
 
 # ==================================================================================================
-#                NPC methods
+#                Travel methods
 # ==================================================================================================
 ## Walks (through doors if needed) to destination in destination_room, optionally snapping to
 ## facing_degrees once arrived. Cancels any previous in-progress travel.
-## Emits destination_reached once she physically arrives at `destination` (not intermediate door stops).
+## Emits destination_reached once she physically arrives at `destination` 
+## (not intermediate door stops).
 func go_to(
 	destination:Vector2, destination_room:EnumUtility.RoomName, facing_degrees:float = NAN
 ) -> void:
@@ -159,45 +151,6 @@ func go_to_interactable(
 	destination_reached.emit(interactable.get_position())
 	interactable.npc_interact(self)
 
-## Stands up from whatever seat she's currently occupying, if any. Safe to call when not seated.
-func stand_up_if_seated() -> void:
-	if _current_seat:
-		_current_seat.stand_up() # cascades back into Elena.stand_up()
-
-## Called by Seat.sit_actor() once assigned — begins walking to the seat marker.
-func sit_at(seat_position:Vector2, facing_rotation:float, is_legless:bool, seat:Seat) -> void:
-	_has_arrived = false
-	_current_seat = seat
-	_is_seated = false
-	_pending_seat_rotation = facing_rotation
-	_target_position = seat_position
-	if nav_agent: nav_agent.target_position = seat_position
-
-## Called by Seat.stand_up() — clears seated state so she can move again.
-func stand_up() -> void:
-	_is_seated = false
-	_current_seat = null
-
-func is_seated() -> bool: return _is_seated
-
-## Freezes all movement immediately and cancels any in-progress travel. Called when dialogue starts.
-func enter_dialogue() -> void:
-	_is_in_dialogue = true
-	_travel_id += 1 # cancel any in-progress go_to/go_to_interactable coroutine
-	_has_arrived = true
-	_target_position = global_position
-	if state_machine: state_machine.enter_dialogue_state()
-	if elena_sprite: elena_sprite.do_idle()
-	if nav_agent: nav_agent.target_position = global_position
-	velocity = Vector2.ZERO
-
-## Called when dialogue ends — allows movement again.
-func exit_dialogue() -> void:
-	_is_in_dialogue = false
-	if state_machine: state_machine.exit_dialogue_state()
-
-func is_in_dialogue() -> bool: return _is_in_dialogue
-
 ## Walks through whatever doors connect current_room to destination_room, updating current_room
 ## as she passes through each one. No-op if already in the destination room.
 func _travel_through_doors(destination_room:EnumUtility.RoomName, travel_id:int) -> void:
@@ -224,19 +177,73 @@ func _travel_through_doors(destination_room:EnumUtility.RoomName, travel_id:int)
 		if travel_id != _travel_id: return
 		current_room = door.pull_side_room if from_push_side else door.push_side_room
 
+func _move_to(new_position: Vector2, facing_rotation: float = NAN) -> void:
+	_has_arrived = false
+	_current_seat = null
+	_pending_facing_rotation = facing_rotation
+	_target_position = new_position
+	nav_agent.target_position = new_position
+
+# ==================================================================================================
+#                Sitting methods
+# ==================================================================================================
+## Stands up from whatever seat she's currently occupying, if any. Safe to call when not seated.
+func stand_up_if_seated() -> void:
+	if _current_seat: _current_seat.stand_up() # cascades back into Elena.stand_up()
+
+## Called by Seat.sit_actor() once assigned — begins walking to the seat marker.
+func sit_at(seat_position:Vector2, facing_rotation:float, is_legless:bool, seat:Seat) -> void:
+	_has_arrived = false
+	_current_seat = seat
+	_is_seated = false
+	_pending_seat_rotation = facing_rotation
+	_target_position = seat_position
+	nav_agent.target_position = seat_position
+
+## Called by Seat.stand_up() — clears seated state so she can move again.
+func stand_up() -> void:
+	_is_seated = false
+	_current_seat = null
+
+func is_seated() -> bool: return _is_seated
+
+# ==================================================================================================
+#                Dialogue methods
+# ==================================================================================================
+func do_dialogue(title:String):
+	_enter_dialogue()
+	DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, title)
+	await DialogueManager.dialogue_ended
+	_exit_dialogue()
+	dialogue_finished.emit()
+
+## Freezes all movement immediately and cancels any in-progress travel.
+func _enter_dialogue() -> void:
+	_is_in_dialogue = true
+	_travel_id += 1 # cancel any in-progress go_to/go_to_interactable coroutine
+	_has_arrived = true
+	_target_position = global_position
+	phase_controller.interupt_current_phase()
+	nav_agent.target_position = global_position
+	velocity = Vector2.ZERO
+
+## Called when dialogue ends — allows movement again.
+func _exit_dialogue() -> void:
+	_is_in_dialogue = false
+	phase_controller.continue_current_phase()
+
+func is_in_dialogue() -> bool: return _is_in_dialogue
+
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_interactable_hovered(): if interact_hover_ui: interact_hover_ui.show()
+func _on_interactable_hovered(): interact_hover_ui.show()
 
-func _on_interactable_unhovered(): if interact_hover_ui: interact_hover_ui.hide()
+func _on_interactable_unhovered(): interact_hover_ui.hide()
 
 func _on_interactable_interacted():
-	if interact_hover_ui: interact_hover_ui.hide()
-	enter_dialogue()
-	DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, "talk")
-	await DialogueManager.dialogue_ended
-	exit_dialogue()
+	interact_hover_ui.hide()
+	do_dialogue("talk")
 
 func _on_velocity_computed(safe_velocity:Vector2) -> void:
 	if _is_seated or _is_in_dialogue:

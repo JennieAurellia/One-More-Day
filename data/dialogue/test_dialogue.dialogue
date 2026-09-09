@@ -21,10 +21,50 @@ You're on your own.
 => END
 
 ~ talk
-[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] .
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
 Elena: Yes dear?
 - I love you
 	Adrian: I love you.
 	Elena: ( ＾ω＾ )
 - Nothing => END
+=> END
+
+~ still_cooking
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: still_cooking
+=> END
+
+~ after_cooking
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: after_cooking
+=> END
+
+~ still_inside_bedroom
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: still_inside_bedroom
+=> END
+
+~ done_eating
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: done_eating
+=> END
+
+~ not_eating
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: not_eating
+=> END
+
+~ in_sofa
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: in_sofa
+=> END
+
+~ going_to_shower
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: going_to_shower
+=> END
+
+~ caught_spying
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: caught_spying
 => END

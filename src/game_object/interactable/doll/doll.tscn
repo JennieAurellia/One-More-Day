@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://by8au6hdr3col"]
+
+[ext_resource type="Script" uid="uid://dc2dubnkrbcl4" path="res://src/game_object/interactable/doll/doll.gd" id="1_2bytk"]
+[ext_resource type="Texture2D" uid="uid://cx8l6s17ny387" path="res://assets/tileset_bedroom & bathroom.png" id="2_at15q"]
+[ext_resource type="Resource" uid="uid://dlg28ugmnenqu" path="res://data/item/doll_item.tres" id="2_wjhux"]
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="2_wt8gp"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="3_at15q"]
+
+[node name="Doll" type="Node2D" unique_id=1153982709 node_paths=PackedStringArray("interactable_component", "interact_hover_ui")]
+script = ExtResource("1_2bytk")
+interactable_component = NodePath("InteractableComponent")
+interact_hover_ui = NodePath("InteractControl/InteractHoverUI")
+doll_item_data = ExtResource("2_wjhux")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=110500830 node_paths=PackedStringArray("interact_control")]
+script = ExtResource("2_wt8gp")
+interact_control = NodePath("../InteractControl")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1709401582]
+position = Vector2(1.9999995, 6.0000005)
+rotation = -0.2617994
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_at15q")
+region_enabled = true
+region_rect = Rect2(640, 896, 128, 128)
+
+[node name="InteractControl" type="Control" parent="." unique_id=1275997181]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="InteractHoverUI" parent="InteractControl" unique_id=467594439 instance=ExtResource("3_at15q")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="TextLabel" parent="InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+text = "Take?"
+
+[editable path="InteractControl/InteractHoverUI"]

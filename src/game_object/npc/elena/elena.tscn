@@ -1,27 +1,63 @@
 [gd_scene format=3 uid="uid://cw816jpefljti"]
 
 [ext_resource type="Script" uid="uid://b8ocapmwih7fx" path="res://src/game_object/npc/elena/elena.gd" id="1_3kc1g"]
+[ext_resource type="Script" uid="uid://b0q2mt07v486l" path="res://src/game_object/npc/component/phase_controller.gd" id="2_1xgul"]
 [ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="2_5ya85"]
 [ext_resource type="SpriteFrames" uid="uid://bfndrm7ug3ij2" path="res://src/game_object/npc/elena/elena_sprite_frames.tres" id="2_tq825"]
-[ext_resource type="Script" uid="uid://b1wpgsle4xj35" path="res://src/game_object/npc/elena/elena_state_machine.gd" id="2_uyx5h"]
 [ext_resource type="Script" uid="uid://ct3ai73dp7fkl" path="res://src/game_object/npc/elena/elena_sprite.gd" id="2_xp60g"]
+[ext_resource type="Script" uid="uid://cyhka1tiwddap" path="res://src/game_object/npc/elena/phase/elena_cook_phase.gd" id="3_211og"]
+[ext_resource type="Script" uid="uid://da2nv85nf0qc3" path="res://src/game_object/npc/elena/phase/elena_eat_phase.gd" id="4_1xgul"]
+[ext_resource type="Script" uid="uid://ob56t1ksep73" path="res://src/game_object/npc/elena/phase/elena_shower_phase.gd" id="5_211og"]
+[ext_resource type="Script" uid="uid://c75lvvktiu8x0" path="res://src/game_object/npc/elena/phase/elena_chill_phase.gd" id="5_bdbox"]
 [ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="6_tq825"]
+[ext_resource type="Script" uid="uid://ccsmgcordntdv" path="res://src/game_object/npc/elena/phase/elena_dress_phase.gd" id="7_tmm5q"]
+[ext_resource type="Script" uid="uid://dggp57mpnp8aq" path="res://src/game_object/npc/elena/phase/elena_ready_phase.gd" id="8_ptp7x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrr71"]
 
-[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("state_machine", "interactable_component", "elena_sprite", "nav_agent", "interact_hover_ui")]
+[node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("phase_controller", "interactable_component", "elena_sprite", "nav_agent", "interact_hover_ui")]
 script = ExtResource("1_3kc1g")
-state_machine = NodePath("ElenaStateMachine")
+phase_controller = NodePath("PhaseController")
 interactable_component = NodePath("InteractableComponent")
 elena_sprite = NodePath("Sprite")
 nav_agent = NodePath("NavigationAgent")
 interact_hover_ui = NodePath("InteractControl/InteractHoverUI")
 movement_speed = 300.0
 
-[node name="ElenaStateMachine" type="Node" parent="." unique_id=1905983306 node_paths=PackedStringArray("npc")]
-script = ExtResource("2_uyx5h")
-npc = NodePath("..")
-metadata/_custom_type_script = "uid://b1wpgsle4xj35"
+[node name="PhaseController" type="Node" parent="." unique_id=1126815856 node_paths=PackedStringArray("phase_array")]
+script = ExtResource("2_1xgul")
+phase_array = [NodePath("ElenaCookPhase"), NodePath("ElenaEatPhase"), NodePath("ElenaChillPhase"), NodePath("ElenaShowerPhase"), NodePath("ElenaDressPhase"), NodePath("ElenaReadyPhase")]
+metadata/_custom_type_script = "uid://b0q2mt07v486l"
+
+[node name="ElenaCookPhase" type="Node" parent="PhaseController" unique_id=361721936 node_paths=PackedStringArray("elena")]
+script = ExtResource("3_211og")
+elena = NodePath("../..")
+metadata/_custom_type_script = "uid://cyhka1tiwddap"
+
+[node name="ElenaEatPhase" type="Node" parent="PhaseController" unique_id=657816631 node_paths=PackedStringArray("elena")]
+script = ExtResource("4_1xgul")
+elena = NodePath("../..")
+metadata/_custom_type_script = "uid://da2nv85nf0qc3"
+
+[node name="ElenaChillPhase" type="Node" parent="PhaseController" unique_id=361947885 node_paths=PackedStringArray("elena")]
+script = ExtResource("5_bdbox")
+elena = NodePath("../..")
+metadata/_custom_type_script = "uid://c75lvvktiu8x0"
+
+[node name="ElenaShowerPhase" type="Node" parent="PhaseController" unique_id=1427404626 node_paths=PackedStringArray("elena")]
+script = ExtResource("5_211og")
+elena = NodePath("../..")
+metadata/_custom_type_script = "uid://ob56t1ksep73"
+
+[node name="ElenaDressPhase" type="Node" parent="PhaseController" unique_id=1007152566 node_paths=PackedStringArray("elena")]
+script = ExtResource("7_tmm5q")
+elena = NodePath("../..")
+metadata/_custom_type_script = "uid://ccsmgcordntdv"
+
+[node name="ElenaReadyPhase" type="Node" parent="PhaseController" unique_id=860034888 node_paths=PackedStringArray("elena")]
+script = ExtResource("8_ptp7x")
+elena = NodePath("../..")
+metadata/_custom_type_script = "uid://dggp57mpnp8aq"
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=1609659465 node_paths=PackedStringArray("interact_control")]
 script = ExtResource("2_5ya85")

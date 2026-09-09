@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://dda637k8wqb27"]
 
+[ext_resource type="Script" uid="uid://bcqe13e38wnnp" path="res://src/game_object/interactable/sofa/sofa.gd" id="1_cdjdq"]
 [ext_resource type="Texture2D" uid="uid://kuam55g60hu1" path="res://src/common/texture/furniture/sofa_texture.tres" id="1_uuihe"]
 [ext_resource type="PackedScene" uid="uid://ck5tmwg6qc7ia" path="res://src/game_object/interactable/seat/seat.tscn" id="2_cdjdq"]
 
-[node name="Sofa" type="Node2D" unique_id=1640489733]
+[node name="Sofa" type="Node2D" unique_id=1640489733 node_paths=PackedStringArray("seat_array")]
 rotation = 1.5707964
+script = ExtResource("1_cdjdq")
+seat_array = [NodePath("Seat1"), NodePath("Seat2"), NodePath("Seat3")]
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=918826100]
 rotation = 3.1415927

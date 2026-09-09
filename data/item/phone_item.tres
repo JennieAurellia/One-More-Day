@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cvvmf2s7u1nk7"]
+
+[ext_resource type="Texture2D" uid="uid://fufttgl7jiqj" path="res://assets/item/phone_item_size.png" id="1_1i7tk"]
+[ext_resource type="Script" uid="uid://bmu7obj2sm5aw" path="res://src/game_system/inventory/item_data.gd" id="2_eosin"]
+
+[resource]
+script = ExtResource("2_eosin")
+id = &"phone_item"
+display_name = "Phone"
+icon = ExtResource("1_1i7tk")
+description = "Elena's phone that you took while she's on shower."
+metadata/_custom_type_script = "uid://bmu7obj2sm5aw"

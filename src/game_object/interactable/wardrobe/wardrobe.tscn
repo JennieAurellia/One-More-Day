@@ -1,16 +1,28 @@
 [gd_scene format=3 uid="uid://b3vulr6is71q0"]
 
 [ext_resource type="Script" uid="uid://3aa64me8ywf1" path="res://src/game_object/interactable/wardrobe/wardrobe.gd" id="1_10i0b"]
+[ext_resource type="Resource" uid="uid://bxwnet5kinnyh" path="res://data/item/gift_item.tres" id="2_egy5t"]
 [ext_resource type="Texture2D" uid="uid://cx8l6s17ny387" path="res://assets/tileset_bedroom & bathroom.png" id="2_t6hbd"]
 [ext_resource type="Texture2D" uid="uid://bn6t3avp45rd6" path="res://assets/tileset_revision.png" id="3_bmwy4"]
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="4_3p8rh"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="5_egy5t"]
 
-[node name="Wardrobe" type="Node2D" unique_id=1065710214 node_paths=PackedStringArray("normal_sprite", "opened_sprite")]
+[node name="Wardrobe" type="Node2D" unique_id=1065710214 node_paths=PackedStringArray("interactable_component", "normal_sprite", "opened_sprite", "interact_hover_ui")]
 rotation = 1.5707964
 script = ExtResource("1_10i0b")
+interactable_component = NodePath("InteractableComponent")
 normal_sprite = NodePath("NormalSprite")
 opened_sprite = NodePath("OpenedSprite")
+interact_hover_ui = NodePath("InteractControl/InteractHoverUI")
+gift_item_data = ExtResource("2_egy5t")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=1473935625 node_paths=PackedStringArray("interact_control")]
+script = ExtResource("4_3p8rh")
+interact_control = NodePath("../InteractControl")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
 
 [node name="NormalSprite" type="Sprite2D" parent="." unique_id=1092504340]
+position = Vector2(0, -20)
 rotation = -1.5707964
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_t6hbd")
@@ -18,9 +30,44 @@ region_enabled = true
 region_rect = Rect2(0, 384, 256, 384)
 
 [node name="OpenedSprite" type="Sprite2D" parent="." unique_id=67632521]
-position = Vector2(9, 25)
+position = Vector2(8.999992, 5.0000076)
 rotation = -1.5707964
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_bmwy4")
 region_enabled = true
 region_rect = Rect2(768, 128, 256, 384)
+
+[node name="InteractControl" type="Control" parent="." unique_id=624936521]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.000015
+offset_top = -44.0
+offset_right = 66.999985
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="InteractHoverUI" parent="InteractControl" unique_id=467594439 instance=ExtResource("5_egy5t")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+scale = Vector2(-1, 1)
+
+[node name="TextLabel" parent="InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 71.0
+offset_right = 130.0
+scale = Vector2(-1, 1)
+text = "Search?"
+
+[editable path="InteractControl/InteractHoverUI"]
