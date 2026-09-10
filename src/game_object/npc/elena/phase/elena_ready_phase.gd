@@ -84,6 +84,8 @@ func enter_state(state:State):
 			)
 		
 		State.TO_OUTSIDE:
+			elena.do_dialogue("heading_out")
+			await elena.dialogue_finished
 			elena.go_to(
 				outside_marker.global_position,
 				EnumUtility.RoomName.OUTSIDE,

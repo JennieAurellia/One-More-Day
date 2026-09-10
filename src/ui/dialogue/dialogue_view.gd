@@ -43,3 +43,7 @@ func hide_character_sprite(view_position:ViewPosition):
 		left_texture_rect.texture = null
 	elif view_position == ViewPosition.RIGHT:
 		right_texture_rect.texture = null
+
+func hide_all_sprite():
+	left_texture_rect.texture = null
+	right_texture_rect.texture = null

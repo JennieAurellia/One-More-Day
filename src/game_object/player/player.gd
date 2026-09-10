@@ -47,6 +47,11 @@ func _ready() -> void:
 	if nav_agent: nav_agent.max_speed = movement_speed
 	_target_position = global_position
 	_target_rotation = rotation
+	match GameManager.loop_count:
+		0: pass
+		1: do_dialogue("first_loop")
+		2: do_dialogue("second_loop")
+		_: do_dialogue("third_loop")
 
 func _physics_process(delta: float) -> void:
 	_do_movement(delta)
@@ -78,6 +83,12 @@ func stand_up() -> void:
 	_seated_seat = null
 	if player_sprite: player_sprite.do_idle()
 
+func do_dialogue(title:String):
+	DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, title)
+
+# ==================================================================================================
+#                Process methods
+# ==================================================================================================
 func _do_movement(delta:float):
 	# Check is sitting
 	if _is_seated and _seated_seat:

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2rnpu7lx241o"]
 
 [ext_resource type="Script" uid="uid://duylv76okypg1" path="res://src/ui/dialogue/dialogue_ui.gd" id="1_njptv"]
-[ext_resource type="Resource" uid="uid://b8x206uv6fjjq" path="res://data/dialogue/test_dialogue.dialogue" id="2_mhw84"]
+[ext_resource type="Resource" uid="uid://dguvg3a78v2ps" path="res://data/dialogue/main_dialogue.dialogue" id="2_h7vwg"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_yd4tk"]
 [ext_resource type="Script" uid="uid://c4mrt3yffub8j" path="res://src/ui/dialogue/dialogue_view.gd" id="3_6sug4"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_mhw84"]
@@ -118,7 +118,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_njptv")
 dialogue_view = NodePath("DialogueView")
-dialogue_resource = ExtResource("2_mhw84")
+dialogue_resource = ExtResource("2_h7vwg")
 
 [node name="DialogueView" type="Node" parent="." unique_id=1103901151 node_paths=PackedStringArray("left_texture_rect", "right_texture_rect")]
 script = ExtResource("3_6sug4")

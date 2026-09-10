@@ -6,7 +6,8 @@ enum State{
 	COOKING,
 	## Elena serving food after cooking
 	SERVING,
-	## Elena calling Adrian if he has not exited bedroom
+	## Elena is either shouting to Adrian that breakfast is ready 
+	## or calling Adrian if he has not exited bedroom
 	CALLING,
 }
 
@@ -82,15 +83,22 @@ func enter_state(state:State):
 			serving_dining_table.place_breakfast()
 		
 		State.CALLING:
-			elena.go_to(
-				calling_marker.global_position,
-				EnumUtility.RoomName.BEDROOM,
-				calling_facing
-			)
-			await elena.destination_reached
-			elena.do_dialogue("still_inside_bedroom")
-			await elena.dialogue_finished
-			phase_finished.emit()
+			# Shout to player that breakfast is ready
+			if EventFlag.instance.has_exited_bedroom:
+				elena.do_dialogue("finish_cooking")
+				await elena.dialogue_finished
+				phase_finished.emit()
+			# Go to bedroom to call player
+			else:
+				elena.go_to(
+					calling_marker.global_position,
+					EnumUtility.RoomName.BEDROOM,
+					calling_facing
+				)
+				await elena.destination_reached
+				elena.do_dialogue("still_inside_bedroom")
+				await elena.dialogue_finished
+				phase_finished.emit()
 
 func exit_state(state:State):
 	match state:
@@ -111,8 +119,7 @@ func update_state(delta:float):
 		State.SERVING:
 			_serving_timer += delta / GameTimer.instance.seconds_per_game_time_minute
 			if _serving_timer >= serving_time and !is_interupted:
-				if EventFlag.instance.has_exited_bedroom: phase_finished.emit()
-				else: change_state(State.CALLING)
+				change_state(State.CALLING)
 
 # ==================================================================================================
 #                Signal listener methods

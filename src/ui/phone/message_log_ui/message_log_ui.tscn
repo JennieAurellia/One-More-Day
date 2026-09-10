@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dx6f0ph5xn1yr"]
+
+[ext_resource type="Script" uid="uid://bx3ljopymmhwp" path="res://src/ui/phone/message_log_ui/message_log_ui.gd" id="1_d4vhg"]
+[ext_resource type="Texture2D" uid="uid://bs457mi8no7oi" path="res://assets/UI/message_log_right.png" id="2_kadrg"]
+[ext_resource type="Texture2D" uid="uid://drqgjmby0tn50" path="res://assets/UI/message_log_left.png" id="2_xt7ow"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ysx0h"]
+texture = ExtResource("2_kadrg")
+texture_margin_left = 8.0
+texture_margin_top = 7.0
+texture_margin_right = 8.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(0, 0, 26, 22)
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kadrg"]
+texture = ExtResource("2_xt7ow")
+texture_margin_left = 8.0
+texture_margin_top = 7.0
+texture_margin_right = 8.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(0, 0, 26, 22)
+modulate_color = Color(0, 0, 0, 1)
+
+[node name="MessageLogUI" type="MarginContainer" unique_id=1580440962 node_paths=PackedStringArray("self_parent", "self_label", "other_parent", "other_label")]
+offset_right = 56.0
+offset_bottom = 33.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+script = ExtResource("1_d4vhg")
+self_parent = NodePath("Self")
+self_label = NodePath("Self/SelfLabel")
+other_parent = NodePath("Other")
+other_label = NodePath("Other/OtherLabel")
+
+[node name="Self" type="PanelContainer" parent="." unique_id=534642082]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_ysx0h")
+
+[node name="SelfLabel" type="Label" parent="Self" unique_id=339008523]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 20
+text = "text"
+horizontal_alignment = 2
+
+[node name="Other" type="PanelContainer" parent="." unique_id=230546909]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_kadrg")
+
+[node name="OtherLabel" type="Label" parent="Other" unique_id=2034474657]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 20
+text = "text"

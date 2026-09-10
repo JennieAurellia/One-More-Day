@@ -4,6 +4,7 @@ class_name EventFlag
 static var instance : EventFlag
 
 signal exited_bedroom
+signal peaked_inside_phone
 
 # ========== Cook phase ==========
 ## Has the player exited the bedroom
@@ -29,6 +30,13 @@ var has_talked_after_breakfast : bool = false
 var is_sitting_on_sofa : bool = false
 ## Has player and Elena talked while sitting on sofa
 var has_talked_while_chilling : bool = false
+
+# ========== Shower phase ==========
+## Has player see dialogue inside Elena's phone
+var has_peak_inside_phone : bool = false:
+	set(value):
+		has_peak_inside_phone = value
+		peaked_inside_phone.emit()
 
 # ==================================================================================================
 #                Virtual methods

@@ -1,0 +1,109 @@
+~ start
+.
+=> END
+
+# ==========================================================
+#           Looping
+# ==========================================================
+~ first_loop
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] W-what just happened? Did I... go back to this morning? I need to fix all of this.
+=> END
+
+~ second_loop
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] No... Not again...
+=> END
+
+~ third_loop
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] Ugh... I'm never going to get used to this...
+=> END
+
+# ==========================================================
+#           Cook Phase
+# ==========================================================
+~ still_cooking
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Good morning, darling! I'm making breakfast. It'll be ready soon.
+=> END
+
+~ after_cooking
+Elena:  [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Good morning, darling! Finally, you're awake. Come on, let's have breakfast.
+=> END
+
+~ finish_cooking
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Hey, darling! Breakfast is ready. Come eat with me!
+=> END
+
+~ still_inside_bedroom
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Darling? Are you awake?
+Elena: I've been waiting for you. Breakfast is getting cold.
+=> END
+
+# ==========================================================
+#           Eat Phase
+# ==========================================================
+~ done_eating
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Oh, by the way, Maya asked me to go out with her today.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Oh? You two have plans?
+Elena: Yeah. She said she wanted to hang out for a bit.
+Adrian: Sounds nice. What time are you going?
+Elena: Probably around 12 P.M. I shouldn't be out too late, though.
+Adrian: Alright then. Have fun with her.
+Elena: I will. 
+=> END
+
+~ not_eating
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] You're not eating, darling?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] I'm not really hungry yet.
+Elena: You should at least have something. I don't want you skipping breakfast.
+Adrian: I'll eat in a bit. Don't worry.
+Elena: Alright, but don't wait too long.
+Elena: Oh, by the way, Maya asked me to go out with her today.
+Adrian: Oh? You two have plans?
+Elena: Yeah. She wanted to hang out for a bit.
+Adrian: Sounds nice. What time are you going?
+Elena: Probably around 12 P.M. I shouldn't be out too late, though.
+Adrian: Alright then. Have fun with her.
+Elena: I will.
+=> END
+
+# ==========================================================
+#           Shower Phase
+# ==========================================================
+~ going_to_shower
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] I'm gonna take a shower. See you in a bit, darling.
+=> END
+
+# ==========================================================
+#           Ready Phase
+# ==========================================================
+~ heading_out
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] I'm heading out now, love. See you later.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Okay. Be careful.
+Elena: I will. Love you.
+Adrian: Love you too.
+=> END
+
+
+
+
+
+
+
+
+~ talk
+[do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: Yes dear?
+- I love you
+	Adrian: I love you.
+	Elena: ( ＾ω＾ )
+- Nothing => END
+=> END
+
+~ in_sofa
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: in_sofa
+=> END
+
+~ caught_spying
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+Elena: caught_spying
+=> END

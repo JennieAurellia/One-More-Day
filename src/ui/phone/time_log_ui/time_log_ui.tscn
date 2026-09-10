@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c67vv65m0kno5"]
+
+[ext_resource type="Script" uid="uid://dmcs7ar6uc65m" path="res://src/ui/phone/time_log_ui/time_log_ui.gd" id="1_0w776"]
+
+[node name="TimeLogUI" type="Label" unique_id=1673789103 node_paths=PackedStringArray("content_label")]
+offset_right = 45.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 20
+text = "00:00"
+horizontal_alignment = 1
+script = ExtResource("1_0w776")
+content_label = NodePath(".")

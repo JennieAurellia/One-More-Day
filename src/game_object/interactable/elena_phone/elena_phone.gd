@@ -67,6 +67,7 @@ func _on_interactable_interacted():
 		interact_hover_ui.hide()
 	elif InventoryManager.has_item(phone_item_data.id):
 		place_phone()
+		InventoryManager.remove_item(phone_item_data)
 		interact_hover_ui.hide()
 
 func _on_interactable_interacted_by_npc(npc:Node) -> void: pass

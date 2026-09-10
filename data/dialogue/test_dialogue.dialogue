@@ -21,7 +21,7 @@ You're on your own.
 => END
 
 ~ talk
-[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+[do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
 Elena: Yes dear?
 - I love you
 	Adrian: I love you.
@@ -30,7 +30,7 @@ Elena: Yes dear?
 => END
 
 ~ still_cooking
-[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
+[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")].
 Elena: still_cooking
 => END
 

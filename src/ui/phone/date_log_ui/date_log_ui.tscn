@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dl0xi5i5xtynm"]
+
+[ext_resource type="Script" uid="uid://jdcn87jw5gj5" path="res://src/ui/phone/date_log_ui/date_log_ui.gd" id="1_p30wo"]
+
+[node name="DateLogUI" type="Label" unique_id=1747905939 node_paths=PackedStringArray("content_label")]
+offset_right = 124.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 28
+text = "0 September 2000"
+horizontal_alignment = 1
+script = ExtResource("1_p30wo")
+content_label = NodePath(".")
