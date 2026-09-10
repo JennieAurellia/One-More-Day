@@ -99,12 +99,7 @@ func enter_state(state:State):
 		State.ANGRY:
 			elena.do_dialogue("caught_spying")
 			await elena.dialogue_finished
-			elena.go_to(
-				outside_marker.global_position,
-				EnumUtility.RoomName.OUTSIDE,
-				outside_facing
-			)
-			# Stay stuck outside (end of flow)
+			skipped_to_end.emit()
 
 func exit_state(state:State):
 	match state:

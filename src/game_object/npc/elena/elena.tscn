@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://ccsmgcordntdv" path="res://src/game_object/npc/elena/phase/elena_dress_phase.gd" id="7_tmm5q"]
 [ext_resource type="Script" uid="uid://dggp57mpnp8aq" path="res://src/game_object/npc/elena/phase/elena_ready_phase.gd" id="8_ptp7x"]
 [ext_resource type="Resource" uid="uid://dlg28ugmnenqu" path="res://data/item/doll_item.tres" id="10_shi06"]
+[ext_resource type="Script" uid="uid://dv1hpr5ipd50d" path="res://src/game_object/npc/elena/phase/elena_escape_phase.gd" id="10_ta24s"]
 [ext_resource type="Resource" uid="uid://bb3met2tv77q0" path="res://data/dialogue/talk_dialogue.dialogue" id="11_x2tpw"]
 [ext_resource type="Script" uid="uid://cmlp7c6am4e7n" path="res://src/game_object/npc/elena/elena_interaction.gd" id="13_oqaea"]
 
@@ -62,6 +63,11 @@ metadata/_custom_type_script = "uid://ccsmgcordntdv"
 script = ExtResource("8_ptp7x")
 elena = NodePath("../..")
 metadata/_custom_type_script = "uid://dggp57mpnp8aq"
+
+[node name="ElenaEscapePhase" type="Node" parent="PhaseController" unique_id=1332687376 node_paths=PackedStringArray("elena")]
+script = ExtResource("10_ta24s")
+elena = NodePath("../..")
+metadata/_custom_type_script = "uid://dv1hpr5ipd50d"
 
 [node name="ElenaInteraction" type="Node" parent="." unique_id=762461503 node_paths=PackedStringArray("elena", "interactable_component", "interact_hover_ui", "interact_hover_text_label")]
 script = ExtResource("13_oqaea")

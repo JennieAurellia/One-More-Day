@@ -54,3 +54,9 @@ var has_read_diary : bool = false:
 func _enter_tree() -> void: instance = self
 
 func _exit_tree() -> void: instance = null
+
+# ==================================================================================================
+#                Main methods
+# ==================================================================================================
+func reset_event():
+	pass

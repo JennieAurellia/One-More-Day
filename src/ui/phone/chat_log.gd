@@ -3,6 +3,9 @@ class_name ChatLog
 ## Storing premade chat logs for phone, not an active script.
 
 static var log_array : Array[Dictionary] = [
+	{"type":ChatLogDisplay.ChatType.DATE,
+	"content":"15 May 2020",},
+	
 	{"type":ChatLogDisplay.ChatType.TIME,
 	"content":"08:48",},
 

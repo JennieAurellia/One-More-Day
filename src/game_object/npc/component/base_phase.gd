@@ -2,6 +2,7 @@
 class_name BasePhase
 
 signal phase_finished
+signal skipped_to_end
 
 var is_active : bool = false
 var is_interupted : bool = false

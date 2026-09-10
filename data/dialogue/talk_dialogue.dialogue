@@ -13,12 +13,14 @@ else:
 ~ talk_1
 - Ask her about her plans with Maya => talk_current_plan
 - Ask her about her other plans => talk_other_plan
+- Nothing => END
 => END
 
 ~ talk_2
 - Ask her about her plans with Maya => talk_current_plan
 - Ask her about her other plans => talk_other_plan
 - Tell her something feels off => talk_something_off
+- Nothing => END
 => END
 
 ~ talk_3
@@ -27,6 +29,7 @@ else:
 - Tell her something feels off => talk_something_off
 - Ask her not to go anywhere today => talk_dont_go
 - Tell her that the day is looping => talk_looping_day
+- Nothing => END
 => END
 
 # ==========================================================
@@ -38,14 +41,14 @@ Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Hmm, I'm
 Adrian: Oh, really? Is it somewhere far?
 Elena: I don't think so. Probably somewhere around town.
 Adrian: Alright.
-=> END
+=> talk
 
 ~ talk_other_plan
 Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Are you going anywhere else today, besides going out with Maya?
 Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Hmm, I don't think so. Why?
 Adrian: No reason. Just wondering.
 Elena: Nope, that's the only plan I have today.
-=> END
+=> talk
 
 ~ talk_something_off
 Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Hey, Elena... can I ask you something?
@@ -67,7 +70,7 @@ Elena: What do you mean?
 Adrian: I just feel like... maybe there's something about her we don't know.
 Elena: You might be overthinking it.
 Adrian: I hope so.
-=> END
+=> talk
 
 ~ talk_dont_go
 Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Elena, you're not going out today.
@@ -84,7 +87,7 @@ Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] I just 
 Elena: Adrian, you're scaring me. What happened?
 Adrian: I can't explain it right now. Just... stay with me. Please.
 Elena: You’re crazy.
-=> END
+=> talk
 
 ~ talk_looping_day
 Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] Elena, I need you to listen to me. I've been through this day before.

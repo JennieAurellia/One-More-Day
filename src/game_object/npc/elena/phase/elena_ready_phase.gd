@@ -8,8 +8,8 @@ enum State{
 	PUTTING_MAKE_UP,
 	## Elena is calling her friend
 	CALLING_FRIEND,
-	## Elena is going outside
-	TO_OUTSIDE,
+	## Elena is about to go outside
+	HEADING_OUT,
 }
 
 @export_subgroup("To Make Up Settings")
@@ -22,10 +22,6 @@ enum State{
 @export var calling_friend_marker : Marker2D
 @export var calling_friend_facing : float
 @export var calling_friend_time : float = 20.0
-
-@export_subgroup("To Outside Settings")
-@export var outside_marker : Marker2D
-@export var outside_facing : float
 
 var current_state : State
 
@@ -40,7 +36,6 @@ func _ready() -> void:
 	assert(elena, "elena is missing")
 	assert(to_make_up_seat, "to_make_up_seat is missing")
 	assert(calling_friend_marker, "calling_friend_marker is missing")
-	assert(outside_marker, "outside_marker is missing")
 
 func _process(delta: float) -> void: if is_active: update_state(delta)
 
@@ -85,15 +80,10 @@ func enter_state(state:State):
 			await elena.destination_reached
 			EventFlag.instance.is_elena_phone_calling = true
 		
-		State.TO_OUTSIDE:
+		State.HEADING_OUT:
 			elena.do_dialogue("heading_out")
 			await elena.dialogue_finished
-			elena.go_to(
-				outside_marker.global_position,
-				EnumUtility.RoomName.OUTSIDE,
-				outside_facing
-			)
-			GameManager.restart_day() # Reset day
+			phase_finished.emit()
 
 func exit_state(state:State):
 	match current_state:
@@ -112,4 +102,4 @@ func update_state(delta:float):
 		State.CALLING_FRIEND:
 			_calling_friend_timer += delta / GameTimer.instance.seconds_per_game_time_minute
 			if _calling_friend_timer >= calling_friend_time and !is_interupted:
-				change_state(State.TO_OUTSIDE)
+				change_state(State.HEADING_OUT)

@@ -119,6 +119,7 @@ grow_vertical = 2
 script = ExtResource("1_njptv")
 dialogue_view = NodePath("DialogueView")
 dialogue_resource = ExtResource("2_h7vwg")
+default_dialogue_resource = ExtResource("2_h7vwg")
 
 [node name="DialogueView" type="Node" parent="." unique_id=1103901151 node_paths=PackedStringArray("left_texture_rect", "right_texture_rect")]
 script = ExtResource("3_6sug4")

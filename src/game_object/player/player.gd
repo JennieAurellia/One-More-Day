@@ -85,7 +85,7 @@ func stand_up() -> void:
 	if player_sprite: player_sprite.do_idle()
 
 func do_dialogue(title:String):
-	DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, title)
+	DialogueManager.show_dialogue_balloon(DialogueUI.instance.default_dialogue_resource, title)
 
 # ==================================================================================================
 #                Process methods

@@ -10,6 +10,8 @@ static var instance : DialogueUI
 @export_subgroup("Dialogue Settings")
 ## The dialogue resource
 @export var dialogue_resource: DialogueResource
+## The default dialogue resource
+@export var default_dialogue_resource: DialogueResource
 ## Start from a given title when using balloon as a [Node] in a scene.
 @export var start_from_title: String = ""
 ## If running as a [Node] in a scene then auto start the dialogue.

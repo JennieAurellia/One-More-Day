@@ -136,20 +136,20 @@ Adrian: I know. That's why I'm asking you... are you sure she didn't put this he
 => END
 
 ~ present
-	Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Elena, I found something in the closet.
-	Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] What?
-	Adrian: This gift... it's for me, isn't it?
-	Elena: ...Yeah.
-	Adrian: You were going to surprise me?
-	Elena: I was.
-	Adrian: I'm sorry. I didn't mean to find it.
-	Elena: It's fine.
-	Adrian: Elena...
-	Elena: No, it's okay. I just... need some air.
-	Adrian: Where are you going?
-	Elena: I don't know. Just... somewhere.
-	Adrian: Elena, wait—
-	Elena: I'll be back later.
-	Adrian: ...
-	Elena: I just need some time alone.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Elena, I found something in the closet.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] What?
+Adrian: This gift... it's for me, isn't it?
+Elena: ...Yeah.
+Adrian: You were going to surprise me?
+Elena: I was.
+Adrian: I'm sorry. I didn't mean to find it.
+Elena: It's fine.
+Adrian: Elena...
+Elena: No, it's okay. I just... need some air.
+Adrian: Where are you going?
+Elena: I don't know. Just... somewhere.
+Adrian: Elena, wait—
+Elena: I'll be back later.
+Adrian: ...
+Elena: I just need some time alone.
 => END

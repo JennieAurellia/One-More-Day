@@ -105,9 +105,6 @@ func exit_state(state:State):
 		
 		State.COOKING:
 			cooking_stove.turn_off()
-		
-		State.SERVING:
-			EventFlag.instance.has_ate_breakfast = true
 
 func update_state(delta:float):
 	match current_state:

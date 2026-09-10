@@ -251,7 +251,7 @@ func _update_state(state:NPCState) -> void:
 # ==================================================================================================
 func _do_dialogue(title:String):
 	npc.enter_dialogue()
-	DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, title)
+	DialogueManager.show_dialogue_balloon(DialogueUI.instance.default_dialogue_resource, title)
 	await DialogueManager.dialogue_ended
 	npc.exit_dialogue()
 

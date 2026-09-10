@@ -344,10 +344,12 @@ dressing_wardrobe = NodePath("../../../Furniture/Bedroom/Wardrobe")
 outside_marker = NodePath("../../../NPCPosition/OutsideMarker")
 outside_facing = 90.0
 
-[node name="ElenaReadyPhase" parent="Elena/PhaseController" parent_id_path=PackedInt32Array(1752711026, 1126815856) index="5" unique_id=860034888 node_paths=PackedStringArray("to_make_up_seat", "calling_friend_marker", "outside_marker")]
+[node name="ElenaReadyPhase" parent="Elena/PhaseController" parent_id_path=PackedInt32Array(1752711026, 1126815856) index="5" unique_id=860034888 node_paths=PackedStringArray("to_make_up_seat", "calling_friend_marker")]
 to_make_up_seat = NodePath("../../../Furniture/Bedroom/MakeupDesk/Seat")
 calling_friend_marker = NodePath("../../../NPCPosition/CallingFriendMarker")
 calling_friend_facing = 180.0
+
+[node name="ElenaEscapePhase" parent="Elena/PhaseController" parent_id_path=PackedInt32Array(1752711026, 1126815856) index="6" unique_id=1332687376 node_paths=PackedStringArray("outside_marker")]
 outside_marker = NodePath("../../../NPCPosition/OutsideMarker")
 outside_facing = 90.0
 

@@ -201,7 +201,8 @@ func is_seated() -> bool: return _is_seated
 func do_dialogue(title:String, dialogue_resource:DialogueResource=null):
 	_enter_dialogue()
 	if dialogue_resource: DialogueManager.show_dialogue_balloon(dialogue_resource, title)
-	else: DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, title)
+	else:
+		DialogueManager.show_dialogue_balloon(DialogueUI.instance.default_dialogue_resource, title)
 	await DialogueManager.dialogue_ended
 	_exit_dialogue()
 	dialogue_finished.emit()
