@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ch26yorrpp5mo" path="res://assets/Main menu splash/characters.png" id="4_wwrwl"]
 [ext_resource type="Texture2D" uid="uid://dpqbmavscq0ex" path="res://assets/Main menu splash/putih 2.png" id="5_0qnbb"]
 [ext_resource type="Texture2D" uid="uid://bh7sxlpw0lik1" path="res://assets/UI/text judul.png" id="7_pf0t2"]
+[ext_resource type="PackedScene" uid="uid://bd2beargb3q2i" path="res://src/ui/settings/settings_ui.tscn" id="9_nhgww"]
 [ext_resource type="Texture2D" uid="uid://ca4xc4uhmhvnd" path="res://assets/Main menu splash/abu 1.png" id="9_nyipw"]
 [ext_resource type="Texture2D" uid="uid://xtnltafcugjw" path="res://assets/Main menu splash/abu 2.png" id="10_3axxa"]
 [ext_resource type="Texture2D" uid="uid://bdmipppr3jfcm" path="res://assets/Main menu splash/abu 3.png" id="11_fr41p"]
@@ -203,7 +204,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Buttons/UIBlock:visible")
+tracks/15/path = NodePath("UIBlock:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -211,6 +212,42 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("SettingsUI:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("SettingsUI:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Buttons:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_7p4tg"]
@@ -400,7 +437,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Buttons/UIBlock:visible")
+tracks/15/path = NodePath("UIBlock:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -409,10 +446,99 @@ tracks/15/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("SettingsUI:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Buttons:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nhgww"]
+resource_name = "show_settings"
+length = 1.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SettingsUI:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UIBlock:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SettingsUI:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Buttons:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.90000004, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Buttons:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pf0t2"]
 resource_name = "show_ui"
-length = 2.0
+length = 1.8
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -597,24 +723,37 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Buttons/UIBlock:visible")
+tracks/15/path = NodePath("UIBlock:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Buttons:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cibtk"]
 _data = {
 &"RESET": SubResource("Animation_ml821"),
 &"load": SubResource("Animation_7p4tg"),
+&"show_settings": SubResource("Animation_nhgww"),
 &"show_ui": SubResource("Animation_pf0t2")
 }
 
-[node name="MainMenuScene" type="Control" unique_id=2047604324 node_paths=PackedStringArray("play_button", "quit_button", "skip_button", "animation")]
+[node name="MainMenuScene" type="Control" unique_id=2047604324 node_paths=PackedStringArray("play_button", "settings_button", "quit_button", "skip_button", "back_button", "animation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -623,8 +762,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7p4tg")
 play_button = NodePath("Buttons/HBox/PlayButton")
+settings_button = NodePath("Buttons/HBox/SettingsButton")
 quit_button = NodePath("Buttons/HBox/QuitButton")
 skip_button = NodePath("SkipButton")
+back_button = NodePath("SettingsUI/Button/BackButton")
 animation = NodePath("Animation")
 play_scene_path = "res://src/scene/game_scene.tscn"
 
@@ -672,24 +813,31 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -560.0
-offset_top = -200.0
-offset_right = 560.0
+offset_left = -835.0
+offset_top = -280.0
+offset_right = 835.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.8, 0.8)
-pivot_offset = Vector2(560, 200)
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(835, 200)
 theme_override_constants/margin_bottom = 80
 
 [node name="HBox" type="HBoxContainer" parent="Buttons" unique_id=1302649211]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 40
 
 [node name="PlayButton" parent="Buttons/HBox" unique_id=1502458938 instance=ExtResource("2_2u4md")]
 layout_mode = 2
 
 [node name="TextLabel" parent="Buttons/HBox/PlayButton/Margin" parent_id_path=PackedInt32Array(1502458938, 305730039) index="0" unique_id=1940812368]
 text = "Play"
+horizontal_alignment = 1
+
+[node name="SettingsButton" parent="Buttons/HBox" unique_id=139548929 instance=ExtResource("2_2u4md")]
+layout_mode = 2
+
+[node name="TextLabel" parent="Buttons/HBox/SettingsButton/Margin" parent_id_path=PackedInt32Array(139548929, 305730039) index="0" unique_id=1940812368]
+text = "Settings"
 horizontal_alignment = 1
 
 [node name="QuitButton" parent="Buttons/HBox" unique_id=132011055 instance=ExtResource("2_2u4md")]
@@ -699,9 +847,22 @@ layout_mode = 2
 text = "Quit"
 horizontal_alignment = 1
 
-[node name="UIBlock" type="Control" parent="Buttons" unique_id=1869644238]
+[node name="SettingsUI" parent="." unique_id=249758922 instance=ExtResource("9_nhgww")]
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -445.0
+offset_top = 220.0
+offset_right = 445.0
+offset_bottom = 556.00024
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(445, 0)
 
 [node name="SkipButton" type="Button" parent="." unique_id=406676957]
 visible = false
@@ -713,9 +874,20 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
+[node name="UIBlock" type="Control" parent="." unique_id=1869644238]
+visible = false
+anchors_preset = 0
+offset_left = 217.0
+offset_top = 840.0
+offset_right = 1927.0
+offset_bottom = 1040.0
+
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=688562320]
 libraries/ = SubResource("AnimationLibrary_cibtk")
 autoplay = &"load"
 
 [editable path="Buttons/HBox/PlayButton"]
+[editable path="Buttons/HBox/SettingsButton"]
 [editable path="Buttons/HBox/QuitButton"]
+[editable path="SettingsUI"]
+[editable path="SettingsUI/Button/BackButton"]

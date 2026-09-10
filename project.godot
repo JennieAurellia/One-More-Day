@@ -26,6 +26,7 @@ GameManager="*uid://b171u5yvalqk3"
 TransitionManager="*uid://dwgm6ygoojmik"
 AudioManager="*uid://cuj2l05tajtcm"
 SceneManager="*uid://cny8gogmqo77x"
+SettingsManager="*uid://dbqk4avur582k"
 
 [debug]
 
@@ -72,4 +73,3 @@ locale/translations_pot_files=PackedStringArray("res://data/dialogue/test_dialog
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
