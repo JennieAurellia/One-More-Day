@@ -20,7 +20,6 @@
 [ext_resource type="AudioStream" uid="uid://brve8tvcqlada" path="res://assets/audio/sfx/ui/Abstract1.mp3" id="14_5kiff"]
 
 [node name="AudioManager" type="Node" unique_id=1936952167]
-process_mode = 3
 script = ExtResource("1_d1dws")
 
 [node name="MusicNodes" type="Node" parent="." unique_id=499269409]
@@ -108,6 +107,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 [node name="UI_SFX" type="Node" parent="SFXNodes" unique_id=1434513876]
 
 [node name="ButtonHover" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1144498686]
+process_mode = 3
 stream = ExtResource("13_n7gm8")
 volume_db = 4.0
 pitch_scale = 0.45
@@ -117,6 +117,7 @@ key_name = "button_hover"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="ButtonPress" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1652284378]
+process_mode = 3
 stream = ExtResource("14_5kiff")
 volume_db = 4.0
 pitch_scale = 0.5

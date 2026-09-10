@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" format=3 uid="uid://503pgoxgph0t"]
-
-[ext_resource type="Texture2D" uid="uid://k8si3tofa7xe" path="res://assets/sprite/UI/icons, progress bar, button.png" id="1_vy65w"]
-
-[resource]
-atlas = ExtResource("1_vy65w")
-region = Rect2(214, 63, 463, 93)
