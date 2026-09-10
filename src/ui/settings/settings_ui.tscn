@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cjdisa7n1m1lb" path="res://src/common/texture/ui/slider_background_texture.tres" id="4_f0qgj"]
 [ext_resource type="Texture2D" uid="uid://cajnu80gxwbc3" path="res://src/common/texture/ui/slider_fill_texture.tres" id="5_0qcvx"]
 [ext_resource type="PackedScene" uid="uid://l2nnv5bayhs4" path="res://src/ui/component/main_button/main_button.tscn" id="5_f0qgj"]
+[ext_resource type="Texture2D" uid="uid://5pd18w1hblft" path="res://src/common/texture/ui/checkbox_off_texture.tres" id="5_ljslr"]
 [ext_resource type="Texture2D" uid="uid://cc44vnosjc6ld" path="res://src/common/texture/ui/slider_grabber_texture.tres" id="6_0qcvx"]
+[ext_resource type="Texture2D" uid="uid://qf07ukmr6so4" path="res://src/common/texture/ui/checkbox_on_texture.tres" id="6_s2gas"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ljslr"]
 
@@ -16,8 +18,8 @@ music_slider = NodePath("VBox/HBox1/MusicVolumeBar/Margin/MusicVolumeSlider")
 music_progress_bar = NodePath("VBox/HBox1/MusicVolumeBar")
 sfx_slider = NodePath("VBox/HBox2/SFXVolumeBar/Margin/SFXVolumeSlider")
 sfx_progress_bar = NodePath("VBox/HBox2/SFXVolumeBar")
-fullscreen_check = NodePath("VBox/HBox3/FullscreenCheck")
-vsync_check = NodePath("VBox/HBox4/VSyncCheck")
+fullscreen_check = NodePath("VBox/HBox3/Control/FullscreenCheck")
+vsync_check = NodePath("VBox/HBox4/Control/VSyncCheck")
 
 [node name="VBox" type="VBoxContainer" parent="." unique_id=1741477121]
 layout_mode = 2
@@ -112,9 +114,23 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "Fullscreen"
 
-[node name="FullscreenCheck" type="CheckBox" parent="VBox/HBox3" unique_id=922423483]
+[node name="Control" type="Control" parent="VBox/HBox3" unique_id=1841064574]
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+
+[node name="FullscreenCheck" type="CheckBox" parent="VBox/HBox3/Control" unique_id=1914939448]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.266, 0.266)
+pivot_offset = Vector2(124, 124)
+size_flags_horizontal = 6
+theme_override_icons/checked = ExtResource("6_s2gas")
+theme_override_icons/unchecked = ExtResource("5_ljslr")
 
 [node name="HBox4" type="HBoxContainer" parent="VBox" unique_id=663195438]
 layout_mode = 2
@@ -127,9 +143,23 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 text = "VSync"
 
-[node name="VSyncCheck" type="CheckBox" parent="VBox/HBox4" unique_id=737726708]
+[node name="Control" type="Control" parent="VBox/HBox4" unique_id=1979756572]
+custom_minimum_size = Vector2(66, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+
+[node name="VSyncCheck" type="CheckBox" parent="VBox/HBox4/Control" unique_id=737726708]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.266, 0.266)
+pivot_offset = Vector2(124, 124)
+size_flags_horizontal = 6
+theme_override_icons/checked = ExtResource("6_s2gas")
+theme_override_icons/unchecked = ExtResource("5_ljslr")
 
 [node name="Button" type="Control" parent="." unique_id=1101321065]
 custom_minimum_size = Vector2(0, 20)
