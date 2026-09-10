@@ -14,6 +14,9 @@ enum State{
 @export_subgroup("Talking Settings")
 @export var talking_time : float = 30.0
 
+@export_subgroup("Dialogue Settings")
+@export var talk_dialogue_resource : DialogueResource
+
 var current_state : State
 
 var _talking_timer : float
@@ -25,6 +28,7 @@ func _ready() -> void:
 	# Assertion check
 	assert(elena, "elena is missing")
 	assert(!chilling_sofa_seat_array.is_empty(), "chilling_sofa_seat_array is empty")
+	assert(talk_dialogue_resource, "talk_dialogue_resource is empty")
 
 func _process(delta: float) -> void: if is_active: update_state(delta)
 
@@ -73,7 +77,7 @@ func update_state(delta:float):
 			# Check for talk
 			if !EventFlag.instance.has_talked_while_chilling:
 				if elena.is_seated() and EventFlag.instance.is_sitting_on_sofa:
-					elena.do_dialogue("in_sofa")
+					elena.do_dialogue("talk", talk_dialogue_resource)
 					EventFlag.instance.has_talked_while_chilling = true
 			# Update timer
 			_talking_timer += delta / GameTimer.instance.seconds_per_game_time_minute

@@ -153,18 +153,3 @@ Adrian: I know. That's why I'm asking you... are you sure she didn't put this he
 	Adrian: ...
 	Elena: I just need some time alone.
 => END
-
-
-
-
-
-
-
-
-
-
-
-~ in_sofa
-[do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")].
-Elena: in_sofa
-=> END

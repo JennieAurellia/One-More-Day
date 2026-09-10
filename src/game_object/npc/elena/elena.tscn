@@ -42,6 +42,7 @@ metadata/_custom_type_script = "uid://da2nv85nf0qc3"
 
 [node name="ElenaChillPhase" type="Node" parent="PhaseController" unique_id=361947885 node_paths=PackedStringArray("elena")]
 script = ExtResource("5_bdbox")
+talk_dialogue_resource = ExtResource("11_x2tpw")
 elena = NodePath("../..")
 metadata/_custom_type_script = "uid://c75lvvktiu8x0"
 
@@ -71,7 +72,6 @@ interactable_component = NodePath("../InteractableComponent")
 interact_hover_ui = NodePath("../InteractControl/InteractHoverUI")
 interact_hover_text_label = NodePath("../InteractControl/InteractHoverUI/TextLabel")
 doll_item_data = ExtResource("10_shi06")
-talk_dialogue_resource = ExtResource("11_x2tpw")
 metadata/_custom_type_script = "uid://cmlp7c6am4e7n"
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=1609659465 node_paths=PackedStringArray("interact_control")]
