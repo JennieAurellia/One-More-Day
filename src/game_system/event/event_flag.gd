@@ -5,6 +5,7 @@ static var instance : EventFlag
 
 signal exited_bedroom
 signal peaked_inside_phone
+signal read_diary
 
 # ========== Cook phase ==========
 ## Has the player exited the bedroom
@@ -31,16 +32,21 @@ var is_sitting_on_sofa : bool = false
 ## Has player and Elena talked while sitting on sofa
 var has_talked_while_chilling : bool = false
 
-# ========== Shower phase ==========
+# ========== Ready phase ==========
+## Is Elena doing a phone call with her friend
+var is_elena_phone_calling : bool = false
+
+# ========== Item interaction ==========
 ## Has player see dialogue inside Elena's phone
 var has_peak_inside_phone : bool = false:
 	set(value):
 		has_peak_inside_phone = value
 		peaked_inside_phone.emit()
-
-# ========== Ready phase ==========
-## Is Elena doing a phone call with her friend
-var is_elena_phone_calling : bool = false
+## Has read Elena's diary
+var has_read_diary : bool = false:
+	set(value):
+		has_read_diary = value
+		read_diary.emit()
 
 # ==================================================================================================
 #                Virtual methods

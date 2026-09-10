@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://cire151lrqlnk" path="res://src/ui/pause/pause_ui.tscn" id="34_ffmqh"]
 [ext_resource type="Script" uid="uid://b2yb1ecj1tt1x" path="res://src/game_system/event/event_flag.gd" id="34_x7e43"]
 [ext_resource type="Shader" uid="uid://c2sgm7naq1bif" path="res://src/common/shader/screen_adjustment.gdshader" id="35_vfhfr"]
+[ext_resource type="PackedScene" uid="uid://lh1ia5sqc2sq" path="res://src/ui/diary/diary_ui.tscn" id="40_00eno"]
 [ext_resource type="PackedScene" uid="uid://c3wsim84y05nc" path="res://src/ui/phone/phone_ui.tscn" id="40_nol42"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fimk8"]
@@ -440,6 +441,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="PhoneUI" parent="UICanvasLayer" unique_id=293281820 instance=ExtResource("40_nol42")]
+
+[node name="DiaryUI" parent="UICanvasLayer" unique_id=1322229311 instance=ExtResource("40_00eno")]
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
 

@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://lh1ia5sqc2sq"]
+
+[ext_resource type="Script" uid="uid://c0vg36e4inb06" path="res://src/ui/diary/diary_ui.gd" id="1_scsvt"]
+[ext_resource type="Texture2D" uid="uid://cyt4e6arijk1v" path="res://assets/zoom_in_book_open.png" id="2_hj0uu"]
+[ext_resource type="Texture2D" uid="uid://bve717dighaa7" path="res://src/common/texture/ui/page_icon_texture.tres" id="3_rhutl"]
+
+[node name="DiaryUI" type="Control" unique_id=1322229311 node_paths=PackedStringArray("prev_page_button", "prev_page_icon", "next_page_button", "next_page_icon", "close_button", "page_array")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_scsvt")
+prev_page_button = NodePath("Content/Margin1/Control/PageButton/PrevPageButton")
+prev_page_icon = NodePath("Content/Margin1/Control/PageButton/PrevPageButton/PrevPageIcon")
+next_page_button = NodePath("Content/Margin1/Control/PageButton/NextPageButton")
+next_page_icon = NodePath("Content/Margin1/Control/PageButton/NextPageButton/NextPageIcon")
+close_button = NodePath("CloseButton")
+page_array = [NodePath("Content/Margin1/Control/Page1"), NodePath("Content/Margin1/Control/Page2"), NodePath("Content/Margin1/Control/Page3")]
+
+[node name="Background" type="ColorRect" parent="." unique_id=1027262437]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="CloseButton" type="Button" parent="." unique_id=1720379778]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Content" type="TextureRect" parent="." unique_id=1083859263]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -900.0
+offset_top = -900.0
+offset_right = 900.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_hj0uu")
+
+[node name="Margin1" type="MarginContainer" parent="Content" unique_id=1063369825]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 425
+theme_override_constants/margin_top = 520
+theme_override_constants/margin_right = 435
+theme_override_constants/margin_bottom = 580
+
+[node name="Control" type="Control" parent="Content/Margin1" unique_id=429573219]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Page1" type="HBoxContainer" parent="Content/Margin1/Control" unique_id=1670286579]
+layout_mode = 0
+offset_right = 940.0
+offset_bottom = 705.0
+mouse_filter = 2
+
+[node name="VBox1" type="VBoxContainer" parent="Content/Margin1/Control/Page1" unique_id=492967327]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Date" type="Label" parent="Content/Margin1/Control/Page1/VBox1" unique_id=1747905939]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+text = "3 June 2020"
+
+[node name="Text" type="Label" parent="Content/Margin1/Control/Page1/VBox1" unique_id=506741590]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 24
+text = "Maya came over today. We spent the afternoon talking about random things, just like we used to. It's always nice having her around. We've been friends for so long that sometimes I feel like she knows me better than anyone else.
+
+She gave me a cute little plushie today, too. She said she saw it and immediately thought of me. She's always been thoughtful like that.
+
+I really hope we can spend more time together. I miss the days when it was just the two of us, hanging out without having to worry about anything."
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="VBox2" type="VBoxContainer" parent="Content/Margin1/Control/Page1" unique_id=409865770]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Page2" type="HBoxContainer" parent="Content/Margin1/Control" unique_id=176080969]
+layout_mode = 0
+offset_right = 940.0
+offset_bottom = 705.0
+mouse_filter = 2
+
+[node name="VBox1" type="VBoxContainer" parent="Content/Margin1/Control/Page2" unique_id=192823443]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="VBox2" type="VBoxContainer" parent="Content/Margin1/Control/Page2" unique_id=1368544569]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Date" type="Label" parent="Content/Margin1/Control/Page2/VBox2" unique_id=824993084]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+text = "25 June 2020"
+
+[node name="Text" type="Label" parent="Content/Margin1/Control/Page2/VBox2" unique_id=731296761]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 24
+text = "Maya has been checking on me a lot lately.
+
+She keeps asking where I am, what I'm doing, when Adrian will be home, and what we're planning to do. At first, I thought she was just being her usual self, but lately it feels a little different.
+
+She somehow knows things about my day that I don't remember telling her. Maybe I'm just forgetting things, but it's starting to feel a little strange.
+
+I don't want to think too much about it. She's my best friend, after all. Maybe I'm just overthinking everything."
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="Page3" type="HBoxContainer" parent="Content/Margin1/Control" unique_id=370832409]
+layout_mode = 0
+offset_right = 940.0
+offset_bottom = 705.0
+mouse_filter = 2
+
+[node name="VBox1" type="VBoxContainer" parent="Content/Margin1/Control/Page3" unique_id=560771443]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Date" type="Label" parent="Content/Margin1/Control/Page3/VBox1" unique_id=1559416475]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+text = "20 July 2020"
+
+[node name="Text" type="Label" parent="Content/Margin1/Control/Page3/VBox1" unique_id=795458612]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 24
+text = "I think something is wrong with Maya.
+
+I've been trying to ignore this feeling, but I can't anymore. She seems to be paying way too much attention to me and Adrian. She always wants to know where we are, what we're doing, and whether we're going somewhere together.
+
+Today, she asked me again about our plans. I don't know why, but the way she asked made me uncomfortable.
+
+Maybe there's a reason she's acting this way. I just wish I knew what it was.
+I don't want to accuse my best friend of something without knowing the truth. But if this keeps happening, I think I need to talk to her about it."
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="VBox2" type="VBoxContainer" parent="Content/Margin1/Control/Page3" unique_id=2043431914]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="PageButton" type="HBoxContainer" parent="Content/Margin1/Control" unique_id=1635151524]
+layout_mode = 0
+offset_right = 940.0
+offset_bottom = 705.0
+mouse_filter = 2
+
+[node name="PrevPageButton" type="Button" parent="Content/Margin1/Control/PageButton" unique_id=570700220]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 1
+flat = true
+
+[node name="PrevPageIcon" type="TextureRect" parent="Content/Margin1/Control/PageButton/PrevPageButton" unique_id=232225992]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 32.941177
+grow_vertical = 0
+texture = ExtResource("3_rhutl")
+expand_mode = 3
+stretch_mode = 4
+flip_h = true
+
+[node name="NextPageButton" type="Button" parent="Content/Margin1/Control/PageButton" unique_id=1289445718]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 1
+flat = true
+
+[node name="NextPageIcon" type="TextureRect" parent="Content/Margin1/Control/PageButton/NextPageButton" unique_id=440026556]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.941177
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_rhutl")
+expand_mode = 3
+stretch_mode = 4

@@ -8,6 +8,7 @@ class_name PlayerInteraction
 
 @export_subgroup("Interaction Settings")
 @export var phone_item_data : ItemData
+@export var diary_item_data : ItemData
 
 # ==================================================================================================
 #                Virtual methods
@@ -18,6 +19,7 @@ func _ready() -> void:
 	assert(interactable_component, "interactable_component is missing")
 	assert(interact_hover_ui, "interact_hover_ui is missing")
 	assert(phone_item_data, "phone_item_data is empty")
+	assert(diary_item_data, "diary_item_data is empty")
 	# Connect signals
 	interactable_component.hovered.connect(_on_interactable_hovered)
 	interactable_component.unhovered.connect(_on_interactable_unhovered)
@@ -35,6 +37,7 @@ func _process(delta: float) -> void:
 func _on_interactable_hovered():
 	if !InventoryManager.selected_item: return
 	if InventoryManager.selected_item.id == phone_item_data.id: interact_hover_ui.show()
+	elif InventoryManager.selected_item.id == diary_item_data.id: interact_hover_ui.show()
 
 func _on_interactable_unhovered(): interact_hover_ui.hide()
 
@@ -43,3 +46,5 @@ func _on_interactable_interacted(): pass
 func _on_interactable_item_used_on(item_data:ItemData):
 	if item_data.id == phone_item_data.id:
 		EventFlag.instance.has_peak_inside_phone = true
+	if item_data.id == diary_item_data.id:
+		EventFlag.instance.has_read_diary = true

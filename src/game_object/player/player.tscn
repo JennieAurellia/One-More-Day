@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="3_mq35q"]
 [ext_resource type="Resource" uid="uid://cvvmf2s7u1nk7" path="res://data/item/phone_item.tres" id="4_8s8gi"]
 [ext_resource type="SpriteFrames" uid="uid://bdas7cq3ng6fg" path="res://src/game_object/player/player_sprite_frames.tres" id="4_mq35q"]
+[ext_resource type="Resource" uid="uid://dojnxo37q6u6t" path="res://data/item/diary_item.tres" id="5_fj5pi"]
 [ext_resource type="Script" uid="uid://r8e8he5sixc" path="res://src/game_object/player/player_sprite.gd" id="5_kiuqt"]
 [ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="6_kiuqt"]
 
@@ -23,6 +24,7 @@ player = NodePath("..")
 interactable_component = NodePath("../InteractableComponent")
 interact_hover_ui = NodePath("../InteractControl/InteractHoverUI")
 phone_item_data = ExtResource("4_8s8gi")
+diary_item_data = ExtResource("5_fj5pi")
 metadata/_custom_type_script = "uid://nkprxk87ajd3"
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=343486861 node_paths=PackedStringArray("interact_control")]
