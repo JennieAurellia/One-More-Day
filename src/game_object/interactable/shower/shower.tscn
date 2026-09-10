@@ -15,12 +15,13 @@ size = Vector2(135.5, 8.000004)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ybk"]
 size = Vector2(135.5, 8.000004)
 
-[node name="Shower" type="Node2D" unique_id=1691131493 node_paths=PackedStringArray("normal_sprite", "locked_sprite", "lock_collision")]
+[node name="Shower" type="Node2D" unique_id=1691131493 node_paths=PackedStringArray("normal_sprite", "locked_sprite", "lock_collision", "ui_block")]
 rotation = 1.5707964
 script = ExtResource("1_ok507")
 normal_sprite = NodePath("NormalSprite")
 locked_sprite = NodePath("LockedSprite")
 lock_collision = NodePath("Wall/LockCollision")
+ui_block = NodePath("UIBlock")
 
 [node name="NormalSprite" type="Sprite2D" parent="." unique_id=417175979]
 position = Vector2(0, -58)
@@ -54,3 +55,11 @@ shape = SubResource("RectangleShape2D_flugi")
 [node name="LockCollision" type="CollisionShape2D" parent="Wall" unique_id=1026463833]
 position = Vector2(3.9999979, -48)
 shape = SubResource("RectangleShape2D_f0ybk")
+
+[node name="UIBlock" type="Control" parent="." unique_id=365320647]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -52.0
+offset_right = 72.0
+offset_bottom = 59.0
