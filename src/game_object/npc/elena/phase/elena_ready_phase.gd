@@ -16,7 +16,7 @@ enum State{
 @export var to_make_up_seat : Seat
 
 @export_subgroup("Putting Make Up Settings")
-@export var putting_make_up_time : float = 10.0
+@export var putting_make_up_time : float = 20.0
 
 @export_subgroup("Calling Friend Settings")
 @export var calling_friend_marker : Marker2D
@@ -93,7 +93,7 @@ func enter_state(state:State):
 				EnumUtility.RoomName.OUTSIDE,
 				outside_facing
 			)
-			# Stay stuck outside (end of flow)
+			GameManager.restart_day() # Reset day
 
 func exit_state(state:State):
 	match current_state:

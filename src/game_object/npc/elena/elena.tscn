@@ -42,6 +42,7 @@ metadata/_custom_type_script = "uid://da2nv85nf0qc3"
 
 [node name="ElenaChillPhase" type="Node" parent="PhaseController" unique_id=361947885 node_paths=PackedStringArray("elena")]
 script = ExtResource("5_bdbox")
+talking_time = 60.0
 talk_dialogue_resource = ExtResource("11_x2tpw")
 elena = NodePath("../..")
 metadata/_custom_type_script = "uid://c75lvvktiu8x0"
@@ -53,15 +54,12 @@ metadata/_custom_type_script = "uid://ob56t1ksep73"
 
 [node name="ElenaDressPhase" type="Node" parent="PhaseController" unique_id=1007152566 node_paths=PackedStringArray("elena")]
 script = ExtResource("7_tmm5q")
+dressing_time = 20.0
 elena = NodePath("../..")
 metadata/_custom_type_script = "uid://ccsmgcordntdv"
 
 [node name="ElenaReadyPhase" type="Node" parent="PhaseController" unique_id=860034888 node_paths=PackedStringArray("elena")]
 script = ExtResource("8_ptp7x")
-putting_make_up_time = null
-calling_friend_facing = null
-calling_friend_time = null
-outside_facing = null
 elena = NodePath("../..")
 metadata/_custom_type_script = "uid://dggp57mpnp8aq"
 
