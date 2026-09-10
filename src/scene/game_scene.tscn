@@ -342,11 +342,11 @@ outside_marker = NodePath("../../../NPCPosition/OutsideMarker")
 outside_facing = 90.0
 
 [node name="ElenaReadyPhase" parent="Elena/PhaseController" parent_id_path=PackedInt32Array(1752711026, 1126815856) index="5" unique_id=860034888 node_paths=PackedStringArray("to_make_up_seat", "calling_friend_marker", "outside_marker")]
+calling_friend_facing = 180.0
+outside_facing = 90.0
 to_make_up_seat = NodePath("../../../Furniture/Bedroom/MakeupDesk/Seat")
 calling_friend_marker = NodePath("../../../NPCPosition/CallingFriendMarker")
-calling_friend_facing = 180.0
 outside_marker = NodePath("../../../NPCPosition/OutsideMarker")
-outside_facing = 90.0
 
 [node name="Camera" type="Camera2D" parent="." unique_id=703474889 node_paths=PackedStringArray("room_position_dictionary")]
 script = ExtResource("5_k4o4v")
@@ -413,6 +413,7 @@ script = ExtResource("34_x7e43")
 metadata/_custom_type_script = "uid://b2yb1ecj1tt1x"
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="." unique_id=970134607]
+visible = false
 
 [node name="VBox" type="VBoxContainer" parent="UICanvasLayer" unique_id=888806846]
 anchors_preset = 4

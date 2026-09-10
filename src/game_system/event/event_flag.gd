@@ -38,6 +38,10 @@ var has_peak_inside_phone : bool = false:
 		has_peak_inside_phone = value
 		peaked_inside_phone.emit()
 
+# ========== Ready phase ==========
+## Is Elena doing a phone call with her friend
+var is_elena_phone_calling : bool = false
+
 # ==================================================================================================
 #                Virtual methods
 # ==================================================================================================

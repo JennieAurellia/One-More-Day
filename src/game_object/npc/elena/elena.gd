@@ -7,10 +7,8 @@ signal dialogue_finished
 
 @export_subgroup("References")
 @export var phase_controller : PhaseController
-@export var interactable_component : InteractableComponent
 @export var elena_sprite : ElenaSprite
 @export var nav_agent : NavigationAgent2D
-@export var interact_hover_ui : Control
 
 @export_subgroup("Movement Settings")
 @export var movement_speed : float = 200.0
@@ -44,18 +42,12 @@ var _is_in_dialogue : bool = false
 func _ready() -> void:
 	# Assertion check
 	assert(phase_controller, "phase_controller is missing")
-	assert(interactable_component, "interactable_component is missing")
 	assert(elena_sprite, "elena_sprite is missing")
 	assert(nav_agent, "nav_agent is missing")
-	assert(interact_hover_ui, "interact_hover_ui is missing")
 	# Connect signals
-	interactable_component.hovered.connect(_on_interactable_hovered)
-	interactable_component.unhovered.connect(_on_interactable_unhovered)
-	interactable_component.interacted.connect(_on_interactable_interacted)
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	# Initialize
 	nav_agent.max_speed = movement_speed
-	interact_hover_ui.hide()
 	_target_position = global_position
 	_target_rotation = rotation
 	current_room = initial_room
@@ -66,7 +58,6 @@ func _physics_process(delta: float) -> void:
 	_do_rotation(delta)
 	_do_animation()
 	_do_audio()
-	_update_interact_hover()
 
 # ==================================================================================================
 #                Process methods
@@ -112,9 +103,6 @@ func _check_arrival() -> void:
 		elif not is_nan(_pending_facing_rotation):
 			_target_rotation = _pending_facing_rotation
 		arrived_at_destination.emit()
-
-func _update_interact_hover():
-	interact_hover_ui.rotation = -rotation
 
 # ==================================================================================================
 #                Travel methods
@@ -210,9 +198,10 @@ func is_seated() -> bool: return _is_seated
 # ==================================================================================================
 #                Dialogue methods
 # ==================================================================================================
-func do_dialogue(title:String):
+func do_dialogue(title:String, dialogue_resource:DialogueResource=null):
 	_enter_dialogue()
-	DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, title)
+	if dialogue_resource: DialogueManager.show_dialogue_balloon(dialogue_resource, title)
+	else: DialogueManager.show_dialogue_balloon(DialogueUI.instance.dialogue_resource, title)
 	await DialogueManager.dialogue_ended
 	_exit_dialogue()
 	dialogue_finished.emit()
@@ -226,7 +215,6 @@ func _enter_dialogue() -> void:
 	phase_controller.interupt_current_phase()
 	nav_agent.target_position = global_position
 	velocity = Vector2.ZERO
-	InventoryManager.select_item(null)
 
 ## Called when dialogue ends — allows movement again.
 func _exit_dialogue() -> void:
@@ -238,14 +226,6 @@ func is_in_dialogue() -> bool: return _is_in_dialogue
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
-func _on_interactable_hovered(): interact_hover_ui.show()
-
-func _on_interactable_unhovered(): interact_hover_ui.hide()
-
-func _on_interactable_interacted():
-	interact_hover_ui.hide()
-	do_dialogue("talk")
-
 func _on_velocity_computed(safe_velocity:Vector2) -> void:
 	if _is_seated or _is_in_dialogue:
 		velocity = Vector2.ZERO

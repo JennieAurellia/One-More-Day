@@ -82,6 +82,8 @@ func enter_state(state:State):
 				EnumUtility.RoomName.BEDROOM,
 				calling_friend_facing
 			)
+			await elena.destination_reached
+			EventFlag.instance.is_elena_phone_calling = true
 		
 		State.TO_OUTSIDE:
 			elena.do_dialogue("heading_out")
@@ -93,7 +95,11 @@ func enter_state(state:State):
 			)
 			# Stay stuck outside (end of flow)
 
-func exit_state(state:State): pass
+func exit_state(state:State):
+	match current_state:
+		
+		State.CALLING_FRIEND:
+			EventFlag.instance.is_elena_phone_calling = false
 
 func update_state(delta:float):
 	match current_state:

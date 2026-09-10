@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dl0xi5i5xtynm" path="res://src/ui/phone/date_log_ui/date_log_ui.tscn" id="6_c0k6x"]
 [ext_resource type="PackedScene" uid="uid://c67vv65m0kno5" path="res://src/ui/phone/time_log_ui/time_log_ui.tscn" id="7_706mr"]
 
-[node name="PhoneUI" type="Control" unique_id=293281820 node_paths=PackedStringArray("chat_log_display")]
+[node name="PhoneUI" type="Control" unique_id=293281820 node_paths=PackedStringArray("chat_log_display", "close_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fgrm4")
 chat_log_display = NodePath("Content/Margin/VBox/ChatLogDisplay")
+close_button = NodePath("CloseButton")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1707804661]
 layout_mode = 1
@@ -26,6 +27,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.39215687)
+
+[node name="CloseButton" type="Button" parent="." unique_id=249274772]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
 
 [node name="PhoneTexture" type="TextureRect" parent="." unique_id=942224069]
 layout_mode = 1
@@ -40,6 +50,7 @@ offset_right = 512.0
 offset_bottom = 512.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_8ywqc")
 
 [node name="Content" type="TextureRect" parent="." unique_id=568285705]
@@ -56,6 +67,7 @@ offset_right = 512.0
 offset_bottom = 512.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_vcl1m")
 
 [node name="Margin" type="MarginContainer" parent="Content" unique_id=1446672576]
@@ -65,6 +77,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 300
 theme_override_constants/margin_top = 55
 theme_override_constants/margin_right = 300

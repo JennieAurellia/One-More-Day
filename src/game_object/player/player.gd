@@ -42,6 +42,7 @@ func _exit_tree() -> void: instance = null
 
 func _ready() -> void:
 	# Connect signals
+	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	if nav_agent: nav_agent.velocity_computed.connect(_on_velocity_computed)
 	# Initialize
 	if nav_agent: nav_agent.max_speed = movement_speed
@@ -175,6 +176,12 @@ func _create_walk_click_effect(effect_position:Vector2):
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
+func _on_dialogue_started(resource:DialogueResource) -> void:
+	_target_position = global_position
+	nav_agent.target_position = global_position
+	velocity = Vector2.ZERO
+	InventoryManager.select_item(null)
+
 func _on_velocity_computed(safe_velocity:Vector2) -> void:
 	# Check is sitting
 	if _is_seated and _seated_seat:
