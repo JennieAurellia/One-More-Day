@@ -11,6 +11,7 @@ var current_music_name : String = ""
 # Music variables
 var _music_list : Dictionary[String, MusicNode] = {}
 var _current_music : AudioStreamPlayer
+var _music_fade_tween : Tween
 # SFX variables
 var _sfx_list : Dictionary[String, SFXNode] = {}
 # Sound variables
@@ -63,9 +64,28 @@ func play_music(music_name:String):
 	_current_music.play()
 
 ## Stop the current music node
-func stop_music():
+func stop_music(fade_duration:float=0.0):
+	# Clear out music name
 	current_music_name = ""
-	if _current_music: _current_music.stop()
+	if !_current_music: return
+	# Kill any fade already in progress
+	if _music_fade_tween and _music_fade_tween.is_valid():
+		_music_fade_tween.kill()
+	# Get current music
+	var music_to_stop : AudioStreamPlayer = _current_music
+	var original_volume : float = music_to_stop.volume_db
+	_current_music = null
+	# Stop music immediately
+	if fade_duration <= 0.0:
+		music_to_stop.stop()
+		return
+	# Create fade out tween
+	_music_fade_tween = create_tween()
+	_music_fade_tween.tween_property(music_to_stop, "volume_db", -80.0, fade_duration)
+	_music_fade_tween.tween_callback(func():
+		music_to_stop.stop()
+		music_to_stop.volume_db = original_volume
+	)
 
 ## Create a SFX duplicate for the SFX node
 func play_sfx(sfx_name:String, sfx_position:Vector2=Vector2.ZERO):

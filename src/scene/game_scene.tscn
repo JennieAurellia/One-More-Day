@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://3300sevwt3cl"]
 
+[ext_resource type="Script" uid="uid://ogmagk4ukvhj" path="res://src/game_object/game_scene/game_scene.gd" id="1_1c8dc"]
 [ext_resource type="PackedScene" uid="uid://b8uk1p3wu3wvw" path="res://src/game_object/player/player.tscn" id="1_5t8dn"]
 [ext_resource type="PackedScene" uid="uid://s08wgvj5250y" path="res://src/game_object/interactable/door/door.tscn" id="2_2h0i3"]
 [ext_resource type="TileSet" uid="uid://p1vunh5xb226" path="res://src/common/tilemap/main_tile_set.tres" id="2_dfkft"]
@@ -49,6 +50,7 @@ shader_parameter/contrast = 1.0
 shader_parameter/saturation = 0.50000002375
 
 [node name="GameScene" type="Node2D" unique_id=14823134]
+script = ExtResource("1_1c8dc")
 metadata/_edit_horizontal_guides_ = [-502.0]
 
 [node name="Tilemap" type="Node2D" parent="." unique_id=2093381653]

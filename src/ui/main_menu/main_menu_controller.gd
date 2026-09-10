@@ -35,14 +35,18 @@ func _ready() -> void:
 	skip_button.pressed.connect(_on_skip_button_pressed)
 	back_button.pressed.connect(_on_back_button_pressed)
 	animation.animation_finished.connect(_on_animation_finished)
+	# Initialize
+	AudioManager.play_music("main_menu")
 
 # ==================================================================================================
 #                Signal listener methods
 # ==================================================================================================
 func _on_play_button_pressed() -> void:
+	AudioManager.stop_music(0.5)
 	SceneManager.change_scene(play_scene_path)
 
 func _on_quit_button_pressed() -> void:
+	AudioManager.stop_music(0.5)
 	await TransitionManager.fade_out_to_black()
 	get_tree().quit()
 

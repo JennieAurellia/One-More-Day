@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dx0ohvoe8j8h" path="res://src/game_system/audio_manager/audio_manager.gd" id="1_d1dws"]
 [ext_resource type="Script" uid="uid://cibt2xapu3plp" path="res://src/game_system/audio_manager/music_node.gd" id="2_nl8cb"]
+[ext_resource type="AudioStream" uid="uid://o2ofbr07whu5" path="res://assets/audio/BGM/BGM_in game.mp3" id="3_qvtnp"]
+[ext_resource type="AudioStream" uid="uid://bjbxwj4adussp" path="res://assets/audio/BGM/BGM_main menu.mp3" id="4_5p07o"]
 [ext_resource type="AudioStream" uid="uid://wa2x2j80rgdo" path="res://assets/audio/sfx/cooking.mp3" id="4_oaqwx"]
 [ext_resource type="AudioStream" uid="uid://j4u7oashj5ep" path="res://assets/audio/sfx/door_open.mp3" id="4_vnxg4"]
 [ext_resource type="Script" uid="uid://pe4f8jubqs0x" path="res://src/game_system/audio_manager/sound_node.gd" id="4_wi5rl"]
@@ -28,6 +30,24 @@ script = ExtResource("1_d1dws")
 bus = &"Music"
 script = ExtResource("2_nl8cb")
 key_name = "example_music"
+metadata/_custom_type_script = "uid://cibt2xapu3plp"
+
+[node name="Game" type="AudioStreamPlayer" parent="MusicNodes" unique_id=1295815984]
+stream = ExtResource("3_qvtnp")
+volume_db = -16.0
+bus = &"Music"
+parameters/looping = true
+script = ExtResource("2_nl8cb")
+key_name = "game"
+metadata/_custom_type_script = "uid://cibt2xapu3plp"
+
+[node name="MainMenu" type="AudioStreamPlayer" parent="MusicNodes" unique_id=2130349999]
+stream = ExtResource("4_5p07o")
+volume_db = -10.0
+bus = &"Music"
+parameters/looping = true
+script = ExtResource("2_nl8cb")
+key_name = "main_menu"
 metadata/_custom_type_script = "uid://cibt2xapu3plp"
 
 [node name="SFXNodes" type="Node2D" parent="." unique_id=2002133183]
