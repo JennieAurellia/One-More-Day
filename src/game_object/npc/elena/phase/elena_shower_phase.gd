@@ -92,6 +92,7 @@ func enter_state(state:State):
 			change_state(State.SHOWERING)
 		
 		State.SHOWERING:
+			elena.global_position = to_shower_marker.global_position
 			showering_shower.lock()
 
 func exit_state(state:State):
