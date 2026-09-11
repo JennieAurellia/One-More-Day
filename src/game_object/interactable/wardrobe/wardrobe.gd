@@ -13,6 +13,7 @@ class_name Wardrobe
 @export_subgroup("Audio Settings")
 @export var open_sfx_name : String = "wardrobe_open"
 @export var close_sfx_name : String = "wardrobe_close"
+@export var search_sfx_name : String = "wardrobe_search"
 
 var _is_already_searched : bool = false
 
@@ -64,6 +65,7 @@ func _on_interactable_interacted():
 	if !_is_already_searched:
 		EventFlag.instance.has_found_present = true
 		InventoryManager.add_item(gift_item_data)
+		AudioManager.play_sfx(search_sfx_name)
 		_is_already_searched = true
 		interact_hover_ui.hide()
 
