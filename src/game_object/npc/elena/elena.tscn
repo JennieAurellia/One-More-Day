@@ -20,6 +20,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrr71"]
 
 [node name="Elena" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("phase_controller", "elena_sprite", "nav_agent")]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_3kc1g")
 phase_controller = NodePath("PhaseController")
 elena_sprite = NodePath("Sprite")
@@ -95,6 +97,8 @@ shape = SubResource("CircleShape2D_wrr71")
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." unique_id=1894294635]
 avoidance_enabled = true
+avoidance_layers = 2
+avoidance_mask = 2
 
 [node name="InteractControl" type="Control" parent="." unique_id=881050982]
 z_index = 2

@@ -9,7 +9,6 @@ enum State{
 @export_subgroup("Escaping Settings")
 @export var outside_marker : Marker2D
 @export var outside_facing : float
-@export var outside_door : Door
 
 var current_state : State
 
@@ -20,7 +19,6 @@ func _ready() -> void:
 	# Assertion check
 	assert(elena, "elena is missing")
 	assert(outside_marker, "outside_marker is missing")
-	assert(outside_door, "outside_door is missing")
 
 func _process(delta: float) -> void: if is_active: update_state(delta)
 
@@ -48,7 +46,6 @@ func enter_state(state:State):
 	match state:
 		
 		State.ESCAPING:
-			if outside_door.is_disabled: outside_door.is_disabled = false
 			elena.stand_up_if_seated()
 			elena.go_to(
 				outside_marker.global_position,

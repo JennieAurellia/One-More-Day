@@ -332,10 +332,9 @@ to_make_up_seat = NodePath("../../../Furniture/Bedroom/MakeupDesk/Seat")
 calling_friend_marker = NodePath("../../../NPCPosition/CallingFriendMarker")
 calling_friend_facing = 180.0
 
-[node name="ElenaEscapePhase" parent="Elena/PhaseController" parent_id_path=PackedInt32Array(1752711026, 1126815856) index="6" unique_id=1332687376 node_paths=PackedStringArray("outside_marker", "outside_door")]
+[node name="ElenaEscapePhase" parent="Elena/PhaseController" parent_id_path=PackedInt32Array(1752711026, 1126815856) index="6" unique_id=1332687376 node_paths=PackedStringArray("outside_marker")]
 outside_marker = NodePath("../../../NPCPosition/OutsideMarker")
 outside_facing = 90.0
-outside_door = NodePath("../../../Door/MainroomDoor")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=703474889 node_paths=PackedStringArray("room_position_dictionary")]
 script = ExtResource("5_k4o4v")
