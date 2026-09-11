@@ -244,7 +244,12 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 #                Custom methods
 # ==================================================================================================
 #region Custom
-func show_sprite(view_position:DialogueView.ViewPosition, sprite_name:String):
+func show_sprite(
+	view_position:DialogueView.ViewPosition,
+	sprite_name:String,
+	flip_h:bool=false,
+	flip_v:bool=false
+):
 	dialogue_view.show_sprite(view_position, sprite_name)
 
 func hide_sprite(view_position:DialogueView.ViewPosition):

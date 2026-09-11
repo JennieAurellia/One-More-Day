@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://446cq0m01m3t" path="res://assets/zoom_in_gift (ps5).png" id="8_q1u13"]
 [ext_resource type="Texture2D" uid="uid://bf2aa2neghu8i" path="res://assets/zoom_in_book_closed.png" id="9_ejs6q"]
 [ext_resource type="Texture2D" uid="uid://7qbub4c8da70" path="res://assets/zoom_in_doll.png" id="10_mdrnq"]
+[ext_resource type="Texture2D" uid="uid://8k472867yejr" path="res://assets/UI/Character sprite_Maya.png" id="11_aj15n"]
 [ext_resource type="PackedScene" uid="uid://jsyksc4but2l" path="res://src/ui/component/response_button/response_button.tscn" id="11_h7vwg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
@@ -145,7 +146,8 @@ sprite_dictionary = Dictionary[String, Texture2D]({
 "doll": ExtResource("10_mdrnq"),
 "elena_angry": ExtResource("6_q1u13"),
 "elena_calm": ExtResource("7_ejs6q"),
-"gift": ExtResource("8_q1u13")
+"gift": ExtResource("8_q1u13"),
+"maya": ExtResource("11_aj15n")
 })
 metadata/_custom_type_script = "uid://c4mrt3yffub8j"
 

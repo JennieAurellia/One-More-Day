@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://demewrga0ytuc" path="res://assets/audio/sfx/time_reset.mp3" id="12_nf6mi"]
 [ext_resource type="AudioStream" uid="uid://db2romsoe5dh2" path="res://assets/audio/sfx/ui/Modern1.mp3" id="13_n7gm8"]
 [ext_resource type="AudioStream" uid="uid://brve8tvcqlada" path="res://assets/audio/sfx/ui/Abstract1.mp3" id="14_5kiff"]
+[ext_resource type="AudioStream" uid="uid://c4jxudu65b42k" path="res://assets/audio/sfx/phone_ring.mp3" id="14_5p07o"]
 
 [node name="AudioManager" type="Node" unique_id=1936952167]
 script = ExtResource("1_d1dws")
@@ -114,6 +115,14 @@ stream = ExtResource("11_nf6mi")
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "eat"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="PhoneRing" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=364700282]
+stream = ExtResource("14_5p07o")
+volume_db = -12.0
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "phone_ring"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="TimeReset" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1697826210]

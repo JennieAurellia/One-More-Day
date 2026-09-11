@@ -22,6 +22,7 @@ enum State{
 @export var calling_friend_marker : Marker2D
 @export var calling_friend_facing : float
 @export var calling_friend_time : float = 20.0
+@export var phone_ring_sfx_name : String = "phone_ring"
 
 var current_state : State
 
@@ -71,6 +72,8 @@ func enter_state(state:State):
 			change_state(State.PUTTING_MAKE_UP)
 		
 		State.CALLING_FRIEND:
+			# Phone ring and go to position
+			AudioManager.play_sfx(phone_ring_sfx_name)
 			elena.stand_up_if_seated()
 			elena.go_to(
 				calling_friend_marker.global_position,
@@ -78,7 +81,14 @@ func enter_state(state:State):
 				calling_friend_facing
 			)
 			await elena.destination_reached
+			# Answer phone
 			EventFlag.instance.is_elena_phone_calling = true
+			if EventFlag.instance.is_prove_successful:
+				# End the game
+				elena.do_dialogue("phone_call_reject")
+				await elena.dialogue_finished
+				GameManager.end_game()
+			else: elena.do_dialogue("phone_call")
 		
 		State.HEADING_OUT:
 			elena.do_dialogue("heading_out")

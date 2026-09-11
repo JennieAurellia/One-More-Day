@@ -46,22 +46,10 @@ func _on_interactable_hovered():
 		elif InventoryManager.selected_item.id == gift_item_data.id:
 			interact_hover_text_label.text = item_interact_text
 			interact_hover_ui.show()
-	# Not holding item
-	else:
-		if EventFlag.instance.is_elena_phone_calling:
-			interact_hover_text_label.text = call_interact_text
-			interact_hover_ui.show()
 
 func _on_interactable_unhovered(): interact_hover_ui.hide()
 
-func _on_interactable_interacted():
-	if EventFlag.instance.is_elena_phone_calling:
-		if EventFlag.instance.is_prove_successful:
-			# End the game
-			elena.do_dialogue("phone_call_reject")
-			await elena.dialogue_finished
-			GameManager.end_game()
-		else: elena.do_dialogue("phone_call")
+func _on_interactable_interacted(): pass
 
 func _on_interactable_item_used_on(item_data:ItemData):
 	# Hide
