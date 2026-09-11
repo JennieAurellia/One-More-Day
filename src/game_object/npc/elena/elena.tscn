@@ -28,7 +28,7 @@ movement_speed = 300.0
 
 [node name="PhaseController" type="Node" parent="." unique_id=1126815856 node_paths=PackedStringArray("phase_array")]
 script = ExtResource("2_1xgul")
-phase_array = [NodePath("ElenaCookPhase"), NodePath("ElenaEatPhase"), NodePath("ElenaChillPhase"), NodePath("ElenaShowerPhase"), NodePath("ElenaDressPhase"), NodePath("ElenaReadyPhase")]
+phase_array = [NodePath("ElenaCookPhase"), NodePath("ElenaEatPhase"), NodePath("ElenaChillPhase"), NodePath("ElenaShowerPhase"), NodePath("ElenaDressPhase"), NodePath("ElenaReadyPhase"), NodePath("ElenaEscapePhase")]
 metadata/_custom_type_script = "uid://b0q2mt07v486l"
 
 [node name="ElenaCookPhase" type="Node" parent="PhaseController" unique_id=361721936 node_paths=PackedStringArray("elena")]

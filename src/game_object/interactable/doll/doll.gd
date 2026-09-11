@@ -28,6 +28,7 @@ func _ready() -> void:
 #                Signal listener methods
 # ==================================================================================================
 func _on_interactable_hovered():
+	if GameManager.loop_count <= 0: return
 	if InventoryManager.selected_item: return
 	interact_hover_ui.show()
 

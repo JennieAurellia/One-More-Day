@@ -2,12 +2,13 @@
 #           Talk gateways
 # ==========================================================
 ~ talk
-if EventFlag.instance.has_peak_inside_phone:
-	=> talk_2
-elif GameManager.loop_count > 0:
-	=> talk_3
-else:
-	=> talk_1
+[do! hide_all_sprite()].
+- Ask her about her plans with Maya => talk_current_plan
+- Ask her about her other plans => talk_other_plan
+- Tell her something feels off [if EventFlag.instance.has_peak_inside_phone] => talk_something_off
+- Ask her not to go anywhere today [if GameManager.loop_count > 0] => talk_dont_go
+- Tell her that the day is looping [if GameManager.loop_count > 0] => talk_looping_day
+- Nothing => END
 => END
 
 ~ talk_1
@@ -19,7 +20,8 @@ else:
 ~ talk_2
 - Ask her about her plans with Maya => talk_current_plan
 - Ask her about her other plans => talk_other_plan
-- Tell her something feels off => talk_something_off
+- Ask her not to go anywhere today => talk_dont_go
+- Tell her that the day is looping => talk_looping_day
 - Nothing => END
 => END
 
@@ -36,23 +38,23 @@ else:
 #           Talk branches
 # ==========================================================
 ~ talk_current_plan
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] So, where are you and Maya going today?
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Hmm, I'm not sure yet. Maya said she'd figure it out.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]So, where are you and Maya going today?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Hmm, I'm not sure yet. Maya said she'd figure it out.
 Adrian: Oh, really? Is it somewhere far?
 Elena: I don't think so. Probably somewhere around town.
 Adrian: Alright.
 => talk
 
 ~ talk_other_plan
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Are you going anywhere else today, besides going out with Maya?
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Hmm, I don't think so. Why?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]Are you going anywhere else today, besides going out with Maya?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Hmm, I don't think so. Why?
 Adrian: No reason. Just wondering.
 Elena: Nope, that's the only plan I have today.
 => talk
 
 ~ talk_something_off
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Hey, Elena... can I ask you something?
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Hmm? What is it?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]Hey, Elena... can I ask you something?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Hmm? What is it?
 Adrian: You and Maya have been friends for a long time, right?
 Elena: Yeah. Since college, actually. Why?
 Adrian: I was just wondering... has she always been this... attentive?
@@ -73,27 +75,27 @@ Adrian: I hope so.
 => talk
 
 ~ talk_dont_go
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Elena, you're not going out today.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_angry")] What? Why?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]Elena, you're not going out today.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_angry")]What? Why?
 Adrian: Just... please. Stay home today.
 Elena: Adrian, what's wrong with you?
 Adrian: Something's going to happen to you if you leave.
 Elena: What are you talking about?
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] You're going to get into an accident.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]You're going to get into an accident.
 Elena: ...An accident?
 Adrian: I know it sounds crazy, but you have to trust me.
 Elena: How would you even know that?
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] I just know. Please, Elena. Don't go today.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]I just know. Please, Elena. Don't go today.
 Elena: Adrian, you're scaring me. What happened?
 Adrian: I can't explain it right now. Just... stay with me. Please.
 Elena: You’re crazy.
 => talk
 
 ~ talk_looping_day
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] Elena, I need you to listen to me. I've been through this day before.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] What?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]Elena, I need you to listen to me. I've been through this day before.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]What?
 Adrian: I've already lived through today. More than once.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_angry")] Adrian... what are you talking about?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_angry")]Adrian... what are you talking about?
 Adrian: Every time you leave the house, something happens. Then I wake up here again, at the same time, on the same morning.
 Elena: You're saying... you're stuck in some kind of loop?
 Adrian: Yes.
@@ -102,32 +104,67 @@ Adrian: I know it sounds crazy, but it's true.
 Elena: Then prove it to me.
 Adrian: ...I can.
 Elena: How?
-=> END
+=> prove
 
 # ==========================================================
-#           Prove branches
+#           Prove dialogues
 # ==========================================================
+~ prove
+[do! hide_all_sprite()].
+- About the present [if EventFlag.instance.has_found_present and not EventFlag.instance.is_present_proved] => prove_present
+- About the incoming call [if EventFlag.instance.has_peak_inside_phone and not EventFlag.instance.is_call_proved] => prove_call
+- About the diary [if EventFlag.instance.has_found_diary and not EventFlag.instance.is_diary_proved] => prove_diary
+- Finish => prove_test
+=> END
+
+# See if proving is correct
+~ prove_test
+if EventFlag.instance.is_present_proved and EventFlag.instance.is_call_proved and EventFlag.instance.is_diary_proved:
+	=> prove_successful
+else:
+	=> prove_failed
+=> END
+
+~ prove_successful
+Elena: Ugh... this is unbelievable. So we just have to wait for Maya to call?
+Adrian: Yeah.
+Elena: And then I'll know you're telling the truth?
+Adrian: Exactly.
+Elena: Alright... let's wait and see.
+set EventFlag.instance.is_prove_successful = true
+=> END
+
+~ prove_failed
+Elena: ...I don't know, Adrian. That doesn't really prove anything.
+Adrian: I know...
+Elena: Maybe you're just remembering things wrong.
+Adrian: No, I'm sure I've been through this before.
+Elena: Then you'll have to find a better way to prove it.
+=> END
+
 ~ prove_present
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] I found this gift.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] What? Where did you find that?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]I found this gift.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]What? Where did you find that?
 Adrian: I found it in our closet in the previous loop.
 Elena: Previous loop?
 Adrian: Yes. I've been through this day before, Elena. More than once.
-=> END
+set EventFlag.instance.is_present_proved = true
+=> prove
 
 ~ prove_call
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] Maya's going to call you soon.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] What? How do you know that?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]Maya's going to call you soon.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]What? How do you know that?
 Adrian: She called you in the previous loop. At first, she didn't ask you to bring me.
 Elena: Then what happened?
 Adrian: During the call, she'll ask you to bring me along.
 Elena: ...You're saying you already know what she's going to say?
 Adrian: Exactly. Just wait. You'll see.
-=> END
+set EventFlag.instance.is_call_proved = true
+=> prove
 
 ~ prove_diary
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] Elena, I found something in your diary.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] My diary? What did you find?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]Elena, I found something in your diary.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]My diary? What did you find?
 Adrian: You wrote about Maya.
 Elena: ...What about her?
 Adrian: You said she's been acting strange lately.
@@ -135,4 +172,5 @@ Elena: I... wrote that?
 Adrian: Yeah. You even wrote that you weren't sure why, but something about her felt different.
 Elena: I remember feeling that way... but I thought I was just overthinking it.
 Adrian: You weren't. You felt it too, Elena.
-=> END
+set EventFlag.instance.is_diary_proved = true
+=> prove

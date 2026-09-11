@@ -271,6 +271,7 @@ theme_override_constants/separation = 10
 alignment = 1
 script = ExtResource("3_mhw84")
 response_template = NodePath("ResponseButton")
+hide_failed_responses = true
 
 [node name="ResponseButton" parent="Balloon/ResponsesMenu" unique_id=624549537 instance=ExtResource("11_h7vwg")]
 layout_mode = 2

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://3300sevwt3cl"]
 
-[ext_resource type="Script" uid="uid://ogmagk4ukvhj" path="res://src/game_object/game_scene/game_scene.gd" id="1_1c8dc"]
+[ext_resource type="Script" uid="uid://ogmagk4ukvhj" path="res://src/scene/game_scene.gd" id="1_1c8dc"]
 [ext_resource type="PackedScene" uid="uid://b8uk1p3wu3wvw" path="res://src/game_object/player/player.tscn" id="1_5t8dn"]
 [ext_resource type="PackedScene" uid="uid://s08wgvj5250y" path="res://src/game_object/interactable/door/door.tscn" id="2_2h0i3"]
 [ext_resource type="TileSet" uid="uid://p1vunh5xb226" path="res://src/common/tilemap/main_tile_set.tres" id="2_dfkft"]
@@ -406,7 +406,7 @@ metadata/_custom_type_script = "uid://ceu04osa3ymxe"
 
 [node name="GameTimer" type="Node" parent="." unique_id=337638771]
 script = ExtResource("11_vvmck")
-seconds_per_game_time_minute = 0.5
+seconds_per_game_time_minute = 0.1
 metadata/_custom_type_script = "uid://dynocpxsiw65u"
 
 [node name="DoorManager" type="Node" parent="." unique_id=221765964]
@@ -443,10 +443,13 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="PhoneUI" parent="UICanvasLayer" unique_id=293281820 instance=ExtResource("40_nol42")]
+visible = false
 
 [node name="DiaryUI" parent="UICanvasLayer" unique_id=1322229311 instance=ExtResource("40_00eno")]
+visible = false
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
+visible = false
 
 [node name="PauseUI" parent="UICanvasLayer" unique_id=235246552 instance=ExtResource("34_ffmqh")]
 visible = false

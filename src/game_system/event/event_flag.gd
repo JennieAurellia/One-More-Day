@@ -37,16 +37,26 @@ var has_talked_while_chilling : bool = false
 var is_elena_phone_calling : bool = false
 
 # ========== Item interaction ==========
+## Has player found Elena's hidden present
+var has_found_present : bool = false
+## Has player found Elena's diary
+var has_found_diary : bool = false
 ## Has player see dialogue inside Elena's phone
-var has_peak_inside_phone : bool = false:
+static var has_peak_inside_phone : bool = false:
 	set(value):
 		has_peak_inside_phone = value
-		peaked_inside_phone.emit()
+		if instance and value: instance.peaked_inside_phone.emit()
 ## Has read Elena's diary
 var has_read_diary : bool = false:
 	set(value):
 		has_read_diary = value
 		read_diary.emit()
+
+# ========== Prive interaction ==========
+var is_present_proved : bool = false
+var is_call_proved : bool = false
+var is_diary_proved : bool = false
+var is_prove_successful : bool = false
 
 # ==================================================================================================
 #                Virtual methods
@@ -58,5 +68,5 @@ func _exit_tree() -> void: instance = null
 # ==================================================================================================
 #                Main methods
 # ==================================================================================================
-func reset_event():
-	pass
+static func reset_event():
+	has_peak_inside_phone = false

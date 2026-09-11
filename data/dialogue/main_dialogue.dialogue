@@ -2,34 +2,34 @@
 #           Looping
 # ==========================================================
 ~ first_loop
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] W-what just happened? Did I... go back to this morning? I need to fix all of this.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]W-what just happened? Did I... go back to this morning? I need to fix all of this.
 => END
 
 ~ second_loop
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] No... Not again...
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]No... Not again...
 => END
 
 ~ third_loop
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] Ugh... I'm never going to get used to this...
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]Ugh... I'm never going to get used to this...
 => END
 
 # ==========================================================
 #           Cook Phase
 # ==========================================================
 ~ still_cooking
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Good morning, darling! I'm making breakfast. It'll be ready soon.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Good morning, darling! I'm making breakfast. It'll be ready soon.
 => END
 
 ~ after_cooking
-Elena:  [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Good morning, darling! Finally, you're awake. Come on, let's have breakfast.
+Elena:  [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Good morning, darling! Finally, you're awake. Come on, let's have breakfast.
 => END
 
 ~ finish_cooking
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Hey, darling! Breakfast is ready. Come eat with me!
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Hey, darling! Breakfast is ready. Come eat with me!
 => END
 
 ~ still_inside_bedroom
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Darling? Are you awake?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Darling? Are you awake?
 Elena: I've been waiting for you. Breakfast is getting cold.
 => END
 
@@ -37,8 +37,8 @@ Elena: I've been waiting for you. Breakfast is getting cold.
 #           Eat Phase
 # ==========================================================
 ~ done_eating
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Oh, by the way, Maya asked me to go out with her today.
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Oh? You two have plans?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Oh, by the way, Maya asked me to go out with her today.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]Oh? You two have plans?
 Elena: Yeah. She said she wanted to hang out for a bit.
 Adrian: Sounds nice. What time are you going?
 Elena: Probably around 12 P.M. I shouldn't be out too late, though.
@@ -47,8 +47,8 @@ Elena: I will.
 => END
 
 ~ not_eating
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] You're not eating, darling?
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] I'm not really hungry yet.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]You're not eating, darling?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]I'm not really hungry yet.
 Elena: You should at least have something. I don't want you skipping breakfast.
 Adrian: I'll eat in a bit. Don't worry.
 Elena: Alright, but don't wait too long.
@@ -65,12 +65,12 @@ Elena: I will.
 #           Shower Phase
 # ==========================================================
 ~ going_to_shower
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] I'm gonna take a shower. See you in a bit, darling.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]I'm gonna take a shower. See you in a bit, darling.
 => END
 
 ~ caught_spying
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_angry")] Adrian?! What are you doing with my phone?
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Elena, wait. I can explain—
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_angry")]Adrian?! What are you doing with my phone?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]Elena, wait. I can explain—
 Elena: Were you reading my messages?!
 Adrian: I was just trying to find something about Maya.
 Elena: You could've asked me! You can't just go through my phone without my permission.
@@ -84,36 +84,36 @@ Elena: About what? You should've asked me first. We've already talked about this
 #           Ready Phase
 # ==========================================================
 ~ phone_call
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] Hey, Elena! Are you ready?
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Almost. What's up?
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] I was thinking we could go out for lunch today. You and Adrian can come too.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Oh, sure! Let me ask him first.
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] Okay. I'll wait for you guys.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Where are we going?
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] It's a surprise. You'll see when you get here. 😉
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Maya... you know I hate surprises.
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] I know. That's why I know you'll love this one.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Haha, okay. Give me a few minutes.
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] Take your time. See you soon!
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]Hey, Elena! Are you ready?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Almost. What's up?
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]I was thinking we could go out for lunch today. You and Adrian can come too.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Oh, sure! Let me ask him first.
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]Okay. I'll wait for you guys.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Where are we going?
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]It's a surprise. You'll see when you get here. 😉
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Maya... you know I hate surprises.
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]I know. That's why I know you'll love this one.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Haha, okay. Give me a few minutes.
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]Take your time. See you soon!
 => END
 
 ~ phone_call_reject
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] Hey, Elena! Are you ready?
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Actually... I don't think I can make it today.
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] Huh? Why not?
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Something came up. Adrian and I are going to stay home today.
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] Oh... I see. Is everything okay?
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Yeah, everything's fine. I just don't feel like going out today.
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] Are you sure? I was really looking forward to seeing you.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] I'm sorry, Maya. Maybe some other time.
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] ...Okay. If that's what you want.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] It is. I'll talk to you later, okay?
-Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)] Yeah... later, Elena.
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]Hey, Elena! Are you ready?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Actually... I don't think I can make it today.
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]Huh? Why not?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Something came up. Adrian and I are going to stay home today.
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]Oh... I see. Is everything okay?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Yeah, everything's fine. I just don't feel like going out today.
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]Are you sure? I was really looking forward to seeing you.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]I'm sorry, Maya. Maybe some other time.
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]Okay. If that's what you want.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]It is. I'll talk to you later, okay?
+Maya: [do! hide_sprite(DialogueView.ViewPosition.RIGHT)]Yeah... later, Elena.
 => END
 
 ~ heading_out
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] I'm heading out now, love. See you later.
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Okay. Be careful.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]I'm heading out now, love. See you later.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]Okay. Be careful.
 Elena: I will. Love you.
 Adrian: Love you too.
 => END
@@ -122,12 +122,12 @@ Adrian: Love you too.
 #           Items
 # ==========================================================
 ~ doll
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")] Hey, Elena. This plushie... Maya gave this to you, right?
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] Yeah. Why?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]Hey, Elena. This plushie... Maya gave this to you, right?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Yeah. Why?
 Adrian: I was just looking at it and... something feels weird.
 Elena: Weird? What do you mean?
 Adrian: There's something inside it.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_angry")] What?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_angry")]What?
 Adrian: Wait... Is that a camera?
 Elena: A camera?! Why would there be a camera inside my plushie?
 Adrian: I don't know. But someone put it there.
@@ -136,8 +136,8 @@ Adrian: I know. That's why I'm asking you... are you sure she didn't put this he
 => END
 
 ~ present
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")] Elena, I found something in the closet.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")] What?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]Elena, I found something in the closet.
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]What?
 Adrian: This gift... it's for me, isn't it?
 Elena: ...Yeah.
 Adrian: You were going to surprise me?

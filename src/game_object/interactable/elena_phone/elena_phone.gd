@@ -50,6 +50,7 @@ func is_phone_placed()->bool: return _is_phone_placed
 #                Signal listener methods
 # ==================================================================================================
 func _on_interactable_hovered():
+	if GameManager.loop_count <= 0: return
 	if InventoryManager.selected_item: return
 	if _is_phone_placed:
 		interact_hover_text_label.text = take_interact_text
@@ -61,6 +62,7 @@ func _on_interactable_hovered():
 func _on_interactable_unhovered(): interact_hover_ui.hide()
 
 func _on_interactable_interacted():
+	if GameManager.loop_count <= 0: return
 	if _is_phone_placed:
 		take_phone()
 		InventoryManager.add_item(phone_item_data)

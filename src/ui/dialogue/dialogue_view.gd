@@ -38,7 +38,7 @@ func show_sprite(view_position:ViewPosition, sprite_name:String):
 	elif view_position == ViewPosition.RIGHT:
 		right_texture_rect.texture = sprite_texture
 
-func hide_character_sprite(view_position:ViewPosition):
+func hide_sprite(view_position:ViewPosition):
 	if view_position == ViewPosition.LEFT:
 		left_texture_rect.texture = null
 	elif view_position == ViewPosition.RIGHT:

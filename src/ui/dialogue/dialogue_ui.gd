@@ -249,4 +249,6 @@ func show_sprite(view_position:DialogueView.ViewPosition, sprite_name:String):
 
 func hide_sprite(view_position:DialogueView.ViewPosition):
 	dialogue_view.hide_sprite(view_position)
+
+func hide_all_sprite(): dialogue_view.hide_all_sprite()
 #endregion

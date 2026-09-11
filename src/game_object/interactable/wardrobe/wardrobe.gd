@@ -53,13 +53,16 @@ func close():
 #                Signal listener methods
 # ==================================================================================================
 func _on_interactable_hovered():
+	if GameManager.loop_count <= 0: return
 	if InventoryManager.selected_item: return
 	if !_is_already_searched: interact_hover_ui.show()
 
 func _on_interactable_unhovered(): interact_hover_ui.hide()
 
 func _on_interactable_interacted():
+	if GameManager.loop_count <= 0: return
 	if !_is_already_searched:
+		EventFlag.instance.has_found_present = true
 		InventoryManager.add_item(gift_item_data)
 		_is_already_searched = true
 		interact_hover_ui.hide()

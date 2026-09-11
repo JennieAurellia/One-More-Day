@@ -26,12 +26,15 @@ func _ready() -> void:
 #                Signal listener methods
 # ==================================================================================================
 func _on_interactable_hovered():
+	if GameManager.loop_count <= 0: return
 	if InventoryManager.selected_item: return
 	interact_hover_ui.show()
 
 func _on_interactable_unhovered(): interact_hover_ui.hide()
 
 func _on_interactable_interacted():
+	if GameManager.loop_count <= 0: return
+	EventFlag.instance.has_found_diary = true
 	InventoryManager.add_item(diary_item_data)
 	interact_hover_ui.hide()
 	queue_free()

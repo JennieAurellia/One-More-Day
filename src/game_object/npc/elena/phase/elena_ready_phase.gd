@@ -100,6 +100,9 @@ func update_state(delta:float):
 				change_state(State.CALLING_FRIEND)
 		
 		State.CALLING_FRIEND:
+			# Prevent Elena from escaping while proven successful
+			if EventFlag.instance.is_prove_successful: return
+			# Continue if not
 			_calling_friend_timer += delta / GameTimer.instance.seconds_per_game_time_minute
 			if _calling_friend_timer >= calling_friend_time and !is_interupted:
 				change_state(State.HEADING_OUT)

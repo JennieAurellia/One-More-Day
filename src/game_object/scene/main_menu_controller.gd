@@ -42,6 +42,8 @@ func _ready() -> void:
 #                Signal listener methods
 # ==================================================================================================
 func _on_play_button_pressed() -> void:
+	GameManager.initialize_game()
+	EventFlag.reset_event()
 	AudioManager.stop_music(0.5)
 	SceneManager.change_scene(play_scene_path)
 

@@ -29,6 +29,7 @@ func set_content(content:String, is_self:bool):
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		label.custom_minimum_size.x = max_width
 		await get_tree().process_frame
+		size.x = label.custom_minimum_size.x
 	else:
 		label.autowrap_mode = TextServer.AUTOWRAP_OFF
 		label.custom_minimum_size.x = 0 

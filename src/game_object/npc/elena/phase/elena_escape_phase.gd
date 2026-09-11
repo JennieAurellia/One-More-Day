@@ -47,7 +47,6 @@ func enter_state(state:State):
 		
 		State.ESCAPING:
 			elena.stand_up_if_seated()
-			await elena.dialogue_finished
 			elena.go_to(
 				outside_marker.global_position,
 				EnumUtility.RoomName.OUTSIDE,
