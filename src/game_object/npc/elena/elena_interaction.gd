@@ -42,9 +42,10 @@ func _on_interactable_hovered():
 	if InventoryManager.selected_item:
 		if InventoryManager.selected_item.id == doll_item_data.id:
 			interact_hover_text_label.text = item_interact_text
+			interact_hover_ui.show()
 		elif InventoryManager.selected_item.id == gift_item_data.id:
 			interact_hover_text_label.text = item_interact_text
-		interact_hover_ui.show()
+			interact_hover_ui.show()
 	# Not holding item
 	else:
 		if EventFlag.instance.is_elena_phone_calling:

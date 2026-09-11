@@ -12,6 +12,7 @@ signal door_closed
 @export var pull_side_opened_sprite : Sprite2D
 @export var push_side_marker : Marker2D
 @export var pull_side_marker : Marker2D
+@export var disabled_collision : CollisionShape2D
 @export var push_interact_hover_ui : Control
 @export var pull_interact_hover_ui : Control
 
@@ -20,6 +21,10 @@ signal door_closed
 @export var hover_color : Color = Color.YELLOW
 
 @export_subgroup("Door Settings")
+@export var is_disabled : bool = false:
+	set(value):
+		is_disabled = value
+		if disabled_collision: disabled_collision.disabled = !is_disabled
 @export var push_side_room : EnumUtility.RoomName
 @export var pull_side_room : EnumUtility.RoomName
 @export var door_opened_duration : float = 0.4
@@ -45,6 +50,7 @@ func _ready() -> void:
 	assert(pull_side_opened_sprite, "pull_side_opened_sprite is missing")
 	assert(push_side_marker, "push_side_marker is missing")
 	assert(pull_side_marker, "pull_side_marker is missing")
+	assert(disabled_collision, "disabled_collision is missing")
 	assert(push_interact_hover_ui, "pull_side_marker is missing")
 	assert(pull_interact_hover_ui, "pull_side_marker is missing")
 	assert(
@@ -58,6 +64,7 @@ func _ready() -> void:
 	# Initialize
 	push_side_opened_sprite.hide()
 	pull_side_opened_sprite.hide()
+	disabled_collision.disabled = !is_disabled
 	push_interact_hover_ui.hide()
 	pull_interact_hover_ui.hide()
 	DoorManager.instance.register_door(self)
@@ -97,6 +104,7 @@ func _play_door_open() -> void:
 #                Signal listener methods
 # ==================================================================================================
 func _on_interactable_hovered():
+	if is_disabled: return
 	if InventoryManager.selected_item: return
 	push_interact_hover_ui.show()
 	pull_interact_hover_ui.show()
@@ -106,6 +114,7 @@ func _on_interactable_unhovered():
 	pull_interact_hover_ui.hide()
 
 func _on_interactable_interacted():
+	if is_disabled: return
 	if Camera.instance.current_room == push_side_room:
 		_play_door_open()
 		Camera.instance.change_to_room(pull_side_room)

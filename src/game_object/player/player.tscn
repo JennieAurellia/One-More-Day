@@ -12,8 +12,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 
-[node name="Player" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("player_sprite", "nav_agent")]
+[node name="Player" type="CharacterBody2D" unique_id=1477572895 node_paths=PackedStringArray("interactable_component", "player_sprite", "nav_agent")]
 script = ExtResource("1_4flbx")
+interactable_component = NodePath("InteractableComponent")
 player_sprite = NodePath("Sprite")
 nav_agent = NodePath("NavigationAgent")
 move_click_particle_scene = ExtResource("2_pgve7")

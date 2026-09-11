@@ -4,6 +4,7 @@ class_name Player
 static var instance : Player
 
 @export_subgroup("References")
+@export var interactable_component : InteractableComponent
 @export var player_sprite : PlayerSprite
 @export var nav_agent : NavigationAgent2D
 
@@ -41,11 +42,15 @@ func _enter_tree() -> void: instance = self
 func _exit_tree() -> void: instance = null
 
 func _ready() -> void:
+	# Assertion check
+	assert(interactable_component, "interactable_component is missing")
+	assert(player_sprite, "player_sprite is missing")
+	assert(nav_agent, "nav_agent is missing")
 	# Connect signals
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
-	if nav_agent: nav_agent.velocity_computed.connect(_on_velocity_computed)
+	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	# Initialize
-	if nav_agent: nav_agent.max_speed = movement_speed
+	nav_agent.max_speed = movement_speed
 	_target_position = global_position
 	_target_rotation = rotation
 	match GameManager.loop_count:
@@ -58,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	_do_movement(delta)
 	_do_rotation(delta)
 	_check_pending_interaction()
-	if player_sprite: _do_animation()
+	_do_animation()
 	_do_audio()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -77,12 +82,12 @@ func sit_at(seat_position:Vector2, facing_rotation:float, is_legless:bool, seat:
 	global_position = seat_position
 	_target_rotation = facing_rotation
 	rotation = _target_rotation
-	if player_sprite: player_sprite.do_sit(is_legless)
+	player_sprite.do_sit(is_legless)
 
 func stand_up() -> void:
 	_is_seated = false
 	_seated_seat = null
-	if player_sprite: player_sprite.do_idle()
+	player_sprite.do_idle()
 
 func do_dialogue(title:String):
 	DialogueManager.show_dialogue_balloon(DialogueUI.instance.default_dialogue_resource, title)
@@ -96,19 +101,11 @@ func _do_movement(delta:float):
 		velocity = Vector2.ZERO
 		return
 	# Do movement with nav agent
-	if nav_agent:
-		if nav_agent.is_navigation_finished(): return
-		var next_path_position : Vector2 = nav_agent.get_next_path_position()
-		var direction : Vector2 = global_position.direction_to(next_path_position)
-		var new_velocity : Vector2 = direction * movement_speed
-		nav_agent.set_velocity(new_velocity)
-	# Do movement without nav agent
-	else:
-		if global_position.distance_to(_target_position) > arrival_distance:
-			var direction : Vector2 = (_target_position - global_position).normalized()
-			velocity = direction * movement_speed
-		else: velocity = Vector2.ZERO
-		move_and_slide()
+	if nav_agent.is_navigation_finished(): return
+	var next_path_position : Vector2 = nav_agent.get_next_path_position()
+	var direction : Vector2 = global_position.direction_to(next_path_position)
+	var new_velocity : Vector2 = direction * movement_speed
+	nav_agent.set_velocity(new_velocity)
 
 func _do_rotation(delta:float):
 	# Update target rotation only while actually moving
@@ -138,16 +135,19 @@ func _check_pending_interaction() -> void:
 		_move_to(global_position) # Stop the player right where they arrived
 
 func _left_mouse_interaction():
-	if _is_seated:
-		if _seated_seat: _seated_seat.stand_up()
-		_is_seated = false
-		_seated_seat = null
 	var hovered : InteractableComponent = InteractableComponent.current_hovered_interactable
 	var selected : ItemData = InventoryManager.selected_item
 	if hovered:
+		# Immediately interact if with player
+		if interactable_component and interactable_component == hovered: hovered.interact()
 		# Walk to the interactable first, interact once close enough
-		_pending_interactable = hovered
-		_move_to(hovered.get_position())
+		else:
+			_pending_interactable = hovered
+			if _is_seated:
+				if _seated_seat: _seated_seat.stand_up()
+				_is_seated = false
+				_seated_seat = null
+			_move_to(hovered.get_position())
 	elif selected:
 		# Deselect item when clicked at empty space
 		InventoryManager.select_item(null)
@@ -155,12 +155,15 @@ func _left_mouse_interaction():
 		# Regular point-and-click movement, cancel any pending interaction
 		_pending_interactable = null
 		var mouse_position : Vector2 = get_global_mouse_position()
+		if _is_seated:
+			if _seated_seat: _seated_seat.stand_up()
+			_is_seated = false
+			_seated_seat = null
 		_move_to(mouse_position)
 		_create_walk_click_effect(mouse_position)
 
 func _move_to(new_position:Vector2):
-	if nav_agent: nav_agent.target_position = new_position
-	else: _target_position = new_position
+	nav_agent.target_position = new_position
 
 func _create_walk_click_effect(effect_position:Vector2):
 	if !move_click_particle_scene: return

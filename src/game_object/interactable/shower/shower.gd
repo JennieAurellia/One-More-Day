@@ -5,6 +5,7 @@ class_name Shower
 @export var normal_sprite : Sprite2D
 @export var locked_sprite : Sprite2D
 @export var lock_collision : CollisionShape2D
+@export var teleport_area : TeleportArea
 @export var ui_block : Control
 
 @export_subgroup("Audio Settings")
@@ -20,6 +21,7 @@ func _ready() -> void:
 	assert(normal_sprite, "normal_sprite is missing")
 	assert(locked_sprite, "locked_sprite is missing")
 	assert(lock_collision, "lock_collision is missing")
+	assert(teleport_area, "teleport_area is missing")
 	assert(ui_block, "ui_block is missing")
 	# Initialize
 	normal_sprite.show()
@@ -34,6 +36,7 @@ func lock():
 	normal_sprite.hide()
 	locked_sprite.show()
 	lock_collision.disabled = false
+	teleport_area.teleport()
 	ui_block.show()
 	AudioManager.play_sfx(open_sfx_name)
 	AudioManager.play_sound(showering_sound_name)

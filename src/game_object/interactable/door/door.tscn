@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://s08wgvj5250y"]
 
 [ext_resource type="Script" uid="uid://dntlnvcp7bop5" path="res://src/game_object/interactable/door/door.gd" id="1_k16ha"]
-[ext_resource type="Texture2D" uid="uid://7lu6px3xwpye" path="res://assets/basic_sprite/Square.png" id="3_k16ha"]
 [ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="3_yd8t2"]
 [ext_resource type="Texture2D" uid="uid://c107e24yng0ly" path="res://src/game_object/interactable/door/door_normal_texture.tres" id="4_2niuq"]
 [ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="4_6x0tj"]
 [ext_resource type="Texture2D" uid="uid://caa08kbfbjnil" path="res://src/game_object/interactable/door/door_opened_push_texture.tres" id="5_6x0tj"]
 [ext_resource type="Texture2D" uid="uid://c2kno4os6ntow" path="res://src/game_object/interactable/door/door_opened_pull_texture.tres" id="5_prarn"]
 
-[node name="Door" type="Node2D" unique_id=1906740693 node_paths=PackedStringArray("interactable_component", "push_side_door_sprite", "pull_side_door_sprite", "push_side_opened_sprite", "pull_side_opened_sprite", "push_side_marker", "pull_side_marker", "push_interact_hover_ui", "pull_interact_hover_ui")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x0tj"]
+size = Vector2(128, 64)
+
+[node name="Door" type="Node2D" unique_id=1906740693 node_paths=PackedStringArray("interactable_component", "push_side_door_sprite", "pull_side_door_sprite", "push_side_opened_sprite", "pull_side_opened_sprite", "push_side_marker", "pull_side_marker", "disabled_collision", "push_interact_hover_ui", "pull_interact_hover_ui")]
 script = ExtResource("1_k16ha")
 interactable_component = NodePath("InteractableComponent")
 push_side_door_sprite = NodePath("PushSideSprite/DoorSprite")
@@ -17,6 +19,7 @@ push_side_opened_sprite = NodePath("PushSideSprite/OpenedSprite")
 pull_side_opened_sprite = NodePath("PullSideSprite/OpenedSprite")
 push_side_marker = NodePath("PushSideMarker")
 pull_side_marker = NodePath("PullSideMarker")
+disabled_collision = NodePath("Wall/DisabledCollision")
 push_interact_hover_ui = NodePath("InteractControl/InteractHoverPivot/PushInteractHoverUI")
 pull_interact_hover_ui = NodePath("InteractControl/InteractHoverPivot/PullInteractHoverUI")
 
@@ -24,16 +27,6 @@ pull_interact_hover_ui = NodePath("InteractControl/InteractHoverPivot/PullIntera
 script = ExtResource("3_yd8t2")
 interact_control = NodePath("../InteractControl")
 metadata/_custom_type_script = "uid://5xtjibybpdw1"
-
-[node name="RotatePivot" type="Node2D" parent="." unique_id=1678717773]
-position = Vector2(0, -40)
-
-[node name="Sprite" type="Sprite2D" parent="RotatePivot" unique_id=1398099446]
-visible = false
-modulate = Color(0.21960784, 0.10980392, 0.3647059, 1)
-position = Vector2(0, 40)
-scale = Vector2(0.4, 0.8)
-texture = ExtResource("3_k16ha")
 
 [node name="PushSideMarker" type="Marker2D" parent="." unique_id=1497591281]
 position = Vector2(-96, 0)
@@ -67,6 +60,11 @@ texture = ExtResource("4_2niuq")
 visible = false
 position = Vector2(0, -32)
 texture = ExtResource("5_prarn")
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=757656281]
+
+[node name="DisabledCollision" type="CollisionShape2D" parent="Wall" unique_id=1191656731]
+shape = SubResource("RectangleShape2D_6x0tj")
 
 [node name="InteractControl" type="Control" parent="." unique_id=990539789]
 layout_mode = 3

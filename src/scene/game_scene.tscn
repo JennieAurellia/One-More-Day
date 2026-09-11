@@ -51,8 +51,9 @@ shader_parameter/brightness = 1.0
 shader_parameter/contrast = 1.0
 shader_parameter/saturation = 0.50000002375
 
-[node name="GameScene" type="Node2D" unique_id=14823134]
+[node name="GameScene" type="Node2D" unique_id=14823134 node_paths=PackedStringArray("outside_door")]
 script = ExtResource("1_1c8dc")
+outside_door = NodePath("Door/MainroomDoor")
 metadata/_edit_horizontal_guides_ = [-502.0]
 
 [node name="Tilemap" type="Node2D" parent="." unique_id=2093381653]
@@ -98,17 +99,18 @@ pull_side_room = 1
 [node name="InteractHoverPivot" parent="Door/BedroomDoor/InteractControl" parent_id_path=PackedInt32Array(3908680, 990539789) index="0" unique_id=1400453162]
 rotation = 3.1415927
 
-[node name="BathroomDoor2" parent="Door" unique_id=1906740693 instance=ExtResource("2_2h0i3")]
+[node name="BathroomDoor" parent="Door" unique_id=1906740693 instance=ExtResource("2_2h0i3")]
 position = Vector2(576, 672)
 rotation = 3.1415927
 pull_side_room = 2
 
-[node name="InteractHoverPivot" parent="Door/BathroomDoor2/InteractControl" parent_id_path=PackedInt32Array(1906740693, 990539789) index="0" unique_id=1400453162]
+[node name="InteractHoverPivot" parent="Door/BathroomDoor/InteractControl" parent_id_path=PackedInt32Array(1906740693, 990539789) index="0" unique_id=1400453162]
 rotation = 3.1415927
 
 [node name="MainroomDoor" parent="Door" unique_id=770888479 instance=ExtResource("2_2h0i3")]
 position = Vector2(992, 832)
 rotation = 1.5707964
+is_disabled = true
 pull_side_room = 3
 
 [node name="PushInteractHoverUI" parent="Door/MainroomDoor/InteractControl/InteractHoverPivot" parent_id_path=PackedInt32Array(770888479, 1400453162) index="0" unique_id=467594439]
@@ -350,9 +352,10 @@ to_make_up_seat = NodePath("../../../Furniture/Bedroom/MakeupDesk/Seat")
 calling_friend_marker = NodePath("../../../NPCPosition/CallingFriendMarker")
 calling_friend_facing = 180.0
 
-[node name="ElenaEscapePhase" parent="Elena/PhaseController" parent_id_path=PackedInt32Array(1752711026, 1126815856) index="6" unique_id=1332687376 node_paths=PackedStringArray("outside_marker")]
+[node name="ElenaEscapePhase" parent="Elena/PhaseController" parent_id_path=PackedInt32Array(1752711026, 1126815856) index="6" unique_id=1332687376 node_paths=PackedStringArray("outside_marker", "outside_door")]
 outside_marker = NodePath("../../../NPCPosition/OutsideMarker")
 outside_facing = 90.0
+outside_door = NodePath("../../../Door/MainroomDoor")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=703474889 node_paths=PackedStringArray("room_position_dictionary")]
 script = ExtResource("5_k4o4v")
@@ -468,9 +471,9 @@ mouse_filter = 2
 [editable path="Door/BedroomDoor"]
 [editable path="Door/BedroomDoor/InteractControl/InteractHoverPivot/PushInteractHoverUI"]
 [editable path="Door/BedroomDoor/InteractControl/InteractHoverPivot/PullInteractHoverUI"]
-[editable path="Door/BathroomDoor2"]
-[editable path="Door/BathroomDoor2/InteractControl/InteractHoverPivot/PushInteractHoverUI"]
-[editable path="Door/BathroomDoor2/InteractControl/InteractHoverPivot/PullInteractHoverUI"]
+[editable path="Door/BathroomDoor"]
+[editable path="Door/BathroomDoor/InteractControl/InteractHoverPivot/PushInteractHoverUI"]
+[editable path="Door/BathroomDoor/InteractControl/InteractHoverPivot/PullInteractHoverUI"]
 [editable path="Door/MainroomDoor"]
 [editable path="Door/MainroomDoor/InteractControl/InteractHoverPivot/PushInteractHoverUI"]
 [editable path="Door/MainroomDoor/InteractControl/InteractHoverPivot/PullInteractHoverUI"]

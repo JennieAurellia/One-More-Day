@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8ak2rdwd0ule" path="res://src/game_object/interactable/shower/shower.gd" id="1_ok507"]
 [ext_resource type="Texture2D" uid="uid://bn6t3avp45rd6" path="res://assets/tileset_revision.png" id="3_bm1wv"]
+[ext_resource type="PackedScene" uid="uid://cilettp7ecv76" path="res://src/game_object/trigger_area/teleport_area/teleport_area.tscn" id="3_ok507"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bm1wv"]
 size = Vector2(4.999995, 111)
@@ -15,12 +16,13 @@ size = Vector2(135.5, 8.000004)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ybk"]
 size = Vector2(135.5, 8.000004)
 
-[node name="Shower" type="Node2D" unique_id=1691131493 node_paths=PackedStringArray("normal_sprite", "locked_sprite", "lock_collision", "ui_block")]
+[node name="Shower" type="Node2D" unique_id=1691131493 node_paths=PackedStringArray("normal_sprite", "locked_sprite", "lock_collision", "teleport_area", "ui_block")]
 rotation = 1.5707964
 script = ExtResource("1_ok507")
 normal_sprite = NodePath("NormalSprite")
 locked_sprite = NodePath("LockedSprite")
 lock_collision = NodePath("Wall/LockCollision")
+teleport_area = NodePath("TeleportArea")
 ui_block = NodePath("UIBlock")
 
 [node name="NormalSprite" type="Sprite2D" parent="." unique_id=417175979]
@@ -55,6 +57,14 @@ shape = SubResource("RectangleShape2D_flugi")
 [node name="LockCollision" type="CollisionShape2D" parent="Wall" unique_id=1026463833]
 position = Vector2(3.9999979, -48)
 shape = SubResource("RectangleShape2D_f0ybk")
+
+[node name="TeleportArea" parent="." unique_id=438795567 node_paths=PackedStringArray("teleport_marker") instance=ExtResource("3_ok507")]
+position = Vector2(4, 2)
+scale = Vector2(2, 1.6)
+teleport_marker = NodePath("../TeleportMarker")
+
+[node name="TeleportMarker" type="Marker2D" parent="." unique_id=113407366]
+position = Vector2(-6.0321718e-06, -138)
 
 [node name="UIBlock" type="Control" parent="." unique_id=365320647]
 layout_mode = 3

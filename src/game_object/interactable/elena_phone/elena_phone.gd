@@ -51,10 +51,16 @@ func is_phone_placed()->bool: return _is_phone_placed
 # ==================================================================================================
 func _on_interactable_hovered():
 	if GameManager.loop_count <= 0: return
-	if InventoryManager.selected_item: return
-	if _is_phone_placed:
+	# Place using phone item
+	if InventoryManager.selected_item:
+		if InventoryManager.selected_item.id == phone_item_data.id:
+			interact_hover_text_label.text = place_interact_text
+			interact_hover_ui.show()
+	# Take directly
+	elif _is_phone_placed:
 		interact_hover_text_label.text = take_interact_text
 		interact_hover_ui.show()
+	# Place directly
 	elif InventoryManager.has_item(phone_item_data.id):
 		interact_hover_text_label.text = place_interact_text
 		interact_hover_ui.show()
@@ -72,4 +78,9 @@ func _on_interactable_interacted():
 		InventoryManager.remove_item(phone_item_data)
 		interact_hover_ui.hide()
 
-func _on_interactable_interacted_by_npc(npc:Node) -> void: pass
+func _on_interactable_interacted_by_npc(npc:Node) -> void:
+	if InventoryManager.selected_item:
+		if InventoryManager.selected_item.id == phone_item_data.id:
+			place_phone()
+			InventoryManager.remove_item(phone_item_data)
+			interact_hover_ui.hide()
