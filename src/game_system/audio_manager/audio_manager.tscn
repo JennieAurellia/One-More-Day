@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://c4jxudu65b42k" path="res://assets/audio/sfx/phone_ring.mp3" id="14_5p07o"]
 [ext_resource type="AudioStream" uid="uid://dto0wj4b3y0y6" path="res://assets/audio/sfx/car_crash.mp3" id="15_ffr1o"]
 [ext_resource type="AudioStream" uid="uid://drawq3qnj8kb6" path="res://assets/audio/sfx/ui/Modern5.mp3" id="21_f7i3c"]
+[ext_resource type="AudioStream" uid="uid://d3myu1y5o6vxr" path="res://assets/audio/sfx/ending.mp3" id="26_upiwq"]
 
 [node name="AudioManager" type="Node" unique_id=1936952167]
 script = ExtResource("1_d1dws")
@@ -161,6 +162,15 @@ volume_db = 4.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "time_reset"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="Ending" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=2027912408]
+process_mode = 3
+stream = ExtResource("26_upiwq")
+volume_db = 4.0
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "ending"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="UI_SFX" type="Node" parent="SFXNodes" unique_id=1434513876]

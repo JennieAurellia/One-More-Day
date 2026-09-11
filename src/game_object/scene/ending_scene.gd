@@ -1,6 +1,7 @@
 extends Node2D
 
 const MAIN_MENU_SCENE_PATH : String = "res://src/scene/main_menu_scene.tscn"
+const ENDING_SFX_NAME : String = "ending"
 
 @onready var animation : AnimationPlayer = $Animation
 
@@ -9,3 +10,5 @@ func _ready() -> void:
 	SaveManager.set_value("has_ended_game", false)
 	SaveManager.save_game()
 	get_tree().change_scene_to_file(MAIN_MENU_SCENE_PATH)
+
+func play_sound(): AudioManager.play_sfx(ENDING_SFX_NAME)

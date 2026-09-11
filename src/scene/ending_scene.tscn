@@ -2,36 +2,175 @@
 
 [ext_resource type="Script" uid="uid://cg85lr2pn6n6g" path="res://src/game_object/scene/ending_scene.gd" id="1_tafng"]
 [ext_resource type="Texture2D" uid="uid://b285iwu8xmfqg" path="res://assets/UI/scene_pemakaman.png" id="2_pkqgp"]
+[ext_resource type="Texture2D" uid="uid://bpwy750pvtt77" path="res://src/common/texture/ui/clock_texture.tres" id="2_xiu4h"]
+[ext_resource type="Texture2D" uid="uid://dpqbmavscq0ex" path="res://assets/Main menu splash/putih 2.png" id="4_k4fpk"]
+[ext_resource type="Texture2D" uid="uid://nmsrj3oky50" path="res://assets/Pause splash/putih 2.png" id="5_v8qf7"]
+[ext_resource type="Texture2D" uid="uid://bx5ogcp66x3o" path="res://assets/Pause splash/putih 1.png" id="6_dxhj1"]
 
 [sub_resource type="Animation" id="Animation_pkqgp"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/EndingCutscene:modulate")
+tracks/0/path = NodePath("CanvasLayer/Clock:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/InitialText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Clock:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/InitialText:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Funeral:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/ThankyouText:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_xiu4h"]
 resource_name = "ending"
-length = 5.5
+length = 13.5
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/EndingCutscene:modulate")
+tracks/0/path = NodePath("CanvasLayer/Clock:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 4, 5, 5.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(2, 3.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.39215687)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/InitialText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Clock:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 4, 4.0999994, 4.2, 4.3, 4.3999996, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/InitialText:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 4, 4.0999994, 4.2, 4.3, 4.3999996, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, false, true, false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Funeral:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/ThankyouText:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 8, 9, 12, 13),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sound"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8qkx0"]
@@ -45,8 +184,41 @@ script = ExtResource("1_tafng")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1615047123]
 
-[node name="EndingCutscene" type="TextureRect" parent="CanvasLayer" unique_id=1635811689]
-modulate = Color(0, 0, 0, 1)
+[node name="Clock" type="TextureRect" parent="CanvasLayer" unique_id=1922828438]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -469.0
+offset_top = -446.0
+offset_right = 469.0
+offset_bottom = 446.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xiu4h")
+
+[node name="InitialText" type="Label" parent="CanvasLayer" unique_id=490368232]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -737.0
+offset_top = -100.5
+offset_right = 737.0
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = "The day finally came to an end.
+But whose fate had truly changed?"
+horizontal_alignment = 1
+
+[node name="Funeral" type="TextureRect" parent="CanvasLayer" unique_id=1635811689]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -54,36 +226,41 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_pkqgp")
 
-[node name="Margin" type="MarginContainer" parent="CanvasLayer/EndingCutscene" unique_id=927688960]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -518.5
-offset_top = -123.0
-offset_right = 518.5
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/margin_bottom = 160
-
-[node name="ThankyouShadow" type="Label" parent="CanvasLayer/EndingCutscene/Margin" unique_id=401350880]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 120
-text = "Thanks For Playing"
-
-[node name="ThankyouText2" type="Label" parent="CanvasLayer/EndingCutscene/Margin/ThankyouShadow" unique_id=948781973]
+[node name="Overlay1" type="TextureRect" parent="CanvasLayer/Funeral" unique_id=422956389]
+modulate = Color(0.28235295, 0, 0, 0.23529412)
 layout_mode = 0
-offset_top = -7.0
-offset_right = 1037.0
-offset_bottom = 116.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 8
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_k4fpk")
+
+[node name="Overlay2" type="TextureRect" parent="CanvasLayer/Funeral" unique_id=1775072669]
+modulate = Color(0.40604424, 5.8358535e-07, 1.2032687e-07, 0.5019608)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_v8qf7")
+flip_h = true
+
+[node name="Overlay3" type="TextureRect" parent="CanvasLayer/Funeral" unique_id=152065686]
+modulate = Color(0.40604424, 5.8358535e-07, 1.2032687e-07, 0.5019608)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_dxhj1")
+
+[node name="ThankyouText" type="Label" parent="CanvasLayer" unique_id=401350880]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -518.5
+offset_top = -61.5
+offset_right = 518.5
+offset_bottom = 61.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 120
 text = "Thanks For Playing"
 
