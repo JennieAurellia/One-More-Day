@@ -1,11 +1,14 @@
 extends Node2D
+class_name MakeupDesk
 
 @export_subgroup("References")
 @export var interactable_component : InteractableComponent
 @export var interact_hover_ui : Control
 
-@export_subgroup("Diary Settings")
+@export_subgroup("Makeup Desk Settings")
 @export var diary_item_data : ItemData
+
+var _is_already_searched : bool = false
 
 # ==================================================================================================
 #                Virtual methods
@@ -28,15 +31,16 @@ func _ready() -> void:
 func _on_interactable_hovered():
 	if GameManager.loop_count <= 0: return
 	if InventoryManager.selected_item: return
-	interact_hover_ui.show()
+	if !_is_already_searched: interact_hover_ui.show()
 
 func _on_interactable_unhovered(): interact_hover_ui.hide()
 
 func _on_interactable_interacted():
 	if GameManager.loop_count <= 0: return
-	EventFlag.instance.has_found_diary = true
-	InventoryManager.add_item(diary_item_data)
-	interact_hover_ui.hide()
-	queue_free()
+	if !_is_already_searched:
+		EventFlag.instance.has_found_diary = true
+		InventoryManager.add_item(diary_item_data)
+		_is_already_searched = true
+		interact_hover_ui.hide()
 
 func _on_interactable_interacted_by_npc(npc:Node) -> void: pass

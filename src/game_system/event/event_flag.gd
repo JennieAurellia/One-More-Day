@@ -41,21 +41,24 @@ var is_elena_phone_calling : bool = false
 var has_found_present : bool = false
 ## Has player found Elena's diary
 var has_found_diary : bool = false
+## Has player found Elena's doll
+var has_found_doll : bool = false
 ## Has player see dialogue inside Elena's phone
 static var has_peak_inside_phone : bool = false:
 	set(value):
 		has_peak_inside_phone = value
 		if instance and value: instance.peaked_inside_phone.emit()
 ## Has read Elena's diary
-var has_read_diary : bool = false:
+static var has_read_diary : bool = false:
 	set(value):
 		has_read_diary = value
-		read_diary.emit()
+		if instance and value: instance.read_diary.emit()
 
 # ========== Prive interaction ==========
 var is_present_proved : bool = false
 var is_call_proved : bool = false
 var is_diary_proved : bool = false
+var is_doll_proved : bool = false
 var is_prove_successful : bool = false
 
 # ==================================================================================================
@@ -70,3 +73,4 @@ func _exit_tree() -> void: instance = null
 # ==================================================================================================
 static func reset_event():
 	has_peak_inside_phone = false
+	has_read_diary = false

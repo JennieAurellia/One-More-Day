@@ -8,7 +8,6 @@ class_name ElenaInteraction
 @export var interact_hover_text_label : Label
 
 @export_subgroup("Interaction Settings")
-@export var doll_item_data : ItemData
 @export var gift_item_data : ItemData
 @export var item_interact_text : String = "give?"
 @export var call_interact_text : String = "hear?"
@@ -22,7 +21,7 @@ func _ready() -> void:
 	assert(interactable_component, "interactable_component is missing")
 	assert(interact_hover_ui, "interact_hover_ui is missing")
 	assert(interact_hover_text_label, "interact_hover_text_label is empty")
-	assert(doll_item_data, "doll_item_data is empty")
+	assert(gift_item_data, "gift_item_data is empty")
 	# Connect signals
 	interactable_component.hovered.connect(_on_interactable_hovered)
 	interactable_component.unhovered.connect(_on_interactable_unhovered)
@@ -40,10 +39,7 @@ func _process(delta: float) -> void:
 func _on_interactable_hovered():
 	# Holding item
 	if InventoryManager.selected_item:
-		if InventoryManager.selected_item.id == doll_item_data.id:
-			interact_hover_text_label.text = item_interact_text
-			interact_hover_ui.show()
-		elif InventoryManager.selected_item.id == gift_item_data.id:
+		if InventoryManager.selected_item.id == gift_item_data.id:
 			interact_hover_text_label.text = item_interact_text
 			interact_hover_ui.show()
 
@@ -55,8 +51,7 @@ func _on_interactable_item_used_on(item_data:ItemData):
 	# Hide
 	interact_hover_ui.hide()
 	# With item
-	if InventoryManager.selected_item.id == doll_item_data.id: elena.do_dialogue("doll")
-	elif InventoryManager.selected_item.id == gift_item_data.id:
+	if InventoryManager.selected_item.id == gift_item_data.id:
 		elena.do_dialogue("present")
 		await elena.dialogue_finished
 		elena.phase_controller.skip_to_end_phase()

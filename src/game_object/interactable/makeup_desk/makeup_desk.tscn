@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://b8roibc6gqklj"]
+
+[ext_resource type="Script" uid="uid://cu1eutinoeeui" path="res://src/game_object/interactable/makeup_desk/makeup_desk.gd" id="1_3gnjp"]
+[ext_resource type="Texture2D" uid="uid://jmo7odffftbs" path="res://src/common/texture/furniture/makeup_desk_chair_texture.tres" id="1_6lsgo"]
+[ext_resource type="Texture2D" uid="uid://ceqvy2b0g2qda" path="res://src/common/texture/furniture/makeup_desk_texture.tres" id="2_bu5os"]
+[ext_resource type="Resource" uid="uid://dojnxo37q6u6t" path="res://data/item/diary_item.tres" id="2_p8i5i"]
+[ext_resource type="PackedScene" uid="uid://ck5tmwg6qc7ia" path="res://src/game_object/interactable/seat/seat.tscn" id="3_nr3sf"]
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="5_h3obe"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="6_p8i5i"]
+
+[node name="MakeupDesk" type="Node2D" unique_id=1805021972 node_paths=PackedStringArray("interactable_component", "interact_hover_ui")]
+script = ExtResource("1_3gnjp")
+interactable_component = NodePath("InteractableComponent")
+interact_hover_ui = NodePath("InteractControl/InteractHoverUI")
+diary_item_data = ExtResource("2_p8i5i")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=114533246 node_paths=PackedStringArray("interact_control")]
+script = ExtResource("5_h3obe")
+interact_control = NodePath("../InteractControl")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
+
+[node name="ChairSprite" type="Sprite2D" parent="." unique_id=364763280]
+position = Vector2(0, -30)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_6lsgo")
+
+[node name="DeskSprite" type="Sprite2D" parent="." unique_id=77335001]
+z_index = 1
+position = Vector2(0, 30)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_bu5os")
+
+[node name="Seat" parent="." unique_id=1889117093 instance=ExtResource("3_nr3sf")]
+position = Vector2(0, -30)
+sit_facing_degrees = 90.0
+
+[node name="InteractControl" type="Control" parent="." unique_id=818321534]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -9.0
+offset_right = 56.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="InteractHoverUI" parent="InteractControl" unique_id=467594439 instance=ExtResource("6_p8i5i")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = -0.5
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+
+[node name="TextureRect" parent="InteractControl/InteractHoverUI" index="0" unique_id=1567503579]
+offset_left = -20.500008
+offset_right = 79.49999
+
+[node name="TextLabel" parent="InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 71.0
+offset_right = 130.0
+scale = Vector2(-1, 1)
+text = "Search?"
+
+[editable path="InteractControl/InteractHoverUI"]

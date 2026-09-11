@@ -36,6 +36,7 @@ func _on_interactable_unhovered(): interact_hover_ui.hide()
 
 func _on_interactable_interacted():
 	if GameManager.loop_count <= 0: return
+	EventFlag.instance.has_found_doll = true
 	InventoryManager.add_item(doll_item_data)
 	interact_hover_ui.hide()
 	queue_free()

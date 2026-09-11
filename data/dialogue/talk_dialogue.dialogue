@@ -113,13 +113,14 @@ Elena: How?
 [do! hide_all_sprite()].
 - About the present [if EventFlag.instance.has_found_present and not EventFlag.instance.is_present_proved] => prove_present
 - About the incoming call [if EventFlag.instance.has_peak_inside_phone and not EventFlag.instance.is_call_proved] => prove_call
-- About the diary [if EventFlag.instance.has_found_diary and not EventFlag.instance.is_diary_proved] => prove_diary
+- About the diary [if EventFlag.instance.has_read_diary and not EventFlag.instance.is_diary_proved] => prove_diary
+- About the doll [if EventFlag.instance.has_found_doll and not EventFlag.instance.is_doll_proved] => prove_doll
 - Finish => prove_test
 => END
 
 # See if proving is correct
 ~ prove_test
-if EventFlag.instance.is_present_proved and EventFlag.instance.is_call_proved and EventFlag.instance.is_diary_proved:
+if EventFlag.instance.is_present_proved and EventFlag.instance.is_call_proved and EventFlag.instance.is_diary_proved and EventFlag.instance.is_doll_proved:
 	=> prove_successful
 else:
 	=> prove_failed
@@ -173,4 +174,19 @@ Adrian: Yeah. You even wrote that you weren't sure why, but something about her 
 Elena: I remember feeling that way... but I thought I was just overthinking it.
 Adrian: You weren't. You felt it too, Elena.
 set EventFlag.instance.is_diary_proved = true
+=> prove
+
+~ prove_doll
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry") show_sprite(DialogueView.ViewPosition.CENTER, "doll")]This plushie... Maya gave this to you, right?
+Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Yeah. Why?
+Adrian: I was just looking at it and... something feels weird.
+Elena: Weird? What do you mean?
+Adrian: There's something inside it.
+Elena: What?
+Adrian: Wait... Is that a camera?
+Elena: A camera?! Why would there be a camera inside my plushie?
+Adrian: I don't know. But someone put it there.
+Elena: ...Maya gave me this.
+Adrian: I know. That's why I'm asking you... are you sure she didn't put this here?
+set EventFlag.instance.is_doll_proved = true
 => prove

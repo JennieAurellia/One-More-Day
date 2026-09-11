@@ -121,20 +121,6 @@ Adrian: Love you too.
 # ==========================================================
 #           Items
 # ==========================================================
-~ doll
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry") show_sprite(DialogueView.ViewPosition.CENTER, "doll")]Hey, Elena. This plushie... Maya gave this to you, right?
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Yeah. Why?
-Adrian: I was just looking at it and... something feels weird.
-Elena: Weird? What do you mean?
-Adrian: There's something inside it.
-Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_angry")]What?
-Adrian: Wait... Is that a camera?
-Elena: A camera?! Why would there be a camera inside my plushie?
-Adrian: I don't know. But someone put it there.
-Elena: ...Maya gave me this.
-Adrian: I know. That's why I'm asking you... are you sure she didn't put this here?
-=> END
-
 ~ present
 Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.CENTER, "gift")]Elena, I found something in the closet.
 Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]What?

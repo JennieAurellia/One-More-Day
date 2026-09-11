@@ -6,18 +6,15 @@
 [ext_resource type="TileSet" uid="uid://p1vunh5xb226" path="res://src/common/tilemap/main_tile_set.tres" id="2_dfkft"]
 [ext_resource type="TileSet" uid="uid://bdhb8t814demu" path="res://src/common/tilemap/nav_tile_set.tres" id="2_iglcx"]
 [ext_resource type="PackedScene" uid="uid://cumbmuajmatxw" path="res://src/ui/inventory/inventory_ui.tscn" id="3_iavex"]
-[ext_resource type="PackedScene" uid="uid://ck5tmwg6qc7ia" path="res://src/game_object/interactable/seat/seat.tscn" id="4_glhkg"]
 [ext_resource type="Script" uid="uid://ceu04osa3ymxe" path="res://src/common/autoload/cursor_manager.gd" id="4_n0qnv"]
 [ext_resource type="Texture2D" uid="uid://d2f0lv4x2c3fs" path="res://src/common/texture/furniture/bed_texture.tres" id="4_p0muh"]
 [ext_resource type="PackedScene" uid="uid://cw816jpefljti" path="res://src/game_object/npc/elena/elena.tscn" id="5_1twxm"]
 [ext_resource type="PackedScene" uid="uid://c2rnpu7lx241o" path="res://src/ui/dialogue/dialogue_ui.tscn" id="5_alaus"]
 [ext_resource type="Script" uid="uid://dlqs7m7u628jr" path="res://src/game_object/camera/camera.gd" id="5_k4o4v"]
 [ext_resource type="PackedScene" uid="uid://cualheujywi7o" path="res://src/game_object/interactable/stove/stove.tscn" id="6_ffmqh"]
-[ext_resource type="Texture2D" uid="uid://ceqvy2b0g2qda" path="res://src/common/texture/furniture/makeup_desk_texture.tres" id="6_l3j6q"]
 [ext_resource type="Script" uid="uid://byje5y2envk60" path="res://src/game_object/room_fog/room_fog.gd" id="7_aph4m"]
 [ext_resource type="Texture2D" uid="uid://d27dyq8htkdkj" path="res://src/common/texture/furniture/plant_texture.tres" id="7_nkk2u"]
 [ext_resource type="PackedScene" uid="uid://q2pvo2jgdhmk" path="res://src/game_object/trigger_area/restart_area/restart_area.tscn" id="7_pqqlr"]
-[ext_resource type="Texture2D" uid="uid://jmo7odffftbs" path="res://src/common/texture/furniture/makeup_desk_chair_texture.tres" id="7_xdb2o"]
 [ext_resource type="PackedScene" uid="uid://bdayrxt886wft" path="res://src/game_object/interactable/dining_table/dining_table.tscn" id="9_nkk2u"]
 [ext_resource type="Texture2D" uid="uid://mwdm2oyyuyft" path="res://src/common/texture/furniture/kitchen_counter_left_texture.tres" id="9_pc20v"]
 [ext_resource type="Texture2D" uid="uid://du7lrfd3ey2we" path="res://src/common/texture/furniture/kitchen_counter_right_texture.tres" id="10_0yacf"]
@@ -33,8 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://c4bw8rddikjx8" path="res://src/common/texture/furniture/living_room_table_texture.tres" id="15_hysqa"]
 [ext_resource type="PackedScene" uid="uid://b3vulr6is71q0" path="res://src/game_object/interactable/wardrobe/wardrobe.tscn" id="17_ffmqh"]
 [ext_resource type="Texture2D" uid="uid://biiblqvsgapt" path="res://src/common/texture/furniture/sink_texture.tres" id="19_eys30"]
+[ext_resource type="PackedScene" uid="uid://b8roibc6gqklj" path="res://src/game_object/interactable/makeup_desk/makeup_desk.tscn" id="19_nol42"]
 [ext_resource type="Texture2D" uid="uid://c2v3kkn0jou7l" path="res://src/common/texture/furniture/closet_texture.tres" id="20_qblr6"]
-[ext_resource type="PackedScene" uid="uid://c11wdqsswc7xm" path="res://src/game_object/interactable/diary/diary.tscn" id="20_tg3v2"]
 [ext_resource type="PackedScene" uid="uid://cedf8odp4gudp" path="res://src/game_object/interactable/toilet/toilet.tscn" id="20_vfhfr"]
 [ext_resource type="PackedScene" uid="uid://ciagp50sbeviv" path="res://src/game_object/interactable/shower/shower.tscn" id="21_ffmqh"]
 [ext_resource type="PackedScene" uid="uid://cb4c0x0bl4u7u" path="res://src/game_object/trigger_area/outside_bedroom_area/outside_bedroom_area.tscn" id="27_3f3ob"]
@@ -218,27 +215,8 @@ position = Vector2(1, 49)
 [node name="Wardrobe" parent="Furniture/Bedroom" unique_id=1065710214 instance=ExtResource("17_ffmqh")]
 position = Vector2(463, 138)
 
-[node name="MakeupDesk" type="Node2D" parent="Furniture/Bedroom" unique_id=857110853]
-position = Vector2(240, 378)
-
-[node name="ChairSprite" type="Sprite2D" parent="Furniture/Bedroom/MakeupDesk" unique_id=1778969842]
-position = Vector2(0, -60)
-rotation = 1.5707964
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_xdb2o")
-
-[node name="DeskSprite" type="Sprite2D" parent="Furniture/Bedroom/MakeupDesk" unique_id=375471968]
-z_index = 1
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_l3j6q")
-
-[node name="Seat" parent="Furniture/Bedroom/MakeupDesk" unique_id=1889117093 instance=ExtResource("4_glhkg")]
-position = Vector2(0, -60)
-sit_facing_degrees = 90.0
-
-[node name="Diary" parent="Furniture/Bedroom/MakeupDesk" unique_id=954681794 instance=ExtResource("20_tg3v2")]
-z_index = 1
-position = Vector2(-40, -22)
+[node name="MakeupDesk" parent="Furniture/Bedroom" unique_id=1805021972 instance=ExtResource("19_nol42")]
+position = Vector2(240, 348)
 
 [node name="Bathroom" type="Node2D" parent="Furniture" unique_id=707564706]
 
@@ -488,7 +466,9 @@ mouse_filter = 2
 [editable path="Furniture/MainRoom/Sofa/Seat2/InteractControl/InteractHoverUI"]
 [editable path="Furniture/MainRoom/Sofa/Seat3"]
 [editable path="Furniture/MainRoom/Sofa/Seat3/InteractControl/InteractHoverUI"]
+[editable path="Furniture/Bedroom/MakeupDesk"]
 [editable path="Furniture/Bedroom/MakeupDesk/Seat"]
 [editable path="Furniture/Bedroom/MakeupDesk/Seat/InteractControl/InteractHoverUI"]
+[editable path="Furniture/Bedroom/MakeupDesk/InteractControl/InteractHoverUI"]
 [editable path="Elena"]
 [editable path="Elena/InteractControl/InteractHoverUI"]
