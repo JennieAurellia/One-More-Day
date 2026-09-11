@@ -53,18 +53,14 @@ func _on_interactable_item_used_on(item_data:ItemData):
 	if item_data.id == gift_item_data.id:
 		player.do_dialogue("present_inspect")
 		# Flag present
-		if !EventFlag.instance.has_peek_present:
-			EventFlag.instance.has_peek_present = true
+		EventFlag.instance.has_peek_present = true
 	elif item_data.id == doll_item_data.id:
 		player.do_dialogue("doll_inspect")
 		# Flag doll
-		if !EventFlag.instance.has_peek_doll:
-			EventFlag.instance.has_peek_doll = true
+		EventFlag.instance.has_peek_doll = true
 	elif item_data.id == phone_item_data.id:
 		# Flag phone
-		if !EventFlag.instance.has_peek_inside_phone:
-			EventFlag.instance.has_peek_inside_phone = true
+		EventFlag.instance.has_peek_inside_phone = true
 	elif item_data.id == diary_item_data.id:
 		# Flag diary
-		if !EventFlag.instance.has_read_diary:
-			EventFlag.instance.has_read_diary = true
+		EventFlag.instance.has_read_diary = true

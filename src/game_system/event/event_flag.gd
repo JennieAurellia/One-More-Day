@@ -3,11 +3,15 @@ class_name EventFlag
 
 static var instance : EventFlag
 
+# Cook
 signal exited_bedroom
+# Item
 signal peeked_present
 signal peeked_doll
 signal peeked_inside_phone
 signal read_diary
+# Hint
+signal clue_hinted
 
 # ========== Cook phase ==========
 ## Has the player exited the bedroom
@@ -42,21 +46,29 @@ var is_elena_phone_calling : bool = false
 ## Has player see Elena's hidden present
 static var has_peek_present : bool = false:
 	set(value):
+		if instance and value:
+			if !has_peek_present: instance.clue_hinted.emit()
 		has_peek_present = value
 		if instance and value: instance.peeked_present.emit()
 ## Has player see Elena's doll
 static var has_peek_doll : bool = false:
 	set(value):
+		if instance and value:
+			if !has_peek_doll: instance.clue_hinted.emit()
 		has_peek_doll = value
 		if instance and value: instance.peeked_doll.emit()
 ## Has player see dialogue inside Elena's phone
 static var has_peek_inside_phone : bool = false:
 	set(value):
+		if instance and value:
+			if !has_peek_inside_phone: instance.clue_hinted.emit()
 		has_peek_inside_phone = value
 		if instance and value: instance.peeked_inside_phone.emit()
 ## Has read Elena's diary
 static var has_read_diary : bool = false:
 	set(value):
+		if instance and value:
+			if !has_read_diary: instance.clue_hinted.emit()
 		has_read_diary = value
 		if instance and value: instance.read_diary.emit()
 

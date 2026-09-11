@@ -37,10 +37,7 @@ func _ready() -> void:
 	assert(tutorial_hint_margin, "tutorial_hint_margin is missing")
 	assert(clue_hint_margin, "clue_hint_margin is missing")
 	# Connect signals
-	EventFlag.instance.peeked_present.connect(show_clue_hint)
-	EventFlag.instance.peeked_doll.connect(show_clue_hint)
-	EventFlag.instance.peeked_inside_phone.connect(show_clue_hint)
-	EventFlag.instance.read_diary.connect(show_clue_hint)
+	EventFlag.instance.clue_hinted.connect(show_clue_hint)
 	# Initialize
 	hide()
 
