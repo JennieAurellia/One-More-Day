@@ -444,10 +444,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="PhoneUI" parent="UICanvasLayer" unique_id=293281820 instance=ExtResource("40_nol42")]
-visible = false
 
 [node name="DiaryUI" parent="UICanvasLayer" unique_id=1322229311 instance=ExtResource("40_00eno")]
-visible = false
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
 visible = false

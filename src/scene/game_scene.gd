@@ -4,6 +4,7 @@ extends Node
 
 func _ready() -> void:
 	GameTimer.instance.time_tick.connect(_on_time_tick)
+	InventoryManager.clear_inventory()
 	AudioManager.play_music("game")
 
 func _on_time_tick(game_time_minute:int):

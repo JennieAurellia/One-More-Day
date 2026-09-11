@@ -28,3 +28,5 @@ func select_item(item_data:ItemData):
 
 func consume_selected():
 	if selected_item: remove_item(selected_item)
+
+func clear_inventory(): item_data_array.clear()
