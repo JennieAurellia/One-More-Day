@@ -813,18 +813,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -835.0
-offset_top = -280.0
-offset_right = 835.0
+offset_left = -265.0
+offset_top = -650.0
+offset_right = 265.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(835, 200)
+pivot_offset = Vector2(265, 650)
 theme_override_constants/margin_bottom = 80
 
-[node name="HBox" type="HBoxContainer" parent="Buttons" unique_id=1302649211]
+[node name="HBox" type="VBoxContainer" parent="Buttons" unique_id=1157436353]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = -15
 
 [node name="PlayButton" parent="Buttons/HBox" unique_id=1502458938 instance=ExtResource("2_2u4md")]
 layout_mode = 2

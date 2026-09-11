@@ -389,7 +389,6 @@ metadata/_custom_type_script = "uid://ceu04osa3ymxe"
 
 [node name="GameTimer" type="Node" parent="." unique_id=337638771]
 script = ExtResource("11_vvmck")
-seconds_per_game_time_minute = 0.5
 metadata/_custom_type_script = "uid://dynocpxsiw65u"
 
 [node name="DoorManager" type="Node" parent="." unique_id=221765964]
