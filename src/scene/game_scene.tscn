@@ -43,6 +43,7 @@
 [ext_resource type="Shader" uid="uid://c2sgm7naq1bif" path="res://src/common/shader/screen_adjustment.gdshader" id="35_vfhfr"]
 [ext_resource type="PackedScene" uid="uid://lh1ia5sqc2sq" path="res://src/ui/diary/diary_ui.tscn" id="40_00eno"]
 [ext_resource type="PackedScene" uid="uid://c3wsim84y05nc" path="res://src/ui/phone/phone_ui.tscn" id="40_nol42"]
+[ext_resource type="PackedScene" uid="uid://6lc3qglvh5w2" path="res://src/ui/cutscene/custscene_ui.tscn" id="43_4pfsh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fimk8"]
 shader = ExtResource("35_vfhfr")
@@ -406,7 +407,7 @@ metadata/_custom_type_script = "uid://ceu04osa3ymxe"
 
 [node name="GameTimer" type="Node" parent="." unique_id=337638771]
 script = ExtResource("11_vvmck")
-seconds_per_game_time_minute = 0.1
+seconds_per_game_time_minute = 0.5
 metadata/_custom_type_script = "uid://dynocpxsiw65u"
 
 [node name="DoorManager" type="Node" parent="." unique_id=221765964]
@@ -449,6 +450,9 @@ visible = false
 visible = false
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
+visible = false
+
+[node name="CustsceneUI" parent="UICanvasLayer" unique_id=459575949 instance=ExtResource("43_4pfsh")]
 visible = false
 
 [node name="PauseUI" parent="UICanvasLayer" unique_id=235246552 instance=ExtResource("34_ffmqh")]
