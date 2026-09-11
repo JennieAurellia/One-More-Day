@@ -81,7 +81,8 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 32
 text = "Aim and left click to move
 Hover and left click to interact
-Select item from inventory (left panel) to use for interact"
+Select item from inventory (left panel) to use for interact
+Hold play button (beside time) to speed up"
 horizontal_alignment = 1
 
 [node name="Margin2" type="MarginContainer" parent="Margin/Pivot" unique_id=1388242006]

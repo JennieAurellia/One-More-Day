@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://cire151lrqlnk" path="res://src/ui/pause/pause_ui.tscn" id="34_ffmqh"]
 [ext_resource type="Script" uid="uid://b2yb1ecj1tt1x" path="res://src/game_system/event/event_flag.gd" id="34_x7e43"]
 [ext_resource type="Shader" uid="uid://c2sgm7naq1bif" path="res://src/common/shader/screen_adjustment.gdshader" id="35_vfhfr"]
+[ext_resource type="PackedScene" uid="uid://c5aufy3ufu4e8" path="res://src/ui/speed_up/speed_up_ui.tscn" id="36_00eno"]
 [ext_resource type="PackedScene" uid="uid://40l0uc3crnjc" path="res://src/ui/hint/hint_ui.tscn" id="38_1c8dc"]
 [ext_resource type="PackedScene" uid="uid://lh1ia5sqc2sq" path="res://src/ui/diary/diary_ui.tscn" id="40_00eno"]
 [ext_resource type="PackedScene" uid="uid://c3wsim84y05nc" path="res://src/ui/phone/phone_ui.tscn" id="40_nol42"]
@@ -420,9 +421,16 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 7
 
-[node name="GameTimerUI" parent="UICanvasLayer/VBox/Margin" unique_id=1455814715 instance=ExtResource("13_hn8je")]
+[node name="HBox" type="HBoxContainer" parent="UICanvasLayer/VBox/Margin" unique_id=868818191]
+layout_mode = 2
+
+[node name="GameTimerUI" parent="UICanvasLayer/VBox/Margin/HBox" unique_id=1455814715 instance=ExtResource("13_hn8je")]
 layout_mode = 2
 size_flags_horizontal = 0
+
+[node name="SpeedUpUI" parent="UICanvasLayer/VBox/Margin/HBox" unique_id=559181084 instance=ExtResource("36_00eno")]
+layout_mode = 2
+size_flags_vertical = 0
 
 [node name="PhoneUI" parent="UICanvasLayer" unique_id=293281820 instance=ExtResource("40_nol42")]
 

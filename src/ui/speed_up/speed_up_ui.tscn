@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c5aufy3ufu4e8"]
+
+[ext_resource type="Script" uid="uid://d3st1dqj04nsp" path="res://src/ui/speed_up/speed_up_ui.gd" id="1_ec480"]
+[ext_resource type="Texture2D" uid="uid://dsna28qbbcn4d" path="res://src/common/texture/ui/item_slot_texture.tres" id="2_0cq5u"]
+[ext_resource type="Texture2D" uid="uid://bve717dighaa7" path="res://src/common/texture/ui/page_icon_texture.tres" id="3_tgql7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6lh0d"]
+texture = ExtResource("2_0cq5u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0cq5u"]
+texture = ExtResource("2_0cq5u")
+modulate_color = Color(1, 1, 0.78431374, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tgql7"]
+texture = ExtResource("2_0cq5u")
+modulate_color = Color(0.39181867, 0.39181864, 0.39181864, 1)
+
+[node name="SpeedUpUI" type="MarginContainer" unique_id=559181084 node_paths=PackedStringArray("button")]
+offset_right = 10.0
+offset_bottom = 10.0
+script = ExtResource("1_ec480")
+button = NodePath("Button")
+
+[node name="Button" type="Button" parent="." unique_id=1859460392]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_6lh0d")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_0cq5u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tgql7")
+
+[node name="Margin" type="MarginContainer" parent="Button" unique_id=460617761]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 6
+
+[node name="Icon" type="TextureRect" parent="Button/Margin" unique_id=1005363810]
+clip_children = 2
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_tgql7")
+expand_mode = 1
+
+[node name="WhiteColor" type="ColorRect" parent="Button/Margin/Icon" unique_id=1128430567]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
