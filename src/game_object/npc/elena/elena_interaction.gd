@@ -9,6 +9,7 @@ class_name ElenaInteraction
 
 @export_subgroup("Interaction Settings")
 @export var doll_item_data : ItemData
+@export var gift_item_data : ItemData
 @export var item_interact_text : String = "give?"
 @export var call_interact_text : String = "hear?"
 
@@ -41,6 +42,8 @@ func _on_interactable_hovered():
 	if InventoryManager.selected_item:
 		if InventoryManager.selected_item.id == doll_item_data.id:
 			interact_hover_text_label.text = item_interact_text
+		elif InventoryManager.selected_item.id == gift_item_data.id:
+			interact_hover_text_label.text = item_interact_text
 		interact_hover_ui.show()
 	# Not holding item
 	else:
@@ -64,3 +67,7 @@ func _on_interactable_item_used_on(item_data:ItemData):
 	interact_hover_ui.hide()
 	# With item
 	if InventoryManager.selected_item.id == doll_item_data.id: elena.do_dialogue("doll")
+	elif InventoryManager.selected_item.id == gift_item_data.id:
+		elena.do_dialogue("present")
+		await elena.dialogue_finished
+		elena.phase_controller.skip_to_end_phase()

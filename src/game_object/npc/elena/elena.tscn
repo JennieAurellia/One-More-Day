@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://dlg28ugmnenqu" path="res://data/item/doll_item.tres" id="10_shi06"]
 [ext_resource type="Script" uid="uid://dv1hpr5ipd50d" path="res://src/game_object/npc/elena/phase/elena_escape_phase.gd" id="10_ta24s"]
 [ext_resource type="Resource" uid="uid://bb3met2tv77q0" path="res://data/dialogue/talk_dialogue.dialogue" id="11_x2tpw"]
+[ext_resource type="Resource" uid="uid://bxwnet5kinnyh" path="res://data/item/gift_item.tres" id="13_n1xv6"]
 [ext_resource type="Script" uid="uid://cmlp7c6am4e7n" path="res://src/game_object/npc/elena/elena_interaction.gd" id="13_oqaea"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrr71"]
@@ -76,6 +77,7 @@ interactable_component = NodePath("../InteractableComponent")
 interact_hover_ui = NodePath("../InteractControl/InteractHoverUI")
 interact_hover_text_label = NodePath("../InteractControl/InteractHoverUI/TextLabel")
 doll_item_data = ExtResource("10_shi06")
+gift_item_data = ExtResource("13_n1xv6")
 metadata/_custom_type_script = "uid://cmlp7c6am4e7n"
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=1609659465 node_paths=PackedStringArray("interact_control")]
