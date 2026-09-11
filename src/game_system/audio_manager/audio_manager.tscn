@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://db2romsoe5dh2" path="res://assets/audio/sfx/ui/Modern1.mp3" id="13_n7gm8"]
 [ext_resource type="AudioStream" uid="uid://brve8tvcqlada" path="res://assets/audio/sfx/ui/Abstract1.mp3" id="14_5kiff"]
 [ext_resource type="AudioStream" uid="uid://c4jxudu65b42k" path="res://assets/audio/sfx/phone_ring.mp3" id="14_5p07o"]
-[ext_resource type="AudioStream" uid="uid://dnqdu70i3y1wv" path="res://assets/audio/sfx/car_crash.mp3" id="15_ffr1o"]
+[ext_resource type="AudioStream" uid="uid://dto0wj4b3y0y6" path="res://assets/audio/sfx/car_crash.mp3" id="15_ffr1o"]
 [ext_resource type="AudioStream" uid="uid://drawq3qnj8kb6" path="res://assets/audio/sfx/ui/Modern5.mp3" id="21_f7i3c"]
 
 [node name="AudioManager" type="Node" unique_id=1936952167]

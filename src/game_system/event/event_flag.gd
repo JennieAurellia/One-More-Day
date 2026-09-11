@@ -60,12 +60,15 @@ static var has_read_diary : bool = false:
 		has_read_diary = value
 		if instance and value: instance.read_diary.emit()
 
-# ========== Prive interaction ==========
+# ========== Prove interaction ==========
 var is_present_proved : bool = false
 var is_call_proved : bool = false
 var is_diary_proved : bool = false
 var is_doll_proved : bool = false
 var is_prove_successful : bool = false
+
+# ========== Tutorial ==========
+static var has_seen_tutorial : bool = false
 
 # ==================================================================================================
 #                Virtual methods
@@ -82,3 +85,4 @@ static func reset_event():
 	has_peek_doll = false
 	has_peek_inside_phone = false
 	has_read_diary = false
+	has_seen_tutorial = false

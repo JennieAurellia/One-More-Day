@@ -1,5 +1,7 @@
 extends Node
 
+const TUTORIAL_DELAY_DURATION : float = 1.0
+
 @export_subgroup("References")
 @export var outside_door : Door
 
@@ -15,6 +17,10 @@ func _ready() -> void:
 	InventoryManager.clear_inventory()
 	AudioManager.play_music("game")
 	outside_door.is_disabled = GameManager.loop_count <= 0
+	if !EventFlag.has_seen_tutorial:
+		await get_tree().create_timer(TUTORIAL_DELAY_DURATION).timeout
+		HintUI.instance.show_tutorial_hint()
+		EventFlag.has_seen_tutorial = true
 
 func _on_time_tick(game_time_minute:int):
 	# Time reached for reset
