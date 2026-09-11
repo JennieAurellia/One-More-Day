@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://40l0uc3crnjc"]
+
+[ext_resource type="Script" uid="uid://b5gpslqeoiham" path="res://src/ui/hint/hint_ui.gd" id="1_8dnes"]
+[ext_resource type="Texture2D" uid="uid://b15f78nmgsi5r" path="res://src/common/texture/ui/hint_texture.tres" id="2_1nf03"]
+
+[node name="HintUI" type="Control" unique_id=595105102 node_paths=PackedStringArray("hint_margin")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_8dnes")
+hint_margin = NodePath("Margin/Pivot/MarginCounter/HintMargin")
+show_margin = 430.0
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=49732365]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_bottom = 80
+
+[node name="Pivot" type="Control" parent="Margin" unique_id=455172280]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginCounter" type="MarginContainer" parent="Margin/Pivot" unique_id=142882611]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 230
+
+[node name="HintMargin" type="MarginContainer" parent="Margin/Pivot/MarginCounter" unique_id=1903431323]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Margin/Pivot/MarginCounter/HintMargin" unique_id=729734522]
+custom_minimum_size = Vector2(210, 50)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Texture" type="TextureRect" parent="Margin/Pivot/MarginCounter/HintMargin/PanelContainer" unique_id=230662963]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_1nf03")
+expand_mode = 1
+flip_h = true
+
+[node name="Margin" type="MarginContainer" parent="Margin/Pivot/MarginCounter/HintMargin/PanelContainer" unique_id=1995396802]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 8
+
+[node name="Label" type="Label" parent="Margin/Pivot/MarginCounter/HintMargin/PanelContainer/Margin" unique_id=1931344012]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+text = "Clue Found!   "
+horizontal_alignment = 2

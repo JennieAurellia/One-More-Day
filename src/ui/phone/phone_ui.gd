@@ -13,7 +13,7 @@ func _ready() -> void:
 	assert(close_button, "close_button is missing")
 	# Connect signals
 	DialogueManager.dialogue_started.connect(func(resource:DialogueResource):hide())
-	EventFlag.instance.peaked_inside_phone.connect(show)
+	EventFlag.instance.peeked_inside_phone.connect(show)
 	close_button.pressed.connect(hide)
 	# Initialize
 	chat_log_display.load_chat_log(ChatLog.log_array)

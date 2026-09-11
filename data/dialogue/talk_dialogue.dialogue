@@ -111,10 +111,10 @@ Elena: How?
 # ==========================================================
 ~ prove
 [do! hide_all_sprite()].
-- About the present [if EventFlag.instance.has_found_present and not EventFlag.instance.is_present_proved] => prove_present
-- About the incoming call [if EventFlag.instance.has_peak_inside_phone and not EventFlag.instance.is_call_proved] => prove_call
+- About the present [if EventFlag.instance.has_peek_present and not EventFlag.instance.is_present_proved] => prove_present
+- About the incoming call [if EventFlag.instance.has_peek_inside_phone and not EventFlag.instance.is_call_proved] => prove_call
 - About the diary [if EventFlag.instance.has_read_diary and not EventFlag.instance.is_diary_proved] => prove_diary
-- About the doll [if EventFlag.instance.has_found_doll and not EventFlag.instance.is_doll_proved] => prove_doll
+- About the doll [if EventFlag.instance.has_peek_doll and not EventFlag.instance.is_doll_proved] => prove_doll
 - Finish => prove_test
 => END
 
@@ -141,6 +141,7 @@ Adrian: I know...
 Elena: Maybe you're just remembering things wrong.
 Adrian: No, I'm sure I've been through this before.
 Elena: Then you'll have to find a better way to prove it.
+[do! hide_all_sprite()] (G4th3r 4ll f0ur clu3s)
 => END
 
 ~ prove_present

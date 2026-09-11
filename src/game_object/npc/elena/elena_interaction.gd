@@ -52,6 +52,6 @@ func _on_interactable_item_used_on(item_data:ItemData):
 	interact_hover_ui.hide()
 	# With item
 	if InventoryManager.selected_item.id == gift_item_data.id:
-		elena.do_dialogue("present")
+		elena.do_dialogue("present_give")
 		await elena.dialogue_finished
 		elena.phase_controller.skip_to_end_phase()

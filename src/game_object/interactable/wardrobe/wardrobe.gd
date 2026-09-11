@@ -63,7 +63,6 @@ func _on_interactable_unhovered(): interact_hover_ui.hide()
 func _on_interactable_interacted():
 	if GameManager.loop_count <= 0: return
 	if !_is_already_searched:
-		EventFlag.instance.has_found_present = true
 		InventoryManager.add_item(gift_item_data)
 		AudioManager.play_sfx(search_sfx_name)
 		_is_already_searched = true

@@ -4,7 +4,9 @@ class_name EventFlag
 static var instance : EventFlag
 
 signal exited_bedroom
-signal peaked_inside_phone
+signal peeked_present
+signal peeked_doll
+signal peeked_inside_phone
 signal read_diary
 
 # ========== Cook phase ==========
@@ -37,16 +39,20 @@ var has_talked_while_chilling : bool = false
 var is_elena_phone_calling : bool = false
 
 # ========== Item interaction ==========
-## Has player found Elena's hidden present
-var has_found_present : bool = false
-## Has player found Elena's diary
-var has_found_diary : bool = false
-## Has player found Elena's doll
-var has_found_doll : bool = false
-## Has player see dialogue inside Elena's phone
-static var has_peak_inside_phone : bool = false:
+## Has player see Elena's hidden present
+static var has_peek_present : bool = false:
 	set(value):
-		has_peak_inside_phone = value
+		has_peek_present = value
+		if instance and value: instance.peeked_present.emit()
+## Has player see Elena's doll
+static var has_peek_doll : bool = false:
+	set(value):
+		has_peek_doll = value
+		if instance and value: instance.peeked_doll.emit()
+## Has player see dialogue inside Elena's phone
+static var has_peek_inside_phone : bool = false:
+	set(value):
+		has_peek_inside_phone = value
 		if instance and value: instance.peaked_inside_phone.emit()
 ## Has read Elena's diary
 static var has_read_diary : bool = false:
@@ -72,5 +78,7 @@ func _exit_tree() -> void: instance = null
 #                Main methods
 # ==================================================================================================
 static func reset_event():
-	has_peak_inside_phone = false
+	has_peek_present = false
+	has_peek_doll = false
+	has_peek_inside_phone = false
 	has_read_diary = false

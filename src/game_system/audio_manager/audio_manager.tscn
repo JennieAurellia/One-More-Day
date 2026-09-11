@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://brve8tvcqlada" path="res://assets/audio/sfx/ui/Abstract1.mp3" id="14_5kiff"]
 [ext_resource type="AudioStream" uid="uid://c4jxudu65b42k" path="res://assets/audio/sfx/phone_ring.mp3" id="14_5p07o"]
 [ext_resource type="AudioStream" uid="uid://dnqdu70i3y1wv" path="res://assets/audio/sfx/car_crash.mp3" id="15_ffr1o"]
+[ext_resource type="AudioStream" uid="uid://drawq3qnj8kb6" path="res://assets/audio/sfx/ui/Modern5.mp3" id="21_f7i3c"]
 
 [node name="AudioManager" type="Node" unique_id=1936952167]
 script = ExtResource("1_d1dws")
@@ -182,6 +183,15 @@ pitch_scale = 0.5
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "button_press"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="Hint" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=656327898]
+process_mode = 3
+stream = ExtResource("21_f7i3c")
+pitch_scale = 0.5
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "hint"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="SoundNodes" type="Node2D" parent="." unique_id=1795450649]

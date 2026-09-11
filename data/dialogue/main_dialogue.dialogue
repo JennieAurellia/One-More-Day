@@ -42,6 +42,7 @@ Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]Oh? You 
 Elena: Yeah. She said she wanted to hang out for a bit.
 Adrian: Sounds nice. What time are you going?
 Elena: Probably around 12 P.M. I shouldn't be out too late, though.
+Elena: Since there is still time, I’ll relax for a bit in the sofa.
 Adrian: Alright then. Have fun with her.
 Elena: I will. 
 => END
@@ -57,6 +58,7 @@ Adrian: Oh? You two have plans?
 Elena: Yeah. She wanted to hang out for a bit.
 Adrian: Sounds nice. What time are you going?
 Elena: Probably around 12 P.M. I shouldn't be out too late, though.
+Elena: Since there is still time, I’ll relax for a bit in the sofa.
 Adrian: Alright then. Have fun with her.
 Elena: I will.
 => END
@@ -121,7 +123,11 @@ Adrian: Love you too.
 # ==========================================================
 #           Items
 # ==========================================================
-~ present
+~ present_inspect
+present_inspect
+=> END
+
+~ present_give
 Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.CENTER, "gift")]Elena, I found something in the closet.
 Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]What?
 Adrian: This gift... it's for me, isn't it?
@@ -138,4 +144,8 @@ Adrian: Elena, wait—
 Elena: I'll be back later.
 Adrian: ...
 Elena: I just need some time alone.
+=> END
+
+~ doll_inspect
+doll_inspect
 => END
