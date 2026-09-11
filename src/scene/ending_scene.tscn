@@ -1,11 +1,92 @@
 [gd_scene format=3 uid="uid://cvbfxeubkacoc"]
 
 [ext_resource type="Script" uid="uid://cg85lr2pn6n6g" path="res://src/game_object/scene/ending_scene.gd" id="1_tafng"]
+[ext_resource type="Texture2D" uid="uid://b285iwu8xmfqg" path="res://assets/UI/scene_pemakaman.png" id="2_pkqgp"]
+
+[sub_resource type="Animation" id="Animation_pkqgp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/EndingCutscene:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xiu4h"]
+resource_name = "ending"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/EndingCutscene:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qkx0"]
+_data = {
+&"RESET": SubResource("Animation_pkqgp"),
+&"ending": SubResource("Animation_xiu4h")
+}
 
 [node name="EndingScene" type="Node2D" unique_id=107538109]
 script = ExtResource("1_tafng")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1954354114]
-offset_right = 1967.0
-offset_bottom = 1095.0
-color = Color(1, 0, 0, 1)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1615047123]
+
+[node name="EndingCutscene" type="TextureRect" parent="CanvasLayer" unique_id=1635811689]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pkqgp")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/EndingCutscene" unique_id=927688960]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -518.5
+offset_top = -123.0
+offset_right = 518.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 160
+
+[node name="ThankyouShadow" type="Label" parent="CanvasLayer/EndingCutscene/Margin" unique_id=401350880]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 120
+text = "Thanks For Playing"
+
+[node name="ThankyouText2" type="Label" parent="CanvasLayer/EndingCutscene/Margin/ThankyouShadow" unique_id=948781973]
+layout_mode = 0
+offset_top = -7.0
+offset_right = 1037.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 120
+text = "Thanks For Playing"
+
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=812124126]
+libraries/ = SubResource("AnimationLibrary_8qkx0")
+autoplay = &"ending"
