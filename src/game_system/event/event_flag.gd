@@ -53,7 +53,7 @@ static var has_peek_doll : bool = false:
 static var has_peek_inside_phone : bool = false:
 	set(value):
 		has_peek_inside_phone = value
-		if instance and value: instance.peaked_inside_phone.emit()
+		if instance and value: instance.peeked_inside_phone.emit()
 ## Has read Elena's diary
 static var has_read_diary : bool = false:
 	set(value):

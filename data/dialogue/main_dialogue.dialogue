@@ -111,6 +111,10 @@ Elena: I'm sorry, Maya. Maybe some other time.
 Maya: Okay. If that's what you want.
 Elena: It is. I'll talk to you later, okay?
 Maya: Yeah... later, Elena.
+Maya : [do! hide_sprite(DialogueView.ViewPosition.RIGHT)].
+Maya : ...
+Maya : You better be right Adrian.
+Maya : Because yo [do! GameManager.end_game()]
 => END
 
 ~ heading_out
@@ -124,7 +128,10 @@ Adrian: Love you too.
 #           Items
 # ==========================================================
 ~ present_inspect
-present_inspect
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.CENTER, "gift")]Whats this?
+Adrian: Is this a game console?
+Adrian: And its wrap like a present.
+Adrian: Who’s the receiver then?
 => END
 
 ~ present_give
@@ -147,5 +154,7 @@ Elena: I just need some time alone.
 => END
 
 ~ doll_inspect
-doll_inspect
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.CENTER, "doll")]Elena’s plushie..
+Adrian: Something feels weird about it.
+Adrian: It’s like something is watching.
 => END

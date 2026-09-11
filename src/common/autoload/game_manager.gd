@@ -5,6 +5,7 @@ const MAIN_MENU_SCENE_PATH : String = "res://src/scene/main_menu_scene.tscn"
 const LOOP_CUTSCENE_NAME : String = "loop"
 const FIRST_LOOP_CUTSCENE_NAME : String = "first_loop"
 const ENDING_CUTSCENE_NAME : String = "ending"
+const FREEZE_FRAME_DURATION : float = 2.0
 
 var loop_count : int = 0
 
@@ -23,10 +24,16 @@ func restart_day():
 	else: call_deferred("_do_loop")
 
 func end_game():
+	# Clear all audio
 	AudioManager.stop_music()
 	AudioManager.clear_all_sfx()
 	AudioManager.stop_all_sound()
-	_do_ending_cutscene()
+	# Do freeze frame and quit
+	TransitionManager.freeze_frame()
+	await get_tree().create_timer(FREEZE_FRAME_DURATION).timeout
+	SaveManager.set_value("has_ended_game", true)
+	SaveManager.save_game()
+	get_tree().quit()
 
 func _do_loop():
 	CutsceneUI.instance.play_cutscene(LOOP_CUTSCENE_NAME)

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cvbfxeubkacoc"]
+
+[ext_resource type="Script" uid="uid://cg85lr2pn6n6g" path="res://src/game_object/scene/ending_scene.gd" id="1_tafng"]
+
+[node name="EndingScene" type="Node2D" unique_id=107538109]
+script = ExtResource("1_tafng")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1954354114]
+offset_right = 1967.0
+offset_bottom = 1095.0
+color = Color(1, 0, 0, 1)

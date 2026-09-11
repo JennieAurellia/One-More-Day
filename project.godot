@@ -12,7 +12,7 @@ config_version=5
 
 config/name="One More Day"
 config/version="1.0.0.0"
-run/main_scene="uid://yjjw4t8fu8x4"
+run/main_scene="uid://bubsodjcokl3m"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
@@ -28,6 +28,7 @@ TransitionManager="*uid://dwgm6ygoojmik"
 AudioManager="*uid://cuj2l05tajtcm"
 SceneManager="*uid://cny8gogmqo77x"
 SettingsManager="*uid://dbqk4avur582k"
+SaveManager="*uid://3c0ii71fpo5n"
 
 [debug]
 

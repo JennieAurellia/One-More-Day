@@ -429,10 +429,10 @@ size_flags_horizontal = 0
 
 [node name="DiaryUI" parent="UICanvasLayer" unique_id=1322229311 instance=ExtResource("40_00eno")]
 
-[node name="HintUI" parent="UICanvasLayer" unique_id=595105102 instance=ExtResource("38_1c8dc")]
-
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
 visible = false
+
+[node name="HintUI" parent="UICanvasLayer" unique_id=595105102 instance=ExtResource("38_1c8dc")]
 
 [node name="CustsceneUI" parent="UICanvasLayer" unique_id=459575949 instance=ExtResource("43_4pfsh")]
 visible = false

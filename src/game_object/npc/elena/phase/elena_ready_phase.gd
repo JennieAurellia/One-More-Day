@@ -87,7 +87,7 @@ func enter_state(state:State):
 				# End the game
 				elena.do_dialogue("phone_call_reject")
 				await elena.dialogue_finished
-				GameManager.end_game()
+				GameManager.end_game() # Recall end_game if failed to trigger from dialogue
 			else: elena.do_dialogue("phone_call")
 		
 		State.HEADING_OUT:

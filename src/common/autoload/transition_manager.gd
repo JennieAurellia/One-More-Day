@@ -61,6 +61,39 @@ func _fade_out_snapshot() -> void:
 	_snapshot_rect = null
 
 # ==================================================================================================
+#                Freeze frame methods
+# ==================================================================================================
+## Captures the current frame and holds it in place (fully opaque, blocking input)
+## until unfreeze_frame() is called. Useful for pausing on a still image while
+## doing work in the background (e.g. loading) without an automatic fade.
+func freeze_frame() -> void:
+	if _is_transitioning: return
+	if is_instance_valid(_snapshot_rect): return # already frozen
+	_capture_snapshot()
+	_snapshot_rect.modulate.a = 1.0
+
+## Removes the frozen frame instantly (no fade). Use fade_out_snapshot-style
+## behavior manually if you want a smooth transition back instead.
+func unfreeze_frame() -> void:
+	if not is_instance_valid(_snapshot_rect): return
+	_snapshot_rect.queue_free()
+	_snapshot_rect = null
+
+## Freezes the current frame, runs on_hidden while frozen, then fades the
+## frozen frame away to reveal whatever on_hidden changed. Handy when you need
+## to do something during the freeze (e.g. an async load) before releasing it.
+func freeze_frame_and_call(on_hidden:Callable) -> void:
+	if _is_transitioning: return
+	_is_transitioning = true
+	freeze_frame()
+	await get_tree().process_frame
+	if on_hidden.is_valid():
+		await on_hidden.call()
+	await get_tree().process_frame
+	await _fade_out_snapshot()
+	_is_transitioning = false
+
+# ==================================================================================================
 #                Black fade methods
 # ==================================================================================================
 ## Fades the screen to black, runs on_hidden (do your scene change/reload here),
