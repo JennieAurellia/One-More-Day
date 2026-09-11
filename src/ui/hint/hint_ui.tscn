@@ -19,7 +19,7 @@ script = ExtResource("1_8dnes")
 tutorial_hint_margin = NodePath("Margin/Pivot/Margin1/TutorialHintMargin")
 clue_hint_margin = NodePath("Margin/Pivot/Margin2/ClueHintMargin")
 tutorial_show_margin = 1710.0
-tutorial_show_duration = 10.0
+tutorial_show_duration = 15.0
 clue_show_margin = 430.0
 
 [node name="Margin" type="MarginContainer" parent="." unique_id=49732365]

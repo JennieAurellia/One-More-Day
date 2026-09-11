@@ -62,6 +62,8 @@ position = Vector2(0, -32)
 texture = ExtResource("5_prarn")
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=757656281]
+collision_layer = 2
+collision_mask = 2
 
 [node name="DisabledCollision" type="CollisionShape2D" parent="Wall" unique_id=1191656731]
 shape = SubResource("RectangleShape2D_6x0tj")
