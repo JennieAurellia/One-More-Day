@@ -23,7 +23,10 @@
 [ext_resource type="AudioStream" uid="uid://db2romsoe5dh2" path="res://assets/audio/sfx/ui/Modern1.mp3" id="13_n7gm8"]
 [ext_resource type="AudioStream" uid="uid://brve8tvcqlada" path="res://assets/audio/sfx/ui/Abstract1.mp3" id="14_5kiff"]
 [ext_resource type="AudioStream" uid="uid://c4jxudu65b42k" path="res://assets/audio/sfx/phone_ring.mp3" id="14_5p07o"]
+[ext_resource type="AudioStream" uid="uid://bcboh0x01foyt" path="res://assets/audio/sfx/sit.mp3" id="14_nhl1f"]
 [ext_resource type="AudioStream" uid="uid://dto0wj4b3y0y6" path="res://assets/audio/sfx/car_crash.mp3" id="15_ffr1o"]
+[ext_resource type="AudioStream" uid="uid://cbwdg7fvngmwj" path="res://assets/audio/sfx/sit_sofa.mp3" id="15_ovl1o"]
+[ext_resource type="AudioStream" uid="uid://nmfgvlp7o5i2" path="res://assets/audio/sfx/sit_toilet.mp3" id="16_t8io6"]
 [ext_resource type="AudioStream" uid="uid://drawq3qnj8kb6" path="res://assets/audio/sfx/ui/Modern5.mp3" id="21_f7i3c"]
 [ext_resource type="AudioStream" uid="uid://d3myu1y5o6vxr" path="res://assets/audio/sfx/ending.mp3" id="26_upiwq"]
 
@@ -122,6 +125,29 @@ stream = ExtResource("13_jahuu")
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "desk_search"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="Sit" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=231731482]
+stream = ExtResource("14_nhl1f")
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "sit"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="SitSofa" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1540073107]
+stream = ExtResource("15_ovl1o")
+volume_db = 2.0
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "sit_sofa"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="SitToilet" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=900639270]
+stream = ExtResource("16_t8io6")
+volume_db = 4.0
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "sit_toilet"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="PlateDrop" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1860552080]

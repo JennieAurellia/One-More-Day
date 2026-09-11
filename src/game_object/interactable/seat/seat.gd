@@ -13,6 +13,9 @@ signal occupant_stood_up(occupant:Node)
 @export var sit_facing_degrees : float = 0.0
 @export var is_sitting_legless : bool = false
 
+@export_subgroup("Audio Settings")
+@export var sit_sfx_name : String = "sit"
+
 var _current_occupant : Node = null
 
 # ==================================================================================================
@@ -40,6 +43,7 @@ func sit_actor(actor:Node) -> bool:
 	if actor.has_method("sit_at"):
 		actor.sit_at(global_position, deg_to_rad(sit_facing_degrees), is_sitting_legless, self)
 	occupant_sat.emit(actor)
+	AudioManager.play_sfx(sit_sfx_name)
 	return true
 
 func stand_up() -> void:

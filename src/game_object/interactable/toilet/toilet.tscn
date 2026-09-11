@@ -30,3 +30,4 @@ region_rect = Rect2(841, 909, 142, 107)
 [node name="Seat" parent="." unique_id=1889117093 instance=ExtResource("2_i7dw8")]
 position = Vector2(0, -24)
 rotation = -1.5707964
+sit_sfx_name = "sit_toilet"

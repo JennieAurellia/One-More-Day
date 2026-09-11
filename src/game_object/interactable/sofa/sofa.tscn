@@ -18,6 +18,7 @@ texture = ExtResource("1_uuihe")
 position = Vector2(-45, 25)
 rotation = -1.5707964
 sit_facing_degrees = 180.0
+sit_sfx_name = "sit_sofa"
 
 [node name="InteractHoverUI" parent="Seat1/InteractControl" parent_id_path=PackedInt32Array(1889117093, 477200489) index="0" unique_id=467594439]
 layout_mode = 1
@@ -43,6 +44,7 @@ scale = Vector2(-1, 1)
 position = Vector2(2, 25)
 rotation = -1.5707964
 sit_facing_degrees = 180.0
+sit_sfx_name = "sit_sofa"
 
 [node name="InteractHoverUI" parent="Seat2/InteractControl" parent_id_path=PackedInt32Array(1387393687, 477200489) index="0" unique_id=467594439]
 scale = Vector2(-1, 1)
@@ -56,6 +58,7 @@ scale = Vector2(-1, 1)
 position = Vector2(49, 25)
 rotation = -1.5707964
 sit_facing_degrees = 180.0
+sit_sfx_name = "sit_sofa"
 
 [node name="InteractHoverUI" parent="Seat3/InteractControl" parent_id_path=PackedInt32Array(745480949, 477200489) index="0" unique_id=467594439]
 scale = Vector2(-1, 1)
