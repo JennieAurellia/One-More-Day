@@ -1,5 +1,8 @@
 extends Control
 class_name PhoneUI
+## Phone display UI
+##
+## NOTE: Do not hide this UI when setting up in game scene, somehow it destroys chat logs size
 
 @export var chat_log_display : ChatLogDisplay
 @export var close_button : Button

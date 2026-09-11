@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b3cy3v1kte7au" path="res://assets/UI/Character sprite_Adrian_calm.png" id="5_h7vwg"]
 [ext_resource type="Texture2D" uid="uid://dhva846iomnvf" path="res://assets/UI/Character sprite_Elena_angry.png" id="6_q1u13"]
 [ext_resource type="Texture2D" uid="uid://dtbj46et1u2" path="res://assets/UI/Character sprite_Elena_calm.png" id="7_ejs6q"]
+[ext_resource type="Texture2D" uid="uid://446cq0m01m3t" path="res://assets/zoom_in_gift (ps5).png" id="8_q1u13"]
+[ext_resource type="Texture2D" uid="uid://bf2aa2neghu8i" path="res://assets/zoom_in_book_closed.png" id="9_ejs6q"]
+[ext_resource type="Texture2D" uid="uid://7qbub4c8da70" path="res://assets/zoom_in_doll.png" id="10_mdrnq"]
 [ext_resource type="PackedScene" uid="uid://jsyksc4but2l" path="res://src/ui/component/response_button/response_button.tscn" id="11_h7vwg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
@@ -121,15 +124,28 @@ dialogue_view = NodePath("DialogueView")
 dialogue_resource = ExtResource("2_h7vwg")
 default_dialogue_resource = ExtResource("2_h7vwg")
 
-[node name="DialogueView" type="Node" parent="." unique_id=1103901151 node_paths=PackedStringArray("left_texture_rect", "right_texture_rect")]
+[node name="Background" type="ColorRect" parent="." unique_id=1930201402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="DialogueView" type="Node" parent="." unique_id=1103901151 node_paths=PackedStringArray("left_texture_rect", "right_texture_rect", "center_texture_rect")]
 script = ExtResource("3_6sug4")
 left_texture_rect = NodePath("../Balloon/Margin/HBox/LeftTextureRect")
 right_texture_rect = NodePath("../Balloon/Margin/HBox/RightTextureRect")
+center_texture_rect = NodePath("../Balloon/CenterTexture")
 sprite_dictionary = Dictionary[String, Texture2D]({
 "adrian_angry": ExtResource("4_mpc0k"),
 "adrian_calm": ExtResource("5_h7vwg"),
+"diary": ExtResource("9_ejs6q"),
+"doll": ExtResource("10_mdrnq"),
 "elena_angry": ExtResource("6_q1u13"),
-"elena_calm": ExtResource("7_ejs6q")
+"elena_calm": ExtResource("7_ejs6q"),
+"gift": ExtResource("8_q1u13")
 })
 metadata/_custom_type_script = "uid://c4mrt3yffub8j"
 
@@ -142,6 +158,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
+
+[node name="CenterTexture" type="TextureRect" parent="Balloon" unique_id=1646643216]
+custom_minimum_size = Vector2(420, 420)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Margin" type="MarginContainer" parent="Balloon" unique_id=1679131857]
 layout_mode = 1

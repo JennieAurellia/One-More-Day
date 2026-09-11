@@ -122,7 +122,7 @@ Adrian: Love you too.
 #           Items
 # ==========================================================
 ~ doll
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]Hey, Elena. This plushie... Maya gave this to you, right?
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry") show_sprite(DialogueView.ViewPosition.CENTER, "doll")]Hey, Elena. This plushie... Maya gave this to you, right?
 Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]Yeah. Why?
 Adrian: I was just looking at it and... something feels weird.
 Elena: Weird? What do you mean?
@@ -136,7 +136,7 @@ Adrian: I know. That's why I'm asking you... are you sure she didn't put this he
 => END
 
 ~ present
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm")]Elena, I found something in the closet.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_calm") show_sprite(DialogueView.ViewPosition.CENTER, "gift")]Elena, I found something in the closet.
 Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]What?
 Adrian: This gift... it's for me, isn't it?
 Elena: ...Yeah.

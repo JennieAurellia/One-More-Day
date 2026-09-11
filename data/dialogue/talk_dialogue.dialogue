@@ -143,7 +143,7 @@ Elena: Then you'll have to find a better way to prove it.
 => END
 
 ~ prove_present
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]I found this gift.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry") show_sprite(DialogueView.ViewPosition.CENTER, "gift")]I found this gift.
 Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]What? Where did you find that?
 Adrian: I found it in our closet in the previous loop.
 Elena: Previous loop?
@@ -163,7 +163,7 @@ set EventFlag.instance.is_call_proved = true
 => prove
 
 ~ prove_diary
-Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry")]Elena, I found something in your diary.
+Adrian: [do! show_sprite(DialogueView.ViewPosition.LEFT, "adrian_angry") show_sprite(DialogueView.ViewPosition.CENTER, "diary")]Elena, I found something in your diary.
 Elena: [do! show_sprite(DialogueView.ViewPosition.RIGHT, "elena_calm")]My diary? What did you find?
 Adrian: You wrote about Maya.
 Elena: ...What about her?
