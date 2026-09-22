@@ -28,11 +28,16 @@ func end_game():
 	AudioManager.stop_music()
 	AudioManager.clear_all_sfx()
 	AudioManager.stop_all_sound()
-	# Do freeze frame and quit
+	# Do freeze frame
 	TransitionManager.freeze_frame()
 	await get_tree().create_timer(FREEZE_FRAME_DURATION).timeout
 	SaveManager.set_value("has_ended_game", true)
 	SaveManager.save_game()
+	# Do alert and quit
+	OS.alert(
+		"It seems that the game has crashed. Please reopen the game.",
+		"Error!?"
+	)
 	get_tree().quit()
 
 func _do_loop():
