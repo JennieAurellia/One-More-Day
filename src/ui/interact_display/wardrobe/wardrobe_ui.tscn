@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" uid="uid://ca3ixf7n3sewn" path="res://src/ui/interact_display/wardrobe/wardrobe_ui.gd" id="1_i4mpn"]
 [ext_resource type="Resource" uid="uid://bxwnet5kinnyh" path="res://data/item/gift_item.tres" id="2_aqjug"]
-[ext_resource type="Texture2D" uid="uid://b4n22lvbfje0j" path="res://assets/item/closet pop up/dalam lemari.png" id="2_p8417"]
+[ext_resource type="Texture2D" uid="uid://c7gfe46ecqqbw" path="res://assets/item/closet pop up/dalam lemari_revision.png" id="3_aqjug"]
+[ext_resource type="Texture2D" uid="uid://dqr2cmwmdjsta" path="res://assets/item/closet pop up/box di atas_close.png" id="4_4aj7o"]
 [ext_resource type="Texture2D" uid="uid://bqloqtdh0gg5m" path="res://assets/item/closet pop up/box di atas_open.png" id="4_p8fh5"]
 [ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="4_yrc6h"]
 [ext_resource type="Texture2D" uid="uid://pg8ex06e6mig" path="res://assets/item/closet pop up/box di bawah_open.png" id="5_gt70g"]
-[ext_resource type="Texture2D" uid="uid://kj5t2oa4mht6" path="res://assets/item/closet pop up/lemari kecil_open.png" id="6_1f4qc"]
 [ext_resource type="Texture2D" uid="uid://446cq0m01m3t" path="res://assets/zoom_in_gift (ps5).png" id="6_aqjug"]
+[ext_resource type="Texture2D" uid="uid://dj1ohw2ge8qyj" path="res://assets/item/closet pop up/box di bawah_close.png" id="6_ilrht"]
+[ext_resource type="Texture2D" uid="uid://ceb5ku4xcwvel" path="res://assets/item/closet pop up/lemari kecil_open_revision.png" id="8_ilrht"]
 
-[node name="WardrobeUI" type="Control" unique_id=822685683 node_paths=PackedStringArray("box_1_button", "box_1_interact_hover_ui", "box_1_opened", "box_2_button", "box_2_interact_hover_ui", "box_2_opened", "closet_button", "closet_interact_hover_ui", "closet_opened", "item_button", "item_interact_hover_ui", "item_texture_rect", "close_button")]
+[node name="WardrobeUI" type="Control" unique_id=822685683 node_paths=PackedStringArray("box_1_button", "box_1_interact_hover_ui", "box_1_closed", "box_1_opened", "box_2_button", "box_2_interact_hover_ui", "box_2_closed", "box_2_opened", "closet_button", "closet_interact_hover_ui", "closet_opened", "item_button", "item_interact_hover_ui", "item_texture_rect", "close_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,9 +21,11 @@ grow_vertical = 2
 script = ExtResource("1_i4mpn")
 box_1_button = NodePath("Content/Box1Button")
 box_1_interact_hover_ui = NodePath("Content/Box1Button/InteractHoverUI")
+box_1_closed = NodePath("Content/Box1Closed")
 box_1_opened = NodePath("Content/Box1Opened")
 box_2_button = NodePath("Content/Box2Button")
 box_2_interact_hover_ui = NodePath("Content/Box2Button/InteractHoverUI")
+box_2_closed = NodePath("Content/Box2Closed")
 box_2_opened = NodePath("Content/Box2Opened")
 closet_button = NodePath("Content/ClosetButton")
 closet_interact_hover_ui = NodePath("Content/ClosetButton/InteractHoverUI")
@@ -52,19 +56,13 @@ flat = true
 
 [node name="Content" type="TextureRect" parent="." unique_id=222008828]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -533.0
-offset_top = -540.0
-offset_right = 533.0
-offset_bottom = 540.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_p8417")
+texture = ExtResource("3_aqjug")
 
 [node name="Margin" type="MarginContainer" parent="Content" unique_id=1047028372]
 layout_mode = 1
@@ -74,47 +72,65 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 140
+theme_override_constants/margin_left = 620
 theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 130
+theme_override_constants/margin_right = 470
 theme_override_constants/margin_bottom = 50
 
 [node name="Control" type="Control" parent="Content/Margin" unique_id=1260082384]
 layout_mode = 2
 
+[node name="Box1Closed" type="TextureRect" parent="Content" unique_id=1923014011]
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 113.0
+offset_right = 1300.0
+offset_bottom = 278.0
+mouse_filter = 2
+texture = ExtResource("4_4aj7o")
+
 [node name="Box1Opened" type="TextureRect" parent="Content" unique_id=604265416]
 layout_mode = 0
-offset_left = 447.0
-offset_top = 48.0
-offset_right = 900.0
-offset_bottom = 352.0
+offset_left = 943.0
+offset_top = 54.0
+offset_right = 1396.0
+offset_bottom = 358.0
 mouse_filter = 2
 texture = ExtResource("4_p8fh5")
 
+[node name="Box2Closed" type="TextureRect" parent="Content" unique_id=632274135]
+layout_mode = 0
+offset_left = 985.0
+offset_top = 852.0
+offset_right = 1348.0
+offset_bottom = 1074.0
+mouse_filter = 2
+texture = ExtResource("6_ilrht")
+
 [node name="Box2Opened" type="TextureRect" parent="Content" unique_id=613628724]
 layout_mode = 0
-offset_left = 482.0
-offset_top = 742.0
-offset_right = 935.0
-offset_bottom = 1081.0
+offset_left = 969.0
+offset_top = 752.0
+offset_right = 1422.0
+offset_bottom = 1091.0
 mouse_filter = 2
 texture = ExtResource("5_gt70g")
 
 [node name="ClosetOpened" type="TextureRect" parent="Content" unique_id=218219240]
 layout_mode = 0
-offset_left = 210.0
-offset_top = 645.0
-offset_right = 673.0
-offset_bottom = 1080.0
+offset_left = 615.0
+offset_top = 608.0
+offset_right = 1244.0
+offset_bottom = 1166.0
 mouse_filter = 2
-texture = ExtResource("6_1f4qc")
+texture = ExtResource("8_ilrht")
 
 [node name="ItemTextureRect" type="TextureRect" parent="Content/ClosetOpened" unique_id=362368573]
 layout_mode = 0
-offset_left = -50.000004
-offset_top = 61.999992
-offset_right = 974.0
-offset_bottom = 1086.0
+offset_left = 43.99999
+offset_top = 102.999985
+offset_right = 1068.0
+offset_bottom = 1127.0
 scale = Vector2(0.4, 0.4)
 mouse_filter = 2
 texture = ExtResource("6_aqjug")
@@ -126,10 +142,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -162.5
-offset_top = -29.5
-offset_right = -2.5
-offset_bottom = 140.5
+offset_left = -151.5
+offset_top = -33.0
+offset_right = 8.5
+offset_bottom = 137.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -161,9 +177,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 48.0
+offset_left = 117.0
 offset_top = -391.0
-offset_right = 218.0
+offset_right = 287.0
 offset_bottom = -301.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -196,10 +212,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 53.0
-offset_top = 368.0
-offset_right = 243.0
-offset_bottom = 458.0
+offset_left = 112.0
+offset_top = 375.0
+offset_right = 302.0
+offset_bottom = 465.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -231,10 +247,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -269.0
-offset_top = 193.0
-offset_right = -29.0
-offset_bottom = 463.0
+offset_left = -203.0
+offset_top = 189.0
+offset_right = 37.0
+offset_bottom = 459.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
