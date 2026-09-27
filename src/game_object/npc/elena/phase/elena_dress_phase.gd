@@ -94,6 +94,7 @@ func enter_state(state:State):
 			change_state(State.DRESSING)
 		
 		State.DRESSING:
+			EventFlag.instance.wardrobe_closed.emit()
 			dressing_wardrobe.open()
 		
 		State.ANGRY:

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lh1ia5sqc2sq"]
 
-[ext_resource type="Script" uid="uid://c0vg36e4inb06" path="res://src/ui/diary/diary_ui.gd" id="1_scsvt"]
+[ext_resource type="Script" uid="uid://c0vg36e4inb06" path="res://src/ui/interact_display/diary/diary_ui.gd" id="1_scsvt"]
 [ext_resource type="Texture2D" uid="uid://cyt4e6arijk1v" path="res://assets/zoom_in_book_open.png" id="2_hj0uu"]
 [ext_resource type="Texture2D" uid="uid://bve717dighaa7" path="res://src/common/texture/ui/page_icon_texture.tres" id="3_rhutl"]
 

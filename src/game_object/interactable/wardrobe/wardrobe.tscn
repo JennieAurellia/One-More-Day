@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b3vulr6is71q0"]
 
 [ext_resource type="Script" uid="uid://3aa64me8ywf1" path="res://src/game_object/interactable/wardrobe/wardrobe.gd" id="1_10i0b"]
-[ext_resource type="Resource" uid="uid://bxwnet5kinnyh" path="res://data/item/gift_item.tres" id="2_egy5t"]
 [ext_resource type="Texture2D" uid="uid://cx8l6s17ny387" path="res://assets/tileset_bedroom & bathroom.png" id="2_t6hbd"]
 [ext_resource type="Texture2D" uid="uid://bn6t3avp45rd6" path="res://assets/tileset_revision.png" id="3_bmwy4"]
 [ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="4_3p8rh"]
@@ -14,7 +13,6 @@ interactable_component = NodePath("InteractableComponent")
 normal_sprite = NodePath("NormalSprite")
 opened_sprite = NodePath("OpenedSprite")
 interact_hover_ui = NodePath("InteractControl/InteractHoverUI")
-gift_item_data = ExtResource("2_egy5t")
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=1473935625 node_paths=PackedStringArray("interact_control")]
 script = ExtResource("4_3p8rh")

@@ -40,8 +40,9 @@
 [ext_resource type="Shader" uid="uid://c2sgm7naq1bif" path="res://src/common/shader/screen_adjustment.gdshader" id="35_vfhfr"]
 [ext_resource type="PackedScene" uid="uid://c5aufy3ufu4e8" path="res://src/ui/speed_up/speed_up_ui.tscn" id="36_00eno"]
 [ext_resource type="PackedScene" uid="uid://40l0uc3crnjc" path="res://src/ui/hint/hint_ui.tscn" id="38_1c8dc"]
-[ext_resource type="PackedScene" uid="uid://lh1ia5sqc2sq" path="res://src/ui/diary/diary_ui.tscn" id="40_00eno"]
-[ext_resource type="PackedScene" uid="uid://c3wsim84y05nc" path="res://src/ui/phone/phone_ui.tscn" id="40_nol42"]
+[ext_resource type="PackedScene" uid="uid://pffwhjo2a0p0" path="res://src/ui/interact_display/wardrobe/wardrobe_ui.tscn" id="39_4pfsh"]
+[ext_resource type="PackedScene" uid="uid://lh1ia5sqc2sq" path="res://src/ui/interact_display/diary/diary_ui.tscn" id="40_00eno"]
+[ext_resource type="PackedScene" uid="uid://c3wsim84y05nc" path="res://src/ui/interact_display/phone/phone_ui.tscn" id="40_nol42"]
 [ext_resource type="PackedScene" uid="uid://6lc3qglvh5w2" path="res://src/ui/cutscene/custscene_ui.tscn" id="43_4pfsh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fimk8"]
@@ -405,9 +406,9 @@ metadata/_custom_type_script = "uid://b2yb1ecj1tt1x"
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -177.5
+offset_top = -186.0
 offset_right = 270.0
-offset_bottom = 177.5
+offset_bottom = 186.0
 grow_vertical = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = -28
@@ -431,9 +432,23 @@ size_flags_horizontal = 0
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="PhoneUI" parent="UICanvasLayer" unique_id=293281820 instance=ExtResource("40_nol42")]
+[node name="InteractDisplay" type="Control" parent="UICanvasLayer" unique_id=401843987]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="DiaryUI" parent="UICanvasLayer" unique_id=1322229311 instance=ExtResource("40_00eno")]
+[node name="PhoneUI" parent="UICanvasLayer/InteractDisplay" unique_id=293281820 instance=ExtResource("40_nol42")]
+layout_mode = 1
+
+[node name="DiaryUI" parent="UICanvasLayer/InteractDisplay" unique_id=1322229311 instance=ExtResource("40_00eno")]
+layout_mode = 1
+
+[node name="WardrobeUI" parent="UICanvasLayer/InteractDisplay" unique_id=822685683 instance=ExtResource("39_4pfsh")]
+layout_mode = 1
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
 visible = false

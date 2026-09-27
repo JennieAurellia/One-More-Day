@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dl0xi5i5xtynm"]
 
-[ext_resource type="Script" uid="uid://jdcn87jw5gj5" path="res://src/ui/phone/date_log_ui/date_log_ui.gd" id="1_p30wo"]
+[ext_resource type="Script" uid="uid://jdcn87jw5gj5" path="res://src/ui/interact_display/phone/date_log_ui/date_log_ui.gd" id="1_p30wo"]
 
 [node name="DateLogUI" type="Label" unique_id=1747905939 node_paths=PackedStringArray("content_label")]
 offset_right = 124.0

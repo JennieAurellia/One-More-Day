@@ -10,6 +10,9 @@ signal peeked_present
 signal peeked_doll
 signal peeked_inside_phone
 signal read_diary
+# Furniture
+signal wardrobe_opened
+signal wardrobe_closed
 # Hint
 signal clue_hinted
 

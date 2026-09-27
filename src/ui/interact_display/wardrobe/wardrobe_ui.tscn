@@ -1,0 +1,245 @@
+[gd_scene format=3 uid="uid://pffwhjo2a0p0"]
+
+[ext_resource type="Script" uid="uid://ca3ixf7n3sewn" path="res://src/ui/interact_display/wardrobe/wardrobe_ui.gd" id="1_i4mpn"]
+[ext_resource type="Resource" uid="uid://bxwnet5kinnyh" path="res://data/item/gift_item.tres" id="2_aqjug"]
+[ext_resource type="Texture2D" uid="uid://b4n22lvbfje0j" path="res://assets/item/closet pop up/dalam lemari.png" id="2_p8417"]
+[ext_resource type="Texture2D" uid="uid://bqloqtdh0gg5m" path="res://assets/item/closet pop up/box di atas_open.png" id="4_p8fh5"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="4_yrc6h"]
+[ext_resource type="Texture2D" uid="uid://pg8ex06e6mig" path="res://assets/item/closet pop up/box di bawah_open.png" id="5_gt70g"]
+[ext_resource type="Texture2D" uid="uid://kj5t2oa4mht6" path="res://assets/item/closet pop up/lemari kecil_open.png" id="6_1f4qc"]
+[ext_resource type="Texture2D" uid="uid://446cq0m01m3t" path="res://assets/zoom_in_gift (ps5).png" id="6_aqjug"]
+
+[node name="WardrobeUI" type="Control" unique_id=822685683 node_paths=PackedStringArray("box_1_button", "box_1_interact_hover_ui", "box_1_opened", "box_2_button", "box_2_interact_hover_ui", "box_2_opened", "closet_button", "closet_interact_hover_ui", "closet_opened", "item_button", "item_interact_hover_ui", "item_texture_rect", "close_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i4mpn")
+box_1_button = NodePath("Content/Box1Button")
+box_1_interact_hover_ui = NodePath("Content/Box1Button/InteractHoverUI")
+box_1_opened = NodePath("Content/Box1Opened")
+box_2_button = NodePath("Content/Box2Button")
+box_2_interact_hover_ui = NodePath("Content/Box2Button/InteractHoverUI")
+box_2_opened = NodePath("Content/Box2Opened")
+closet_button = NodePath("Content/ClosetButton")
+closet_interact_hover_ui = NodePath("Content/ClosetButton/InteractHoverUI")
+closet_opened = NodePath("Content/ClosetOpened")
+item_button = NodePath("Content/ClosetOpened/ItemButton")
+item_interact_hover_ui = NodePath("Content/ClosetOpened/ItemButton/InteractHoverUI")
+item_texture_rect = NodePath("Content/ClosetOpened/ItemTextureRect")
+close_button = NodePath("CloseButton")
+found_item_data = ExtResource("2_aqjug")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1110392974]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="CloseButton" type="Button" parent="." unique_id=1396032116]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Content" type="TextureRect" parent="." unique_id=222008828]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -533.0
+offset_top = -540.0
+offset_right = 533.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_p8417")
+
+[node name="Margin" type="MarginContainer" parent="Content" unique_id=1047028372]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 140
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 130
+theme_override_constants/margin_bottom = 50
+
+[node name="Control" type="Control" parent="Content/Margin" unique_id=1260082384]
+layout_mode = 2
+
+[node name="Box1Opened" type="TextureRect" parent="Content" unique_id=604265416]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 48.0
+offset_right = 900.0
+offset_bottom = 352.0
+mouse_filter = 2
+texture = ExtResource("4_p8fh5")
+
+[node name="Box2Opened" type="TextureRect" parent="Content" unique_id=613628724]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 742.0
+offset_right = 935.0
+offset_bottom = 1081.0
+mouse_filter = 2
+texture = ExtResource("5_gt70g")
+
+[node name="ClosetOpened" type="TextureRect" parent="Content" unique_id=218219240]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 645.0
+offset_right = 673.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("6_1f4qc")
+
+[node name="ItemTextureRect" type="TextureRect" parent="Content/ClosetOpened" unique_id=362368573]
+layout_mode = 0
+offset_left = -50.000004
+offset_top = 61.999992
+offset_right = 974.0
+offset_bottom = 1086.0
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+texture = ExtResource("6_aqjug")
+
+[node name="ItemButton" type="Button" parent="Content/ClosetOpened" unique_id=2095605491]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.5
+offset_top = -29.5
+offset_right = -2.5
+offset_bottom = 140.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+
+[node name="InteractHoverUI" parent="Content/ClosetOpened/ItemButton" unique_id=467594439 instance=ExtResource("4_yrc6h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="TextLabel" parent="Content/ClosetOpened/ItemButton/InteractHoverUI" index="1" unique_id=1180517548]
+text = "Take?"
+
+[node name="Box1Button" type="Button" parent="Content" unique_id=2090910477]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -391.0
+offset_right = 218.0
+offset_bottom = -301.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+
+[node name="InteractHoverUI" parent="Content/Box1Button" unique_id=684441532 instance=ExtResource("4_yrc6h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="TextLabel" parent="Content/Box1Button/InteractHoverUI" index="1" unique_id=1180517548]
+text = "Open?"
+
+[node name="Box2Button" type="Button" parent="Content" unique_id=1318525943]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = 368.0
+offset_right = 243.0
+offset_bottom = 458.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+
+[node name="InteractHoverUI" parent="Content/Box2Button" unique_id=380179437 instance=ExtResource("4_yrc6h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="TextLabel" parent="Content/Box2Button/InteractHoverUI" index="1" unique_id=1180517548]
+text = "Open?"
+
+[node name="ClosetButton" type="Button" parent="Content" unique_id=684899657]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = 193.0
+offset_right = -29.0
+offset_bottom = 463.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+
+[node name="InteractHoverUI" parent="Content/ClosetButton" unique_id=181908645 instance=ExtResource("4_yrc6h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="TextLabel" parent="Content/ClosetButton/InteractHoverUI" index="1" unique_id=1180517548]
+text = "Open?"
+
+[editable path="Content/ClosetOpened/ItemButton/InteractHoverUI"]
+[editable path="Content/Box1Button/InteractHoverUI"]
+[editable path="Content/Box2Button/InteractHoverUI"]
+[editable path="Content/ClosetButton/InteractHoverUI"]

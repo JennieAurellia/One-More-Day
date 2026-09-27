@@ -120,6 +120,14 @@ script = ExtResource("7_kw8fs")
 key_name = "wardrobe_search"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
+[node name="WardrobeCloset" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1785753947]
+stream = ExtResource("8_4cy4p")
+pitch_scale = 2.0
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "wardrobe_closet"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
 [node name="DeskSearch" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1209635439]
 stream = ExtResource("13_jahuu")
 bus = &"SFX"

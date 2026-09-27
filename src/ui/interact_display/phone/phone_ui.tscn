@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://c3wsim84y05nc"]
 
-[ext_resource type="Script" uid="uid://c0eloyip8h8xr" path="res://src/ui/phone/phone_ui.gd" id="1_fgrm4"]
+[ext_resource type="Script" uid="uid://c0eloyip8h8xr" path="res://src/ui/interact_display/phone/phone_ui.gd" id="1_fgrm4"]
 [ext_resource type="Texture2D" uid="uid://dtqay41fvjo2e" path="res://assets/zoom_in_phone.png" id="3_8ywqc"]
-[ext_resource type="Script" uid="uid://f7kw4srnvcdm" path="res://src/ui/phone/chat_log_display.gd" id="4_3o1fr"]
+[ext_resource type="Script" uid="uid://f7kw4srnvcdm" path="res://src/ui/interact_display/phone/chat_log_display.gd" id="4_3o1fr"]
 [ext_resource type="Texture2D" uid="uid://dhihvtvmvafdq" path="res://assets/zoom_in_phone_mask.png" id="4_vcl1m"]
-[ext_resource type="PackedScene" uid="uid://dx6f0ph5xn1yr" path="res://src/ui/phone/message_log_ui/message_log_ui.tscn" id="5_y20c6"]
-[ext_resource type="PackedScene" uid="uid://dl0xi5i5xtynm" path="res://src/ui/phone/date_log_ui/date_log_ui.tscn" id="6_c0k6x"]
-[ext_resource type="PackedScene" uid="uid://c67vv65m0kno5" path="res://src/ui/phone/time_log_ui/time_log_ui.tscn" id="7_706mr"]
+[ext_resource type="PackedScene" uid="uid://dx6f0ph5xn1yr" path="res://src/ui/interact_display/phone/message_log_ui/message_log_ui.tscn" id="5_y20c6"]
+[ext_resource type="PackedScene" uid="uid://dl0xi5i5xtynm" path="res://src/ui/interact_display/phone/date_log_ui/date_log_ui.tscn" id="6_c0k6x"]
+[ext_resource type="PackedScene" uid="uid://c67vv65m0kno5" path="res://src/ui/interact_display/phone/time_log_ui/time_log_ui.tscn" id="7_706mr"]
 
 [node name="PhoneUI" type="Control" unique_id=293281820 node_paths=PackedStringArray("chat_log_display", "close_button")]
 layout_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dx6f0ph5xn1yr"]
 
-[ext_resource type="Script" uid="uid://bx3ljopymmhwp" path="res://src/ui/phone/message_log_ui/message_log_ui.gd" id="1_d4vhg"]
+[ext_resource type="Script" uid="uid://bx3ljopymmhwp" path="res://src/ui/interact_display/phone/message_log_ui/message_log_ui.gd" id="1_d4vhg"]
 [ext_resource type="Texture2D" uid="uid://bs457mi8no7oi" path="res://assets/UI/message_log_right.png" id="2_kadrg"]
 [ext_resource type="Texture2D" uid="uid://drqgjmby0tn50" path="res://assets/UI/message_log_left.png" id="2_xt7ow"]
 
