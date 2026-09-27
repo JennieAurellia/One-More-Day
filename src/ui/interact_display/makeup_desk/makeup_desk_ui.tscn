@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://dn48e70m4ridu"]
+
+[ext_resource type="Script" uid="uid://bu48q21xy7o4b" path="res://src/ui/interact_display/makeup_desk/makeup_desk_ui.gd" id="1_e1821"]
+[ext_resource type="Texture2D" uid="uid://sbh4vx0s8cy1" path="res://assets/item/make up drawer pop up/drawer_closed.png" id="2_le4lq"]
+[ext_resource type="Resource" uid="uid://dojnxo37q6u6t" path="res://data/item/diary_item.tres" id="2_sm2xp"]
+[ext_resource type="Texture2D" uid="uid://b1usfgwwcidgi" path="res://assets/item/make up drawer pop up/drawer_open.png" id="3_67u2b"]
+[ext_resource type="Texture2D" uid="uid://cv6577lo4wpbn" path="res://assets/item/make up drawer pop up/items inside the drawer_1.png" id="4_oamts"]
+[ext_resource type="Texture2D" uid="uid://b2wj4pv03kxx0" path="res://assets/item/make up drawer pop up/items inside the drawer_2.png" id="5_11pew"]
+[ext_resource type="Texture2D" uid="uid://6lykno4mf855" path="res://assets/item/make up drawer pop up/items inside the drawer_3.png" id="6_anuhc"]
+[ext_resource type="Texture2D" uid="uid://cdymhuq7wvahm" path="res://assets/item/make up drawer pop up/items inside the drawer_4.png" id="7_sm2xp"]
+[ext_resource type="Texture2D" uid="uid://5o6no21vi3ih" path="res://assets/item/make up drawer pop up/items inside the drawer_5.png" id="8_cetty"]
+[ext_resource type="Texture2D" uid="uid://bwt8br3tevsum" path="res://assets/item/make up drawer pop up/items inside the drawer_6.png" id="9_xh54d"]
+[ext_resource type="Texture2D" uid="uid://db5u7c3npfyi3" path="res://assets/item/make up drawer pop up/items inside the drawer_7.png" id="10_mlo6a"]
+[ext_resource type="Texture2D" uid="uid://bf2aa2neghu8i" path="res://assets/zoom_in_book_closed.png" id="11_11pew"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="12_anuhc"]
+
+[node name="MakeupDeskUI" type="Control" unique_id=1905349556 node_paths=PackedStringArray("desk_open_button", "desk_open_interact_hover_ui", "desk_opened", "item_button", "item_interact_hover_ui", "item_texture_rect", "close_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e1821")
+desk_open_button = NodePath("Content/DeskOpenButton")
+desk_open_interact_hover_ui = NodePath("Content/DeskOpenButton/InteractHoverUI")
+desk_opened = NodePath("Content/DeskOpened")
+item_button = NodePath("Content/DeskOpened/ItemButton")
+item_interact_hover_ui = NodePath("Content/DeskOpened/ItemButton/InteractHoverUI")
+item_texture_rect = NodePath("Content/DeskOpened/ItemTextureRect")
+close_button = NodePath("CloseButton")
+found_item_data = ExtResource("2_sm2xp")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1001747886]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="CloseButton" type="Button" parent="." unique_id=509694621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Content" type="TextureRect" parent="." unique_id=50928472]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_le4lq")
+
+[node name="Margin" type="MarginContainer" parent="Content" unique_id=871462370]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 610
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_right = 460
+theme_override_constants/margin_bottom = 120
+
+[node name="Control" type="Control" parent="Content/Margin" unique_id=922748634]
+layout_mode = 2
+
+[node name="DeskOpened" type="TextureRect" parent="Content" unique_id=864885318]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("3_67u2b")
+
+[node name="RandomItem1" type="TextureRect" parent="Content/DeskOpened" unique_id=1361063681]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 299.0
+offset_right = 864.0
+offset_bottom = 654.0
+mouse_filter = 2
+texture = ExtResource("4_oamts")
+
+[node name="RandomItem2" type="TextureRect" parent="Content/DeskOpened" unique_id=1168218084]
+layout_mode = 0
+offset_left = 788.0
+offset_top = 301.0
+offset_right = 1086.0
+offset_bottom = 653.0
+mouse_filter = 2
+texture = ExtResource("5_11pew")
+
+[node name="RandomItem3" type="TextureRect" parent="Content/DeskOpened" unique_id=1831523477]
+layout_mode = 0
+offset_left = 1212.0
+offset_top = 305.0
+offset_right = 1447.0
+offset_bottom = 604.0
+mouse_filter = 2
+texture = ExtResource("6_anuhc")
+
+[node name="RandomItem4" type="TextureRect" parent="Content/DeskOpened" unique_id=2131799018]
+layout_mode = 0
+offset_left = 924.0
+offset_top = 596.0
+offset_right = 1124.0
+offset_bottom = 935.0
+rotation = 1.5707964
+mouse_filter = 2
+texture = ExtResource("7_sm2xp")
+
+[node name="RandomItem5" type="TextureRect" parent="Content/DeskOpened" unique_id=2130534569]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 593.0
+offset_right = 1191.0
+offset_bottom = 791.0
+mouse_filter = 2
+texture = ExtResource("8_cetty")
+
+[node name="RandomItem6" type="TextureRect" parent="Content/DeskOpened" unique_id=214230086]
+layout_mode = 0
+offset_left = 1094.0
+offset_top = 629.0
+offset_right = 1284.0
+offset_bottom = 797.0
+mouse_filter = 2
+texture = ExtResource("9_xh54d")
+
+[node name="RandomItem7" type="TextureRect" parent="Content/DeskOpened" unique_id=1082698501]
+layout_mode = 0
+offset_left = 1251.0
+offset_top = 617.0
+offset_right = 1447.0
+offset_bottom = 800.0
+mouse_filter = 2
+texture = ExtResource("10_mlo6a")
+
+[node name="ItemTextureRect" type="TextureRect" parent="Content/DeskOpened" unique_id=1633822571]
+layout_mode = 0
+offset_left = 794.0
+offset_top = 138.0
+offset_right = 1446.0
+offset_bottom = 790.0
+mouse_filter = 2
+texture = ExtResource("11_11pew")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="ItemButton" type="Button" parent="Content/DeskOpened" unique_id=521209595]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.0
+offset_top = -217.0
+offset_right = 286.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+
+[node name="InteractHoverUI" parent="Content/DeskOpened/ItemButton" unique_id=467594439 instance=ExtResource("12_anuhc")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="TextLabel" parent="Content/DeskOpened/ItemButton/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 26.0
+offset_right = 131.0
+offset_bottom = 40.0
+scale = Vector2(0.333, 0.333)
+theme_override_font_sizes/font_size = 42
+text = "Take?"
+
+[node name="DeskOpenButton" type="Button" parent="Content" unique_id=1685261595]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -337.0
+offset_top = -23.0
+offset_right = 479.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+
+[node name="InteractHoverUI" parent="Content/DeskOpenButton" unique_id=1006754486 instance=ExtResource("12_anuhc")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+
+[node name="TextLabel" parent="Content/DeskOpenButton/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 22.799927
+offset_right = 224.79993
+offset_bottom = 69.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 70
+text = "Open?"
+
+[editable path="Content/DeskOpened/ItemButton/InteractHoverUI"]
+[editable path="Content/DeskOpenButton/InteractHoverUI"]

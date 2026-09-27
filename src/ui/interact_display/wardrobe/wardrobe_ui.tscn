@@ -147,6 +147,11 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 
 [node name="TextLabel" parent="Content/ClosetOpened/ItemButton/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 25.000305
+offset_right = 130.0003
+offset_bottom = 40.0
+scale = Vector2(0.333, 0.333)
+theme_override_font_sizes/font_size = 42
 text = "Take?"
 
 [node name="Box1Button" type="Button" parent="Content" unique_id=2090910477]
@@ -177,6 +182,11 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 
 [node name="TextLabel" parent="Content/Box1Button/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 24.00055
+offset_right = 145.00055
+offset_bottom = 40.0
+scale = Vector2(0.333, 0.333)
+theme_override_font_sizes/font_size = 42
 text = "Open?"
 
 [node name="Box2Button" type="Button" parent="Content" unique_id=1318525943]
@@ -207,6 +217,11 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 
 [node name="TextLabel" parent="Content/Box2Button/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 24.00055
+offset_right = 145.00055
+offset_bottom = 40.0
+scale = Vector2(0.333, 0.333)
+theme_override_font_sizes/font_size = 42
 text = "Open?"
 
 [node name="ClosetButton" type="Button" parent="Content" unique_id=684899657]
@@ -237,6 +252,11 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 
 [node name="TextLabel" parent="Content/ClosetButton/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 24.000305
+offset_right = 145.0003
+offset_bottom = 40.0
+scale = Vector2(0.333, 0.333)
+theme_override_font_sizes/font_size = 42
 text = "Open?"
 
 [editable path="Content/ClosetOpened/ItemButton/InteractHoverUI"]

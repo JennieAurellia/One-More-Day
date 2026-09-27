@@ -14,6 +14,7 @@ enum State{
 
 @export_subgroup("To Make Up Settings")
 @export var to_make_up_seat : Seat
+@export var to_make_up_makeup_desk : MakeupDesk
 
 @export_subgroup("Putting Make Up Settings")
 @export var putting_make_up_time : float = 20.0
@@ -36,6 +37,7 @@ func _ready() -> void:
 	# Assertion check
 	assert(elena, "elena is missing")
 	assert(to_make_up_seat, "to_make_up_seat is missing")
+	assert(to_make_up_makeup_desk, "to_make_up_makeup_desk is missing")
 	assert(calling_friend_marker, "calling_friend_marker is missing")
 
 func _process(delta: float) -> void: if is_active: update_state(delta)
@@ -71,6 +73,10 @@ func enter_state(state:State):
 			await elena.destination_reached
 			change_state(State.PUTTING_MAKE_UP)
 		
+		State.PUTTING_MAKE_UP:
+			EventFlag.instance.makeup_desk_released.emit()
+			to_make_up_makeup_desk.use()
+		
 		State.CALLING_FRIEND:
 			# Phone ring and go to position
 			AudioManager.play_sfx(phone_ring_sfx_name)
@@ -97,6 +103,9 @@ func enter_state(state:State):
 
 func exit_state(state:State):
 	match current_state:
+		
+		State.PUTTING_MAKE_UP:
+			to_make_up_makeup_desk.release()
 		
 		State.CALLING_FRIEND:
 			EventFlag.instance.is_elena_phone_calling = false

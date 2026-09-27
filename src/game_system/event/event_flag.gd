@@ -13,6 +13,8 @@ signal read_diary
 # Furniture
 signal wardrobe_opened
 signal wardrobe_closed
+signal makeup_desk_used
+signal makeup_desk_released
 # Hint
 signal clue_hinted
 
