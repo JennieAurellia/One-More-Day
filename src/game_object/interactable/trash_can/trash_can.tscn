@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://e51v7fpqwv01"]
+
+[ext_resource type="Script" uid="uid://p41ircok0ndq" path="res://src/game_object/interactable/trash_can/trash_can.gd" id="1_bgvmr"]
+[ext_resource type="Script" uid="uid://5xtjibybpdw1" path="res://src/common/component/interactable_component.gd" id="2_3srjb"]
+[ext_resource type="Texture2D" uid="uid://c07wnhhyowi8t" path="res://src/common/texture/furniture/trash_can_texture.tres" id="3_3srjb"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="4_5n85q"]
+
+[node name="TrashCan" type="Node2D" unique_id=1845998576 node_paths=PackedStringArray("interactable_component", "interact_hover_ui")]
+script = ExtResource("1_bgvmr")
+interactable_component = NodePath("InteractableComponent")
+interact_hover_ui = NodePath("InteractControl/InteractHoverUI")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=802270552 node_paths=PackedStringArray("interact_control")]
+script = ExtResource("2_3srjb")
+interact_control = NodePath("../InteractControl")
+metadata/_custom_type_script = "uid://5xtjibybpdw1"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1606699875]
+position = Vector2(-2.3841858e-07, 0)
+rotation = 1.5707964
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_3srjb")
+
+[node name="InteractControl" type="Control" parent="." unique_id=995238998]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -14.0
+offset_right = 19.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="InteractHoverUI" parent="InteractControl" unique_id=467594439 instance=ExtResource("4_5n85q")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextLabel" parent="InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
+text = "Inspect?"
+
+[editable path="InteractControl/InteractHoverUI"]

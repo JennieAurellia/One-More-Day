@@ -13,12 +13,12 @@
 [ext_resource type="Script" uid="uid://dlqs7m7u628jr" path="res://src/game_object/camera/camera.gd" id="5_k4o4v"]
 [ext_resource type="PackedScene" uid="uid://cualheujywi7o" path="res://src/game_object/interactable/stove/stove.tscn" id="6_ffmqh"]
 [ext_resource type="Script" uid="uid://byje5y2envk60" path="res://src/game_object/room_fog/room_fog.gd" id="7_aph4m"]
-[ext_resource type="Texture2D" uid="uid://d27dyq8htkdkj" path="res://src/common/texture/furniture/plant_texture.tres" id="7_nkk2u"]
 [ext_resource type="PackedScene" uid="uid://q2pvo2jgdhmk" path="res://src/game_object/trigger_area/restart_area/restart_area.tscn" id="7_pqqlr"]
+[ext_resource type="PackedScene" uid="uid://e51v7fpqwv01" path="res://src/game_object/interactable/trash_can/trash_can.tscn" id="8_oiebv"]
 [ext_resource type="PackedScene" uid="uid://bdayrxt886wft" path="res://src/game_object/interactable/dining_table/dining_table.tscn" id="9_nkk2u"]
 [ext_resource type="Texture2D" uid="uid://mwdm2oyyuyft" path="res://src/common/texture/furniture/kitchen_counter_left_texture.tres" id="9_pc20v"]
 [ext_resource type="Texture2D" uid="uid://du7lrfd3ey2we" path="res://src/common/texture/furniture/kitchen_counter_right_texture.tres" id="10_0yacf"]
-[ext_resource type="Texture2D" uid="uid://c07wnhhyowi8t" path="res://src/common/texture/furniture/trash_can_texture.tres" id="10_eys30"]
+[ext_resource type="PackedScene" uid="uid://bgqjsqfag720w" path="res://src/game_object/interactable/plant/plant.tscn" id="10_oiebv"]
 [ext_resource type="PackedScene" uid="uid://dda637k8wqb27" path="res://src/game_object/interactable/sofa/sofa.tscn" id="11_vfhfr"]
 [ext_resource type="Script" uid="uid://dynocpxsiw65u" path="res://src/game_system/game_timer/game_timer.gd" id="11_vvmck"]
 [ext_resource type="Script" uid="uid://bgn5hyf5ulaan" path="res://src/game_system/door/door_manager.gd" id="12_glhkg"]
@@ -44,6 +44,8 @@
 [ext_resource type="PackedScene" uid="uid://lh1ia5sqc2sq" path="res://src/ui/interact_display/diary/diary_ui.tscn" id="40_00eno"]
 [ext_resource type="PackedScene" uid="uid://dn48e70m4ridu" path="res://src/ui/interact_display/makeup_desk/makeup_desk_ui.tscn" id="40_ilagk"]
 [ext_resource type="PackedScene" uid="uid://c3wsim84y05nc" path="res://src/ui/interact_display/phone/phone_ui.tscn" id="40_nol42"]
+[ext_resource type="PackedScene" uid="uid://dl4ye30hp5ipb" path="res://src/ui/interact_display/plant/plant_ui.tscn" id="41_oiebv"]
+[ext_resource type="PackedScene" uid="uid://8it1c7iihrwf" path="res://src/ui/interact_display/trash_can/trash_can_ui.tscn" id="42_6xass"]
 [ext_resource type="PackedScene" uid="uid://6lc3qglvh5w2" path="res://src/ui/cutscene/custscene_ui.tscn" id="43_4pfsh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fimk8"]
@@ -137,32 +139,14 @@ texture = ExtResource("10_0yacf")
 [node name="Stove" parent="Furniture/MainRoom/KitchenCounter" unique_id=56623785 instance=ExtResource("6_ffmqh")]
 position = Vector2(244, 29.8)
 
-[node name="TrashCan" type="Node2D" parent="Furniture/MainRoom" unique_id=254292272]
-position = Vector2(664, 224)
-rotation = 1.5707964
+[node name="TrashCan2" parent="Furniture/MainRoom" unique_id=1845998576 instance=ExtResource("8_oiebv")]
+position = Vector2(664, 218)
 
-[node name="Sprite" type="Sprite2D" parent="Furniture/MainRoom/TrashCan" unique_id=964142410]
-position = Vector2(-6, 0)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("10_eys30")
-
-[node name="Plant1" type="Node2D" parent="Furniture/MainRoom" unique_id=1786536792]
+[node name="Plant1" parent="Furniture/MainRoom" unique_id=1700977064 instance=ExtResource("10_oiebv")]
 position = Vector2(1112, 98)
-rotation = 1.5707964
 
-[node name="Sprite" type="Sprite2D" parent="Furniture/MainRoom/Plant1" unique_id=173945684]
-rotation = -1.5707964
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("7_nkk2u")
-
-[node name="Plant2" type="Node2D" parent="Furniture/MainRoom" unique_id=391092523]
+[node name="Plant2" parent="Furniture/MainRoom" unique_id=825611934 instance=ExtResource("10_oiebv")]
 position = Vector2(1112, 730)
-rotation = 1.5707964
-
-[node name="Sprite" type="Sprite2D" parent="Furniture/MainRoom/Plant2" unique_id=1099552346]
-rotation = -1.5707964
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("7_nkk2u")
 
 [node name="DiningTable" parent="Furniture/MainRoom" unique_id=884398778 instance=ExtResource("9_nkk2u")]
 position = Vector2(904, 294)
@@ -447,12 +431,23 @@ mouse_filter = 2
 layout_mode = 1
 
 [node name="DiaryUI" parent="UICanvasLayer/InteractDisplay" unique_id=1322229311 instance=ExtResource("40_00eno")]
+visible = false
 layout_mode = 1
 
 [node name="WardrobeUI" parent="UICanvasLayer/InteractDisplay" unique_id=822685683 instance=ExtResource("39_4pfsh")]
+visible = false
 layout_mode = 1
 
 [node name="MakeupDeskUI" parent="UICanvasLayer/InteractDisplay" unique_id=1905349556 instance=ExtResource("40_ilagk")]
+visible = false
+layout_mode = 1
+
+[node name="PlantUI" parent="UICanvasLayer/InteractDisplay" unique_id=1962138231 instance=ExtResource("41_oiebv")]
+visible = false
+layout_mode = 1
+
+[node name="TrashCanUI" parent="UICanvasLayer/InteractDisplay" unique_id=1782754255 instance=ExtResource("42_6xass")]
+visible = false
 layout_mode = 1
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]

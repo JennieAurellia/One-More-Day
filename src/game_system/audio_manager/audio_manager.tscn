@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://cbwdg7fvngmwj" path="res://assets/audio/sfx/sit_sofa.mp3" id="15_ovl1o"]
 [ext_resource type="AudioStream" uid="uid://nmfgvlp7o5i2" path="res://assets/audio/sfx/sit_toilet.mp3" id="16_t8io6"]
 [ext_resource type="AudioStream" uid="uid://drawq3qnj8kb6" path="res://assets/audio/sfx/ui/Modern5.mp3" id="21_f7i3c"]
+[ext_resource type="AudioStream" uid="uid://bmfhgd8k642el" path="res://assets/audio/sfx/rummaging.mp3" id="22_t8io6"]
 [ext_resource type="AudioStream" uid="uid://d3myu1y5o6vxr" path="res://assets/audio/sfx/ending.mp3" id="26_upiwq"]
 
 [node name="AudioManager" type="Node" unique_id=1936952167]
@@ -287,6 +288,15 @@ bus = &"SFX"
 parameters/looping = true
 script = ExtResource("4_wi5rl")
 key_name = "showering"
+metadata/_custom_type_script = "uid://pe4f8jubqs0x"
+
+[node name="Rummage" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=436596710]
+stream = ExtResource("22_t8io6")
+volume_db = -4.0
+bus = &"SFX"
+parameters/looping = true
+script = ExtResource("4_wi5rl")
+key_name = "rummage"
 metadata/_custom_type_script = "uid://pe4f8jubqs0x"
 
 [node name="AudioListener" type="AudioListener2D" parent="." unique_id=891480398]

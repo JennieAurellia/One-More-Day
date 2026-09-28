@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://8it1c7iihrwf"]
+
+[ext_resource type="Script" uid="uid://25pmgj02ca7m" path="res://src/ui/interact_display/trash_can/trash_can_ui.gd" id="1_2cycr"]
+[ext_resource type="Texture2D" uid="uid://bgwfloenkhmeo" path="res://assets/item/bin_item_size_full.png" id="2_f8jfq"]
+[ext_resource type="Texture2D" uid="uid://c3atdt8hn0ao1" path="res://assets/item/bin_item_size_less.png" id="3_aobl4"]
+[ext_resource type="Texture2D" uid="uid://b8fva14ee6vu2" path="res://assets/item/bin_item_size_empty.png" id="4_vc01o"]
+[ext_resource type="PackedScene" uid="uid://wheuyg384j0u" path="res://src/ui/interact/interact_hover_ui.tscn" id="5_vc01o"]
+
+[node name="TrashCanUI" type="Control" unique_id=1782754255 node_paths=PackedStringArray("rummage_button", "rummage_interact_hover_ui", "full_texture_rect", "half_empty_texture_rect", "empty_texture_rect", "close_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2cycr")
+rummage_button = NodePath("Margin/Control/RummageButton")
+rummage_interact_hover_ui = NodePath("Margin/Control/RummageButton/InteractHoverUI")
+full_texture_rect = NodePath("Margin/Control/FullTextureRect")
+half_empty_texture_rect = NodePath("Margin/Control/HalfEmptyTextureRect")
+empty_texture_rect = NodePath("Margin/Control/EmptyTextureRect")
+close_button = NodePath("CloseButton")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1202239734]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="CloseButton" type="Button" parent="." unique_id=1629176892]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1492053743]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 750
+theme_override_constants/margin_top = 230
+theme_override_constants/margin_right = 750
+theme_override_constants/margin_bottom = 230
+
+[node name="Control" type="Control" parent="Margin" unique_id=1635864490]
+layout_mode = 2
+
+[node name="FullTextureRect" type="TextureRect" parent="Margin/Control" unique_id=25999314]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.5
+offset_top = -397.5
+offset_right = 322.5
+offset_bottom = 397.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_f8jfq")
+
+[node name="HalfEmptyTextureRect" type="TextureRect" parent="Margin/Control" unique_id=1430567862]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.0
+offset_top = -400.0
+offset_right = 677.0
+offset_bottom = 431.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_aobl4")
+
+[node name="EmptyTextureRect" type="TextureRect" parent="Margin/Control" unique_id=1440799897]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -374.0
+offset_top = -355.0
+offset_right = 697.0
+offset_bottom = 399.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_vc01o")
+
+[node name="RummageButton" type="Button" parent="Margin/Control" unique_id=1903240893]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -225.0
+offset_right = 140.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+
+[node name="InteractHoverUI" parent="Margin/Control/RummageButton" unique_id=467594439 instance=ExtResource("5_vc01o")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+
+[node name="TextLabel" parent="Margin/Control/RummageButton/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 20.8
+offset_top = -1.2
+offset_right = 276.8
+offset_bottom = 51.8
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 51
+text = "Rummage?"
+
+[editable path="Margin/Control/RummageButton/InteractHoverUI"]

@@ -15,6 +15,8 @@ signal wardrobe_opened
 signal wardrobe_closed
 signal makeup_desk_used
 signal makeup_desk_released
+signal plant_inspected
+signal trash_can_inspected
 # Hint
 signal clue_hinted
 
