@@ -207,6 +207,17 @@ func do_dialogue(title:String, dialogue_resource:DialogueResource=null):
 	_exit_dialogue()
 	dialogue_finished.emit()
 
+func do_transparent_dialogue(title:String, dialogue_resource:DialogueResource=null):
+	_enter_dialogue()
+	if dialogue_resource: DialogueManager.show_transparent_balloon(dialogue_resource, title)
+	else:
+		DialogueManager.show_transparent_balloon(
+			DialogueUI.instance.default_dialogue_resource, title
+		)
+	await DialogueManager.dialogue_ended
+	_exit_dialogue()
+	dialogue_finished.emit()
+
 ## Freezes all movement immediately and cancels any in-progress travel.
 func _enter_dialogue() -> void:
 	_is_in_dialogue = true

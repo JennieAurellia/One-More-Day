@@ -58,7 +58,7 @@ func _ready() -> void:
 	
 	# Connect signals
 	DialogueManager.dialogue_started.connect(func(resource:DialogueResource):
-		EventFlag.instance.wardrobe_closed.emit()
+		if visible: EventFlag.instance.wardrobe_closed.emit()
 		)
 	EventFlag.instance.wardrobe_opened.connect(_on_wardrobe_opened)
 	EventFlag.instance.wardrobe_closed.connect(hide)

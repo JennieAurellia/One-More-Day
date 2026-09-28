@@ -47,6 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://dl4ye30hp5ipb" path="res://src/ui/interact_display/plant/plant_ui.tscn" id="41_oiebv"]
 [ext_resource type="PackedScene" uid="uid://8it1c7iihrwf" path="res://src/ui/interact_display/trash_can/trash_can_ui.tscn" id="42_6xass"]
 [ext_resource type="PackedScene" uid="uid://6lc3qglvh5w2" path="res://src/ui/cutscene/custscene_ui.tscn" id="43_4pfsh"]
+[ext_resource type="PackedScene" uid="uid://66xfpcwgepwu" path="res://src/ui/dialogue/transparent/transparent_dialogue_ui.tscn" id="44_nl8i3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fimk8"]
 shader = ExtResource("35_vfhfr")
@@ -451,6 +452,9 @@ visible = false
 layout_mode = 1
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
+visible = false
+
+[node name="TransparentDialogueUI" parent="UICanvasLayer" unique_id=899891215 instance=ExtResource("44_nl8i3")]
 visible = false
 
 [node name="HintUI" parent="UICanvasLayer" unique_id=595105102 instance=ExtResource("38_1c8dc")]

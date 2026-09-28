@@ -28,6 +28,7 @@ func _ready() -> void:
 	interactable_component.hovered.connect(_on_interactable_hovered)
 	interactable_component.unhovered.connect(_on_interactable_unhovered)
 	interactable_component.interacted.connect(_on_interactable_interacted)
+	interactable_component.item_used_on.connect(_on_interactable_item_used_on)
 	interactable_component.interacted_by_npc.connect(_on_interactable_interacted_by_npc)
 	# Initialize
 	interact_hover_ui.hide()
@@ -74,6 +75,12 @@ func _on_interactable_interacted():
 		InventoryManager.add_item(phone_item_data)
 		interact_hover_ui.hide()
 	elif InventoryManager.has_item(phone_item_data.id):
+		place_phone()
+		InventoryManager.remove_item(phone_item_data)
+		interact_hover_ui.hide()
+
+func _on_interactable_item_used_on(item_data:ItemData):
+	if item_data.id == phone_item_data.id:
 		place_phone()
 		InventoryManager.remove_item(phone_item_data)
 		interact_hover_ui.hide()

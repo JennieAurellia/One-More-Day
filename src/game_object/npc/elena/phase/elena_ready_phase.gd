@@ -91,10 +91,10 @@ func enter_state(state:State):
 			EventFlag.instance.is_elena_phone_calling = true
 			if EventFlag.instance.is_prove_successful:
 				# End the game
-				elena.do_dialogue("phone_call_reject")
+				elena.do_transparent_dialogue("phone_call_reject")
 				await elena.dialogue_finished
 				GameManager.end_game() # Recall end_game if failed to trigger from dialogue
-			else: elena.do_dialogue("phone_call")
+			else: elena.do_transparent_dialogue("phone_call")
 		
 		State.HEADING_OUT:
 			elena.do_dialogue("heading_out")

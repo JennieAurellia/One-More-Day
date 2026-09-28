@@ -1634,3 +1634,35 @@ func _get_resource_uid(resource: DialogueResource) -> String:
 
 func _get_id_with_resource(resource: DialogueResource, id: String) -> String:
 	return id if "@" in id else "%s@%s" % [_get_resource_uid(resource), id]
+
+# ==================================================================================================
+#                Custom methods
+# ==================================================================================================
+## Play a dialogue without disabling input
+func show_transparent_balloon(
+	resource: DialogueResource, title: String = "", extra_game_states: Array = []
+) -> Node:
+	# Uses TransparentDialogueUI
+	if !TransparentDialogueUI.instance:
+		push_error("Unable to start dialogue")
+		return
+	_start_transparent_balloon.call_deferred(
+		TransparentDialogueUI.instance, resource, title, extra_game_states
+	)
+	return TransparentDialogueUI.instance
+
+# Call "start" on the given balloon.
+func _start_transparent_balloon(
+	balloon: Node, resource: DialogueResource, title: String, extra_game_states: Array
+) -> void:
+	dialogue_started.emit(resource)
+
+	if balloon != TransparentDialogueUI.instance:
+		get_current_scene.call().add_child(balloon)
+
+	if balloon.has_method(&"start"):
+		balloon.start(resource, title, extra_game_states)
+	elif balloon.has_method(&"Start"):
+		balloon.Start(resource, title, extra_game_states)
+	else:
+		assert(false, DMConstants.translate(&"runtime.dialogue_balloon_missing_start_method"))
