@@ -16,7 +16,8 @@ class_name MakeupDeskUI
 @export var found_item_data : ItemData
 
 @export_subgroup("Audio Settings")
-@export var search_sfx_name : String = "desk_search"
+@export var open_sfx_name : String = "desk_open"
+@export var close_sfx_name : String = "desk_close"
 
 var _is_item_taken : bool = false
 
@@ -42,7 +43,7 @@ func _ready() -> void:
 		EventFlag.instance.makeup_desk_released.emit()
 		)
 	EventFlag.instance.makeup_desk_used.connect(_on_makeup_desk_opened)
-	EventFlag.instance.makeup_desk_released.connect(hide)
+	EventFlag.instance.makeup_desk_released.connect(_on_makeup_desk_hidden)
 	
 	desk_open_button.mouse_entered.connect(_on_desk_open_mouse_entered)
 	desk_open_button.mouse_exited.connect(_on_desk_open_mouse_exited)
@@ -71,6 +72,10 @@ func _on_makeup_desk_opened():
 	desk_open_button.show()
 	desk_opened.hide()
 	show()
+	
+func _on_makeup_desk_hidden():
+	if desk_opened.visible: AudioManager.play_sfx(close_sfx_name)
+	hide()
 
 func _on_desk_open_mouse_entered(): desk_open_interact_hover_ui.show()
 func _on_item_mouse_entered(): item_interact_hover_ui.show()
@@ -83,7 +88,7 @@ func _on_desk_open_pressed():
 	desk_opened.show()
 	item_button.visible = !_is_item_taken
 	item_texture_rect.visible = !_is_item_taken
-	AudioManager.play_sfx(search_sfx_name)
+	AudioManager.play_sfx(open_sfx_name)
 
 func _on_item_pressed():
 	_is_item_taken = true

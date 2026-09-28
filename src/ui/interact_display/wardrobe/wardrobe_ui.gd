@@ -26,7 +26,7 @@ class_name WardrobeUI
 @export var found_item_data : ItemData
 
 @export_subgroup("Audio Settings")
-@export var search_sfx_name : String = "wardrobe_search"
+@export var box_sfx_name : String = "wardrobe_box"
 @export var closet_sfx_name : String = "wardrobe_closet"
 
 # ==================================================================================================
@@ -121,13 +121,13 @@ func _on_box_1_pressed():
 	box_1_button.hide()
 	box_1_closed.hide()
 	box_1_opened.show()
-	AudioManager.play_sfx(search_sfx_name)
+	AudioManager.play_sfx(box_sfx_name)
 
 func _on_box_2_pressed():
 	box_2_button.hide()
 	box_2_closed.hide()
 	box_2_opened.show()
-	AudioManager.play_sfx(search_sfx_name)
+	AudioManager.play_sfx(box_sfx_name)
 
 func _on_closet_pressed():
 	closet_button.hide()

@@ -17,13 +17,14 @@
 [ext_resource type="AudioStream" uid="uid://ceyg6jo3t6oa7" path="res://assets/audio/sfx/wardrobe_close.mp3" id="9_3epof"]
 [ext_resource type="AudioStream" uid="uid://d1iink1bvdggl" path="res://assets/audio/sfx/plate_drop.mp3" id="10_g1u4r"]
 [ext_resource type="AudioStream" uid="uid://c1e771815uiup" path="res://assets/audio/sfx/eat.mp3" id="11_nf6mi"]
-[ext_resource type="AudioStream" uid="uid://bix10eii18l3c" path="res://assets/audio/sfx/wardrobe_search.mp3" id="12_fqeko"]
 [ext_resource type="AudioStream" uid="uid://demewrga0ytuc" path="res://assets/audio/sfx/time_reset.mp3" id="12_nf6mi"]
-[ext_resource type="AudioStream" uid="uid://bfhlavfy100b1" path="res://assets/audio/sfx/desk_search.mp3" id="13_jahuu"]
+[ext_resource type="AudioStream" uid="uid://b6j4vu8earcot" path="res://assets/audio/sfx/box (inside the closet)_open.mp3" id="12_ovl1o"]
 [ext_resource type="AudioStream" uid="uid://db2romsoe5dh2" path="res://assets/audio/sfx/ui/Modern1.mp3" id="13_n7gm8"]
+[ext_resource type="AudioStream" uid="uid://cnde1dvjhf1sc" path="res://assets/audio/sfx/drawer_open.mp3" id="13_ovl1o"]
 [ext_resource type="AudioStream" uid="uid://brve8tvcqlada" path="res://assets/audio/sfx/ui/Abstract1.mp3" id="14_5kiff"]
 [ext_resource type="AudioStream" uid="uid://c4jxudu65b42k" path="res://assets/audio/sfx/phone_ring.mp3" id="14_5p07o"]
 [ext_resource type="AudioStream" uid="uid://bcboh0x01foyt" path="res://assets/audio/sfx/sit.mp3" id="14_nhl1f"]
+[ext_resource type="AudioStream" uid="uid://ugwbdiiy4177" path="res://assets/audio/sfx/drawer_close.mp3" id="14_ovl1o"]
 [ext_resource type="AudioStream" uid="uid://dto0wj4b3y0y6" path="res://assets/audio/sfx/car_crash.mp3" id="15_ffr1o"]
 [ext_resource type="AudioStream" uid="uid://cbwdg7fvngmwj" path="res://assets/audio/sfx/sit_sofa.mp3" id="15_ovl1o"]
 [ext_resource type="AudioStream" uid="uid://nmfgvlp7o5i2" path="res://assets/audio/sfx/sit_toilet.mp3" id="16_t8io6"]
@@ -113,11 +114,11 @@ script = ExtResource("7_kw8fs")
 key_name = "wardrobe_close"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
-[node name="WardrobeSearch" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=79493502]
-stream = ExtResource("12_fqeko")
+[node name="WardrobeBox" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=79493502]
+stream = ExtResource("12_ovl1o")
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
-key_name = "wardrobe_search"
+key_name = "wardrobe_box"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="WardrobeCloset" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1785753947]
@@ -128,11 +129,18 @@ script = ExtResource("7_kw8fs")
 key_name = "wardrobe_closet"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
-[node name="DeskSearch" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1209635439]
-stream = ExtResource("13_jahuu")
+[node name="DeskOpen" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1209635439]
+stream = ExtResource("13_ovl1o")
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
-key_name = "desk_search"
+key_name = "desk_open"
+metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
+
+[node name="DeskClose" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=348576510]
+stream = ExtResource("14_ovl1o")
+bus = &"SFX"
+script = ExtResource("7_kw8fs")
+key_name = "desk_close"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="Sit" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=231731482]

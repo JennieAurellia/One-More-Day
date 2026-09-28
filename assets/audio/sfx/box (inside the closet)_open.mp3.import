@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6j4vu8earcot"
+path="res://.godot/imported/box (inside the closet)_open.mp3-4b5c81e8f4269d225c5e276f8434eb6f.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/box (inside the closet)_open.mp3"
+dest_files=["res://.godot/imported/box (inside the closet)_open.mp3-4b5c81e8f4269d225c5e276f8434eb6f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
