@@ -50,6 +50,7 @@ func show_tutorial_hint() -> void:
 	)
 
 func show_clue_hint() -> void:
+	if tutorial_hint_margin.visible: tutorial_hint_margin.hide()
 	_tween_hint(clue_hint_margin, clue_normal_margin, clue_show_margin, clue_show_duration)
 
 func _tween_hint(
