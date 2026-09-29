@@ -1,13 +1,208 @@
 [gd_scene format=3 uid="uid://40l0uc3crnjc"]
 
 [ext_resource type="Script" uid="uid://b5gpslqeoiham" path="res://src/ui/hint/hint_ui.gd" id="1_8dnes"]
-[ext_resource type="Texture2D" uid="uid://b15f78nmgsi5r" path="res://src/common/texture/ui/hint_texture.tres" id="2_1nf03"]
+[ext_resource type="Texture2D" uid="uid://b15f78nmgsi5r" path="res://src/common/texture/ui/tutorial_texture.tres" id="2_1nf03"]
+[ext_resource type="Texture2D" uid="uid://caftpu2l75g5v" path="res://assets/UI/UI_hint_box.png" id="3_yf5k5"]
+[ext_resource type="Texture2D" uid="uid://d1k85loj6sw7d" path="res://assets/UI/UI_hint_lamp_lampu aja.png" id="4_p2mef"]
+[ext_resource type="Texture2D" uid="uid://05iasdbyo02m" path="res://assets/UI/UI_hint_lamp_cahaya.png" id="5_rsd5s"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1nf03"]
+[sub_resource type="Animation" id="Animation_p2mef"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClueContent:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClueContent/ClueTexture/ClueLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ClueContent/ClueTexture/ClueLamp/ClueLight:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ClueContent:theme_override_constants/margin_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ClueContent:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yf5k5"]
+[sub_resource type="Animation" id="Animation_1nf03"]
+resource_name = "show_clue"
+length = 2.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ClueContent:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.8000002, 2.4),
+"transitions": PackedFloat32Array(0.4, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClueContent/ClueTexture/ClueLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.70000005, 0.79999995),
+"transitions": PackedFloat32Array(0, 2, 0.5, 1),
+"update": 0,
+"values": [Color(0.7058824, 0.7058824, 0.7058824, 1), Color(1, 1, 1, 1), Color(0.7058824, 0.7058824, 0.7058824, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ClueContent/ClueTexture/ClueLamp/ClueLight:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.70000005, 0.8000001),
+"transitions": PackedFloat32Array(0, 2, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ClueContent:theme_override_constants/margin_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [-30, 20]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ClueContent:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
-[node name="HintUI" type="Control" unique_id=595105102 node_paths=PackedStringArray("tutorial_hint_margin", "clue_hint_margin")]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yf5k5"]
+_data = {
+&"RESET": SubResource("Animation_p2mef"),
+&"show_clue": SubResource("Animation_1nf03")
+}
+
+[sub_resource type="Animation" id="Animation_wherd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialMargin:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialMargin:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rsd5s"]
+resource_name = "show_tutorial"
+length = 12.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialMargin:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 11.9, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialMargin:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 1, 11, 12),
+"transitions": PackedFloat32Array(3, 0, 3, 0, 0.3, 0, 0.6, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.78431374), Color(1, 1, 1, 0), Color(1, 1, 1, 0.78431374), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wherd"]
+_data = {
+&"RESET": SubResource("Animation_wherd"),
+&"show_tutorial": SubResource("Animation_rsd5s")
+}
+
+[node name="HintUI" type="Control" unique_id=595105102 node_paths=PackedStringArray("clue_content", "tutorial_margin", "clue_animation", "tutorial_animation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,113 +211,125 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_8dnes")
-tutorial_hint_margin = NodePath("Margin/Pivot/Margin1/TutorialHintMargin")
-clue_hint_margin = NodePath("Margin/Pivot/Margin2/ClueHintMargin")
-tutorial_show_margin = 1710.0
-tutorial_show_duration = 15.0
-clue_show_margin = 430.0
+clue_content = NodePath("ClueContent")
+tutorial_margin = NodePath("TutorialMargin")
+clue_animation = NodePath("ClueAnimation")
+tutorial_animation = NodePath("TutorialAnimation")
 
-[node name="Margin" type="MarginContainer" parent="." unique_id=49732365]
+[node name="TutorialMargin" type="MarginContainer" parent="." unique_id=2129719678]
+custom_minimum_size = Vector2(770, 265)
+layout_mode = 1
+offset_right = 770.0
+offset_bottom = 265.0
+mouse_filter = 2
+
+[node name="TutorialContent" type="MarginContainer" parent="TutorialMargin" unique_id=1903431323]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 0
+
+[node name="Texture" type="TextureRect" parent="TutorialMargin/TutorialContent" unique_id=230662963]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_1nf03")
+expand_mode = 5
+stretch_mode = 5
+flip_v = true
+
+[node name="Margin" type="MarginContainer" parent="TutorialMargin/TutorialContent" unique_id=1995396802]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 100
+
+[node name="Label" type="RichTextLabel" parent="TutorialMargin/TutorialContent/Margin" unique_id=1352754444]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "- [color=yellow]Aim[/color] and [color=yellow]left click[/color] to [color=cyan]move[/color]
+- [color=yellow]Hover[/color] and [color=yellow]left click[/color] to [color=cyan]interact[/color]
+- [color=yellow]Click[/color] item from inventory to [color=cyan]interact[/color] with
+- [color=yellow]Hold[/color] skip button to [color=cyan]speed up[/color]"
+
+[node name="ClueContent" type="MarginContainer" parent="." unique_id=1078240757]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1127.0
+offset_top = -659.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(1127, 659)
 mouse_filter = 2
-theme_override_constants/margin_bottom = 80
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
 
-[node name="Pivot" type="Control" parent="Margin" unique_id=455172280]
+[node name="ClueTexture" type="TextureRect" parent="ClueContent" unique_id=784333096]
+self_modulate = Color(0.70519364, 0.70519364, 0.7051936, 1)
 layout_mode = 2
 mouse_filter = 2
+texture = ExtResource("3_yf5k5")
 
-[node name="Margin1" type="MarginContainer" parent="Margin/Pivot" unique_id=142882611]
+[node name="ClueLabel" type="Label" parent="ClueContent/ClueTexture" unique_id=1978535041]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.5
+offset_top = -95.5
+offset_right = 176.5
+offset_bottom = 135.5
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 860
-theme_override_constants/margin_bottom = 160
-
-[node name="TutorialHintMargin" type="MarginContainer" parent="Margin/Pivot/Margin1" unique_id=1903431323]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_right = 0
-
-[node name="PanelContainer" type="PanelContainer" parent="Margin/Pivot/Margin1/TutorialHintMargin" unique_id=729734522]
-custom_minimum_size = Vector2(852.64, 150)
-layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_1nf03")
-
-[node name="Texture" type="TextureRect" parent="Margin/Pivot/Margin1/TutorialHintMargin/PanelContainer" unique_id=230662963]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("2_1nf03")
-expand_mode = 1
-flip_h = true
-
-[node name="Margin" type="MarginContainer" parent="Margin/Pivot/Margin1/TutorialHintMargin/PanelContainer" unique_id=1995396802]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Margin/Pivot/Margin1/TutorialHintMargin/PanelContainer/Margin" unique_id=1931344012]
-layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 32
-text = "Aim and left click to move
-Hover and left click to interact
-Select item from inventory (left panel) to use for interact
-Hold play button (beside time) to speed up"
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 111
+text = "Clue
+Found!"
 horizontal_alignment = 1
 
-[node name="Margin2" type="MarginContainer" parent="Margin/Pivot" unique_id=1388242006]
+[node name="ClueLamp" type="TextureRect" parent="ClueContent/ClueTexture" unique_id=2044665915]
+self_modulate = Color(0.70519364, 0.70519364, 0.7051936, 1)
+layout_mode = 0
+offset_left = 175.0
+offset_top = 27.0
+offset_right = 492.60052
+offset_bottom = 497.0
+mouse_filter = 2
+texture = ExtResource("4_p2mef")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ClueLight" type="TextureRect" parent="ClueContent/ClueTexture/ClueLamp" unique_id=776590702]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.80026
+offset_top = -227.0
+offset_right = 352.9149
+offset_bottom = 243.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 230
+texture = ExtResource("5_rsd5s")
+expand_mode = 3
+stretch_mode = 5
 
-[node name="ClueHintMargin" type="MarginContainer" parent="Margin/Pivot/Margin2" unique_id=1078240757]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_right = 0
+[node name="ClueAnimation" type="AnimationPlayer" parent="." unique_id=1926019821]
+libraries/ = SubResource("AnimationLibrary_yf5k5")
 
-[node name="PanelContainer" type="PanelContainer" parent="Margin/Pivot/Margin2/ClueHintMargin" unique_id=814658971]
-custom_minimum_size = Vector2(210, 50)
-layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_yf5k5")
-
-[node name="Texture" type="TextureRect" parent="Margin/Pivot/Margin2/ClueHintMargin/PanelContainer" unique_id=146851340]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("2_1nf03")
-expand_mode = 1
-flip_h = true
-
-[node name="Margin" type="MarginContainer" parent="Margin/Pivot/Margin2/ClueHintMargin/PanelContainer" unique_id=1492824911]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_top = 8
-
-[node name="Label" type="Label" parent="Margin/Pivot/Margin2/ClueHintMargin/PanelContainer/Margin" unique_id=1995722107]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 32
-text = "Clue Found!   "
-horizontal_alignment = 2
+[node name="TutorialAnimation" type="AnimationPlayer" parent="." unique_id=1200250232]
+libraries/ = SubResource("AnimationLibrary_wherd")

@@ -831,21 +831,18 @@ layout_mode = 2
 
 [node name="TextLabel" parent="Buttons/HBox/PlayButton/Margin" parent_id_path=PackedInt32Array(1502458938, 305730039) index="0" unique_id=1940812368]
 text = "Play"
-horizontal_alignment = 1
 
 [node name="SettingsButton" parent="Buttons/HBox" unique_id=139548929 instance=ExtResource("2_2u4md")]
 layout_mode = 2
 
 [node name="TextLabel" parent="Buttons/HBox/SettingsButton/Margin" parent_id_path=PackedInt32Array(139548929, 305730039) index="0" unique_id=1940812368]
 text = "Settings"
-horizontal_alignment = 1
 
 [node name="QuitButton" parent="Buttons/HBox" unique_id=132011055 instance=ExtResource("2_2u4md")]
 layout_mode = 2
 
 [node name="TextLabel" parent="Buttons/HBox/QuitButton/Margin" parent_id_path=PackedInt32Array(132011055, 305730039) index="0" unique_id=1940812368]
 text = "Quit"
-horizontal_alignment = 1
 
 [node name="SettingsUI" parent="." unique_id=249758922 instance=ExtResource("9_nhgww")]
 visible = false

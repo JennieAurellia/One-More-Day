@@ -73,6 +73,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="DoorOpen" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1198240880]
 stream = ExtResource("4_vnxg4")
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "door_open"
@@ -80,36 +81,45 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="DoorClose" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=2052966455]
 stream = ExtResource("5_t1p1a")
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "door_close"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="ShowerOpen" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1881271807]
+position = Vector2(251, 696)
 stream = ExtResource("6_dyxeh")
+max_distance = 1000.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "shower_open"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="ShowerClose" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1171684174]
+position = Vector2(251, 696)
 stream = ExtResource("7_skg0w")
+max_distance = 1000.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "shower_close"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="WardrobeOpen" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=77026017]
+position = Vector2(463, 138)
 stream = ExtResource("8_4cy4p")
 volume_db = -2.0
+max_distance = 1000.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "wardrobe_open"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="WardrobeClose" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1452026071]
+position = Vector2(463, 138)
 stream = ExtResource("9_3epof")
 volume_db = -8.0
+max_distance = 1000.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "wardrobe_close"
@@ -117,6 +127,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="WardrobeBox" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=79493502]
 stream = ExtResource("12_ovl1o")
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "wardrobe_box"
@@ -125,6 +136,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 [node name="WardrobeCloset" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1785753947]
 stream = ExtResource("8_4cy4p")
 pitch_scale = 2.0
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "wardrobe_closet"
@@ -132,6 +144,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="DeskOpen" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1209635439]
 stream = ExtResource("13_ovl1o")
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "desk_open"
@@ -139,6 +152,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="DeskClose" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=348576510]
 stream = ExtResource("14_ovl1o")
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "desk_close"
@@ -146,6 +160,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="Sit" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=231731482]
 stream = ExtResource("14_nhl1f")
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "sit"
@@ -154,14 +169,17 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 [node name="SitSofa" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1540073107]
 stream = ExtResource("15_ovl1o")
 volume_db = 2.0
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "sit_sofa"
 metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="SitToilet" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=900639270]
+position = Vector2(219, 592)
 stream = ExtResource("16_t8io6")
 volume_db = 4.0
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "sit_toilet"
@@ -169,6 +187,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="PlateDrop" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1860552080]
 stream = ExtResource("10_g1u4r")
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "plate_drop"
@@ -176,6 +195,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 
 [node name="Eat" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=1801618572]
 stream = ExtResource("11_nf6mi")
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "eat"
@@ -184,6 +204,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 [node name="PhoneRing" type="AudioStreamPlayer2D" parent="SFXNodes" unique_id=364700282]
 stream = ExtResource("14_5p07o")
 volume_db = -12.0
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "phone_ring"
@@ -193,6 +214,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 process_mode = 3
 stream = ExtResource("15_ffr1o")
 volume_db = -6.0
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "car_crash"
@@ -202,6 +224,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 process_mode = 3
 stream = ExtResource("12_nf6mi")
 volume_db = 4.0
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "time_reset"
@@ -211,6 +234,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 process_mode = 3
 stream = ExtResource("26_upiwq")
 volume_db = 4.0
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "ending"
@@ -223,6 +247,7 @@ process_mode = 3
 stream = ExtResource("13_n7gm8")
 volume_db = 4.0
 pitch_scale = 0.45
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "button_hover"
@@ -233,6 +258,7 @@ process_mode = 3
 stream = ExtResource("14_5kiff")
 volume_db = 4.0
 pitch_scale = 0.5
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "button_press"
@@ -242,6 +268,7 @@ metadata/_custom_type_script = "uid://xbf0rpr1bbbu"
 process_mode = 3
 stream = ExtResource("21_f7i3c")
 pitch_scale = 0.5
+attenuation = 0.0
 bus = &"SFX"
 script = ExtResource("7_kw8fs")
 key_name = "hint"
@@ -258,6 +285,7 @@ metadata/_custom_type_script = "uid://pe4f8jubqs0x"
 [node name="Walking1" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=1474366032]
 stream = ExtResource("5_1hkc2")
 pitch_scale = 1.25
+attenuation = 0.0
 bus = &"SFX"
 parameters/looping = true
 script = ExtResource("4_wi5rl")
@@ -266,6 +294,7 @@ metadata/_custom_type_script = "uid://pe4f8jubqs0x"
 
 [node name="Walking2" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=227661816]
 stream = ExtResource("5_1hkc2")
+attenuation = 0.0
 bus = &"SFX"
 parameters/looping = true
 script = ExtResource("4_wi5rl")
@@ -273,8 +302,10 @@ key_name = "walking_2"
 metadata/_custom_type_script = "uid://pe4f8jubqs0x"
 
 [node name="Cooking" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=1613692525]
+position = Vector2(884, 93)
 stream = ExtResource("4_oaqwx")
 volume_db = -2.0
+max_distance = 1000.0
 bus = &"SFX"
 parameters/looping = true
 script = ExtResource("4_wi5rl")
@@ -282,8 +313,10 @@ key_name = "cooking"
 metadata/_custom_type_script = "uid://pe4f8jubqs0x"
 
 [node name="Showering" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=639044621]
+position = Vector2(251, 696)
 stream = ExtResource("5_tsa1e")
 volume_db = -2.0
+max_distance = 1000.0
 bus = &"SFX"
 parameters/looping = true
 script = ExtResource("4_wi5rl")
@@ -293,11 +326,9 @@ metadata/_custom_type_script = "uid://pe4f8jubqs0x"
 [node name="Rummage" type="AudioStreamPlayer2D" parent="SoundNodes" unique_id=436596710]
 stream = ExtResource("22_t8io6")
 volume_db = -4.0
+attenuation = 0.0
 bus = &"SFX"
 parameters/looping = true
 script = ExtResource("4_wi5rl")
 key_name = "rummage"
 metadata/_custom_type_script = "uid://pe4f8jubqs0x"
-
-[node name="AudioListener" type="AudioListener2D" parent="." unique_id=891480398]
-current = true

@@ -23,7 +23,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_ki65x")
-flip_h = true
 
 [node name="HoverTextureRect" type="TextureRect" parent="." unique_id=1665588831]
 visible = false
@@ -34,11 +33,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_a0th0")
-flip_h = true
 
 [node name="PressTextureRect" type="TextureRect" parent="." unique_id=871399405]
 visible = false
-modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +44,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_a0th0")
-flip_h = true
 
 [node name="Margin" type="MarginContainer" parent="." unique_id=305730039]
 layout_mode = 1
@@ -55,12 +52,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 110
-theme_override_constants/margin_right = 220
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 45
 
 [node name="TextLabel" type="Label" parent="Margin" unique_id=1940812368]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.39215687)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 54
 text = "Button"
+horizontal_alignment = 1

@@ -4,26 +4,17 @@ class_name HintUI
 static var instance : HintUI
 
 @export_subgroup("References")
-@export var tutorial_hint_margin : MarginContainer
-@export var clue_hint_margin : MarginContainer
+@export var clue_content : MarginContainer
+@export var tutorial_margin : MarginContainer
+@export var clue_animation : AnimationPlayer
+@export var tutorial_animation : AnimationPlayer
 
-@export_subgroup("Tutorial Hint Settings")
-@export var tutorial_normal_margin : float = 0.0
-@export var tutorial_show_margin : float = 10.0
-@export var tutorial_show_duration : float = 0.5
-
-@export_subgroup("Clue Hint Settings")
-@export var clue_normal_margin : float = 0.0
-@export var clue_show_margin : float = 8.0
-@export var clue_show_duration : float = 0.5
-
-@export_subgroup("Tween Settings")
-@export var tween_duration : float = 0.5
+@export_subgroup("Animation Settings")
+@export var show_clue_animation_name : String = "show_clue"
+@export var show_tutorial_animation_name : String = "show_tutorial"
 
 @export_subgroup("Audio Settings")
 @export var hint_sfx_name : String = "hint"
-
-var _hint_tween : Tween
 
 # ==================================================================================================
 #                Virtual methods
@@ -34,54 +25,22 @@ func _exit_tree() -> void: instance = null
 
 func _ready() -> void:
 	# Assertion check
-	assert(tutorial_hint_margin, "tutorial_hint_margin is missing")
-	assert(clue_hint_margin, "clue_hint_margin is missing")
+	assert(clue_content, "clue_content is missing")
+	assert(tutorial_margin, "tutorial_margin is missing")
+	assert(clue_animation, "clue_animation is missing")
+	assert(tutorial_animation, "tutorial_animation is missing")
 	# Connect signals
 	EventFlag.instance.clue_hinted.connect(show_clue_hint)
 	# Initialize
-	hide()
+	tutorial_margin.hide()
+	clue_content.hide()
 
 # ==================================================================================================
 #                Hint methods
 # ==================================================================================================
-func show_tutorial_hint() -> void:
-	_tween_hint(
-		tutorial_hint_margin, tutorial_normal_margin, tutorial_show_margin, tutorial_show_duration
-	)
-
 func show_clue_hint() -> void:
-	if tutorial_hint_margin.visible: tutorial_hint_margin.hide()
-	_tween_hint(clue_hint_margin, clue_normal_margin, clue_show_margin, clue_show_duration)
-
-func _tween_hint(
-	hint_margin:MarginContainer, normal_margin:float, show_margin:float, show_duration:float
-):
-	# Kill any tween already running so repeated calls don't stack.
-	if _hint_tween and _hint_tween.is_valid(): _hint_tween.kill()
-	# Show
-	show()
-	# Play audio
+	clue_animation.play(show_clue_animation_name)
 	AudioManager.play_sfx(hint_sfx_name)
-	# Create tween
-	_hint_tween = create_tween()
-	_hint_tween.set_trans(Tween.TRANS_SINE)
-	# Animate out (normal -> show)
-	_hint_tween.set_ease(Tween.EASE_OUT)
-	_hint_tween.tween_property(
-		hint_margin,
-		"theme_override_constants/margin_right",
-		show_margin,
-		tween_duration
-	)
-	# Hold
-	_hint_tween.tween_interval(show_duration)
-	# Animate back (show -> normal)
-	_hint_tween.set_ease(Tween.EASE_IN)
-	_hint_tween.tween_property(
-		hint_margin,
-		"theme_override_constants/margin_right",
-		normal_margin,
-		tween_duration
-	)
-	# Hide
-	_hint_tween.tween_callback(hide)
+
+func show_tutorial_hint() -> void:
+	tutorial_animation.play(show_tutorial_animation_name)

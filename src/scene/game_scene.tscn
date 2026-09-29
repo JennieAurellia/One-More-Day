@@ -339,6 +339,8 @@ room_zoom_dictionary = Dictionary[int, float]({
 initial_room = 1
 metadata/_custom_type_script = "uid://dlqs7m7u628jr"
 
+[node name="AudioListener" type="AudioListener2D" parent="Camera" unique_id=2024267361]
+
 [node name="RoomFog" type="Node2D" parent="." unique_id=814669569 node_paths=PackedStringArray("room_rect_dictionary")]
 z_index = 5
 script = ExtResource("7_aph4m")
@@ -473,6 +475,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="BackCanvasLayer" type="CanvasLayer" parent="." unique_id=1047856020]
+layer = -100
+
+[node name="BlackBackground" type="ColorRect" parent="BackCanvasLayer" unique_id=190911755]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [editable path="Door/BedroomDoor"]
 [editable path="Door/BedroomDoor/InteractControl/InteractHoverPivot/PushInteractHoverUI"]
