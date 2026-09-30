@@ -11,6 +11,15 @@ class_name WardrobeUI
 @export var box_2_interact_hover_ui : Control
 @export var box_2_closed : TextureRect
 @export var box_2_opened : TextureRect
+@export_subgroup("References Cloth 1")
+@export var cloth_1_button : Button
+@export var cloth_1_interact_hover_ui : Control
+@export_subgroup("References Cloth 2")
+@export var cloth_2_button : Button
+@export var cloth_2_interact_hover_ui : Control
+@export_subgroup("References Cloth 3")
+@export var cloth_3_button : Button
+@export var cloth_3_interact_hover_ui : Control
 @export_subgroup("References Closet")
 @export var closet_button : Button
 @export var closet_interact_hover_ui : Control
@@ -23,10 +32,12 @@ class_name WardrobeUI
 @export var close_button : Button
 
 @export_subgroup("Item Settings")
+@export var key_item_data : ItemData
 @export var found_item_data : ItemData
 
 @export_subgroup("Audio Settings")
 @export var box_sfx_name : String = "wardrobe_box"
+@export var cloth_sfx_name : String = "wardrobe_cloth"
 @export var closet_sfx_name : String = "wardrobe_closet"
 
 # ==================================================================================================
@@ -44,6 +55,15 @@ func _ready() -> void:
 	assert(box_2_closed, "box_2_closed is missing")
 	assert(box_2_opened, "box_2_opened is missing")
 	
+	assert(cloth_1_button, "cloth_1_button is missing")
+	assert(cloth_1_interact_hover_ui, "cloth_1_interact_hover_ui is missing")
+	
+	assert(cloth_2_button, "cloth_2_button is missing")
+	assert(cloth_2_interact_hover_ui, "cloth_2_interact_hover_ui is missing")
+	
+	assert(cloth_3_button, "cloth_3_button is missing")
+	assert(cloth_3_interact_hover_ui, "cloth_3_interact_hover_ui is missing")
+	
 	assert(closet_button, "closet_button is missing")
 	assert(closet_interact_hover_ui, "closet_interact_hover_ui is missing")
 	assert(closet_opened, "closet_opened is missing")
@@ -54,6 +74,7 @@ func _ready() -> void:
 	
 	assert(close_button, "close_button is missing")
 	
+	assert(key_item_data, "key_item_data is empty")
 	assert(found_item_data, "found_item_data is empty")
 	
 	# Connect signals
@@ -70,6 +91,18 @@ func _ready() -> void:
 	box_2_button.mouse_entered.connect(_on_box_2_mouse_entered)
 	box_2_button.mouse_exited.connect(_on_box_2_mouse_exited)
 	box_2_button.pressed.connect(_on_box_2_pressed)
+	
+	cloth_1_button.mouse_entered.connect(_on_cloth_1_mouse_entered)
+	cloth_1_button.mouse_exited.connect(_on_cloth_1_mouse_exited)
+	cloth_1_button.pressed.connect(_on_cloth_1_pressed)
+	
+	cloth_2_button.mouse_entered.connect(_on_cloth_2_mouse_entered)
+	cloth_2_button.mouse_exited.connect(_on_cloth_2_mouse_exited)
+	cloth_2_button.pressed.connect(_on_cloth_2_pressed)
+	
+	cloth_3_button.mouse_entered.connect(_on_cloth_3_mouse_entered)
+	cloth_3_button.mouse_exited.connect(_on_cloth_3_mouse_exited)
+	cloth_3_button.pressed.connect(_on_cloth_3_pressed)
 	
 	closet_button.mouse_entered.connect(_on_closet_mouse_entered)
 	closet_button.mouse_exited.connect(_on_closet_mouse_exited)
@@ -90,6 +123,12 @@ func _ready() -> void:
 	box_2_closed.show()
 	box_2_opened.hide()
 	
+	cloth_1_interact_hover_ui.hide()
+	
+	cloth_2_interact_hover_ui.hide()
+	
+	cloth_3_interact_hover_ui.hide()
+	
 	closet_interact_hover_ui.hide()
 	closet_opened.hide()
 	
@@ -109,11 +148,17 @@ func _on_wardrobe_opened():
 
 func _on_box_1_mouse_entered(): box_1_interact_hover_ui.show()
 func _on_box_2_mouse_entered(): box_2_interact_hover_ui.show()
+func _on_cloth_1_mouse_entered(): cloth_1_interact_hover_ui.show()
+func _on_cloth_2_mouse_entered(): cloth_2_interact_hover_ui.show()
+func _on_cloth_3_mouse_entered(): cloth_3_interact_hover_ui.show()
 func _on_closet_mouse_entered(): closet_interact_hover_ui.show()
 func _on_item_mouse_entered(): item_interact_hover_ui.show()
 
 func _on_box_1_mouse_exited(): box_1_interact_hover_ui.hide()
 func _on_box_2_mouse_exited(): box_2_interact_hover_ui.hide()
+func _on_cloth_1_mouse_exited(): cloth_1_interact_hover_ui.hide()
+func _on_cloth_2_mouse_exited(): cloth_2_interact_hover_ui.hide()
+func _on_cloth_3_mouse_exited(): cloth_3_interact_hover_ui.hide()
 func _on_closet_mouse_exited(): closet_interact_hover_ui.hide()
 func _on_item_mouse_exited(): item_interact_hover_ui.hide()
 
@@ -128,6 +173,19 @@ func _on_box_2_pressed():
 	box_2_closed.hide()
 	box_2_opened.show()
 	AudioManager.play_sfx(box_sfx_name)
+
+func _on_cloth_1_pressed():
+	cloth_1_button.hide()
+	AudioManager.play_sfx(cloth_sfx_name)
+
+func _on_cloth_2_pressed():
+	cloth_2_button.hide()
+	AudioManager.play_sfx(cloth_sfx_name)
+
+func _on_cloth_3_pressed():
+	cloth_3_button.hide()
+	InventoryManager.add_item(key_item_data)
+	AudioManager.play_sfx(cloth_sfx_name)
 
 func _on_closet_pressed():
 	closet_button.hide()

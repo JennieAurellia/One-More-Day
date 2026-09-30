@@ -13,6 +13,7 @@ class_name MakeupDeskUI
 @export var close_button : Button
 
 @export_subgroup("Item Settings")
+@export var key_item_data : ItemData
 @export var found_item_data : ItemData
 
 @export_subgroup("Audio Settings")
@@ -36,6 +37,7 @@ func _ready() -> void:
 	
 	assert(close_button, "close_button is missing")
 	
+	assert(key_item_data, "key_item_data is empty")
 	assert(found_item_data, "found_item_data is empty")
 	
 	# Connect signals
@@ -77,18 +79,24 @@ func _on_makeup_desk_hidden():
 	if desk_opened.visible: AudioManager.play_sfx(close_sfx_name)
 	hide()
 
-func _on_desk_open_mouse_entered(): desk_open_interact_hover_ui.show()
+func _on_desk_open_mouse_entered():
+	if !InventoryManager.selected_item: return
+	if InventoryManager.selected_item.id == key_item_data.id: desk_open_interact_hover_ui.show()
+
 func _on_item_mouse_entered(): item_interact_hover_ui.show()
 
 func _on_desk_open_mouse_exited(): desk_open_interact_hover_ui.hide()
 func _on_item_mouse_exited(): item_interact_hover_ui.hide()
 
 func _on_desk_open_pressed():
-	desk_open_button.hide()
-	desk_opened.show()
-	item_button.visible = !_is_item_taken
-	item_texture_rect.visible = !_is_item_taken
-	AudioManager.play_sfx(open_sfx_name)
+	if !InventoryManager.selected_item: return
+	if InventoryManager.selected_item.id == key_item_data.id:
+		desk_open_button.hide()
+		desk_opened.show()
+		item_button.visible = !_is_item_taken
+		item_texture_rect.visible = !_is_item_taken
+		InventoryManager.select_item(null)
+		AudioManager.play_sfx(open_sfx_name)
 
 func _on_item_pressed():
 	_is_item_taken = true

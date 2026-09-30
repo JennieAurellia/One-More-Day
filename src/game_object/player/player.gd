@@ -70,6 +70,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			_left_mouse_interaction()
+		elif event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+			InventoryManager.select_item(null)
 
 # ==================================================================================================
 #                Player methods

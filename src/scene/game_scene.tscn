@@ -69,7 +69,7 @@ shader_parameter/roll_speed = 2.5
 shader_parameter/roll_size = 15.0
 shader_parameter/roll_variation = 1.8
 shader_parameter/distort_intensity = 0.010000000475
-shader_parameter/aberration = 0.010000047974999982
+shader_parameter/aberration = 0.01000004797499998
 shader_parameter/noise_opacity = 0.2000000095
 shader_parameter/noise_speed = 4.0
 shader_parameter/static_noise_intensity = 0.2000000095
@@ -416,37 +416,6 @@ metadata/_custom_type_script = "uid://b2yb1ecj1tt1x"
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="." unique_id=970134607]
 
-[node name="VBox" type="VBoxContainer" parent="UICanvasLayer" unique_id=888806846]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -186.0
-offset_right = 270.0
-offset_bottom = 186.0
-grow_vertical = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = -28
-
-[node name="InventoryUI" parent="UICanvasLayer/VBox" unique_id=901225113 instance=ExtResource("3_iavex")]
-layout_mode = 2
-
-[node name="Margin" type="MarginContainer" parent="UICanvasLayer/VBox" unique_id=1344543870]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/margin_left = 7
-
-[node name="HBox" type="HBoxContainer" parent="UICanvasLayer/VBox/Margin" unique_id=868818191]
-layout_mode = 2
-
-[node name="GameTimerUI" parent="UICanvasLayer/VBox/Margin/HBox" unique_id=1455814715 instance=ExtResource("13_hn8je")]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="SpeedUpUI" parent="UICanvasLayer/VBox/Margin/HBox" unique_id=559181084 node_paths=PackedStringArray("crt_effect") instance=ExtResource("36_00eno")]
-layout_mode = 2
-size_flags_vertical = 0
-crt_effect = NodePath("../../../../BackBufferCopy/CrtEffect")
-
 [node name="InteractDisplay" type="Control" parent="UICanvasLayer" unique_id=401843987]
 layout_mode = 3
 anchors_preset = 15
@@ -478,6 +447,39 @@ layout_mode = 1
 [node name="TrashCanUI" parent="UICanvasLayer/InteractDisplay" unique_id=1782754255 instance=ExtResource("42_6xass")]
 visible = false
 layout_mode = 1
+
+[node name="VBox" type="VBoxContainer" parent="UICanvasLayer" unique_id=888806846]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -186.0
+offset_right = 270.0
+offset_bottom = 186.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = -28
+
+[node name="InventoryUI" parent="UICanvasLayer/VBox" unique_id=901225113 instance=ExtResource("3_iavex")]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="UICanvasLayer/VBox" unique_id=1344543870]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = -12
+
+[node name="HBox" type="HBoxContainer" parent="UICanvasLayer/VBox/Margin" unique_id=868818191]
+layout_mode = 2
+
+[node name="GameTimerUI" parent="UICanvasLayer/VBox/Margin/HBox" unique_id=1455814715 instance=ExtResource("13_hn8je")]
+custom_minimum_size = Vector2(204, 85)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="SpeedUpUI" parent="UICanvasLayer/VBox/Margin/HBox" unique_id=559181084 node_paths=PackedStringArray("crt_effect") instance=ExtResource("36_00eno")]
+layout_mode = 2
+size_flags_vertical = 0
+crt_effect = NodePath("../../../../BackBufferCopy/CrtEffect")
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
 visible = false

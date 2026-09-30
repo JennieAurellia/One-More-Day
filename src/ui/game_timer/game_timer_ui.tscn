@@ -7,8 +7,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjex3"]
 
 [node name="GameTimerUI" type="PanelContainer" unique_id=1455814715 node_paths=PackedStringArray("time_label")]
-offset_right = 186.0
-offset_bottom = 70.0
+offset_right = 204.00002
+offset_bottom = 85.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_hjex3")
 script = ExtResource("1_qevgx")
 time_label = NodePath("Background/Margin/HBox/TimeLabel")
@@ -17,7 +17,7 @@ time_label = NodePath("Background/Margin/HBox/TimeLabel")
 custom_minimum_size = Vector2(186, 70)
 layout_mode = 2
 texture = ExtResource("2_q1fj3")
-expand_mode = 1
+expand_mode = 3
 stretch_mode = 5
 flip_v = true
 
@@ -28,10 +28,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 52
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 23
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 22
 
 [node name="HBox" type="HBoxContainer" parent="Background/Margin" unique_id=250358011]
 layout_mode = 2
@@ -41,11 +41,20 @@ layout_mode = 2
 theme_override_constants/margin_bottom = 9
 
 [node name="TimeIcon" type="TextureRect" parent="Background/Margin/HBox/Margin" unique_id=659494629]
+clip_children = 2
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 texture = ExtResource("3_hjex3")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="WhiteColor" type="ColorRect" parent="Background/Margin/HBox/Margin/TimeIcon" unique_id=1369074103]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TimeLabel" type="Label" parent="Background/Margin/HBox" unique_id=642574554]
 layout_mode = 2

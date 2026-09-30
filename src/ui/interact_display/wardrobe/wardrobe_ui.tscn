@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://pffwhjo2a0p0"]
 
 [ext_resource type="Script" uid="uid://ca3ixf7n3sewn" path="res://src/ui/interact_display/wardrobe/wardrobe_ui.gd" id="1_i4mpn"]
+[ext_resource type="Resource" uid="uid://hnyi5q6ba3xo" path="res://data/item/key_item.tres" id="2_4672o"]
 [ext_resource type="Resource" uid="uid://bxwnet5kinnyh" path="res://data/item/gift_item.tres" id="2_aqjug"]
 [ext_resource type="Texture2D" uid="uid://c7gfe46ecqqbw" path="res://assets/item/closet pop up/dalam lemari_revision.png" id="3_aqjug"]
 [ext_resource type="Texture2D" uid="uid://dqr2cmwmdjsta" path="res://assets/item/closet pop up/box di atas_close.png" id="4_4aj7o"]
@@ -11,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dj1ohw2ge8qyj" path="res://assets/item/closet pop up/box di bawah_close.png" id="6_ilrht"]
 [ext_resource type="Texture2D" uid="uid://ceb5ku4xcwvel" path="res://assets/item/closet pop up/lemari kecil_open_revision.png" id="8_ilrht"]
 
-[node name="WardrobeUI" type="Control" unique_id=822685683 node_paths=PackedStringArray("box_1_button", "box_1_interact_hover_ui", "box_1_closed", "box_1_opened", "box_2_button", "box_2_interact_hover_ui", "box_2_closed", "box_2_opened", "closet_button", "closet_interact_hover_ui", "closet_opened", "item_button", "item_interact_hover_ui", "item_texture_rect", "close_button")]
+[node name="WardrobeUI" type="Control" unique_id=822685683 node_paths=PackedStringArray("box_1_button", "box_1_interact_hover_ui", "box_1_closed", "box_1_opened", "box_2_button", "box_2_interact_hover_ui", "box_2_closed", "box_2_opened", "cloth_1_button", "cloth_1_interact_hover_ui", "cloth_2_button", "cloth_2_interact_hover_ui", "cloth_3_button", "cloth_3_interact_hover_ui", "closet_button", "closet_interact_hover_ui", "closet_opened", "item_button", "item_interact_hover_ui", "item_texture_rect", "close_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +28,12 @@ box_2_button = NodePath("Content/Box2Button")
 box_2_interact_hover_ui = NodePath("Content/Box2Button/InteractHoverUI")
 box_2_closed = NodePath("Content/Box2Closed")
 box_2_opened = NodePath("Content/Box2Opened")
+cloth_1_button = NodePath("Content/Cloth1Button")
+cloth_1_interact_hover_ui = NodePath("Content/Cloth1Button/InteractHoverUI")
+cloth_2_button = NodePath("Content/Cloth2Button")
+cloth_2_interact_hover_ui = NodePath("Content/Cloth2Button/InteractHoverUI")
+cloth_3_button = NodePath("Content/Cloth3Button")
+cloth_3_interact_hover_ui = NodePath("Content/Cloth3Button/InteractHoverUI")
 closet_button = NodePath("Content/ClosetButton")
 closet_interact_hover_ui = NodePath("Content/ClosetButton/InteractHoverUI")
 closet_opened = NodePath("Content/ClosetOpened")
@@ -34,6 +41,7 @@ item_button = NodePath("Content/ClosetOpened/ItemButton")
 item_interact_hover_ui = NodePath("Content/ClosetOpened/ItemButton/InteractHoverUI")
 item_texture_rect = NodePath("Content/ClosetOpened/ItemTextureRect")
 close_button = NodePath("CloseButton")
+key_item_data = ExtResource("2_4672o")
 found_item_data = ExtResource("2_aqjug")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1110392974]
@@ -163,9 +171,10 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 
 [node name="TextLabel" parent="Content/ClosetOpened/ItemButton/InteractHoverUI" index="1" unique_id=1180517548]
-offset_left = 25.000305
-offset_right = 130.0003
-offset_bottom = 40.0
+offset_left = 17.666666
+offset_top = -5.3333335
+offset_right = 122.666664
+offset_bottom = 39.666668
 scale = Vector2(0.333, 0.333)
 theme_override_font_sizes/font_size = 42
 text = "Take?"
@@ -198,9 +207,10 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 
 [node name="TextLabel" parent="Content/Box1Button/InteractHoverUI" index="1" unique_id=1180517548]
-offset_left = 24.00055
-offset_right = 145.00055
-offset_bottom = 40.0
+offset_left = 14.999979
+offset_top = -5.6666665
+offset_right = 135.99998
+offset_bottom = 39.333332
 scale = Vector2(0.333, 0.333)
 theme_override_font_sizes/font_size = 42
 text = "Open?"
@@ -233,12 +243,100 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 
 [node name="TextLabel" parent="Content/Box2Button/InteractHoverUI" index="1" unique_id=1180517548]
-offset_left = 24.00055
-offset_right = 145.00055
-offset_bottom = 40.0
+offset_left = 16.333313
+offset_top = -6.0
+offset_right = 137.33331
+offset_bottom = 39.0
 scale = Vector2(0.333, 0.333)
 theme_override_font_sizes/font_size = 42
 text = "Open?"
+
+[node name="Cloth1Button" type="Button" parent="Content" unique_id=9941426]
+layout_mode = 1
+offset_left = 789.0
+offset_top = 164.0
+offset_right = 965.0
+offset_bottom = 244.0
+mouse_filter = 1
+flat = true
+
+[node name="InteractHoverUI" parent="Content/Cloth1Button" unique_id=320163783 instance=ExtResource("4_yrc6h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="TextLabel" parent="Content/Cloth1Button/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 10.333435
+offset_top = -5.6666946
+offset_right = 152.33344
+offset_bottom = 39.333305
+scale = Vector2(0.333, 0.333)
+theme_override_font_sizes/font_size = 42
+text = "Search?"
+
+[node name="Cloth2Button" type="Button" parent="Content" unique_id=1661355768]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 367.0
+offset_right = 1012.0
+offset_bottom = 461.0
+mouse_filter = 1
+flat = true
+
+[node name="InteractHoverUI" parent="Content/Cloth2Button" unique_id=1533055415 instance=ExtResource("4_yrc6h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="TextLabel" parent="Content/Cloth2Button/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 10.333435
+offset_top = -5.6666946
+offset_right = 152.33344
+offset_bottom = 39.333305
+scale = Vector2(0.333, 0.333)
+theme_override_font_sizes/font_size = 42
+text = "Search?"
+
+[node name="Cloth3Button" type="Button" parent="Content" unique_id=274439364]
+layout_mode = 0
+offset_left = 784.0
+offset_top = 589.0
+offset_right = 993.0
+offset_bottom = 696.0
+mouse_filter = 1
+flat = true
+
+[node name="InteractHoverUI" parent="Content/Cloth3Button" unique_id=161024578 instance=ExtResource("4_yrc6h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="TextLabel" parent="Content/Cloth3Button/InteractHoverUI" index="1" unique_id=1180517548]
+offset_left = 10.333435
+offset_top = -5.6666946
+offset_right = 152.33344
+offset_bottom = 39.333305
+scale = Vector2(0.333, 0.333)
+theme_override_font_sizes/font_size = 42
+text = "Search?"
 
 [node name="ClosetButton" type="Button" parent="Content" unique_id=684899657]
 layout_mode = 1
@@ -268,9 +366,10 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 
 [node name="TextLabel" parent="Content/ClosetButton/InteractHoverUI" index="1" unique_id=1180517548]
-offset_left = 24.000305
-offset_right = 145.0003
-offset_bottom = 40.0
+offset_left = 16.333332
+offset_top = -5.6666665
+offset_right = 137.33333
+offset_bottom = 39.333332
 scale = Vector2(0.333, 0.333)
 theme_override_font_sizes/font_size = 42
 text = "Open?"
@@ -278,4 +377,7 @@ text = "Open?"
 [editable path="Content/ClosetOpened/ItemButton/InteractHoverUI"]
 [editable path="Content/Box1Button/InteractHoverUI"]
 [editable path="Content/Box2Button/InteractHoverUI"]
+[editable path="Content/Cloth1Button/InteractHoverUI"]
+[editable path="Content/Cloth2Button/InteractHoverUI"]
+[editable path="Content/Cloth3Button/InteractHoverUI"]
 [editable path="Content/ClosetButton/InteractHoverUI"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dn48e70m4ridu"]
 
 [ext_resource type="Script" uid="uid://bu48q21xy7o4b" path="res://src/ui/interact_display/makeup_desk/makeup_desk_ui.gd" id="1_e1821"]
+[ext_resource type="Resource" uid="uid://hnyi5q6ba3xo" path="res://data/item/key_item.tres" id="2_cetty"]
 [ext_resource type="Texture2D" uid="uid://sbh4vx0s8cy1" path="res://assets/item/make up drawer pop up/drawer_closed.png" id="2_le4lq"]
 [ext_resource type="Resource" uid="uid://dojnxo37q6u6t" path="res://data/item/diary_item.tres" id="2_sm2xp"]
 [ext_resource type="Texture2D" uid="uid://b1usfgwwcidgi" path="res://assets/item/make up drawer pop up/drawer_open.png" id="3_67u2b"]
@@ -29,6 +30,7 @@ item_button = NodePath("Content/DeskOpened/ItemButton")
 item_interact_hover_ui = NodePath("Content/DeskOpened/ItemButton/InteractHoverUI")
 item_texture_rect = NodePath("Content/DeskOpened/ItemTextureRect")
 close_button = NodePath("CloseButton")
+key_item_data = ExtResource("2_cetty")
 found_item_data = ExtResource("2_sm2xp")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1001747886]
@@ -191,8 +193,8 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 
 [node name="TextLabel" parent="Content/DeskOpened/ItemButton/InteractHoverUI" index="1" unique_id=1180517548]
-offset_left = 26.0
-offset_right = 131.0
+offset_left = 17.0
+offset_right = 122.0
 offset_bottom = 40.0
 scale = Vector2(0.333, 0.333)
 theme_override_font_sizes/font_size = 42
@@ -226,9 +228,10 @@ grow_vertical = 2
 scale = Vector2(5, 5)
 
 [node name="TextLabel" parent="Content/DeskOpenButton/InteractHoverUI" index="1" unique_id=1180517548]
-offset_left = 22.799927
-offset_right = 224.79993
-offset_bottom = 69.0
+offset_left = 13.399902
+offset_top = -5.6000366
+offset_right = 215.3999
+offset_bottom = 68.39996
 scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 70
 text = "Open?"
