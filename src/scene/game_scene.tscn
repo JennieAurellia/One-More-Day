@@ -48,12 +48,37 @@
 [ext_resource type="PackedScene" uid="uid://8it1c7iihrwf" path="res://src/ui/interact_display/trash_can/trash_can_ui.tscn" id="42_6xass"]
 [ext_resource type="PackedScene" uid="uid://6lc3qglvh5w2" path="res://src/ui/cutscene/custscene_ui.tscn" id="43_4pfsh"]
 [ext_resource type="PackedScene" uid="uid://66xfpcwgepwu" path="res://src/ui/dialogue/transparent/transparent_dialogue_ui.tscn" id="44_nl8i3"]
+[ext_resource type="Shader" uid="uid://bnkyia6x4jqk0" path="res://src/common/shader/crt.gdshader" id="49_hbqi6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fimk8"]
 shader = ExtResource("35_vfhfr")
 shader_parameter/brightness = 1.0
 shader_parameter/contrast = 1.0
 shader_parameter/saturation = 0.50000002375
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbqi6"]
+shader = ExtResource("49_hbqi6")
+shader_parameter/overlay = true
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/brightness = 1.0
+shader_parameter/scanlines_opacity = 0.10000000475
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/roll = true
+shader_parameter/roll_speed = 2.5
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.010000000475
+shader_parameter/aberration = 0.010000047974999982
+shader_parameter/noise_opacity = 0.2000000095
+shader_parameter/noise_speed = 4.0
+shader_parameter/static_noise_intensity = 0.2000000095
+shader_parameter/pixelate = true
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [node name="GameScene" type="Node2D" unique_id=14823134 node_paths=PackedStringArray("outside_door")]
 script = ExtResource("1_1c8dc")
@@ -417,9 +442,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="SpeedUpUI" parent="UICanvasLayer/VBox/Margin/HBox" unique_id=559181084 instance=ExtResource("36_00eno")]
+[node name="SpeedUpUI" parent="UICanvasLayer/VBox/Margin/HBox" unique_id=559181084 node_paths=PackedStringArray("crt_effect") instance=ExtResource("36_00eno")]
 layout_mode = 2
 size_flags_vertical = 0
+crt_effect = NodePath("../../../../BackBufferCopy/CrtEffect")
 
 [node name="InteractDisplay" type="Control" parent="UICanvasLayer" unique_id=401843987]
 layout_mode = 3
@@ -472,6 +498,24 @@ material = SubResource("ShaderMaterial_fimk8")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="UICanvasLayer" unique_id=195285437]
+position = Vector2(100, 100)
+rect = Rect2(-100, -100, 1920, 1080)
+
+[node name="CrtEffect" type="ColorRect" parent="UICanvasLayer/BackBufferCopy" unique_id=358004419]
+visible = false
+material = SubResource("ShaderMaterial_hbqi6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
