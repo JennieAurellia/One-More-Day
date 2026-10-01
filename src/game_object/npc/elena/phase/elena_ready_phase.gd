@@ -8,8 +8,6 @@ enum State{
 	PUTTING_MAKE_UP,
 	## Elena is calling her friend
 	CALLING_FRIEND,
-	## Elena is about to go outside
-	HEADING_OUT,
 }
 
 @export_subgroup("To Make Up Settings")
@@ -93,13 +91,8 @@ func enter_state(state:State):
 				# End the game
 				elena.do_transparent_dialogue("phone_call_reject")
 				await elena.dialogue_finished
-				GameManager.end_game() # Recall end_game if failed to trigger from dialogue
+				phase_finished.emit()
 			else: elena.do_transparent_dialogue("phone_call")
-		
-		State.HEADING_OUT:
-			elena.do_dialogue("heading_out")
-			await elena.dialogue_finished
-			phase_finished.emit()
 
 func exit_state(state:State):
 	match current_state:
@@ -124,4 +117,4 @@ func update_state(delta:float):
 			# Continue if not
 			_calling_friend_timer += delta / GameTimer.instance.seconds_per_game_time_minute
 			if _calling_friend_timer >= calling_friend_time and !is_interupted:
-				change_state(State.HEADING_OUT)
+				phase_finished.emit()

@@ -80,8 +80,10 @@ grow_vertical = 2
 scale = Vector2(-1, 1)
 
 [node name="TextLabel" parent="InteractControl/InteractHoverUI" index="1" unique_id=1180517548]
-offset_left = 75.0
-offset_right = 134.00003
+offset_left = 65.0
+offset_top = -7.0
+offset_right = 124.00003
+offset_bottom = 10.0
 scale = Vector2(-1, 1)
 text = "Inspect?"
 

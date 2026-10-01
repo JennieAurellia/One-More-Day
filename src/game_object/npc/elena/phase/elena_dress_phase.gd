@@ -98,6 +98,7 @@ func enter_state(state:State):
 			dressing_wardrobe.open()
 		
 		State.ANGRY:
+			EventFlag.instance.is_caught_spying = true
 			elena.do_dialogue("caught_spying")
 			await elena.dialogue_finished
 			skipped_to_end.emit()

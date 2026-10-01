@@ -76,7 +76,9 @@ func _on_makeup_desk_opened():
 	show()
 	
 func _on_makeup_desk_hidden():
-	if desk_opened.visible: AudioManager.play_sfx(close_sfx_name)
+	if desk_opened.visible:
+		AudioManager.play_sfx(close_sfx_name)
+		desk_opened.hide()
 	hide()
 
 func _on_desk_open_mouse_entered():

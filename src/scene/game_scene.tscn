@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://6lc3qglvh5w2" path="res://src/ui/cutscene/custscene_ui.tscn" id="43_4pfsh"]
 [ext_resource type="PackedScene" uid="uid://66xfpcwgepwu" path="res://src/ui/dialogue/transparent/transparent_dialogue_ui.tscn" id="44_nl8i3"]
 [ext_resource type="Shader" uid="uid://bnkyia6x4jqk0" path="res://src/common/shader/crt.gdshader" id="49_hbqi6"]
+[ext_resource type="Script" uid="uid://b4p0krq34wmeu" path="res://src/ui/block/ui_block.gd" id="50_owl6v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fimk8"]
 shader = ExtResource("35_vfhfr")
@@ -470,6 +471,7 @@ theme_override_constants/margin_top = -12
 
 [node name="HBox" type="HBoxContainer" parent="UICanvasLayer/VBox/Margin" unique_id=868818191]
 layout_mode = 2
+theme_override_constants/separation = -18
 
 [node name="GameTimerUI" parent="UICanvasLayer/VBox/Margin/HBox" unique_id=1455814715 instance=ExtResource("13_hn8je")]
 custom_minimum_size = Vector2(204, 85)
@@ -482,10 +484,8 @@ size_flags_vertical = 0
 crt_effect = NodePath("../../../../BackBufferCopy/CrtEffect")
 
 [node name="DialogueUI" parent="UICanvasLayer" unique_id=672962501 instance=ExtResource("5_alaus")]
-visible = false
 
 [node name="TransparentDialogueUI" parent="UICanvasLayer" unique_id=899891215 instance=ExtResource("44_nl8i3")]
-visible = false
 
 [node name="HintUI" parent="UICanvasLayer" unique_id=595105102 instance=ExtResource("38_1c8dc")]
 
@@ -521,6 +521,16 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="UIBlock" type="ColorRect" parent="UICanvasLayer" unique_id=2001251480]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("50_owl6v")
 
 [node name="BackCanvasLayer" type="CanvasLayer" parent="." unique_id=1047856020]
 layer = -100

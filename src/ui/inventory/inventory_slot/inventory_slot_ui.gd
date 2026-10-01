@@ -2,8 +2,8 @@ extends Control
 class_name InventorySlotUI
 
 @export_subgroup("References")
-@export var button : TextureButton
 @export var content : Control
+@export var button : Button
 @export var item_texture_rect : TextureRect
 
 @export_subgroup("Button Tween Settings")
@@ -27,8 +27,8 @@ var _is_selected = false
 # ==================================================================================================
 func _ready() -> void:
 	# Assertion check
-	assert(button, "button is missing")
 	assert(content, "content is missing")
+	assert(button, "button is missing")
 	assert(item_texture_rect, "item_texture_rect is missing")
 	# Connect signals
 	button.pressed.connect(_on_pressed)

@@ -113,7 +113,134 @@ _data = {
 &"progress": SubResource("Animation_qkmqt")
 }
 
-[node name="TransparentDialogueUI" type="Control" unique_id=672962501 node_paths=PackedStringArray("dialogue_view")]
+[sub_resource type="Animation" id="Animation_vk5i1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Balloon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Balloon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pwvhy"]
+resource_name = "hide"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Balloon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 100)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Balloon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8tbd8"]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Balloon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Balloon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pwvhy"]
+_data = {
+&"RESET": SubResource("Animation_vk5i1"),
+&"hide": SubResource("Animation_pwvhy"),
+&"show": SubResource("Animation_8tbd8")
+}
+
+[node name="TransparentDialogueUI" type="Control" unique_id=672962501 node_paths=PackedStringArray("dialogue_view", "animation")]
+modulate = Color(1, 1, 1, 0.8627451)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,6 +250,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_8y7sj")
 dialogue_view = NodePath("DialogueView")
+animation = NodePath("Animation")
 dialogue_resource = ExtResource("2_hqke0")
 default_dialogue_resource = ExtResource("2_hqke0")
 
@@ -145,7 +273,6 @@ metadata/_custom_type_script = "uid://c4mrt3yffub8j"
 
 [node name="Balloon" type="Control" parent="." unique_id=359403728]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -220,6 +347,10 @@ offset_top = -397.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="DialogueBoxTexture" type="TextureRect" parent="Balloon/MarginContainer" unique_id=1165955279]
 layout_mode = 2
@@ -237,10 +368,10 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_2scfx")
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=1030936092]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 370
+theme_override_constants/margin_left = 350
 theme_override_constants/margin_top = 90
-theme_override_constants/margin_right = 370
-theme_override_constants/margin_bottom = 70
+theme_override_constants/margin_right = 360
+theme_override_constants/margin_bottom = 110
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=1428277592]
 layout_mode = 2
@@ -280,6 +411,7 @@ theme_override_font_sizes/mono_font_size = 32
 text = "Dialogue..."
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1162966119]
+visible = false
 custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 size_flags_vertical = 8
@@ -287,6 +419,7 @@ mouse_filter = 2
 
 [node name="Progress" type="Polygon2D" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=821575988]
 unique_name_in_owner = true
+visible = false
 polygon = PackedVector2Array(0, 0, 10, 10, 20, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=452325722]
@@ -295,6 +428,7 @@ autoplay = &"progress"
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" unique_id=966297223 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -321,6 +455,9 @@ mouse_filter = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1116280512]
 unique_name_in_owner = true
+
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=77446769]
+libraries/ = SubResource("AnimationLibrary_pwvhy")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

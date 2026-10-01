@@ -4,36 +4,43 @@
 [ext_resource type="Texture2D" uid="uid://dsna28qbbcn4d" path="res://src/common/texture/ui/item_slot_texture.tres" id="2_dy01m"]
 [ext_resource type="Texture2D" uid="uid://ctavvpqcihgy8" path="res://assets/item/book_item_size.png" id="3_8writ"]
 
-[node name="InventorySlotUI" type="PanelContainer" unique_id=1403101574 node_paths=PackedStringArray("button", "content", "item_texture_rect")]
-custom_minimum_size = Vector2(80, 80)
-offset_right = 80.0
-offset_bottom = 80.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8writ"]
+
+[node name="InventorySlotUI" type="PanelContainer" unique_id=1403101574 node_paths=PackedStringArray("content", "button", "item_texture_rect")]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8writ")
 script = ExtResource("1_svefe")
-button = NodePath("Button")
-content = NodePath("Button/Content")
-item_texture_rect = NodePath("Button/Content/ItemTextureRect")
+content = NodePath("Control/Content")
+button = NodePath("Control/Content/Button")
+item_texture_rect = NodePath("Control/Content/ItemTextureRect")
 
-[node name="Button" type="TextureButton" parent="." unique_id=2108468078]
+[node name="SlotTexture" type="TextureRect" parent="." unique_id=709429569]
 layout_mode = 2
-texture_normal = ExtResource("2_dy01m")
-ignore_texture_size = true
-stretch_mode = 0
+texture = ExtResource("2_dy01m")
+expand_mode = 3
+stretch_mode = 5
 
-[node name="Content" type="MarginContainer" parent="Button" unique_id=591347945]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(40, 40)
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
+[node name="Control" type="Control" parent="." unique_id=1798014576]
+layout_mode = 2
 
-[node name="ItemTextureRect" type="TextureRect" parent="Button/Content" unique_id=670082027]
+[node name="Content" type="MarginContainer" parent="Control" unique_id=1868703847]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+pivot_offset = Vector2(50, 50)
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ItemTextureRect" type="TextureRect" parent="Control/Content" unique_id=1867055743]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("3_8writ")
 expand_mode = 5
+
+[node name="Button" type="Button" parent="Control/Content" unique_id=1046917429]
+layout_mode = 2
+flat = true

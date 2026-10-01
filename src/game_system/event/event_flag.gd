@@ -40,10 +40,14 @@ var has_ate_breakfast : bool = false
 var has_talked_after_breakfast : bool = false
 
 # ========== Chill phase ==========
-## is player sitting on sofa
+## Is player sitting on sofa
 var is_sitting_on_sofa : bool = false
 ## Has player and Elena talked while sitting on sofa
 var has_talked_while_chilling : bool = false
+
+# ========== Dress phase ==========
+## Is player caught checking Elena's phone
+var is_caught_spying : bool = false
 
 # ========== Ready phase ==========
 ## Is Elena doing a phone call with her friend

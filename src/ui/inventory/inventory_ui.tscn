@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxjiy"]
 
 [node name="InventoryUI" type="PanelContainer" unique_id=901225113 node_paths=PackedStringArray("inventory_slot_parent")]
-custom_minimum_size = Vector2(270, 330)
+custom_minimum_size = Vector2(310, 410)
 offset_right = 270.0
 offset_bottom = 330.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vxjiy")
@@ -26,6 +26,6 @@ flip_h = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 6
+theme_override_constants/h_separation = -6
+theme_override_constants/v_separation = -16
 columns = 2

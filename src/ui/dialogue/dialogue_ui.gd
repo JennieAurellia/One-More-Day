@@ -6,6 +6,7 @@ static var instance : DialogueUI
 
 @export_subgroup("Reference")
 @export var dialogue_view : DialogueView
+@export var animation : AnimationPlayer
 
 @export_subgroup("Dialogue Settings")
 ## The dialogue resource
@@ -24,6 +25,10 @@ static var instance : DialogueUI
 @export var skip_action: StringName = &"ui_cancel"
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+
+@export_subgroup("Animation Settings")
+@export var show_animation_name : String = "show"
+@export var hide_animation_name : String = "hide"
 
 ## Temporary game states
 var temporary_game_states: Array = []
@@ -48,7 +53,7 @@ var dialogue_line: DialogueLine:
 			if owner == null:
 				queue_free()
 			else:
-				hide()
+				hide_dialogue_ui()
 	get:
 		return dialogue_line
 
@@ -88,6 +93,7 @@ func _ready() -> void:
 	
 	# Assertion check
 	assert(dialogue_view, "dialogue_view is missing")
+	assert(animation, "animation is missing")
 	# Connect signals
 	DialogueManager.dialogue_started.connect(func(resource: DialogueResource):
 		#EventBus.input_status_changed.emit(false)
@@ -139,7 +145,8 @@ func start(with_dialogue_resource: DialogueResource = null, title: String = "", 
 	if not title.is_empty():
 		start_from_title = title
 	dialogue_line = await dialogue_resource.get_next_dialogue_line(start_from_title, temporary_game_states)
-	show()
+	show_dialogue_ui()
+	dialogue_view.hide_all_sprite()
 
 
 ## Apply any changes to the balloon given a new [DialogueLine].
@@ -244,6 +251,10 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 #                Custom methods
 # ==================================================================================================
 #region Custom
+func show_dialogue_ui(): animation.play(show_animation_name)
+
+func hide_dialogue_ui(): animation.play(hide_animation_name)
+
 func show_sprite(
 	view_position:DialogueView.ViewPosition,
 	sprite_name:String,
