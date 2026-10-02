@@ -43,6 +43,9 @@ item_texture_rect = NodePath("Content/ClosetOpened/ItemTextureRect")
 close_button = NodePath("CloseButton")
 key_item_data = ExtResource("2_4672o")
 found_item_data = ExtResource("2_aqjug")
+box_sfx_name = null
+cloth_sfx_name = null
+closet_sfx_name = null
 
 [node name="Background" type="ColorRect" parent="." unique_id=1110392974]
 layout_mode = 1

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://l2nnv5bayhs4" path="res://src/ui/component/main_button/main_button.tscn" id="3_5ohp8"]
 [ext_resource type="Texture2D" uid="uid://bmjq8kj1p2s7w" path="res://assets/Pause splash/abu 3.png" id="3_j6rfb"]
 [ext_resource type="Texture2D" uid="uid://nmsrj3oky50" path="res://assets/Pause splash/putih 2.png" id="4_814v3"]
+[ext_resource type="Texture2D" uid="uid://b15f78nmgsi5r" path="res://src/common/texture/ui/tutorial_texture.tres" id="6_7qhvc"]
 [ext_resource type="Texture2D" uid="uid://cctiem760fdgy" path="res://assets/Pause splash/abu 1.png" id="6_lpqdq"]
 [ext_resource type="Texture2D" uid="uid://c2af50joa2m2b" path="res://assets/Pause splash/abu 2.png" id="7_7qhvc"]
 [ext_resource type="Texture2D" uid="uid://bx5ogcp66x3o" path="res://assets/Pause splash/putih 1.png" id="8_cwcpd"]
@@ -95,6 +96,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TutorialMargin:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_j6rfb"]
 resource_name = "load"
@@ -183,6 +196,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TutorialMargin:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_814v3"]
 _data = {
@@ -251,6 +276,44 @@ layout_mode = 2
 
 [node name="TextLabel" parent="Buttons/QuitButton/Margin" parent_id_path=PackedInt32Array(98178568, 305730039) index="0" unique_id=1940812368]
 text = "Quit"
+
+[node name="TutorialMargin" type="MarginContainer" parent="." unique_id=334758746]
+custom_minimum_size = Vector2(770, 265)
+layout_mode = 0
+offset_right = 770.0
+offset_bottom = 265.0
+mouse_filter = 2
+
+[node name="TutorialContent" type="MarginContainer" parent="TutorialMargin" unique_id=739644256]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 0
+
+[node name="Texture" type="TextureRect" parent="TutorialMargin/TutorialContent" unique_id=1828418514]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_7qhvc")
+expand_mode = 5
+stretch_mode = 5
+flip_v = true
+
+[node name="Margin" type="MarginContainer" parent="TutorialMargin/TutorialContent" unique_id=2090406488]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 100
+
+[node name="Label" type="RichTextLabel" parent="TutorialMargin/TutorialContent/Margin" unique_id=1715498828]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "- [color=yellow]Aim[/color] and [color=yellow]left click[/color] to [color=cyan]move[/color]
+- [color=yellow]Hover[/color] and [color=yellow]left click[/color] to [color=cyan]interact[/color]
+- [color=yellow]Click[/color] item from inventory to [color=cyan]interact[/color] with
+- [color=yellow]Hold[/color] skip button to [color=cyan]speed up[/color]"
 
 [node name="UIBlock" type="Control" parent="." unique_id=1267017685]
 visible = false

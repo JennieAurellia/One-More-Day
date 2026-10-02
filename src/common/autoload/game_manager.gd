@@ -35,8 +35,8 @@ func end_game():
 	SaveManager.save_game()
 	# Do alert and quit
 	OS.alert(
-		"It seems that the game has crashed. Please reopen the game.",
-		"Error!?"
+		"It seems that the game has crashed. Please [re-open] the game.",
+		"Error!?!?!?!?!?!?!?!?"
 	)
 	get_tree().quit()
 

@@ -436,6 +436,9 @@ layout_mode = 1
 [node name="WardrobeUI" parent="UICanvasLayer/InteractDisplay" unique_id=822685683 instance=ExtResource("39_4pfsh")]
 visible = false
 layout_mode = 1
+box_sfx_name = "wardrobe_box"
+cloth_sfx_name = "wardrobe_cloth"
+closet_sfx_name = "wardrobe_closet"
 
 [node name="MakeupDeskUI" parent="UICanvasLayer/InteractDisplay" unique_id=1905349556 instance=ExtResource("40_ilagk")]
 visible = false

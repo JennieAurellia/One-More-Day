@@ -190,8 +190,8 @@ func _on_cloth_3_pressed():
 func _on_closet_pressed():
 	closet_button.hide()
 	closet_opened.show()
-	item_button.show()
-	item_texture_rect.show()
+	item_button.visible = !InventoryManager.has_item(found_item_data.id)
+	item_texture_rect.visible = !InventoryManager.has_item(found_item_data.id)
 	AudioManager.play_sfx(closet_sfx_name)
 
 func _on_item_pressed():
