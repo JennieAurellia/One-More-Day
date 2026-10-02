@@ -35,6 +35,7 @@ metadata/_custom_type_script = "uid://b0q2mt07v486l"
 
 [node name="ElenaCookPhase" type="Node" parent="PhaseController" unique_id=361721936 node_paths=PackedStringArray("elena")]
 script = ExtResource("3_211og")
+serving_time = 1.0
 elena = NodePath("../..")
 metadata/_custom_type_script = "uid://cyhka1tiwddap"
 
